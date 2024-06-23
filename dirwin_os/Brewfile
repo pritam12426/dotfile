@@ -2,12 +2,14 @@ tap "fmenezes/tap"
 tap "homebrew/bundle"
 tap "osx-cross/avr"
 tap "teamookla/speedtest"
+# Command-line interface for SQLite
+brew "sqlite"
+# Formatter/translator for text files to numerous formats
+brew "asciidoc"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
-# Command-line interface for SQLite
-brew "sqlite"
 # Core application library for C
 brew "glib"
 # Ultralightweight JSON parser in ANSI C
@@ -20,10 +22,18 @@ brew "cmake"
 brew "cmake-docs"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
+# Run arbitrary commands when files change
+brew "entr"
 # Perl lib for reading and writing EXIF metadata
 brew "exiftool"
+# Low-level access to audio, keyboard, mouse, joystick, and graphics
+brew "sdl2"
 # Play, record, convert, and stream audio and video
 brew "ffmpeg"
+# Open-source formatting library for C++
+brew "fmt"
+# Open-source alternative to the OpenGL Utility Toolkit (GLUT) library
+brew "freeglut"
 # Distributed revision control system
 brew "git"
 # Tcl/Tk UI for the git revision control system
@@ -32,38 +42,48 @@ brew "git-gui"
 brew "gnu-sed"
 # GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
+# Google Testing and Mocking Framework
+brew "googletest"
+# Toolkit for creating graphical user interfaces
+brew "gtk4"
 # Improved top (interactive process viewer)
 brew "htop"
-# JSON parser for C
-brew "json-c"
+# Lightweight and flexible command-line JSON processor
+brew "jq"
 # Library for interacting with JSON
 brew "jsoncpp"
 # Configuration file processing library
 brew "libconfig"
-# Core utilities for Python packages
-brew "python-packaging"
 # Feature-rich command-line audio/video downloader
 brew "yt-dlp"
 # Media player based on MPlayer and mplayer2
-brew "mpv"
+brew "mpv", link: false
 # NCurses Disk Usage
 brew "ncdu"
 # Fast, highly customisable system info script
 brew "neofetch"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
-# Swiss-army knife of markup format conversion
-brew "pandoc"
+# Implementation of the OpenAL 3D audio API
+brew "openal-soft"
 # Perl compatible regular expressions library
 brew "pcre"
 # Manage compile and link flags for libraries
 brew "pkg-config"
+# Core utilities for Python packages
+brew "python-packaging"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Display and control your Android device
 brew "scrcpy"
+# Library for using TrueType fonts in SDL applications
+brew "sdl2_ttf"
+# Multi-media library with bindings for multiple languages
+brew "sfml"
 # Fuzzy Finder in rust!
 brew "sk"
+# GUI library for use with sfml
+brew "tgui"
 # Text interface for Git repositories
 brew "tig"
 # Simplified and community-driven man pages
@@ -74,6 +94,8 @@ brew "tre-command"
 brew "uthash"
 # Internet file retriever
 brew "wget"
+# Cross-platform C++ GUI toolkit
+brew "wxwidgets"
 # Ookla Speedtest
 brew "teamookla/speedtest/speedtest"
 # Android SDK component
@@ -92,10 +114,10 @@ cask "iina"
 cask "inkscape"
 # Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2"
-# Keyboard customiser
-cask "karabiner-elements"
 # Visual tool to design, develop and administer MySQL servers
 cask "mysqlworkbench"
+# Calculator and converter application
+cask "numi"
 # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
 # RAW photo processor
@@ -106,6 +128,8 @@ cask "shottr"
 cask "skim"
 # Media player based on MPlayer and mplayer2
 cask "stolendata-mpv"
+# LaTeX editor
+cask "texmaker"
 # Customizable email client
 cask "thunderbird"
 # Open-source code editor
@@ -114,22 +138,20 @@ vscode "aaron-bond.better-comments"
 vscode "asciidoctor.asciidoctor-vscode"
 vscode "aykutsarac.jsoncrack-vscode"
 vscode "bierner.docs-view"
-vscode "cweijan.dbclient-jdbc"
-vscode "cweijan.vscode-mysql-client2"
-vscode "editorconfig.editorconfig"
-vscode "github.github-vscode-theme"
 vscode "gruntfuggly.todo-tree"
 vscode "henrytsz.nvim"
 vscode "james-yu.latex-workshop"
 vscode "mads-hartmann.bash-ide-vscode"
 vscode "mhutchie.git-graph"
+vscode "ms-dotnettools.csdevkit"
+vscode "ms-dotnettools.csharp"
+vscode "ms-dotnettools.vscode-dotnet-runtime"
 vscode "ms-python.debugpy"
 vscode "ms-python.python"
 vscode "ms-python.vscode-pylance"
 vscode "ms-vscode.cpptools"
 vscode "ms-vscode.cpptools-extension-pack"
-vscode "mtxr.sqltools"
-vscode "mtxr.sqltools-driver-mysql"
 vscode "pkief.material-icon-theme"
 vscode "streetsidesoftware.code-spell-checker"
+vscode "twxs.cmake"
 vscode "usernamehw.errorlens"

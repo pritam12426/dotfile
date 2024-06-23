@@ -7,11 +7,15 @@ GENERAL COMMANDS -------------|------------------|==============================
 G COMMANDS ---|---------------|------------------|=====================================================
       g~~     |    Normal     |       Normal     |  Toggle case of whole line
       gv      |    Normal     |       Visual     |  Jumps back to the text you have last seclated
+      h       |    Normal     |       Normal     |  Jumps back to the top of the page
+      h       |    Normal     |       Normal     |  Jumps back to the top of the page
       g&      |    Normal     |       Normal     |  Runs the last command very Important
       g$      |    Normal     |       Normal     |  Go to the end of the visual line
       g0      |    Normal     |       Normal     |  Go to the start of the visual line
      guu      |    Normal     |       Normal     |  Make all case to lower of the whole line
      gUU      |    Normal     |       Normal     |  Make all case to UPPER of the whole line
+     ZQ       |    Normal     |       Exit       |  This will exit the vim with out saving the file
+     ZZ       |    Normal     |       Exit       |  This will exit the vim with saving the file
      gUiw     |    Normal     |       Normal     |  Make all case to UPPER inside a word
     gUi`n`w   |    Normal     |       Normal     |  Make all case to UPPER inside a word
       gf      |    Normal     |       Normal     |  Go to the file 
