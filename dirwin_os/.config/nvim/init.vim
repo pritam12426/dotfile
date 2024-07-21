@@ -1,4 +1,4 @@
-set autoindent expandtab tabstop=4 shiftwidth=4
+set autoindent expandtab tabstop=2 shiftwidth=2
 set autoread
 set ignorecase
 set iskeyword-=_
@@ -23,7 +23,8 @@ set smartcase                     " ... unless they contain at least one capital
 set gdefault                      " have :s///g flag by default on
 
 " --- theme ---
-:colorscheme murphy
+":colorscheme murphy
+:colorscheme elflord
 
 " Shortcut keys
 " For normal mode
