@@ -13,7 +13,7 @@
 
     {
       "type": "cppbuild",
-      "label": "Build C progarm",
+      "label": "Debug C Program",
       "command": "/usr/bin/clang",
       "args": [
         "-fcolor-diagnostics",

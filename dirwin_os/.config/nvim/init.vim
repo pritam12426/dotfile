@@ -15,6 +15,7 @@ autocmd InsertLeave * set relativenumber
 " let mapleader=","
 " map <leader>y "*y
 
+
 "" Searching
 set hlsearch                      " highlight matches
 set incsearch                     " incremental searching
@@ -24,7 +25,7 @@ set gdefault                      " have :s///g flag by default on
 
 " --- theme ---
 ":colorscheme murphy
-:colorscheme elflord
+:colorscheme vim
 
 " Shortcut keys
 " For normal mode

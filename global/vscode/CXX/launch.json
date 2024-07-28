@@ -5,7 +5,7 @@
       "name": "Debug CPP Using lldb",
       "type": "cppdbg",
       "request": "launch",
-      "program": "${fileDirname}/main.out",
+      "program": "${workspaceFolder}/main.out",
       "MIMode": "lldb",
       "args": [],
       "stopAtEntry": false,
@@ -13,8 +13,7 @@
       "environment": [],
       "externalConsole": true,
 
-      "preLaunchTask": "Debug cpp progarm",
-      // "preLaunchTask": "Edit input file"
+      "preLaunchTask": "Debug Cpp Program"
     }
   ]
 }

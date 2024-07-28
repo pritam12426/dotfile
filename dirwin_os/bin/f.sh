@@ -1,4 +1,4 @@
-#!/opt/homebrew/bin/bash
+#!/usr/bin/env bash
 
 findparms=(-maxdepth 1 -name '*.mp3' -or -name '*.mov' -or -name '*.wav' -or -name '*.m4a' -or -name '*.mp4' -or -name '*.mkv' -or -name '*.webm' -or -name '*.part')  # The filter to find the file using `find` command
 
@@ -21,7 +21,7 @@ command=""
 video_title=""
 title_opction=""
 
-(find "." "${findparms[@]}" | sed "s%./%%" | sort) | sk --color=current_bg:232,info:32 | {
+(find "." "${findparms[@]}" | sed "s%./%%" | sort) | fzf | {
 	read -r sk_passed_file
 
 	if [ -z "$sk_passed_file" ]; then

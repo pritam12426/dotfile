@@ -12,9 +12,7 @@
       "cwd": "${workspaceFolder}",
       "environment": [],
       "externalConsole": false,
-
-      "preLaunchTask": "Debug C progarm"
-      // "preLaunchTask": "Run debug CXX code",
+      "preLaunchTask": "Debug C Program"
     }
   ]
 }
