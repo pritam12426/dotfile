@@ -1,10 +1,10 @@
 --show-hidden
 --show-graph
-# --exclude .git
+--exclude .git
 --group-directories-first
 --no-confirm-quit
 --show-percent
 --show-itemcount
 --disk-usage
 --enable-refresh
---color dark
+# --color dark-bg

@@ -24,8 +24,9 @@ set smartcase                     " ... unless they contain at least one capital
 set gdefault                      " have :s///g flag by default on
 
 " --- theme ---
-":colorscheme murphy
-:colorscheme vim
+" :colorscheme murphy
+:colorscheme habamax
+" :colorscheme vim
 
 " Shortcut keys
 " For normal mode
