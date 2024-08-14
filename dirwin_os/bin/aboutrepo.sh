@@ -1,4 +1,4 @@
-#!/opt/homebrew/bin/bash
+#!/usr/bin/env sh
 github_url_pattern='https://github\.com/'
 
 result=$(echo $1 | sed -E "s|$github_url_pattern||g")

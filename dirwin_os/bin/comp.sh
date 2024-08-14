@@ -49,6 +49,10 @@ case "$file" in
 		python3 "$file"
 		exit $?
 		;;
+	*.sql)
+		sqlite3 < "$file"
+		exit $?
+		;;
 	*.cs)
 		dotnet run
 		exit $?
