@@ -25,8 +25,8 @@ set gdefault                      " have :s///g flag by default on
 
 " --- theme ---
 " :colorscheme murphy
-:colorscheme habamax
-" :colorscheme vim
+" :colorscheme habamax
+:colorscheme vim
 
 " Shortcut keys
 " For normal mode
