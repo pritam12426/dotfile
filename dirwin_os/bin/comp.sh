@@ -49,6 +49,10 @@ case "$file" in
 		python3 "$file"
 		exit $?
 		;;
+	*.go)
+		go run "$file"
+		exit $?
+		;;
 	*.sql)
 		sqlite3 < "$file"
 		exit $?
