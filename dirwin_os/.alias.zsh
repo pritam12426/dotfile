@@ -86,7 +86,8 @@ _make_() {
 #  EXIFTOOL
 alias exf="exiftool -sort -P -overwrite_original_in_place"
 alias exfcpy="exf -TagsFromFile"
-alias exfimg="exiftool -b -Picture -W%d%f_cover.jpg"
+alias exfcpy="exf -TagsFromFile"
+alias ffprobe="ffprobe -v quiet -print_format json -show_format -show_streams"
 
 
 #  YT-DLP
