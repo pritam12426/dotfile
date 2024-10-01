@@ -60,6 +60,7 @@ alias o="open ."
 alias vless="$PAGER $DOT_FILE/../global/vim_key.txt"
 alias eless="$EDITOR $DOT_FILE/../global/vim_key.txt"
 alias c.="code ."
+alias m="make"
 alias z.="zed ."
 alias quicklook="qlmanage -p"
 alias tree="tre -e"
@@ -87,7 +88,12 @@ _make_() {
 alias exf="exiftool -sort -P -overwrite_original_in_place"
 alias exfcpy="exf -TagsFromFile"
 alias exfcpy="exf -TagsFromFile"
-alias ffprobe="ffprobe -v quiet -print_format json -show_format -show_streams"
+
+hhhh() {
+  ffprobe -v quiet -print_format json -show_format -show_streams $@ | jq
+}
+
+# alias ffprobe="ffprobe -v quiet -print_format json -show_format -show_streams"
 
 
 #  YT-DLP
