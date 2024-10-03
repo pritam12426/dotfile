@@ -37,6 +37,10 @@ case "$file" in
 		cargo run
 		exit $?
 		;;
+	*.pl)
+		perl "$file"
+		exit $?
+		;;
 	[Mm]akefile)
 		make -C "$path" -f "$file"
 		exit $?
