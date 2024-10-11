@@ -21,7 +21,6 @@ IncludeBlocks: Regroup
 IndentPPDirectives: None
 IndentWidth: '2'
 KeepEmptyLinesAtTheStartOfBlocks: 'false'
-Language: Cpp
 MaxEmptyLinesToKeep: '2'
 NamespaceIndentation: All
 PointerAlignment: Right
@@ -33,5 +32,8 @@ SpaceBeforeCpp11BracedList: 'true'
 SpaceBeforeRangeBasedForLoopColon: 'true'
 SpacesBeforeTrailingComments: '2'
 TabWidth: '2'
+JavaScriptQuotes: Double
+JavaScriptWrapImports: 'true'
+BreakAfterJavaFieldAnnotations: 'true'
 
 ...

@@ -34,7 +34,7 @@ case "$file" in
 		run_command="$CXX -std=c++2b "
 		;;
 	*.rs)
-		cargo run
+		cargo run -q
 		exit $?
 		;;
 	*.pl)
@@ -105,7 +105,7 @@ fi
 run_command+="-pedantic -Wall -arch arm64 $2 $3 $4 $5 $6 $7 $8 $9 '$path/$filename' -o '$TMPDIR${filename//./-}.out'"
 
 # Execute the run command
-echo $run_command >&2; printf '%*s\n' `tput cols` '' | tr ' ' '─' >&2
+# echo $run_command >&2; printf '%*s\n' `tput cols` '' | tr ' ' '─' >&2
 eval $run_command
 
 if [[ $RUN == 1 ]]; then
@@ -117,6 +117,7 @@ if [[ $? -eq 0 ]]; then
 	if [[ "$path" == "$HOME/Developer/leedcode"* ]]; then
 		/usr/bin/time -h "$TMPDIR${filename//./-}.out" < ~/Developer/leedcode/input.txt
 	else
+		# /usr/bin/time -h "$TMPDIR${filename//./-}.out"
 		"$TMPDIR${filename//./-}.out"
 	fi
 	exit $?

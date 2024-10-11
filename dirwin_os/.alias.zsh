@@ -1,10 +1,11 @@
 #  defaultn write com.apple.dock autohide-time-modifier -float 0.5; defaults write com.apple.dock autohide-delay -float 0; defaults write com.apple.dock showhidden -bool YES; killall Dock
 #  LINUX LS COLOR THEME
 
-export CLICOLOR=1
+export CLICOLOR=true
 export PAGER="less"
 export LESS="-Ri"
 export LSCOLORS=ExFxBxDxCxegedabagacad
+
 
 #  COLORED GCC WARNINGS AND ERRORS
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
@@ -105,13 +106,13 @@ alias insta="yt-dlp --ignore-config  --config-locations '~/.config/yt-dlp/instag
 
 
 #  NNN FILE MANGER CD ON QUIT
-function nnn () {
+function n () {
 	[ "${NNNLVL:-0}" -eq 0 ] || {
 		echo "nnn is already running"
 		return
 	}
 
-	command nnn "$@"
+	command n "$@"
 
 	[ ! -f "$NNN_TMPFILE" ] || {
 		. "$NNN_TMPFILE"
