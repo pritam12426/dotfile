@@ -49,6 +49,10 @@ case "$file" in
 		open "$file"
 		exit 0
 		;;
+	*.d2)
+		d2 "$file"
+		exit 0
+		;;
 	*.py)
 		python3 "$file"
 		exit $?
@@ -105,7 +109,7 @@ fi
 run_command+="-pedantic -Wall -arch arm64 $2 $3 $4 $5 $6 $7 $8 $9 '$path/$filename' -o '$TMPDIR${filename//./-}.out'"
 
 # Execute the run command
-# echo $run_command >&2; printf '%*s\n' `tput cols` '' | tr ' ' '─' >&2
+echo $run_command >&2; printf '%*s\n' `tput cols` '' | tr ' ' '─' >&2
 eval $run_command
 
 if [[ $RUN == 1 ]]; then

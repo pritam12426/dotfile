@@ -32,8 +32,10 @@ SpaceBeforeCpp11BracedList: 'true'
 SpaceBeforeRangeBasedForLoopColon: 'true'
 SpacesBeforeTrailingComments: '2'
 TabWidth: '2'
+
 JavaScriptQuotes: Double
 JavaScriptWrapImports: 'true'
 BreakAfterJavaFieldAnnotations: 'true'
+UseTab: ForIndentation
 
 ...

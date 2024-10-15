@@ -3,7 +3,7 @@
 
 export CLICOLOR=true
 export PAGER="less"
-export LESS="-Ri"
+export LESS="-Rir"
 export LSCOLORS=ExFxBxDxCxegedabagacad
 
 
@@ -137,6 +137,9 @@ function pathcp {
   printf "$(realpath "$file")" | pbcopy
 }
 
+function diff {
+  command diff -u --color=always $@ | less -r -;
+}
 
 #  FOR COMMIT THE COMMIT WITH GPG
 export GPG_TTY=$(tty)
