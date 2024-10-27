@@ -47,11 +47,15 @@ case "$file" in
 		;;
 	*.html)
 		open "$file"
-		exit 0
+		exit $?
 		;;
 	*.d2)
 		d2 "$file"
-		exit 0
+		exit $?
+		;;
+	*.cal)
+		bc -lf "$file"
+		exit $?
 		;;
 	*.py)
 		python3 "$file"
@@ -59,6 +63,10 @@ case "$file" in
 		;;
 	*.go)
 		go run "$file"
+		exit $?
+		;;
+	*.zig)
+		zig run "$file"
 		exit $?
 		;;
 	*.sql)
