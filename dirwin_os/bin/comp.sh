@@ -13,7 +13,7 @@ if [[ $# -eq 0 ]]; then
 	elif [[ -f "main.rs" ]]; then
 		file="main.rs"
 	else
-		echo "comp: missing operand"
+		echo "$0 : missing operand"
 		exit 1
 	fi
 else
