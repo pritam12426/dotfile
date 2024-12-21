@@ -47,7 +47,7 @@ case "$file" in
 		run_command+="zig run $file "
 		;;
 	*.sql)
-		run_command+="sqlite3 < $file "
+		run_command+="sqlite3 -table -bail < $file "
 		;;
 	*.cs)
 		run_command+="dotnet run "
@@ -100,13 +100,8 @@ fi
 
 # Run the compiled output if compilation was successful
 if [[ $? -eq 0 ]]; then
-	if [[ "$path" == "$HOME/Developer/leedcode"* ]]; then
-		/usr/bin/time -h "$TMPDIR${filename//./-}.out" < ~/Developer/leedcode/input.txt
-	else
-		# /usr/bin/time -h "$TMPDIR${filename//./-}.out"
-		"$TMPDIR${filename//./-}.out"
-	fi
-	exit $?
-else
-	exit $?
+	# /usr/bin/time -h "$TMPDIR${filename//./-}.out"
+	"$TMPDIR${filename//./-}.out"
 fi
+
+exit $?
