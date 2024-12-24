@@ -1,73 +1,70 @@
 {
-  "version": "2.0.0",
-  "tasks": [
-    {
-      "label": "Run C code",
-      "command": "${fileDirname}/main.out",
-      "dependsOn": "Build C progarm",
-      "group": {
-        "kind": "build",
-        "isDefault": true
-      }
-    },
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Run C code",
+			"command": "${workspaceFolder}/main.out",
+			"dependsOn": "Build C progarm",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		},
 
-    {
-      "type": "cppbuild",
-      "label": "Debug C Program",
-      "command": "/usr/bin/clang",
-      "args": [
-        "-fcolor-diagnostics",
-        "-fansi-escape-codes",
-        "-std=c2x",
-        "-Wall",
-        "-pedantic",
-        "-arch", "arm64",
-        "-I",
-        "/opt/homebrew/include/",
-        "-L", "/opt/homebrew/lib/",
-        "${file}",
-        "-o",
-        "${fileDirname}/main.out"
-      ],
-      "options": {
-        "cwd": "${fileDirname}"
-      },
-      "detail": "compiler: C code with apple clang",
+		{
+			"type": "cppbuild",
+			"label": "Debug C Program",
+			"command": "/usr/bin/clang",
+			"args": [
+				"-fcolor-diagnostics",
+				"-fansi-escape-codes",
+				"-std=c17",
+				"-Wall",
+				"-pedantic",
+				"-arch",
+				"arm64",
+				"${file}",
+				"-o",
+				"${workspaceFolder}/main.out"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"detail": "Compiler: C code with apple clang",
 
-      "group": {
-        "kind": "build"
-        // "isDefault": true
-      }
+			"group": {
+				"kind": "build"
+				// "isDefault": true
+			}
 
-    },
+		},
 
-    {
-      "type": "cppbuild",
-      "label": "Debug C progarm",
-      "command": "/usr/bin/clang",
-      "args": [
-        "-fcolor-diagnostics",
-        "-fansi-escape-codes",
-        "-std=c2x",
-        "-Wall",
-        "-arch", "arm64",
-        "-pedantic",
-        "-g",
-        "-I", "/opt/homebrew/include/",
-        "-L", "/opt/homebrew/lib/",
-        "${file}",
-        "-o",
-        "${fileDirname}/main.out"
-      ],
-      "options": {
-        "cwd": "${fileDirname}"
-      },
-      "problemMatcher": [
-        "$gcc"
-      ],
-      "group": "build",
-      "detail": "debugging: C progarm using lldb"
-    }
+		{
+			"type": "cppbuild",
+			"label": "Debug C progarm",
+			"command": "/usr/bin/clang",
+			"args": [
+				"-fcolor-diagnostics",
+				"-fansi-escape-codes",
+				"-std=c17",
+				"-Wall",
+				"-arch",
+				"arm64",
+				"-pedantic",
+				"-g",
+				"${file}",
+				"-o",
+				"${workspaceFolder}/main.out"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": "build",
+			"detail": "Debugging: C progarm using lldb"
+		}
 
-  ]
+	]
 }
