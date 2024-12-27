@@ -54,7 +54,7 @@ alias c.="command code ."
 alias z.="command zed ."
 alias quicklook="command qlmanage -p"
 alias tree="command tre -e"
-alias which="command which -sa"
+alias which="command which -a"
 alias python="python3"
 alias lfind="command alias | grep -i"
 alias nq="command networkquality -s"
@@ -62,7 +62,7 @@ alias nq="command networkquality -s"
 alias hc="command cat /dev/null > ~/.zsh_history"
 alias gfind="command ls -AF | grep -i"
 alias lh="command ls -AF| grep '^\.'"
-alias envpath="command echo -e 'PATH\n'$PATH '\n\nMAN\n'$MANPATH '\nPKG_CONFIG\n'$PKG_CONFIG_PATH | tr ':' '\n' | $PAGER"
+alias envpath="echo -e 'PATH\n'$PATH '\n\nMANPATH'$MANPATH '\nPKG_CONFIG\n'$PKG_CONFIG_PATH | tr ':' '\n' | $PAGER"
 alias per="command find . -type f -exec chmod 644 {} \; && find . -type d -exec chmod 755 {} \;"
 alias removeout="command find . -name '*.out*' -exec rm -r {} +"
 
@@ -131,6 +131,39 @@ function pathcp {
 function diff {
 	command diff -u --color=always $@ | less -r -;
 }
+
+
+function clanginit {
+	if [[ $# -eq 0 ]]; then
+		echo "Usage: $1 <c cxx c++>"
+		return 1
+	fi
+
+	lower_input=$(echo "$1" | tr '[:upper:]' '[:lower:]')
+
+	case "$lower_input" in
+	c)
+		COMMAND="cp -rp $DOT_FILE/../global/vscode/C  $PWD/.vscode"
+		;;
+	c++)
+		COMMAND="cp -rp $DOT_FILE/../global/vscode/CXX $PWD/.vscode"
+		;;
+	cxx)
+		COMMAND="cp -rp $DOT_FILE/../global/vscode/CXX $PWD/.vscode"
+		;;
+	*)
+		echo "Unsupported: <c cxx c++>: $1"
+		return 1
+		;;
+	esac
+
+	echo $COMMAND
+	eval $COMMAND
+
+	mkdir -p src build test
+	touch Makefile CMakeLists.txt
+}
+
 
 
 #  FOR COMMIT THE COMMIT WITH GPG
