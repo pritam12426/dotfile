@@ -1,0 +1,11 @@
+# sudo: auth account password session
+# $ sudo su
+# sh-3.2# cat sudo /etc/pam.d/sudo
+
+auth       sufficient     pam_tid.so
+auth       include        sudo_local
+auth       sufficient     pam_smartcard.so
+auth       required       pam_opendirectory.so
+account    required       pam_permit.so
+password   required       pam_deny.so
+session    required       pam_permit.so
