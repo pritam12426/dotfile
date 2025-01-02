@@ -48,24 +48,21 @@ alias eza="$EDITOR ~/.alias.zsh"
 
 #  SYSTEM ALIAS
 alias o="command open ."
+alias say="command say --data-format=LEF32@8000 -i "
 alias vless="$PAGER $DOT_FILE/../global/vim_key.txt"
 alias eless="$EDITOR $DOT_FILE/../global/vim_key.txt"
 alias c.="command code ."
 alias z.="command zed ."
 alias quicklook="command qlmanage -p"
-alias tree="command tre -e"
+alias tree="command tre -ea"
 alias which="command which -a"
 alias python="python3"
-alias lfind="command alias | grep -i"
 alias nq="command networkquality -s"
-# alias nq="command speedtest -u MB/s"
 alias hc="command cat /dev/null > ~/.zsh_history"
 alias gfind="command ls -AF | grep -i"
 alias lh="command ls -AF| grep '^\.'"
 alias envpath="echo -e 'PATH\n'$PATH '\n\nMANPATH'$MANPATH '\nPKG_CONFIG\n'$PKG_CONFIG_PATH | tr ':' '\n' | $PAGER"
 alias per="command find . -type f -exec chmod 644 {} \; && find . -type d -exec chmod 755 {} \;"
-alias removeout="command find . -name '*.out*' -exec rm -r {} +"
-
 
 function _make_() {
 	command make -qp | awk -F':' '/^[a-zA-Z0-9][^$#\/\t=]*:([^=]|$)/ {split($1,A,/ /);for(i in A)print A[i]}' | command sort -u
@@ -82,17 +79,6 @@ alias yt-dlpx="command yt-dlp -o '%(title)s.%(ext)s' -f 'best/bestvideo*+bestaud
 alias yt-dlpp="command yt-dlp -o '~/Downloads/yt_dlp/youtube_playlist/%(playlist)s-%(uploader)s/%(playlist_index)s-%(title)s.%(ext)s'"
 alias short="command yt-dlp --ignore-config  --config-locations '~/.config/yt-dlp/you-tube_short_vidoe.txt'"
 alias insta="command yt-dlp --ignore-config  --config-locations '~/.config/yt-dlp/instagram.txt'"
-
-
-LANG="en_US.UTF-8"
-LC_COLLATE="en_US.UTF-8"
-LC_CTYPE="en_US.UTF-8"
-LC_MESSAGES="en_US.UTF-8"
-LC_MONETARY="en_US.UTF-8"
-LC_NUMERIC="en_US.UTF-8"
-LC_TIME="en_US.UTF-8"
-LC_ALL="en_US.UTF-8"
-
 
 #  NNN FILE MANGER CD ON QUIT
 function n () {
@@ -168,7 +154,6 @@ function clanginit {
 
 #  FOR COMMIT THE COMMIT WITH GPG
 export GPG_TTY=$(tty)
-
 
 #  IP / MACID ALIAS AND FUNCTIONS
 alias ipinfo="command curl https://raw.githubusercontent.com/jarun/nnn/master/plugins/ipinfo 2> /dev/null | sh | $PAGER"
