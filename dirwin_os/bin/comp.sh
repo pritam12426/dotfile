@@ -26,8 +26,8 @@ case "$file" in
 *.pl)
 	run_command+="perl $file "
 	;;
-[Mm]akefile)
-	run_command+="make -c $path -f $file "
+*[Mm]akefile*)
+	run_command+="make -C $path -f $file "
 	;;
 *.html)
 	run_command+="open $file "
@@ -48,8 +48,8 @@ case "$file" in
 	run_command+="zig run $file "
 	;;
 *.sql)
-	# run_command+="sqlite3 -column -bail -nullvalue "󰟢" $path/$file_without_extension.sqlite3 < $file "
-	run_command+="sqlite3 -table -bail -nullvalue "󰟢" < $file "
+	# run_command+="sqlite3 -header -table -bail -nullvalue "󰟢" $path/$file_without_extension.sqlite3 < $file "
+	run_command+="sqlite3 -header -table -bail -nullvalue "󰟢" < $file "
 	;;
 *.cs)
 	run_command+="dotnet run "
@@ -64,14 +64,7 @@ case "$file" in
 	run_command+="bash -x $file "
 	;;
 *)
-	shebang=$(head -n 1 "$file" | cut -c 3-)
-	if [[ -x "$(command -v "$shebang")" ]]; then
-		"$shebang" "$file"
-		exit $?
-	else
-		echo "Unknown file type: '$file'"
-		exit 1
-	fi
+	./$file
 	;;
 esac
 
@@ -101,6 +94,7 @@ fi
 
 # Run the compiled output if compilation was successful
 if [[ $? -eq 0 ]]; then
+	strip "$TMPDIR${filename//./-}.out"
 	# /usr/bin/time -h "$TMPDIR${filename//./-}.out"
 	"$TMPDIR${filename//./-}.out"
 fi
