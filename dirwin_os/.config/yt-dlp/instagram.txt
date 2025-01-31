@@ -1,0 +1,16 @@
+-o '~/Downloads/yt_dlp/short_vidoes/%(extractor_key)s-%(channel)s-%(id)s-%(uploader_id)s.%(ext)s'
+--no-mtime 
+-f 'best/bestvideo*+bestaudio*'
+--cookies-from-browser 'firefox'
+--embed-subs
+--restrict-filenames
+--embed-chapters
+--embed-metadata
+--embed-thumbnail
+--write-auto-subs
+--ignore-no-formats-error
+--parse-metadata "video::(?P<description>)"
+--cache-dir "/Users/pritam/Library/Caches/yt-dlp"
+
+--embed-info-json
+

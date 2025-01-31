@@ -1,0 +1,41 @@
+﻿---
+BasedOnStyle: Google
+AccessModifierOffset: '-1'
+AlignAfterOpenBracket: Align
+AlignConsecutiveMacros: 'true'
+AlignConsecutiveAssignments: 'true'
+AlignEscapedNewlines: Left
+AlignTrailingComments: 'true'
+AllowAllConstructorInitializersOnNextLine: 'true'
+AllowShortBlocksOnASingleLine: 'false'
+AllowShortCaseLabelsOnASingleLine: 'false'
+AllowShortFunctionsOnASingleLine: Empty
+AllowShortIfStatementsOnASingleLine: WithoutElse
+AllowShortLoopsOnASingleLine: 'false'
+AlwaysBreakBeforeMultilineStrings: 'false'
+BreakStringLiterals: 'true'
+ConstructorInitializerAllOnOneLineOrOnePerLine: 'false'
+Cpp11BracedListStyle: 'false'
+FixNamespaceComments: 'true'
+IncludeBlocks: Regroup
+IndentPPDirectives: None
+IndentWidth: '2'
+KeepEmptyLinesAtTheStartOfBlocks: 'false'
+MaxEmptyLinesToKeep: '2'
+NamespaceIndentation: All
+PointerAlignment: Right
+SortIncludes: 'true'
+SpaceAfterCStyleCast: 'false'
+SpaceAfterLogicalNot: 'false'
+SpaceBeforeAssignmentOperators: 'true'
+SpaceBeforeCpp11BracedList: 'true'
+SpaceBeforeRangeBasedForLoopColon: 'true'
+SpacesBeforeTrailingComments: '2'
+TabWidth: '2'
+
+JavaScriptQuotes: Double
+JavaScriptWrapImports: 'true'
+BreakAfterJavaFieldAnnotations: 'true'
+UseTab: ForIndentation
+
+...
