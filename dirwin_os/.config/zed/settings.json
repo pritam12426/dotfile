@@ -84,7 +84,7 @@
 	"theme": {
 		"mode": "system",
 		"light": "Gruvbox Light Hard",
-		"dark": "Ayu Dark"
+		"dark": "VSCode Dark Modern"
 	},
 
 	"git": {
@@ -301,6 +301,11 @@
 
 	"terminal": {
 		"font_size": 20,
+
+		"env": {
+			"GIT_EDITOR": "zed --wait"
+		},
+
 		"blinking": "terminal_controlled",
 		"font_family": "Cascadia Mono",
 		"working_directory": "current_project_directory",
