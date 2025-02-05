@@ -33,7 +33,7 @@ case "$file" in
 	run_command+="live-server -o --index $path "
 	;;
 *.d2)
-	run_command+="d2 $file "
+	run_command+="d2 --watch --layout elk --center $file "
 	;;
 *.cal)
 	run_command+="bc -liqf $file "

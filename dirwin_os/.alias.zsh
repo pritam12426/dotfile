@@ -13,6 +13,7 @@ export NNN_OPTS="RAUNdxe"
 export NNN_SEL="/tmp/nnn.sel"
 export NNN_TMPFILE="/tmp/nnn.lastd"
 export NNN_FIFO="/tmp/nnn.fifo"
+export NNN_TRASH="/usr/bin/trash"
 # export NNN_OPENER="open"
 export NNN_HELP="cat $DOT_FILE/../global/nnn_help.txt"
 export NNN_FCOLORS="c1e2272e006033f7c6d6abc4"
@@ -147,13 +148,25 @@ function clanginit {
 
 	case "$lower_input" in
 	c)
-		COMMAND="cp -rp $DOT_FILE/../global/vscode/C  $PWD/.vscode"
+		COMMAND="   cp -rp $DOT_FILE/../global/vscode/C                $PWD/.vscode"
+		COMMAND+="; cp -p  $DOT_FILE/../global/vscode/clangd-c         $PWD/.clangd"
+		COMMAND+="; cp -p  $DOT_FILE/../global/vscode/clang-format     $PWD/.clang-format"
+		COMMAND+="; cp -p  $DOT_FILE/../global/vscode/clang-tidy       $PWD/.clang-tidy"
+		COMMAND+="; cp -p  $DOT_FILE/../global/vscode/CMakeLists.txt   $PWD/CMakeLists.txt"
 		;;
 	c++)
-		COMMAND="cp -rp $DOT_FILE/../global/vscode/CXX $PWD/.vscode"
+		COMMAND="   cp -rp $DOT_FILE/../global/vscode/CXX              $PWD/.vscode"
+		COMMAND+="; cp -p  $DOT_FILE/../global/vscode/clangd-cxx       $PWD/.clangd"
+		COMMAND+="; cp -p  $DOT_FILE/../global/vscode/clang-format     $PWD/.clang-format"
+		COMMAND+="; cp -p  $DOT_FILE/../global/vscode/clang-tidy       $PWD/.clang-tidy"
+		COMMAND+="; cp -p  $DOT_FILE/../global/vscode/CMakeLists.txt   $PWD/CMakeLists.txt"
 		;;
 	cxx)
-		COMMAND="cp -rp $DOT_FILE/../global/vscode/CXX $PWD/.vscode"
+		COMMAND="   cp -rp $DOT_FILE/../global/vscode/CXX              $PWD/.vscode"
+		COMMAND+="; cp -p  $DOT_FILE/../global/vscode/clangd-cxx       $PWD/.clangd"
+		COMMAND+="; cp -p  $DOT_FILE/../global/vscode/clang-format     $PWD/.clang-format"
+		COMMAND+="; cp -p  $DOT_FILE/../global/vscode/clang-tidy       $PWD/.clang-tidy"
+		COMMAND+="; cp -p  $DOT_FILE/../global/vscode/CMakeLists.txt   $PWD/CMakeLists.txt"
 		;;
 	*)
 		echo "Unsupported: <c cxx c++>: $1"
@@ -164,8 +177,8 @@ function clanginit {
 	echo $COMMAND
 	eval $COMMAND
 
-	mkdir -p src build test
-	touch Makefile CMakeLists.txt
+	mkdir -p src test
+	touch Makefile
 }
 
 

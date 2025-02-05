@@ -8,4 +8,5 @@
 --disk-usage
 --enable-refresh
 # --color dark-bg
---color dark
+# --color dark
+--color off

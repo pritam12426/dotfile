@@ -12,7 +12,7 @@
 		"version": "2"
 	},
 
-	"show_inline_completions": false,
+	"show_inline_completions": true,
 	"use_system_path_prompts": false,
 	"auto_signature_help": true,
 	"scroll_beyond_last_line": "vertical_scroll_margin",
@@ -84,7 +84,7 @@
 	"theme": {
 		"mode": "system",
 		"light": "Gruvbox Light Hard",
-		"dark": "VSCode Dark Modern"
+		"dark": "Ayu Dark"
 	},
 
 	"git": {
@@ -101,9 +101,8 @@
 	},
 
 	"indent_guides": {
-		"enabled": true,
-		"line_width": 1,
-		"active_line_width": 3,
+		"line_width": 2,
+		"active_line_width": 5,
 		"coloring": "indent_aware",
 		"background_coloring": "disabled"
 	},
@@ -118,29 +117,13 @@
 		"C++": {
 			"show_wrap_guides": true,
 			"soft_wrap": "preferred_line_length",
-			"formatter": {
-				"external": {
-					"command": "/Library/Developer/CommandLineTools/usr/bin/clang-format",
-					"arguments": [
-						"--style=file:/Users/pritam/Developer/git_repositorys/my_dotfile/global/vscode/clang-format",
-						"--assume-filename={buffer_path}"
-					]
-				}
-			}
+			"formatter": "language_server"
 		},
 
 		"C": {
 			"show_wrap_guides": true,
 			"soft_wrap": "preferred_line_length",
-			"formatter": {
-				"external": {
-					"command": "/Library/Developer/CommandLineTools/usr/bin/clang-format",
-					"arguments": [
-						"--style=file:/Users/pritam/Developer/git_repositorys/my_dotfile/global/vscode/clang-format",
-						"--assume-filename={buffer_path}"
-					]
-				}
-			}
+			"formatter": "language_server"
 		},
 
 		"Java": {
@@ -196,12 +179,20 @@
 
 		"Python": {
 			"soft_wrap": "preferred_line_length",
+
+			"language_servers": [
+				"pyright",
+				"ruff"
+			],
+
 			"hard_tabs": true,
 			"formatter": {
 				"external": {
-					"command": "sed",
+					"command": "ruff",
 					"arguments": [
-						"s/    /\\t/g"
+						"format",
+						"--stdin-filename",
+						"{buffer_path}"
 					]
 				}
 			}
@@ -263,6 +254,46 @@
 		}
 	},
 
+	"lsp": {
+		"jdtls": {
+			"binary": {
+				"path": "/Users/pritam/.local/share/jdt-language-server-1.40/bin/jdtls",
+				"ignore_system_version": true
+			}
+		},
+
+		"gopls": {
+			"initialization_options": {},
+			"binary": {
+				"path": "/Users/pritam/go/bin/gopls",
+				"ignore_system_version": false
+			}
+		},
+
+		"clangd": {
+			"binary": {
+				"arguments": [
+					"--header-insertion=never",
+					"--background-index",
+					"-compile-commands-dir=build",
+					"--background-index-priority=background",
+					"--clang-tidy",
+					"--all-scopes-completion"
+				]
+			},
+
+			"initialization_options": {
+				"fallbackFlags": [
+					"-std=c++20"
+				],
+				"clangdFileStatus": true,
+				"index": {
+					"background": true
+				}
+			}
+		}
+	},
+
 	"telemetry": {
 		"diagnostics": false,
 		"metrics": false
@@ -301,7 +332,6 @@
 		"**/Thumbs.db"
 		// "/.git/*",
 		// "/build/*"
-		// "**/.vscode",
 		// "**/*.dSYM",
 		// "*.out*"
 	],
@@ -324,10 +354,11 @@
 	},
 
 	"confirm_quit": true,
+
 	"node": {
 		"path": "/Users/pritam/.local/share/node-v20.16.0/bin/node",
 		"npm_path": "/Users/pritam/.local/share/node-v20.16.0/bin/npm",
-		"ignore_system_version": false
+		"ignore_system_version": true
 	},
 
 	"vim": {
@@ -339,55 +370,17 @@
 
 	"command_aliases": {
 		"utt": "editor: convert to title case",
-		"rr": "workspace: reload"
+		"rr": "workspace: reload",
+		"cc": "editor: convert to "
 	},
 
 	"file_types": {
 		"YAML": [
 			"*clang*"
 		],
+
 		"C": [
 			"*.h"
 		]
-	},
-
-	"lsp": {
-		"jdtls": {
-			"binary": {
-				"path": "/Users/pritam/.local/share/jdt-language-server-1.40/bin/jdtls",
-				"ignore_system_version": true
-			}
-		},
-
-		"gopls": {
-			"initialization_options": {},
-			"binary": {
-				"path": "/Users/pritam/go/bin/gopls",
-				"ignore_system_version": false
-			}
-		},
-
-		"clangd": {
-			"binary": {
-				"arguments": [
-					"--header-insertion=never",
-					"--background-index",
-					"-compile-commands-dir=build",
-					"--background-index-priority=background",
-					"--clang-tidy",
-					"--all-scopes-completion",
-					"--fallback-style=Google"
-				]
-			},
-			"initialization_options": {
-				"fallbackFlags": [
-					"-std=c++20"
-				],
-				"clangdFileStatus": true,
-				"index": {
-					"background": true
-				}
-			}
-		}
 	}
 }

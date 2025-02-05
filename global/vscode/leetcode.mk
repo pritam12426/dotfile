@@ -1,6 +1,6 @@
 OPT  ?= -pedantic -Wall -std=c++20
 OPT  += -include"bits/stdc++.hpp"
-PDIR ?= /Users/pritam/Developer/leedcode/cxx
+PDIR ?= ~/Developer/leedcode/cxx
 TIME  = /usr/bin/time -h
 
 BIN          = ${PDIR}/main-cpp.out
