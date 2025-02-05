@@ -1,14 +1,15 @@
 -o '~/Downloads/yt_dlp/short_vidoes/%(extractor_key)s-%(channel)s-%(id)s.%(ext)s'
--f 'best/bestvideo*+bestaudio*'
+-f "bestvideo*[ext=mp4]+bestaudio*[ext=m4a]"
+
 --no-mtime
---embed-subs
+--no-embed-subs
 --restrict-filenames
---embed-chapters
---no-embed-thumbnail 
+--no-embed-thumbnail
+--embed-thumbnail
 --embed-metadata
---write-auto-subs
+--no-write-auto-subs
 --ignore-no-formats-error
 --parse-metadata "video::(?P<description>)"
---cache-dir "/Users/pritam/Library/Caches/yt-dlp"
+--cache-dir "~/Library/Caches/yt-dlp"
 
 --embed-info-json

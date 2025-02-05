@@ -33,7 +33,14 @@ case "$file" in
 	run_command+="live-server -o --index $path "
 	;;
 *.d2)
-	run_command+="d2 --watch --layout elk --center $file "
+	first_line=$(head -n 1 "$file")
+
+	if [[ $first_line == \#!* ]]; then
+		run_command+="${first_line:2} $file "
+	else
+		run_command+="d2 --watch --layout elk --center $file "
+	fi
+
 	;;
 *.cal)
 	run_command+="bc -liqf $file "
@@ -61,7 +68,8 @@ case "$file" in
 	run_command+="node $file "
 	;;
 *.sh)
-	run_command+="bash -x $file "
+	# run_command+="bash -x $file "
+	run_command+="bash $file "
 	;;
 *)
 	./$file

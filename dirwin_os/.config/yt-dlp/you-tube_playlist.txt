@@ -9,7 +9,6 @@
 --write-auto-subs
 --ignore-no-formats-error
 --parse-metadata "video::(?P<description>)"
- --cache-dir "/Users/pritam/Library/Caches/yt-dlp"
+--cache-dir "~/Library/Caches/yt-dlp"
 
 --embed-info-json
-

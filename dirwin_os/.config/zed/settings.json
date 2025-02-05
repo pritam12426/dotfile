@@ -274,7 +274,6 @@
 			"binary": {
 				"arguments": [
 					"--header-insertion=never",
-					"--background-index",
 					"-compile-commands-dir=build",
 					"--background-index-priority=background",
 					"--clang-tidy",
