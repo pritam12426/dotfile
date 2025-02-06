@@ -83,7 +83,7 @@
 
 	"theme": {
 		"mode": "system",
-		"light": "Gruvbox Light Hard",
+		"light": "One Light",
 		"dark": "VSCode Dark Modern"
 	},
 

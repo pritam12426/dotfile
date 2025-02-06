@@ -17,7 +17,7 @@ build: ${PROGRAM_FILE}
 
 d: ${PROGRAM_FILE}
 	$(CXX) $(OPT) -g3 $(PROGRAM_FILE) -o $(BIN)
-	lldb  -o "command alias rr process launch --stdin $(PDIR)/input.txt" $(BIN)
+	lldb -o "command alias rr process launch --stdin $(PDIR)/input.txt" $(BIN)
 
 r:
 	$(TIME) $(BIN) < ${PDIR}/input.txt
