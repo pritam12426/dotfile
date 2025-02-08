@@ -1,5 +1,5 @@
 {
-	"auto_update_extensions": {
+ "auto_update_extensions": {
 		"neocmake": false,
 		"Java": false
 	},
@@ -274,9 +274,10 @@
 			"binary": {
 				"arguments": [
 					"--header-insertion=never",
-					"-compile-commands-dir=build",
-					"--background-index-priority=background",
+					"-compile-commands-dir=build",  // should look for the `compile_commands.json` file
+					"--function-arg-placeholders=0",
 					"--clang-tidy",
+					// "--fallback-style=googel",
 					"--all-scopes-completion"
 				]
 			},
@@ -302,7 +303,8 @@
 		"font_size": 20,
 
 		"env": {
-			"GIT_EDITOR": "zed --wait"
+			"GIT_EDITOR": "zed --wait",
+			"GRAPHICAL_EDITOR": "zed --wait"
 		},
 
 		"blinking": "terminal_controlled",
@@ -373,9 +375,9 @@
 	},
 
 	"command_aliases": {
-		"utt": "editor: convert to title case",
 		"rr": "workspace: reload",
-		"cc": "editor: convert to "
+		"cc": "editor: convert to ",
+		"ct": "editor: convert to title case"
 	},
 
 	"file_types": {

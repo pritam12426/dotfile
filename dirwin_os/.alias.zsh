@@ -1,4 +1,4 @@
-#  defaultn write com.apple.dock autohide-time-modifier -float 0.5; defaults write com.apple.dock autohide-delay -float 0; defaults write com.apple.dock showhidden -bool YES; killall Dock
+# this file is use for setting up the alias and functions for the zhs shell
 
 #  LINUX LS COLOR THEME
 export CLICOLOR=true
@@ -112,12 +112,6 @@ function n () {
 		. "$NNN_TMPFILE"
 	}
 }
-
-
-function ccdd() {
-	cd $(fzf --walker=dir,hidden,follow)
-}
-
 
 function hhhh() {
 	command ffprobe -v quiet -print_format json -show_format -show_streams $@ | jq
