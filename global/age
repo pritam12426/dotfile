@@ -31,6 +31,9 @@ NDA:   16.5 - 19.5
 CDS:   20   - 24
 TGC:   20   - 27 what 8+ GPA (09 - 12 POST)
 vayu:  17.5 - 21
-SO IT: 20   - 30"""
+
+ISRO:  21   - 35 what 8+ GPA (30 - 40 POST)
+SO IT: 20   - 30 what 8+
+"""
 
 print(data)

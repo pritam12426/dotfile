@@ -55,8 +55,8 @@ case "$file" in
 	run_command+="zig run $file "
 	;;
 *.sql)
-	# run_command+="sqlite3 -header -table -bail -nullvalue \"\u{F9E2}\" $path/$file_without_extension.sqlite3 < $file "
-	run_command+="sqlite3 -header -table -bail -nullvalue \"\u{F9E2}\" < $file "
+	run_command+="sqlite3 -header -table -bail -nullvalue \"\u{F9E2}\" $path/$file_without_extension.sqlite3 < $file "
+	# run_command+="sqlite3 -header -table -bail -nullvalue \"\u{F9E2}\" < $file "
 	;;
 *.cs)
 	run_command+="dotnet run "
@@ -72,7 +72,7 @@ case "$file" in
 	run_command+="bash $file "
 	;;
 *)
-	./$file
+	./$1
 	;;
 esac
 

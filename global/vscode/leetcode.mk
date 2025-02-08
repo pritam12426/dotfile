@@ -5,6 +5,9 @@ TIME  = /usr/bin/time -h
 
 BIN          = ${PDIR}/main-cpp.out
 PROGRAM_FILE = ${PDIR}/main.cpp
+LINE         = @printf '%*s\n' $(shell tput cols) ' ' | tr ' ' '-' >&2
+
+.PHONY: all debug clean build d r run c
 
 all: build r
 
@@ -12,11 +15,13 @@ debug: d
 clean: c
 
 build: ${PROGRAM_FILE}
-	$(TIME) $(CXX) $(OPT) -O3 $(EXTRA_OPT) $(PROGRAM_FILE) -o $(BIN)
-	strip $(BIN)
+	$(TIME) $(CXX) $(OPT) -O3 $(PROGRAM_FILE) -o $(BIN)
+	${LINE}
+	@strip $(BIN)
 
 d: ${PROGRAM_FILE}
-	$(CXX) $(OPT) $(EXTRA_OPT) -g3 $(PROGRAM_FILE) -o $(BIN)
+	$(CXX) $(OPT) -g3 $(PROGRAM_FILE) -o $(BIN)
+	${LINE}
 	lldb -o "command alias rr process launch --stdin $(PDIR)/input.txt" $(BIN)
 
 r:

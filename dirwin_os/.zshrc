@@ -1,10 +1,6 @@
 #  .zshrc use this file for setting up the shell environment this file is sourced by zsh
 
-if [ -n "$GRAPHICAL_EDITOR" ]; then
-	export EDITOR="$GRAPHICAL_EDITOR"
-else
-	export EDITOR="/Users/pritam/.local/bin/nvim"
-fi
+export EDITOR="/Users/pritam/.local/bin/nvim"
 
 
 if [ -f "$HOME/.alias.zsh" ]; then

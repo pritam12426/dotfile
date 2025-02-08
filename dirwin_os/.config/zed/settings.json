@@ -1,5 +1,5 @@
 {
- "auto_update_extensions": {
+	"auto_update_extensions": {
 		"neocmake": false,
 		"Java": false
 	},
@@ -42,7 +42,7 @@
 	"vim_mode": true,
 	"cursor_blink": false,
 
-	"soft_wrap": "none",
+	"soft_wrap": "editor_width",
 	"show_whitespaces": "all",
 	"preferred_line_length": 83,
 	"tab_size": 4,
@@ -66,7 +66,7 @@
 		"JetBrainsMono Nerd Font Mono"
 	],
 
-	"buffer_font_size": 20,
+	"buffer_font_size": 37.0,
 	"buffer_font_weight": 600,
 	"format_on_save": "off",
 	"hour_format": "hour12",
@@ -117,13 +117,29 @@
 		"C++": {
 			"show_wrap_guides": true,
 			"soft_wrap": "preferred_line_length",
-			"formatter": "language_server"
+			"formatter": {
+				"external": {
+					"command": "/Library/Developer/CommandLineTools/usr/bin/clang-format",
+					"arguments": [
+						"--style=file:/Users/pritam/Developer/git_repositorys/my_dotfile/global/vscode/clang-format",
+						"--assume-filename={buffer_path}"
+					]
+				}
+			}
 		},
 
 		"C": {
 			"show_wrap_guides": true,
 			"soft_wrap": "preferred_line_length",
-			"formatter": "language_server"
+			"formatter": {
+				"external": {
+					"command": "/Library/Developer/CommandLineTools/usr/bin/clang-format",
+					"arguments": [
+						"--style=file:/Users/pritam/Developer/git_repositorys/my_dotfile/global/vscode/clang-format",
+						"--assume-filename={buffer_path}"
+					]
+				}
+			}
 		},
 
 		"Java": {
@@ -274,10 +290,10 @@
 			"binary": {
 				"arguments": [
 					"--header-insertion=never",
-					"-compile-commands-dir=build",  // should look for the `compile_commands.json` file
+					"-compile-commands-dir=build",
+					// should look for the `compile_commands.json` file
 					"--function-arg-placeholders=0",
 					"--clang-tidy",
-					// "--fallback-style=googel",
 					"--all-scopes-completion"
 				]
 			},
@@ -303,8 +319,7 @@
 		"font_size": 20,
 
 		"env": {
-			"GIT_EDITOR": "zed --wait",
-			"GRAPHICAL_EDITOR": "zed --wait"
+			"GIT_EDITOR": "zed --wait"
 		},
 
 		"blinking": "terminal_controlled",
@@ -336,10 +351,6 @@
 		"**/CVS",
 		"**/.DS_Store",
 		"**/Thumbs.db"
-		// "/.git/*",
-		// "/build/*"
-		// "**/*.dSYM",
-		// "*.out*"
 	],
 
 	"project_panel": {
