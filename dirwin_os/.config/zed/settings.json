@@ -1,4 +1,7 @@
 {
+	"features": {
+		"edit_prediction_provider": "zed"
+	},
 	"auto_update_extensions": {
 		"neocmake": false,
 		"Java": false
@@ -12,7 +15,7 @@
 		"version": "2"
 	},
 
-	"show_inline_completions": true,
+	"show_edit_predictions": true,
 	"use_system_path_prompts": false,
 	"auto_signature_help": true,
 	"scroll_beyond_last_line": "vertical_scroll_margin",
@@ -66,7 +69,7 @@
 		"JetBrainsMono Nerd Font Mono"
 	],
 
-	"buffer_font_size": 17.0,
+	"buffer_font_size": 26.0,
 	"buffer_font_weight": 600,
 	"format_on_save": "off",
 	"hour_format": "hour12",
@@ -231,7 +234,7 @@
 		},
 
 		"Rust": {
-			"show_inline_completions": true,
+			"show_edit_predictions": true,
 			"hard_tabs": true,
 			"soft_wrap": "preferred_line_length",
 			"formatter": "language_server"

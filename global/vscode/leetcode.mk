@@ -5,6 +5,7 @@ TIME  = /usr/bin/time -h
 
 BIN          = ${PDIR}/main-cpp.out
 PROGRAM_FILE = ${PDIR}/main.cpp
+# PROGRAM_FILE = ${PDIR}/tree.cpp
 LINE         = @printf '%*s\n' $(shell tput cols) ' ' | tr ' ' '-' >&2
 
 .PHONY: all debug clean build d r run c
@@ -32,3 +33,6 @@ run:
 
 c:
 	$(RM) -r *.out *.out.dSYM
+
+.DEFAULT:
+	$(TIME) $(BIN)

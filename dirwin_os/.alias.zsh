@@ -71,19 +71,16 @@ alias nq="command networkquality -s"
 alias hc="command cat /dev/null > ~/.zsh_history"
 alias gfind="command ls -AF | grep -i"
 alias lh="command ls -AF| grep '^\.'"
+alias sayy="command pbpaste | command say -i"
 alias envpath="echo -e 'PATH\n'$PATH '\n\nMANPATH'$MANPATH '\nPKG_CONFIG\n'$PKG_CONFIG_PATH | tr ':' '\n' | $PAGER"
 alias per="command find . -type f -exec chmod 644 {} \; && find . -type d -exec chmod 755 {} \;"
-
-function sayy () {
-	command pbpaste | say -i "$@"
-}
 
 function _make_() {
 	command make -qp | awk -F':' '/^[a-zA-Z0-9][^$#\/\t=]*:([^=]|$)/ {split($1,A,/ /);for(i in A)print A[i]}' | command sort -u
 }
 
 function ss() {
-  screencapture -wo "$HOME/Pictures/screen_short/`date`.png"
+	screencapture -w "./Img-$(date +"%Y-%b-%d_at_%H.%M.%S").png"
 }
 
 
