@@ -1,12 +1,13 @@
 OPT  ?= -pedantic -Wall -std=c++20
 OPT  += -include bits/stdc++.hpp
-PDIR ?= ~/Developer/leedcode/cxx
+PDIR ?= $(HOME)/Developer/leedcode/cxx
 TIME  = /usr/bin/time -h
 
 BIN          = ${PDIR}/main-cpp.out
 PROGRAM_FILE = ${PDIR}/main.cpp
-# PROGRAM_FILE = ${PDIR}/tree.cpp
 LINE         = @printf '%*s\n' $(shell tput cols) ' ' | tr ' ' '-' >&2
+OUTPUT_FILE  = ${PDIR}/output.txt
+INPUT_FILE   = ${PDIR}/input.txt
 
 .PHONY: all debug clean build d r run c
 
@@ -17,22 +18,22 @@ clean: c
 
 build: ${PROGRAM_FILE}
 	$(TIME) $(CXX) $(OPT) -O3 $(PROGRAM_FILE) -o $(BIN)
-	${LINE}
 	@strip $(BIN)
+	${LINE}
 
 d: ${PROGRAM_FILE}
 	$(CXX) $(OPT) -g3 $(PROGRAM_FILE) -o $(BIN)
 	${LINE}
-	lldb -o "command alias rr process launch --stdin $(PDIR)/input.txt" $(BIN)
+	lldb -o "command alias rr process launch --stdin $(INPUT_FILE) --stdout $(OUTPUT_FILE)" -o "b main" -o "rr" $(BIN)
 
 r:
-	$(TIME) $(BIN) < ${PDIR}/input.txt
+	$(TIME) $(BIN) < $(INPUT_FILE)
 
 run:
-	$(TIME) $(BIN) < ${PDIR}/input.txt > ${PDIR}/output.txt
+	$(TIME) $(BIN) < $(INPUT_FILE) > $(OUTPUT_FILE)
 
 c:
-	$(RM) -r *.out *.out.dSYM
+	$(RM) -r *.out *.dSYM
 
 .DEFAULT:
 	$(TIME) $(BIN)
