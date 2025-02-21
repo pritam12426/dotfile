@@ -66,7 +66,7 @@
 		"JetBrainsMono Nerd Font Mono"
 	],
 
-	"buffer_font_size": 21.0,
+	"buffer_font_size": 27.0,
 	"buffer_font_weight": 600,
 	"format_on_save": "off",
 	"hour_format": "hour12",
@@ -129,8 +129,7 @@
 		},
 
 		"C": {
-			"show_edit_predictions": false,
-   "show_wrap_guides": true,
+			"show_wrap_guides": true,
 			"soft_wrap": "preferred_line_length",
 			"formatter": {
 				"external": {
@@ -382,7 +381,7 @@
 	"vim": {
 		"use_system_clipboard": "on_yank",
 		"use_multiline_find": true,
-		"use_smartcase_find": true
+		"use_smartcase_find": true,
 		// "toggle_relative_line_numbers": true
 	},
 

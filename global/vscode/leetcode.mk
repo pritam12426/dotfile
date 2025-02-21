@@ -3,8 +3,8 @@ OPT  += -include bits/stdc++.hpp
 PDIR ?= $(HOME)/Developer/leedcode/cxx
 TIME  = /usr/bin/time -h
 
-BIN          = ${PDIR}/main-cpp.out
-PROGRAM_FILE = ${PDIR}/main.cpp
+PROGRAM_FILE = ${PDIR}/main.c
+BIN          = ${shell echo ${PROGRAM_FILE} | tr '.' '-'}.out
 LINE         = @printf '%*s\n' $(shell tput cols) ' ' | tr ' ' '-' >&2
 OUTPUT_FILE  = ${PDIR}/output.txt
 INPUT_FILE   = ${PDIR}/input.txt
@@ -17,8 +17,7 @@ debug: d
 clean: c
 
 build: ${PROGRAM_FILE}
-	$(TIME) $(CXX) $(OPT) -O3 $(PROGRAM_FILE) -o $(BIN)
-	@strip $(BIN)
+	$(TIME) $(CXX) $(OPT) -s -O3 $(PROGRAM_FILE) -o $(BIN)
 	${LINE}
 
 d: ${PROGRAM_FILE}
