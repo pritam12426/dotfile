@@ -1,15 +1,21 @@
 OPT := -std=c++20 -arch arm64
-# OPT += ${shell pkg-config --libs --cflags libcjson}
 # OPT += -Wl,-rpath,/usr/local/lib
 
-PROJDIRS := $(HOME)/Developer/add_gitignore
+# LIBS  = argparse
+# LIBS += sqlitecpp
+# LIBS += cpr
+
+OPT += ${shell pkg-config --libs --cflags $(LIBS)}
+
+PROJDIRS := $(HOME)/Developer/you-project
 OBJDIR   := $(PROJDIRS)/obj
 TIME     := /usr/bin/time -h
 
+# Change these 4 lins according to a project
 CC           := /usr/bin/clang++
 SRCFILES     := $(wildcard ${PROJDIRS}/src/*.cpp)
-OBJFILES     := $(patsubst ${PROJDIRS}/src/%.cpp,${OBJDIR}/%.o,$(SRCFILES))
-DEPFILES     := $(patsubst ${PROJDIRS}/src/%.cpp,${OBJDIR}/%.d,$(SRCFILES))
+OBJFILES     := $(patsubst ${PROJDIRS}/src/%.cpp, ${OBJDIR}/%.o, $(SRCFILES))
+DEPFILES     := $(patsubst ${PROJDIRS}/src/%.cpp, ${OBJDIR}/%.d, $(SRCFILES))
 
 PROJNAME     := MyProject
 BIN          := ${PROJDIRS}/main.out

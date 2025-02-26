@@ -265,6 +265,8 @@
 		},
 
 		"CMake": {
+			"prettier": null,
+			"soft_wrap": "none",
 			"formatter": {
 				"external": {
 					"command": "/Users/pritam/.local/bin/neocmakelsp-v0.8.19",
