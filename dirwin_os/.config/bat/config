@@ -1,0 +1,5 @@
+--style=plain
+--map-syntax "*.ino:C++"
+--map-syntax ".clangd:YAML"
+--tabs 4
+--pager "less -RF"

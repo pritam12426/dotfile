@@ -1,0 +1,32 @@
+[
+	{
+		"context": "Workspace",
+		"bindings": {
+			"cmd-k": [
+				"task::Spawn",
+				{
+					"task_name": "Run Current file"
+				}
+			]
+		}
+	},
+
+	{
+		"context": "Editor",
+		"bindings": {
+			"cmd-i": "tab_switcher::Toggle"
+		}
+	},
+
+	{
+		"context": "Terminal",
+		"bindings": {
+			"cmd-k": [
+				"task::Spawn",
+				{
+					"task_name": "Run Current file"
+				}
+			]
+		}
+	},
+]

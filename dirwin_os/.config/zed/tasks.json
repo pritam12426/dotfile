@@ -1,0 +1,121 @@
+[
+	{
+		"label": "Run Current file",
+		"command": "rr $ZED_FILE",
+		"show_command": false,
+		"shell": "system"
+	},
+
+	{
+		"label": "CMake :: clear build",
+		"command": "rm",
+		"args": [
+			"-r",
+			"build/"
+		],
+		"env": {},
+		"use_new_terminal": false,
+		"allow_concurrent_runs": false,
+		"reveal": "always"
+	},
+
+	{
+		"label": "CMake :: configure Debug",
+		"command": "mkdir -p build; cmake",
+		"args": [
+			"-DCMAKE_BUILD_TYPE=Debug",
+			"-B",
+			"build/"
+		],
+		"env": {},
+		"use_new_terminal": false,
+		"allow_concurrent_runs": false,
+		"reveal": "always"
+	},
+
+	{
+		"label": "CMake :: configure Relase",
+		"command": "mkdir -p build; cmake",
+		"args": [
+			"-DCMAKE_BUILD_TYPE=Release",
+			"-DBUILD_SHARED_LIBS=OFF",
+			"-B",
+			"build/"
+		],
+		"env": {},
+		"use_new_terminal": false,
+		"allow_concurrent_runs": false,
+		"reveal": "always"
+	},
+
+	{
+		"label": "CMake :: build",
+		"command": "cmake",
+		"args": [
+			"--build",
+			"build"
+		],
+		"env": {},
+		"use_new_terminal": false,
+		"allow_concurrent_runs": false,
+		"reveal": "always"
+	},
+
+	{
+		"label": "CMake :: configure Debug and build",
+		"command": "mkdir -p build; cmake  -DCMAKE_BUILD_TYPE=Debug -B build/; cmake --build build/",
+		"args": [
+
+		],
+		"env": {},
+		"use_new_terminal": false,
+		"allow_concurrent_runs": false,
+		"reveal": "always"
+	},
+
+	{
+		"label": "CMake :: configure Release and build",
+		"command": "mkdir -p build; cmake -DBUILD_SHARED_LIBS=OFF -DCMAKE_BUILD_TYPE=Release -B build/; cmake --build build/",
+		"args": [],
+		"env": {},
+		"use_new_terminal": false,
+		"allow_concurrent_runs": false,
+		"reveal": "always"
+	},
+
+	{
+		"label": "Java :: Gradle: build",
+		"command": "./gradlew",
+		"args": [
+			"build"
+		],
+		"env": {},
+		"use_new_terminal": false,
+		"allow_concurrent_runs": false,
+		"reveal": "always"
+	},
+
+	{
+		"label": "Java :: Gradle: run",
+		"command": "./gradlew",
+		"args": [
+			"run"
+		],
+		"env": {},
+		"use_new_terminal": false,
+		"allow_concurrent_runs": false,
+		"reveal": "always"
+	},
+
+	{
+		"label": "Java :: Gradle: clean",
+		"command": "./gradlew",
+		"args": [
+			"clean"
+		],
+		"env": {},
+		"use_new_terminal": false,
+		"allow_concurrent_runs": false,
+		"reveal": "always"
+	},
+]

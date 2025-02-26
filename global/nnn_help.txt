@@ -1,0 +1,5 @@
+ MORE CONFIGURATIONG
+            H  Go to ~
+            \  Go to 'root dir'
+    shift + q  Close all tabs
+
