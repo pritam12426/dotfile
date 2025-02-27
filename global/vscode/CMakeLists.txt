@@ -4,41 +4,40 @@ project(
   "main"
   VERSION 0.1.0
   DESCRIPTION "Small Project"
-  HOMEPAGE_URL ""
   LANGUAGES CXX
 )
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/src/CmakeConfig.h CmakeConfig.h)
+# https://stackoverflow.com/questions/30027016/cannot-export-cmake-project-version-major-because-it-equals-zero
 
-
-#### Set C++ standard ####
+#### C++ Standard Settings ####
 set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_CXX_STANDARD_REQUIRED True)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
+#### Setting the conditional variable ####
+# option(GET_THE_NAME "<help_text>" ON)
 
-#### Set variables ####
-set(SRC "src/main.cpp")
-set(TES_SRC "test/test.cpp")
-set(TEST_BIN_NAME "unitTests")
+#### Source Files ####
+set(SRC_FILES
+  src/main.cpp
+  # src/person.cpp
+)
 
-
-#### Finding package ####
-# https://cmake.org/cmake/help/latest/command/find_package.html
-message(CHECK_START "Finding X...")
-find_package(GTest X)
-message(CHECK_PASS "Found X")
-message(STATUS "X_include_dirs -I ${X_INCLUDE_DIRS}")
-message(STATUS "X_include_dir ${X_INCLUDE_DIR}")
-message(STATUS "X_libraries ${X_LIBRARIES}")
-
-
-#### Add the main project ####
-add_executable(${PROJECT_NAME} ${SRC})
-target_link_libraries(${PROJECT_NAME})
-
-
-#### Add the test executable ####
-enable_testing()
+#### Dependencies ####
 find_package(GTest REQUIRED)
-add_executable(${TEST_EXE_NAME} ${TES_SRC})
-target_link_libraries(${TEST_EXE_NAME} PRIVATE GTest::GTest)
-add_test(NAME ${TEST_BIN_NAME} COMMAND ${TEST_BIN_NAME} [<arg>...])
+
+#### Main Executable ####
+add_executable(${PROJECT_NAME})
+target_sources(${PROJECT_NAME} PRIVATE ${SRC_FILES})
+# target_link_libraries(${PROJECT_NAME} PRIVATE GTest::GTest)
+target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
+
+#### Unit Tests ####
+# set(TEST_SRC test/main.cpp)
+# set(TEST_BIN_NAME unitTests)
+
+# enable_testing()
+# add_executable(${TEST_BIN_NAME} ${TEST_SRC})
+# target_link_libraries(${TEST_BIN_NAME} PRIVATE GTest::GTest)
+# target_include_directories(${TEST_BIN_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
+# add_test(NAME ${TEST_BIN_NAME} COMMAND ${TEST_BIN_NAME} "<args>")
