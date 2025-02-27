@@ -3,7 +3,10 @@ github_url_pattern='https://github\.com/'
 
 result=$(echo $1 | sed -E "s|$github_url_pattern||g")
 
-data=$(curl -s "https://api.github.com/repos/$result")
+URL="https://api.github.com/repos/$result"
+echo $URL
+# exit 1
+data=$(curl -s $URL)
 
 # data=$(cat "linux.json")
 # echo $date
