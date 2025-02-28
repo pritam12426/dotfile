@@ -6,7 +6,8 @@ project(
   DESCRIPTION "Small Project"
   LANGUAGES CXX
 )
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/src/CmakeConfig.h CmakeConfig.h)
+
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/src/CmakeConfig.h.in ${CMAKE_CURRENT_BINARY_DIR}/CmakeConfig.h)
 # https://stackoverflow.com/questions/30027016/cannot-export-cmake-project-version-major-because-it-equals-zero
 
 #### C++ Standard Settings ####
@@ -15,29 +16,38 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 #### Setting the conditional variable ####
-# option(GET_THE_NAME "<help_text>" ON)
+option(BUILD_TESTING "Enable unit testing" OFF)
 
 #### Source Files ####
 set(SRC_FILES
-  src/main.cpp
-  # src/person.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp
 )
 
 #### Dependencies ####
-find_package(GTest REQUIRED)
+# find_package(GTest REQUIRED)
 
 #### Main Executable ####
 add_executable(${PROJECT_NAME})
 target_sources(${PROJECT_NAME} PRIVATE ${SRC_FILES})
 # target_link_libraries(${PROJECT_NAME} PRIVATE GTest::GTest)
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
+target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
+
 
 #### Unit Tests ####
-# set(TEST_SRC test/main.cpp)
-# set(TEST_BIN_NAME unitTests)
+if(BUILD_TESTING)
+  find_package(GTest REQUIRED)
+  set(TEST_BIN_NAME unitTests)
 
-# enable_testing()
-# add_executable(${TEST_BIN_NAME} ${TEST_SRC})
-# target_link_libraries(${TEST_BIN_NAME} PRIVATE GTest::GTest)
-# target_include_directories(${TEST_BIN_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
-# add_test(NAME ${TEST_BIN_NAME} COMMAND ${TEST_BIN_NAME} "<args>")
+  set(TEST_SRC
+    ${CMAKE_CURRENT_SOURCE_DIR}test/main.cpp
+  )
+
+  enable_testing()
+  add_executable(${TEST_BIN_NAME} ${TEST_SRC})
+  target_link_libraries(${TEST_BIN_NAME} PRIVATE GTest::GTest)
+  target_include_directories(${TEST_BIN_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
+  target_include_directories(${TEST_BIN_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/test)
+  target_include_directories(${TEST_BIN_NAME} PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
+  add_test(NAME ${TEST_BIN_NAME} COMMAND ${TEST_BIN_NAME} "<args>")
+endif()

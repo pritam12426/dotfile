@@ -266,6 +266,8 @@
 
 		"CMake": {
 			"prettier": null,
+			"hard_tabs": false,
+			"tab_size": 2,
 			"soft_wrap": "none",
 			"formatter": {
 				"external": {

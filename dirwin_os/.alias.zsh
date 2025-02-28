@@ -76,6 +76,14 @@ alias envpath="echo -e 'PATH\n'$PATH '\n\nMANPATH'$MANPATH '\nPKG_CONFIG\n'$PKG_
 alias per="command find . -type f -exec chmod 644 {} \; && find . -type d -exec chmod 755 {} \;"
 alias seelog="tail -n 1 -f -- "
 
+function exportlib() {
+	local lib="/usr/local/big_library"
+	export CMAKE_MODULE_PATH="$(find $lib -type 'd' -name 'cmake'     | tr '\n' ':')$CMAKE_MODULE_PATH"
+	export PKG_CONFIG_PATH="$(  find $lib -type 'd' -name 'pkgconfig' | tr '\n' ':')$PKG_CONFIG_PATH"
+	export PATH="$(             find $lib -type 'd' -name 'bin'       | tr '\n' ':')$PATH"
+	export DYLD_LIBRARY_PATH="$(find $lib -type 'd' -name 'lib'       | tr '\n' ':')$DYLD_LIBRARY_PATH"
+}
+
 function _make_() {
 	command make -qp | awk -F':' '/^[a-zA-Z0-9][^$#\/\t=]*:([^=]|$)/ {split($1,A,/ /);for(i in A)print A[i]}' | command sort -u
 }
