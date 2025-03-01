@@ -13,7 +13,6 @@ autocmd InsertEnter * set norelativenumber
 autocmd InsertLeave * set relativenumber
 
 " let mapleader=","
-" map <leader>y "*y
 
 
 "" Searching
@@ -24,14 +23,16 @@ set smartcase                     " ... unless they contain at least one capital
 set gdefault                      " have :s///g flag by default on
 
 " --- theme ---
-" :colorscheme murphy
+:colorscheme murphy
 " :colorscheme habamax
-:colorscheme vim
+" :colorscheme vim
 
 " Shortcut keys
 " For normal mode
+"map <leader>y "*y
 nnoremap <C-c> :set clipboard=unnamedplus<CR>
 nnoremap :q :q!
+nnoremap mm :! 
 
 nnoremap x "_x
 vnoremap x "_x

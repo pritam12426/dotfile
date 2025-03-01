@@ -24,7 +24,22 @@ set(SRC_FILES
 )
 
 #### Dependencies ####
-# find_package(GTest REQUIRED)
+# find_package(<X> REQUIRED)
+
+# find_package(<X> QUIET)
+# if(NOT <X>_FOUND)
+#   FetchContent_Declare(
+#     <X>
+#     DOWNLOAD_EXTRACT_TIMESTAMP OFF
+#     URL https://github.com/glfw/glfw/releases/download/3.4/glfw-3.4.zip
+#   )
+#   FetchContent_GetProperties(<X>)
+#   if(NOT <X>_POPULATED)
+#     set(FETCHCONTENT_QUIET NO)
+#     FetchContent_Populate(<X>)
+#     add_subdirectory(${<X>_SOURCE_DIR} ${<X>_BINARY_DIR})
+#   endif()
+# endif()
 
 #### Main Executable ####
 add_executable(${PROJECT_NAME})
@@ -37,6 +52,7 @@ target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
 #### Unit Tests ####
 if(BUILD_TESTING)
   find_package(GTest REQUIRED)
+
   set(TEST_BIN_NAME unitTests)
 
   set(TEST_SRC

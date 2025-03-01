@@ -577,7 +577,7 @@ static const char *const GIT_IGNORE_LIST[]         = {
 
 int main(void) {
 	for (size_t i = 0; i < GIT_IGNORE_LIST_LEN; i++) {
-		printf("\"%s\",\n", GIT_IGNORE_LIST[i] + 6);
+		printf("%s\n", GIT_IGNORE_LIST[i] + 6);
 	}
 	return 0;
 }
