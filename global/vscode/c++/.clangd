@@ -5,10 +5,7 @@ CompileFlags:
     - "-pedantic"
     - "-Wall"
 
-    - "-D PROJECT_NAME"
-    - "-D PROJECT_VERSION_MAJOR"
-    - "-D PROJECT_VERSION_MINOR"
-    - "-D PROJECT_VERSION_PATCH"
+    - "-include src/CmakeConfig.h.in"
 
 Index:
   Background: Build
