@@ -1,18 +1,24 @@
 ﻿---
 BasedOnStyle: Google
 AccessModifierOffset: '-1'
-AlignAfterOpenBracket: Align
 AlignConsecutiveMacros: 'true'
 AlignConsecutiveAssignments: 'true'
 AlignEscapedNewlines: Left
 AlignTrailingComments: 'true'
+AllowAllArgumentsOnNextLine: 'false'
 AllowAllConstructorInitializersOnNextLine: 'true'
+AllowAllParametersOfDeclarationOnNextLine: 'false'
 AllowShortBlocksOnASingleLine: 'false'
 AllowShortCaseLabelsOnASingleLine: 'false'
 AllowShortFunctionsOnASingleLine: Empty
 AllowShortIfStatementsOnASingleLine: WithoutElse
+AllowShortLambdasOnASingleLine: None
 AllowShortLoopsOnASingleLine: 'false'
 AlwaysBreakBeforeMultilineStrings: 'false'
+AlwaysBreakTemplateDeclarations: 'Yes'
+BinPackArguments: 'false'
+BinPackParameters: 'false'
+BreakAfterJavaFieldAnnotations: 'true'
 BreakStringLiterals: 'true'
 ConstructorInitializerAllOnOneLineOrOnePerLine: 'false'
 Cpp11BracedListStyle: 'false'
@@ -29,8 +35,10 @@ SpaceAfterCStyleCast: 'false'
 SpaceAfterLogicalNot: 'false'
 SpaceBeforeAssignmentOperators: 'true'
 SpaceBeforeCpp11BracedList: 'true'
+SpaceBeforeInheritanceColon: 'false'
 SpaceBeforeRangeBasedForLoopColon: 'true'
 SpacesBeforeTrailingComments: '2'
 TabWidth: '2'
+UseTab: ForIndentation
 
 ...

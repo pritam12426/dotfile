@@ -5,7 +5,7 @@
 			"name": "Debug CPP Using lldb",
 			"type": "cppdbg",
 			"request": "launch",
-			"program": "${workspaceFolder}/main.out",
+			"program": "${workspaceFolder}/build/main",
 			"MIMode": "lldb",
 			"args": [],
 			"stopAtEntry": false,
