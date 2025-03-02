@@ -7,10 +7,10 @@ MODEL     := $(shell ${ADB} shell getprop ro.product.model | tr ' ' '_')
 SIZE       = $(shell ${ADB} shell dumpsys battery | grep 'level' | awk '{print $$2}')
 BATTERY    = $(shell ${ADB} shell wm size | awk '{print $$3}')
 ANDROID_V := $(shell ${ADB} shell getprop ro.build.version.release)
-IPV4      := $(shell ${ADB} shell ip route | awk ' NF >= 9 { print $$9 } ' | grep -Eo '\b[0-9]{1,3}\.[0-9]{2}\.[0-9]{1,3}\.[0-9]{1,3}\b')
+IPV4      := $(shell ${ADB} shell ip route | awk ' NF >= 9 { print $$9 } ' | tail -n 1)
 
 DIR        = ${HOME}/Movies/phone_screen/${MODEL}
-FILE      := $(shell date +"%Y-%b-%d_at_%H.%M.%S")
+FILE      := $(shell date +"%Y-%b-%d_at_%I.%M.%S-%p")
 FILE_PATH  = ${DIR}/${MODEL}_android-${ANDROID_V}_${FILE}
 PORT       = 5555
 
@@ -19,7 +19,19 @@ DELETE_FILES = find ${DIR}/* -type f -size -1M -name "*.mp4"
 DELETE       = $(DELETE_FILES); $(DELETE_FILES) -delete
 LINE         = @printf '%*s\n' $(shell tput cols) ' ' | tr ' ' '-' >&2
 
+
+# 1 audio with screen
+# 2 only audio
+# 3 back cam
+# 4 frount cam
+
+# point to be noted that: there is high changes that the duration of the video
+# and audios of four of them are not relevant to each other for the size.
+# You can make it, but for the video duration it is not possible.
+# You have to consider this point also.
+
 all: t
+
 
 # adb shell ip route | awk '{print $9}'
 
@@ -75,16 +87,21 @@ bcam:
 kill:
 	${ADB} kill-server
 
-# https://help.famoco.com/developers/dev-env/adb-commands/
-# Get phone info
+cc:
+	${SCRCPY} --audio-source=mic -r "${FILE_PATH}.mp4" --no-audio-playback
+
+ci:
+	${SCRCPY} --audio-source=mic --no-video --no-playback --no-window --no-control --record="${FILE_PATH}_audio.opus"
+
+
+
+# Fetch phone info: https://help.famoco.com/developers/dev-env/adb-commands/
 ii:
 	@printf "{\n";
 	@printf "\"%s\": \"%s\",\n"        "Phone_IPV4"       "${IPV4}"
 	@printf "\"%s\": \"%s\",\n"        "Android_Version"  "${ANDROID_V}"
 	@printf "\"%s\": \"%s\",\n"        "Phone_Model"      "${MODEL}"
 	@printf "\"%s\": \"%s\",\n"        "Manufacturer"     "$$(${ADB} shell getprop ro.product.manufacturer | tr -d '\r')"
-	@printf "\"%s\": \"%s\",\n"        "IMEI_1"           "$$(${ADB} shell dumpsys iphonesubinfo)"
-	@printf "\"%s\": \"%s\",\n"        "IMEI_2"           "$$(${ADB} shell dumpsys iphonesubinfo2)"
 	@printf "\"%s\": \"%s\",\n"        "Hardware"         "$$(${ADB} shell getprop ro.hardware | tr -d '\r')"
 	@printf "\"%s\": \"%s\",\n"        "Serial_Number"    "$$(${ADB} shell getprop ro.serialno | tr -d '\r')"
 	@printf "\"%s\": \"%s%%\",\n"      "Battery_Level"    "$$(${ADB} shell dumpsys battery | grep 'level' | awk '{print $$2}')"
@@ -97,3 +114,6 @@ ii:
 	@printf "\"%s\": \"%s\",\n"        "Storage_Free"     "$$(${ADB} shell df /data | grep '/data' | awk '{print $$4}')"
 	@printf "\"%s\": \"%s kB\"\n"      "Total_RAM"        "$$(${ADB} shell cat /proc/meminfo | grep MemTotal | awk '{print $$2}')"
 	@printf "}\n";
+
+# compile:
+# 	ffmpeg -i /Users/pritam/temp/vdo1.mp4 -i /Users/pritam/temp/vdo1.mp4 -filter_complex "[0:v][1:v]hstack=inputs=2[v]" -map "[v]" -an -f matroska new.mp4

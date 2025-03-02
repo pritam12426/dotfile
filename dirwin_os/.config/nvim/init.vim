@@ -7,13 +7,10 @@ set mouse=a
 set nowrap
 set number
 set relativenumber
-set shell=bash
+set shell=zsh
 
 autocmd InsertEnter * set norelativenumber
 autocmd InsertLeave * set relativenumber
-
-" let mapleader=","
-
 
 "" Searching
 set hlsearch                      " highlight matches
@@ -29,10 +26,10 @@ set gdefault                      " have :s///g flag by default on
 
 " Shortcut keys
 " For normal mode
-"map <leader>y "*y
 nnoremap <C-c> :set clipboard=unnamedplus<CR>
 nnoremap :q :q!
 nnoremap mm :! 
+nnoremap mn :Explore<CR>
 
 nnoremap x "_x
 vnoremap x "_x
