@@ -1,4 +1,5 @@
 set ignorecase true
+set previewer /Users/pritam/Developer/git_repositorys/my_dotfile/dirwin_os/.config/lf/pv.sh
 
 cmd mkdir ${{
   printf "Directory Name: "
