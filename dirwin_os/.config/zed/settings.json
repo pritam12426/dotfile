@@ -57,7 +57,7 @@
 	"cursor_blink": false,
 
 	"soft_wrap": "editor_width",
-	// "show_whitespaces": "all",
+	"show_whitespaces": "all",
 	"preferred_line_length": 83,
 	"tab_size": 4,
 	"base_keymap": "VSCode",
@@ -80,7 +80,7 @@
 		"JetBrainsMono Nerd Font Mono"
 	],
 
-	"buffer_font_size": 15.0,
+	"buffer_font_size": 16,
 	"buffer_font_weight": 600,
 	"format_on_save": "off",
 	"hour_format": "hour12",
@@ -98,7 +98,7 @@
 	"theme": {
 		"mode": "system",
 		"light": "One Light",
-		"dark": "Ayu Dark"
+		"dark": "VSCode Dark Modern"
 	},
 
 	"git": {
@@ -329,9 +329,8 @@
 				"arguments": [
 					"--header-insertion=never",
 					"-compile-commands-dir=build",
-					// should look for the `compile_commands.json` file
 					"--function-arg-placeholders=0",
-					"--clang-tidy",
+					// "--clang-tidy",
 					"--all-scopes-completion"
 				]
 			},
@@ -371,7 +370,6 @@
 			"calt": true
 		},
 
-		"font_weight": 900,
 		"line_height": "standard",
 		"button": false
 	},

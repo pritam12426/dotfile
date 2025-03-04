@@ -168,12 +168,8 @@ function clanginit {
 		COMMAND+="; cp -p  $DOT_FILE/../global/vscode/Makefile         $PWD/Makefile"
 		;;
 	cxx)
-		COMMAND="   cp -rp $DOT_FILE/../global/vscode/CXX              $PWD/.vscode"
-		COMMAND+="; cp -p  $DOT_FILE/../global/vscode/clangd-cxx       $PWD/.clangd"
-		COMMAND+="; cp -p  $DOT_FILE/../global/vscode/clang-format     $PWD/.clang-format"
-		COMMAND+="; cp -p  $DOT_FILE/../global/vscode/clang-tidy       $PWD/.clang-tidy"
-		COMMAND+="; cp -p  $DOT_FILE/../global/vscode/CMakeLists.txt   $PWD/CMakeLists.txt"
-		COMMAND+="; cp -p  $DOT_FILE/../global/vscode/Makefile         $PWD/Makefile"
+		COMMAND="   cp -rp  $DOT_FILE/../global/vscode/c++/* ."
+		COMMAND+="; cp -rp  $DOT_FILE/../global/vscode/c++/.* ."
 		;;
 	*)
 		echo "Unsupported: <c cxx c++>: $1"

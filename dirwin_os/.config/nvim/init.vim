@@ -30,6 +30,7 @@ nnoremap <C-c> :set clipboard=unnamedplus<CR>
 nnoremap :q :q!
 nnoremap mm :! 
 nnoremap mn :Explore<CR>
+nnoremap mt :terminal<CR>
 
 nnoremap x "_x
 vnoremap x "_x

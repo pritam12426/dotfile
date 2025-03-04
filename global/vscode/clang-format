@@ -44,4 +44,3 @@ UseTab: ForIndentation
 
 JavaScriptQuotes: Double
 JavaScriptWrapImports: 'true'
-BreakAfterJavaFieldAnnotations: 'true'

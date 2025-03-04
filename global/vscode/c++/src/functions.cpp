@@ -1,5 +1,5 @@
 #include "functions.hpp"
 
-int Fun::add(int32_t x, int32_t y) {
+int Fun::add(int x, int y) {
 	return x * y;
 }

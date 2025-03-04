@@ -1,0 +1,20 @@
+# path = /Users/pritam/Developer/git_repositorys/my_dotfile/dirwin_os/.config/tig/config.toml
+
+[tig]
+	# main-view-date-format = "%a %b-%d-%Y %I:%M %p"
+	# main-view-date-format = "%a_%Y-%m-%d_%H:%M:%S"
+	main-view-date-format = "%a_%b-%d-%Y_%H:%M_%p"
+	commit-order = "default"
+	main-view-date = "custom"
+
+	tab-size = 4
+	line-graphics = "ascii"
+
+[tig "color"]
+	cursor = black white bold
+
+[tig "bind"]
+	# 'unbind' the default quit key binding
+	# main = q none
+	# Cherry-pick current commit onto current branch
+	# generic = C !git cherry-pick %(commit)

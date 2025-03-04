@@ -1,14 +1,2 @@
-# set main-view-date-format = "%a %b %d %I:%M %p %Y"  # Sun Apr 28 08:27 PM 2024
-set main-view-date-format = "%b-%d-%Y %I:%M %p"      # Oct-12-2024 06:27 PM
-set main-view-date = custom  # Display
-set line-graphics = ascii # ~
+bind generic S :source /Users/pritam/Developer/git_repositorys/my_dotfile/dirwin_os/.config/tig/config
 
-set git-colors = no		# Do not read Git's color settings.
-set horizontal-scroll = 33%	# Scroll 33% of the view width
-set blame-options = -C -C -C	# Blame lines from other files
-
-# Wrap branch names with () and tags with <>
-set reference-format = (branch) <tag>
-
-set tree-view = line-number:yes,interval=1 mode author:full \
-		file-size:units date:custom id:no file-name

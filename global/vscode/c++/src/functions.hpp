@@ -4,7 +4,7 @@
 
 namespace Fun {
 
-int32_t add(int32_t x, int32_t y);
+int add(int x, int y);
 
 }  // namespace Fun
 
