@@ -8,7 +8,3 @@ The repo is organized by platform, with separate directories for Windows and Lin
 
 
 https://suckless.org/rocks/
-
-```d2
-some -> help
-```

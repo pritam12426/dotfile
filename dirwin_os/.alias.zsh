@@ -72,7 +72,6 @@ alias hc="command cat /dev/null > ~/.zsh_history"
 alias gfind="command ls -AF | grep -i"
 alias lh="command ls -AF| grep '^\.'"
 alias sayy="command pbpaste | command say -i"
-alias envpath="echo -e 'PATH\n'$PATH '\n\nMANPATH'$MANPATH '\nPKG_CONFIG\n'$PKG_CONFIG_PATH | tr ':' '\n' | $PAGER"
 alias per="command find . -type f -exec chmod 644 {} \; && find . -type d -exec chmod 755 {} \;"
 alias seelog="tail -n 1 -f -- "
 
