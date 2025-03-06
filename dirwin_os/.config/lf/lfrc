@@ -1,3 +1,4 @@
+set icons false
 set ignorecase true
 set previewer /Users/pritam/Developer/git_repositorys/my_dotfile/dirwin_os/.config/lf/pv.sh
 
@@ -11,7 +12,7 @@ cmd mkdir ${{
 cmd mkfile ${{
   printf "File Name: "
   read ans
-  touch $ans
+  $EDITOR $ans
 }}
 
 
@@ -77,8 +78,7 @@ map md mkdir
 
 # Movement
 map gc cd ~/.config
-map gD cd ~/documents
-map gd cd ~/downloads
-map gp cd ~/pictures
-map gv cd ~/vides
-map gs cd ~/.local/bin
+map gD cd ~/Documents
+map gd cd ~/Downloads
+map gv cd ~/Movies
+map gb cd ~/.local/bin

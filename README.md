@@ -1,6 +1,6 @@
 # My config
 
-### This repo contains config files for Windows, Macos and Linux. 
+### This repo contains config files for Windows, Macos and Linux.
 
 The config files are written in a variety of languages, including AutoHotkey (.ahk), Bash (.sh), and Python (.py). The config files are used to configure various settings on the operating system, such as the desktop environment, the default applications, and the network settings.
 
@@ -8,3 +8,7 @@ The repo is organized by platform, with separate directories for Windows and Lin
 
 
 https://suckless.org/rocks/
+
+```d2
+some -> help
+```
