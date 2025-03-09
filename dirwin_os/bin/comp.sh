@@ -15,10 +15,10 @@ run_command=""
 # Checking file type and setting up the run command
 case "$file" in
 *.c)
-	run_command+="$CC -std=c17 $file "
+	run_command+="$CC -std=c17 $file -fsanitize=address "
 	;;
 *.cpp)
-	run_command+="$CXX -std=c++20 $file "
+	run_command+="$CXX -std=c++20 $file -fsanitize=address "
 	;;
 *.rs)
 	run_command+="cargo run -q "
