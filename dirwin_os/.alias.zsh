@@ -77,9 +77,10 @@ alias seelog="tail -n 1 -f -- "
 
 function exportlib() {
 	local lib="/usr/local/big_library"
-	export CMAKE_MODULE_PATH="$(find $lib -type 'd' -name 'cmake'     | tr '\n' ':')$CMAKE_MODULE_PATH"
+	export CMAKE_PREFIX_PATH="$(find $lib -type 'd' -name 'cmake'     | tr '\n' ':')$CMAKE_PREFIX_PATH"
 	export PKG_CONFIG_PATH="$(  find $lib -type 'd' -name 'pkgconfig' | tr '\n' ':')$PKG_CONFIG_PATH"
-	export PATH="$(             find $lib -type 'd' -name 'bin'       | tr '\n' ':')$PATH"
+	# export PATH="$(             find $lib -type 'd' -name 'bin'       | tr '\n' ':')$PATH"
+	export MANPATH="$(             find $lib -type 'd' -name 'man'       | tr '\n' ':')$MANPATH"
 	export DYLD_LIBRARY_PATH="$(find $lib -type 'd' -name 'lib'       | tr '\n' ':')$DYLD_LIBRARY_PATH"
 }
 
