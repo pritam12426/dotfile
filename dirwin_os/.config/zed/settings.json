@@ -65,6 +65,9 @@
 	"auto_update": false,
 	"autosave": "on_focus_change",
 	"buffer_font_family": "JetBrains Mono",
+	// "buffer_font_family": "Monaspace Argon",
+	// "buffer_font_family": "Monaspace Neon",
+
 
 	"buffer_font_fallbacks": [
 		"JetBrainsMono Nerd Font Mono"
@@ -417,8 +420,8 @@
 	"vim": {
 		"use_system_clipboard": "on_yank",
 		"use_multiline_find": true,
-		"use_smartcase_find": true
-		// "toggle_relative_line_numbers": true
+		"use_smartcase_find": true,
+		"toggle_relative_line_numbers": true
 	},
 
 	"command_aliases": {

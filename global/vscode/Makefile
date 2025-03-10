@@ -28,7 +28,7 @@ OUTPUT_FILE  := ${PROJDIRS}/output.txt
 INPUT_FILE   := ${PROJDIRS}/input.txt
 
 ifdef d
-	CFLAGS += -g3 -O0
+	CFLAGS += -g3 -O0 -fsanitize=address
 else
 	CFLAGS += -O3
 endif
