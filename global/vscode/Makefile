@@ -2,7 +2,7 @@ CC = /usr/bin/clang -std=c17
 # CC =  /usr/bin/clang++ -std=c++20
 
 LDFLAGS  := -arch arm64
-CFLAGS   := -MMD -MP
+CFLAGS   := -MMD -MP -pedantic -Wall -Werror
 
 LIB  = libcjson
 # LIB +=
