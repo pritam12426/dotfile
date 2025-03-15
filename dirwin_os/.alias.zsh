@@ -17,7 +17,7 @@ export NNN_TRASH="/usr/bin/trash"
 # export NNN_OPENER="open"
 export NNN_HELP="cat $DOT_FILE/../global/nnn_help.txt"
 export NNN_FCOLORS="c1e2272e006033f7c6d6abc4"
-export NNN_PLUG='g:gitroot;r:-!rrr "$nnn";e:!|exiftool "$nnn";n:-fixname;s:-oldbigfile'
+export NNN_PLUG='r:-!rrr "$nnn";e:!|exiftool "$nnn";p:!ffplay "$nnn";q:!qlmanage -p "$nnn"'
 export NNN_ARCHIVE="\\.(7z|a|ace|alz|arc|arj|bz|bz2|cab|cpio|deb|gz|jar|lha|lz|lzh|lzma|lzo|rar|rpm|rz|t7z|tar|tbz|tbz2|tgz|tlz|txz|tZ|tzo|war|xpi|xz|Z|zip)$"
 
 

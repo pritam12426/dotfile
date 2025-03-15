@@ -15,13 +15,14 @@ run_command=""
 # Checking file type and setting up the run command
 case "$file" in
 *.c)
-	run_command+="$CC -std=c17 $file -fsanitize=address "
+	# run_command+="$CC -std=c17 $file -fsanitize=address "
+	run_command+="$CC -std=c17 $file "
 	;;
 *.cpp)
-	run_command+="$CXX -std=c++20 $file -fsanitize=address "
+	run_command+="$CXX -std=c++20 $file "
 	;;
 *.rs)
-	run_command+="cargo run -q "
+	run_command+="cargo run "
 	;;
 *.pl)
 	run_command+="perl $file "
@@ -90,7 +91,7 @@ if [[ "$2" == '-' ]]; then
 	shift 1
 fi
 
-run_command+="-pedantic -Wall -arch arm64 $2 $3 $4 $5 $6 $7 $8 $9 -o '$TMPDIR${filename//./-}.out'"
+run_command+="-pedantic -Wall -Werror -arch arm64 $2 $3 $4 $5 $6 $7 $8 $9 -o '$TMPDIR${filename//./-}.out'"
 
 # Execute the run command
 echo $run_command >&2; printf '%*s\n' $(tput cols) '' | tr ' ' '-' >&2
