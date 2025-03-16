@@ -20,7 +20,7 @@ case "$1" in
 		if [ "${file_type%%/*}" = "text" ]; then
 			bat --paging=never --style=numbers --wrap=never -f "$1" || true
 	else
-			exiftool -FileSize -FilePermissions -FileType -CreateDate -ModifyDate -TimeScale -Duration -TrackCreateDate -TrackModifyDate -MediaLanguageCode -HandlerType -ImageSize "$1"
+			exiftool -FileSize -FilePermissions -Comment -FileType -CreateDate -ModifyDate -TimeScale -Duration -TrackCreateDate -TrackModifyDate -MediaLanguageCode -HandlerType -ImageSize "$1"
 		fi
 		;;
 esac
