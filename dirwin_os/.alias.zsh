@@ -19,7 +19,6 @@ export NNN_FCOLORS="c1e2272e006033f7c6d6abc4"
 export NNN_PLUG='r:-!rrr "$nnn";e:!|exiftool "$nnn";p:!ffplay "$nnn"*;q:!qlmanage -p "$nnn"'
 export NNN_ARCHIVE="\\.(7z|a|ace|alz|arc|arj|bz|bz2|cab|cpio|deb|gz|jar|lha|lz|lzh|lzma|lzo|rar|rpm|rz|t7z|tar|tbz|tbz2|tgz|tlz|txz|tZ|tzo|war|xpi|xz|Z|zip)$"
 
-
 #  Color in man page
 export LESS_TERMCAP_mb=$(tput bold; tput setaf 2) # green
 # Start bold
