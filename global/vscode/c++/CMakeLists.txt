@@ -21,27 +21,15 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 option(BUILD_TESTING "Enable unit testing" OFF)
 
 #### Source Files ####
-set(SRC_FILES
-  ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp
+file(GLOB
+  SRC_FILES
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp
 )
 
 #### Dependencies ####
 # find_package(<X> REQUIRED)
-
-# find_package(<X> QUIET)
-# if(NOT <X>_FOUND)
-#   FetchContent_Declare(
-#     <X>
-#     DOWNLOAD_EXTRACT_TIMESTAMP OFF
-#     URL https://github.com/glfw/glfw/releases/download/3.4/glfw-3.4.zip
-#   )
-#   FetchContent_GetProperties(<X>)
-#   if(NOT <X>_POPULATED)
-#     set(FETCHCONTENT_QUIET NO)
-#     FetchContent_Populate(<X>)
-#     add_subdirectory(${<X>_SOURCE_DIR} ${<X>_BINARY_DIR})
-#   endif()
-# endif()
+# include(${<X>_USE_FILE})
+# target_link_libraries(${PROJECT_NAME} PRIVATE ${<X>_LIBRARIES})
 
 #### Main Executable ####
 add_executable(${PROJECT_NAME})

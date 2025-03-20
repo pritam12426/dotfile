@@ -1,5 +1,4 @@
-CC = /usr/bin/clang -std=c17
-# CC =  /usr/bin/clang++ -std=c++20
+CC =  /usr/bin/clang++ -std=c++20
 
 LDFLAGS  := -arch arm64
 CFLAGS   := -MMD -MP
@@ -12,14 +11,14 @@ PKG_CONFIG_LIBS   = $(shell pkg-config --libs ${LIB})
 CFLAGS   += $(PKG_CONFIG_CFLAGS)
 LDFLAGS  += $(PKG_CONFIG_LIBS) "-Wl,-rpath,/usr/local/big_library/cJSON-1.7.18/lib"
 
-PROJDIRS := /Users/pritam/Developer/c_clang/socket
+PROJDIRS := .
 OBJDIR   := $(PROJDIRS)/obj
 TIME     := /usr/bin/time -h
 
-SRCFILES    := $(wildcard ${PROJDIRS}/src/*.c)
-HEADERFILES := $(wildcard ${PROJDIRS}/src/*.h)
-OBJFILES    := $(patsubst ${PROJDIRS}/src/%.c, ${OBJDIR}/%.o, $(SRCFILES))
-DEPFILES    := $(patsubst ${PROJDIRS}/src/%.c, ${OBJDIR}/%.d, $(SRCFILES))
+SRCFILES    := $(wildcard ${PROJDIRS}/src/*.cpp)
+HEADERFILES := $(wildcard ${PROJDIRS}/src/*.hpp)
+OBJFILES    := $(patsubst ${PROJDIRS}/src/%.cpp, ${OBJDIR}/%.o, $(SRCFILES))
+DEPFILES    := $(patsubst ${PROJDIRS}/src/%.cpp, ${OBJDIR}/%.d, $(SRCFILES))
 
 PROJNAME     := MyProject
 BIN          := ${PROJDIRS}/main.out
@@ -51,7 +50,7 @@ $(BIN): $(OBJFILES)
 ${OBJDIR}:
 	@mkdir -p $@
 
-${OBJDIR}/%.o: ${PROJDIRS}/src/%.c | ${OBJDIR}
+${OBJDIR}/%.o: ${PROJDIRS}/src/%.cpp | ${OBJDIR}
 	@printf "\e[1;34m 🛠️  %s \e[0m \e[45m%s\e[0m\n\n" "Compiling" "$<"
 	$(CC) $(CFLAGS) -c $< -o $@
 	${LINE}
