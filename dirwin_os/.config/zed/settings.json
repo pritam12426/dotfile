@@ -331,9 +331,10 @@
 			"binary": {
 				"arguments": [
 					"--header-insertion=never",
-					"-compile-commands-dir=build",
 					"--function-arg-placeholders=0",
-					// "--clang-tidy",
+					"--clang-tidy",
+					"--background-index",
+					"--compile-commands-dir=build",
 					"--all-scopes-completion"
 				]
 			},
