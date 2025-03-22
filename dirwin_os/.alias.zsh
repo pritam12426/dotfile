@@ -62,7 +62,7 @@ alias c.="command code ."
 alias z.="command zed ."
 alias quicklook="command qlmanage -p"
 alias tree="command tree -atsh "
-alias tre="command tre -ae "
+# alias tre="command tre -ae "
 alias which="command which -a "
 alias python="command python3 -u "
 alias nq="command networkquality -s"
@@ -181,7 +181,6 @@ function clanginit {
 
 	mkdir -p src test
 }
-
 
 
 #  FOR COMMIT THE COMMIT WITH GPG
