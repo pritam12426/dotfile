@@ -58,6 +58,7 @@ alias eza="$EDITOR ~/.alias.zsh"
 
 #  SYSTEM ALIAS
 alias o="command open ."
+alias sudo="command sudo -E"
 alias c.="command code ."
 alias z.="command zed ."
 alias quicklook="command qlmanage -p"

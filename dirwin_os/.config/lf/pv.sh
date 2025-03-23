@@ -15,6 +15,9 @@ case "$1" in
 	*.7z)
 		7z l "$1"
 	;;
+	*.json)
+		bat --paging=never --style=numbers --wrap=never -f "$1" || true
+	;;
 
 	*)
 		if [ "${file_type%%/*}" = "text" ]; then

@@ -215,7 +215,7 @@
 
 			"language_servers": [
 				"pyright",
-				"ruff"
+				// "ruff"
 			],
 
 			"hard_tabs": true,
@@ -312,12 +312,12 @@
 			}
 		},
 
-		"pyright": {
-			"binary": {
-				"path": "/Users/pritam/Library/Python/3.9/bin/pyright",
-				"ignore_system_version": true
-			}
-		},
+		// "pyright": {
+		// 	"binary": {
+		// 		"path": "/Users/pritam/Library/Python/3.9/bin/pyright",
+		// 		"ignore_system_version": true
+		// 	}
+		// },
 
 		"gopls": {
 			"initialization_options": {},

@@ -1,12 +1,7 @@
-#include <gtest/gtest.h>
+#include <catch2/catch_test_macros.hpp>
 
-// #include "../src/something.hpp"
+#include "../src/functions.hpp"
 
-TEST(FactorialTest, FactorialOfPositiveNos) {
-  ASSERT_EQ(1, factorial(1));
-}
-
-int main(int argc, char **argv) {
-  testing::InitGoogleTest(&argc, argv);
-  return RUN_ALL_TESTS();
+TEST_CASE("FactorialTest", "FactorialOfPositiveNos") {
+	REQUIRE(Fun::add(1, 1) == 11);
 }

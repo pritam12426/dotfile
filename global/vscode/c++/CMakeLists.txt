@@ -4,7 +4,7 @@ project(
   "main"
   VERSION 0.1.0
   DESCRIPTION "Small Project"
-  HOMEPAGE_URL "https://github.com/pritam12426/<>"
+  HOMEPAGE_URL "https://github.com/pritam12426/"
   LANGUAGES CXX
 )
 
@@ -23,17 +23,15 @@ option(BUILD_TESTING "Enable unit testing" OFF)
 #### Source Files ####
 file(GLOB
   SRC_FILES
-  ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/functions.cpp
 )
 
 #### Dependencies ####
 # find_package(<X> REQUIRED)
-# include(${<X>_USE_FILE})
-# target_link_libraries(${PROJECT_NAME} PRIVATE ${<X>_LIBRARIES})
 
 #### Main Executable ####
 add_executable(${PROJECT_NAME})
-target_sources(${PROJECT_NAME} PRIVATE ${SRC_FILES})
+target_sources(${PROJECT_NAME} PRIVATE ${SRC_FILES} "./src/main.cpp")
 # target_link_libraries(${PROJECT_NAME} PRIVATE GTest::GTest)
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
@@ -44,6 +42,7 @@ if(BUILD_TESTING)
   enable_testing()
   # add_subdirectory(tests)
   find_package(GTest REQUIRED)
+  # find_package(Catch2 REQUIRED)
 
   set(TEST_BIN_NAME unitTests)
 
@@ -53,6 +52,7 @@ if(BUILD_TESTING)
 
   add_executable(${TEST_BIN_NAME} ${TEST_SRC})
   target_link_libraries(${TEST_BIN_NAME} PRIVATE GTest::GTest)
+  # target_link_libraries(${TEST_BIN_NAME} PRIVATE Catch2::Catch2WithMain)
   target_include_directories(${TEST_BIN_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
   target_include_directories(${TEST_BIN_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/test)
   target_include_directories(${TEST_BIN_NAME} PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
