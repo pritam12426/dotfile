@@ -91,7 +91,7 @@ if [[ "$2" == '-' ]]; then
 	shift 1
 fi
 
-run_command+="-pedantic -Wall -Werror -arch arm64 $2 $3 $4 $5 $6 $7 $8 $9 -o '$TMPDIR${filename//./-}.out'"
+run_command+="-pedantic -Wall -arch arm64 $2 $3 $4 $5 $6 $7 $8 $9 -o '$TMPDIR${filename//./-}.out'"
 
 # Execute the run command
 echo $run_command >&2; printf '%*s\n' $(tput cols) '' | tr ' ' '-' >&2
