@@ -1,10 +1,9 @@
-// O_PCRE=1 O_NOX11=1 O_GITSTATUS=1 O_NERD=1; sudo mv nnn /etc/user_path/nnn/nnn
 /*
  * BSD 2-Clause License
  *
  * Copyright (C) 2014-2016, Lazaros Koromilas <lostd@2f30.org>
  * Copyright (C) 2014-2016, Dimitris Papastamos <sin@2f30.org>
- * Copyright (C) 2016-2023, Arun Prakash Jana <engineerarun@gmail.com>
+ * Copyright (C) 2016-2025, Arun Prakash Jana <engineerarun@gmail.com>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -98,7 +97,7 @@ enum action {
 	SEL_MV,
 	SEL_CPMVAS,
 	SEL_TRASH,
-	SEL_RM_ONLY,
+	SEL_RM_RF,
 	SEL_OPENWITH,
 	SEL_NEW,
 	SEL_RENAME,
@@ -136,18 +135,18 @@ static struct key bindings[] = {
 	{ KEY_LEFT,       SEL_BACK },
 	{ 'h',            SEL_BACK },
 	/* Inside or select */
-	// { KEY_ENTER,      SEL_OPEN },
-	// { '\r',           SEL_OPEN },
+// 	{ KEY_ENTER,      SEL_OPEN },
+// 	{ '\r',           SEL_OPEN },
 	/* Pure navigate inside */
 	{ KEY_RIGHT,      SEL_NAV_IN },
 	{ 'l',            SEL_NAV_IN },
-	{ '\r',            SEL_NAV_IN },
 	/* Next */
 	{ 'j',            SEL_NEXT },
 	{ KEY_DOWN,       SEL_NEXT },
 	/* Previous */
 	{ 'k',            SEL_PREV },
 	{ KEY_UP,         SEL_PREV },
+
 	/* Page down */
 	{ KEY_NPAGE,      SEL_PGDN },
 	/* Page up */
@@ -168,17 +167,17 @@ static struct key bindings[] = {
 	{ '\'',           SEL_FIRST },
 	/* Jump to an entry number/offset */
 	{ 'J',            SEL_JUMP },
-	{ CONTROL('Y'),   SEL_YOUNG },
+// ! { CONTROL('Y'),   SEL_YOUNG },
 	/* HOME */
-	{ 'H',            SEL_CDHOME },
 	{ '~',            SEL_CDHOME },
+	{ 'H',            SEL_CDHOME },
 	/* Initial directory */
 	{ '@',            SEL_CDBEGIN },
 	/* Last visited dir */
 	{ '-',            SEL_CDLAST },
 	/* Go to / */
-	{ '`',            SEL_CDROOT },
 	{ '\\',            SEL_CDROOT },
+	{ '`',             SEL_CDROOT },
 	/* Leader key */
 	{ 'b',            SEL_BMOPEN },
 // ! { CONTROL('_'),   SEL_BMOPEN },
@@ -213,19 +212,19 @@ static struct key bindings[] = {
 	{ 'd',            SEL_DETAIL },
 	/* File details */
 	{ 'f',            SEL_STATS },
-// ! { CONTROL('F'),   SEL_STATS },
+	// { CONTROL('F'),   SEL_STATS },
 	/* Toggle executable status */
 	{ '*',            SEL_CHMODX },
 	/* Create archive */
 	{ 'z',            SEL_ARCHIVE },
 	/* Sort toggles */
 	{ 't',            SEL_SORT },
-// ! { CONTROL('T'),   SEL_SORT },
+	{ CONTROL('T'),   SEL_SORT },
 	/* Redraw window */
-	{ 'L',   SEL_REDRAW },
+	{ CONTROL('L'),   SEL_REDRAW },
 	/* Select current file path */
 	{ ' ',            SEL_SEL },
-// ! { '+',            SEL_SEL },
+	{ '+',            SEL_SEL },
 	/* Toggle select multiple files */
 	{ 'm',            SEL_SELMUL },
 	/* Select all files in current dir */
@@ -236,24 +235,23 @@ static struct key bindings[] = {
 	{ 'E',            SEL_SELEDIT },
 	/* Copy from selection buffer */
 	{ 'p',            SEL_CP },
-// ! { CONTROL('P'),   SEL_CP },
+	{ CONTROL('P'),   SEL_CP },
 	/* Move from selection buffer */
 	{ 'v',            SEL_MV },
-// ! { CONTROL('V'),   SEL_MV },
+	{ CONTROL('V'),   SEL_MV },
 	/* Copy/move from selection buffer and rename */
 	{ 'w',            SEL_CPMVAS },
-// ! { CONTROL('W'),   SEL_CPMVAS },
+	{ CONTROL('W'),   SEL_CPMVAS },
 	/* Delete from selection buffer */
 	{ 'x',            SEL_TRASH },
-// ! { CONTROL('X'),   SEL_TRASH },
-	{ 'X',            SEL_RM_ONLY },
+	{ CONTROL('X'),   SEL_TRASH },
+	{ 'X',            SEL_RM_RF },
 	/* Open in a custom application */
 	{ 'o',            SEL_OPENWITH },
-// ! { CONTROL('O'),   SEL_OPENWITH },
 	/* Create a new file */
 	{ 'n',            SEL_NEW },
 	/* Show rename prompt */
-	{ 'r',   SEL_RENAME },
+	{ 'r',            SEL_RENAME },
 	/* Rename contents of current dir */
 	{ 'R',            SEL_RENAMEMUL },
 	/* Disconnect a SSHFS mount point */
@@ -264,14 +262,13 @@ static struct key bindings[] = {
 	{ CONTROL('J'),   SEL_AUTONEXT },
 	/* Edit in EDITOR */
 	{ 'e',            SEL_EDIT },
-//! { '\r',            SEL_EDIT },
 	/* Run a plugin */
 	{ ';',            SEL_PLUGIN },
 	/* Show total size of listed selection */
 	{ 'S',            SEL_SELSIZE },
 	/* Run command */
 	{ '!',            SEL_SHELL },
-// ! { CONTROL(']'),   SEL_SHELL },
+	{ CONTROL(']'),   SEL_SHELL },
 	/* Launcher */
 	{ '=',            SEL_LAUNCH },
 	/* Show command prompt */

@@ -9,7 +9,7 @@ export LSCOLORS=ExFxBxDxCxegedabagacad
 
 #  NNN FILE MANAGER
 export NNN_COLORS="5236"
-export NNN_OPTS="RAUNdxe"
+export NNN_OPTS="RAUNdxei"
 export NNN_SEL="/tmp/nnn.sel"
 export NNN_TMPFILE="/tmp/nnn.lastd"
 export NNN_FIFO="/tmp/nnn.fifo"
