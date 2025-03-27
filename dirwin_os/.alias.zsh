@@ -8,15 +8,22 @@ export LSCOLORS=ExFxBxDxCxegedabagacad
 
 
 #  NNN FILE MANAGER
+NNN_PLUG='r:-!rrr "$nnn";'
+NNN_PLUG+='e:!|exiftool "$nnn";'
+NNN_PLUG+='p:!ffplay "$nnn"*;'
+NNN_PLUG+='q:!qlmanage -p "$nnn"'
+export NNN_PLUG
+
 export NNN_COLORS="5236"
-export NNN_OPTS="RAUNdxei"
+export NNN_OPENER="/usr/bin/open"
+export NNN_ORDER=""
+export NNN_OPTS="ARUNdxe"
 export NNN_SEL="/tmp/nnn.sel"
 export NNN_TMPFILE="/tmp/nnn.lastd"
 export NNN_FIFO="/tmp/nnn.fifo"
 export NNN_TRASH="/usr/bin/trash"
 export NNN_HELP="cat $DOT_FILE/../global/nnn_help.txt"
 export NNN_FCOLORS="c1e2272e006033f7c6d6abc4"
-export NNN_PLUG='r:-!rrr "$nnn";e:!|exiftool "$nnn";p:!ffplay "$nnn"*;q:!qlmanage -p "$nnn"'
 export NNN_ARCHIVE="\\.(7z|a|ace|alz|arc|arj|bz|bz2|cab|cpio|deb|gz|jar|lha|lz|lzh|lzma|lzo|rar|rpm|rz|t7z|tar|tbz|tbz2|tgz|tlz|txz|tZ|tzo|war|xpi|xz|Z|zip)$"
 
 #  Color in man page
@@ -78,21 +85,22 @@ function exportlib() {
 	local lib="/usr/local/big_library"
 	export CMAKE_PREFIX_PATH="$(find $lib -type 'd' -name 'cmake'     | tr '\n' ':')$CMAKE_PREFIX_PATH"
 	export PKG_CONFIG_PATH="$(  find $lib -type 'd' -name 'pkgconfig' | tr '\n' ':')$PKG_CONFIG_PATH"
-	# export PATH="$(             find $lib -type 'd' -name 'bin'       | tr '\n' ':')$PATH"
-	export MANPATH="$(             find $lib -type 'd' -name 'man'       | tr '\n' ':')$MANPATH"
 	export DYLD_LIBRARY_PATH="$(find $lib -type 'd' -name 'lib'       | tr '\n' ':')$DYLD_LIBRARY_PATH"
+	export MANPATH="$(          find $lib -type 'd' -name 'man'       | tr '\n' ':')$MANPATH"
 }
 
 function _make_() {
 	command make -qp | awk -F':' '/^[a-zA-Z0-9][^$#\/\t=]*:([^=]|$)/ {split($1,A,/ /);for(i in A)print A[i]}' | command sort -u
 }
 
+# Take screen short with shadow
 function ss() {
 	screencapture -w "./Img-$(date +"%Y-%b-%d_at_%H.%M.%S").png"
 }
 
+# Take screen short without shadow
 function sss() {
-    screencapture -s "./Img-$(date +"%Y-%b-%d_at_%H.%M.%S").png"
+	screencapture -s "./Img-$(date +"%Y-%b-%d_at_%H.%M.%S").png"
 }
 
 
@@ -159,12 +167,8 @@ function clanginit {
 		COMMAND+="; cp -p  $DOT_FILE/../global/vscode/Makefile         $PWD/Makefile"
 		;;
 	c++)
-		COMMAND="   cp -rp $DOT_FILE/../global/vscode/CXX              $PWD/.vscode"
-		COMMAND+="; cp -p  $DOT_FILE/../global/vscode/clangd-cxx       $PWD/.clangd"
-		COMMAND+="; cp -p  $DOT_FILE/../global/vscode/clang-format     $PWD/.clang-format"
-		COMMAND+="; cp -p  $DOT_FILE/../global/vscode/clang-tidy       $PWD/.clang-tidy"
-		COMMAND+="; cp -p  $DOT_FILE/../global/vscode/CMakeLists.txt   $PWD/CMakeLists.txt"
-		COMMAND+="; cp -p  $DOT_FILE/../global/vscode/Makefile         $PWD/Makefile"
+		COMMAND="   cp -rp  $DOT_FILE/../global/vscode/c++/* ."
+		COMMAND+="; cp -rp  $DOT_FILE/../global/vscode/c++/.* ."
 		;;
 	cxx)
 		COMMAND="   cp -rp  $DOT_FILE/../global/vscode/c++/* ."

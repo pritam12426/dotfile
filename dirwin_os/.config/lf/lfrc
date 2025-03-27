@@ -64,8 +64,8 @@ map d
 
 # Basic Functions
 map . set hidden!
-map dd trash
-map dD RM
+map dx trash
+map dX RM
 map R reload
 
 map p paste

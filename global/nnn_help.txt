@@ -1,5 +1,7 @@
  MORE CONFIGURATIONG
             H  Go to ~
             \  Go to 'root dir'
+            `  Go to 'root dir'
+            !  start a terminal section as the child of NNN
+            ]  run a command
     shift + q  Close all tabs
-
