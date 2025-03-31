@@ -16,7 +16,7 @@ export NNN_PLUG
 
 export NNN_COLORS="5236"
 export NNN_OPENER="/usr/bin/open"
-export NNN_ORDER=""
+# export NNN_ORDER=""
 export NNN_OPTS="ARUNdxe"
 export NNN_SEL="/tmp/nnn.sel"
 export NNN_TMPFILE="/tmp/nnn.lastd"
@@ -159,12 +159,8 @@ function clanginit {
 
 	case "$lower_input" in
 	c)
-		COMMAND="   cp -rp $DOT_FILE/../global/vscode/C                $PWD/.vscode"
-		COMMAND+="; cp -p  $DOT_FILE/../global/vscode/clangd-c         $PWD/.clangd"
-		COMMAND+="; cp -p  $DOT_FILE/../global/vscode/clang-format     $PWD/.clang-format"
-		COMMAND+="; cp -p  $DOT_FILE/../global/vscode/clang-tidy       $PWD/.clang-tidy"
-		COMMAND+="; cp -p  $DOT_FILE/../global/vscode/CMakeLists.txt   $PWD/CMakeLists.txt"
-		COMMAND+="; cp -p  $DOT_FILE/../global/vscode/Makefile         $PWD/Makefile"
+		COMMAND="   cp -rp  $DOT_FILE/../global/vscode/c/* ."
+		COMMAND+="; cp -rp  $DOT_FILE/../global/vscode/c/.* ."
 		;;
 	c++)
 		COMMAND="   cp -rp  $DOT_FILE/../global/vscode/c++/* ."

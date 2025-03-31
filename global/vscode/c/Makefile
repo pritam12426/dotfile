@@ -1,4 +1,4 @@
-CC =  /usr/bin/clang++ -std=c++20
+CC =  /usr/bin/clang -std=c17
 
 LDFLAGS  := -arch arm64
 CFLAGS   := -MMD -MP
@@ -15,10 +15,10 @@ PROJDIRS := .
 OBJDIR   := $(PROJDIRS)/obj
 TIME     := /usr/bin/time -h
 
-SRCFILES    := $(wildcard ${PROJDIRS}/src/*.cpp)
-HEADERFILES := $(wildcard ${PROJDIRS}/src/*.hpp)
-OBJFILES    := $(patsubst ${PROJDIRS}/src/%.cpp, ${OBJDIR}/%.o, $(SRCFILES))
-DEPFILES    := $(patsubst ${PROJDIRS}/src/%.cpp, ${OBJDIR}/%.d, $(SRCFILES))
+SRCFILES    := $(wildcard ${PROJDIRS}/src/*.c)
+HEADERFILES := $(wildcard ${PROJDIRS}/src/*.h)
+OBJFILES    := $(patsubst ${PROJDIRS}/src/%.c, ${OBJDIR}/%.o, $(SRCFILES))
+DEPFILES    := $(patsubst ${PROJDIRS}/src/%.c, ${OBJDIR}/%.d, $(SRCFILES))
 
 PROJNAME     := MyProject
 BIN          := ${PROJDIRS}/main.out
@@ -50,7 +50,7 @@ $(BIN): $(OBJFILES)
 ${OBJDIR}:
 	@mkdir -p $@
 
-${OBJDIR}/%.o: ${PROJDIRS}/src/%.cpp | ${OBJDIR}
+${OBJDIR}/%.o: ${PROJDIRS}/src/%.c | ${OBJDIR}
 	@printf "\e[1;34m 🛠️  %s \e[0m \e[45m%s\e[0m\n\n" "Compiling" "$<"
 	$(TIME) $(CC) $(CFLAGS) -c $< -o $@
 	${LINE}
