@@ -1,28 +1,31 @@
-lib="/usr/local/big_library"
-file=$lib/env
+#!/bin/bash
 
-cat /dev/null > $file
+lib="/usr/local/big_library"
+file="$lib/env"
+
+# Clear the file before writing new values
+> "$file"
 
 parse() {
-	local input="$1"
-	local prefix="$2"
 	{
-		printf "export %s=" "$prefix"
-		printf "%s" "$(echo "$input" | sed 's/:/:\\\n/g')" # Remove trailing newline
-		printf "\n\$%s" "$prefix"
-		printf "\n\n\n"
-	} >> $file
+		printf "export %s=" "$2"
+		printf "%s" "$(echo "$1" | sed 's/:/:\\\n/g')"
+		printf "\n\$%s\n\n\n" "$2"
+	} >> "$file"
 }
 
-__PATH="$(             find $lib -type 'd' -name 'bin'       | tr '\n' ':')$__PATH"
-__MANPATH="$(          find $lib -type 'd' -name 'man'       | tr '\n' ':')$__MANPATH"
-__PKG_CONFIG_PATH="$(  find $lib -type 'd' -name 'pkgconfig' | tr '\n' ':')$__PKG_CONFIG_PATH"
-__DYLD_LIBRARY_PATH="$(find $lib -type 'd' -name 'lib'       | tr '\n' ':')$__DYLD_LIBRARY_PATH"
-__CMAKE_PREFIX_PATH="$(find $lib -type 'd' -name 'cmake'     | tr '\n' ':')$__CMAKE_PREFIX_PATH"
+find_dirs() {
+	find "$lib" -type d -name "$1" -print0 | tr '\0' ':'
+}
 
+__PATH="$(find_dirs 'bin')$__PATH"
+__MANPATH="$(find_dirs 'man')$__MANPATH"
+__PKG_CONFIG_PATH="$(find_dirs 'pkgconfig')$__PKG_CONFIG_PATH"
+__DYLD_LIBRARY_PATH="$(find_dirs 'lib')$__DYLD_LIBRARY_PATH"
+__CMAKE_PREFIX_PATH="$(find_dirs 'cmake')$__CMAKE_PREFIX_PATH"
 
-parse $__PATH              "PATH"
-parse $__MANPATH           "MANPATH"
-parse $__PKG_CONFIG_PATH   "PKG_CONFIG_PATH"
-parse $__DYLD_LIBRARY_PATH "DYLD_LIBRARY_PATH"
-parse $__CMAKE_PREFIX_PATH "CMAKE_PREFIX_PATH"
+parse "$__PATH" "PATH"
+parse "$__MANPATH" "MANPATH"
+parse "$__PKG_CONFIG_PATH" "PKG_CONFIG_PATH"
+parse "$__DYLD_LIBRARY_PATH" "DYLD_LIBRARY_PATH"
+parse "$__CMAKE_PREFIX_PATH" "CMAKE_PREFIX_PATH"
