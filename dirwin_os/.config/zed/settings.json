@@ -1,5 +1,6 @@
 {
-	"assistant": {
+	"icon_theme": "Zed (Default)",
+ "assistant": {
 		"default_model": {
 			"provider": "copilot_chat",
 			"model": "gpt-4o"
@@ -296,14 +297,14 @@
 		"jdtls": {
 			"binary": {
 				"path": "/Users/pritam/.local/share/jdt-language-server-1.40/bin/jdtls",
-				"ignore_system_version": true
+				"ignore_system_version": false
 			}
 		},
 
 		"ruff": {
 			"binary": {
 				"path": "/Users/pritam/.local/bin/ruff",
-				"ignore_system_version": true,
+				"ignore_system_version": false,
 				"arguments": [
 					"check"
 					// "server",
@@ -315,7 +316,7 @@
 		// "pyright": {
 		// 	"binary": {
 		// 		"path": "/Users/pritam/Library/Python/3.9/bin/pyright",
-		// 		"ignore_system_version": true
+		// 		"ignore_system_version": false
 		// 	}
 		// },
 
@@ -323,7 +324,7 @@
 			"initialization_options": {},
 			"binary": {
 				"path": "/Users/pritam/go/bin/gopls",
-				"ignore_system_version": true
+				"ignore_system_version": false
 			}
 		},
 
@@ -334,7 +335,7 @@
 					"--function-arg-placeholders=0",
 					"--clang-tidy",
 					"--background-index",
-					"--compile-commands-dir=build",
+					// "--compile-commands-dir=build",
 					"--all-scopes-completion"
 				]
 			},
@@ -415,7 +416,7 @@
 	"node": {
 		"path": "/Users/pritam/.local/share/node-v20.16.0/bin/node",
 		"npm_path": "/Users/pritam/.local/share/node-v20.16.0/bin/npm",
-		"ignore_system_version": true
+		"ignore_system_version": false
 	},
 
 	"vim": {
