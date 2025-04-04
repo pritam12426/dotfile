@@ -80,7 +80,7 @@ alias gfind="command ls -AF | grep -i"
 alias lh="command ls -AF| grep '^\.'"
 alias sayy="command pbpaste | command say -i"
 alias per="command find . -type f -exec chmod 644 {} \; && find . -type d -exec chmod 755 {} \;"
-alias seelog="tail -n 1 -f -- "
+alias seelog="command tail -n 1 -f -- "
 
 function exportlib() {
     source /usr/local/big_library/env
@@ -92,12 +92,12 @@ function _make_() {
 
 # Take screen short with shadow
 function ss() {
-	screencapture -w "./Img-$(date +"%Y-%b-%d_at_%H.%M.%S").png"
+	screencapture -w "./Screen–short–$(date +"%Y-%b-%d_at_%H.%M.%S").png"
 }
 
 # Take screen short without shadow
 function sss() {
-	screencapture -s "./Img-$(date +"%Y-%b-%d_at_%H.%M.%S").png"
+	screencapture -s "./Screen–short–$(date +"%Y-%b-%d_at_%H.%M.%S").png"
 }
 
 
