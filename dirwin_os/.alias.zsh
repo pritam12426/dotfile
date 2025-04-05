@@ -8,7 +8,7 @@ export LSCOLORS=ExFxBxDxCxegedabagacad
 
 
 #  NNN FILE MANAGER
-NNN_PLUG='r:-!rrr "$nnn";'
+NNN_PLUG='r:-!rrr "$nnn"*;'
 NNN_PLUG+='e:!|exiftool "$nnn";'
 NNN_PLUG+='p:!ffplay "$nnn"*;'
 NNN_PLUG+='q:!qlmanage -p "$nnn"'

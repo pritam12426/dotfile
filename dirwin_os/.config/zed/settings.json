@@ -1,12 +1,13 @@
 {
-	"icon_theme": "Zed (Default)",
- "assistant": {
+	"assistant": {
 		"default_model": {
 			"provider": "copilot_chat",
 			"model": "gpt-4o"
 		},
 		"version": "2"
 	},
+
+	"hide_mouse_while_typing": true,
 
 	"show_edit_predictions": false,
 	"use_system_path_prompts": false,
@@ -335,7 +336,7 @@
 					"--function-arg-placeholders=0",
 					"--clang-tidy",
 					"--background-index",
-					// "--compile-commands-dir=build",
+					"--compile-commands-dir=build",
 					"--all-scopes-completion"
 				]
 			},

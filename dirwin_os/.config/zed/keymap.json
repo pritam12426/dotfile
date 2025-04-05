@@ -1,17 +1,5 @@
 [
 	{
-		"context": "Workspace",
-		"bindings": {
-			"cmd-k": [
-				"task::Spawn",
-				{
-					"task_name": "Run Current file"
-				}
-			]
-		}
-	},
-
-	{
 		"context": "Editor",
 		"bindings": {
 			"cmd-i": "tab_switcher::Toggle"
@@ -19,7 +7,19 @@
 	},
 
 	{
-		"context": "Terminal",
+		// "context": "Editor",
+		"bindings": {
+			"cmd-shift-b": [
+				"task::Spawn",
+				{
+					"task_name": "Build Current Project"
+				}
+			]
+		}
+	},
+
+	{
+		// "context": "Terminal && Workspace",
 		"bindings": {
 			"cmd-k": [
 				"task::Spawn",
@@ -28,5 +28,5 @@
 				}
 			]
 		}
-	},
+	}
 ]

@@ -4,12 +4,11 @@ LDFLAGS  := -arch arm64
 CFLAGS   := -MMD -MP
 
 LIB  = libcjson
-# LIB +=
 PKG_CONFIG_CFLAGS = $(shell pkg-config --cflags ${LIB})
 PKG_CONFIG_LIBS   = $(shell pkg-config --libs ${LIB})
 
 CFLAGS   += $(PKG_CONFIG_CFLAGS)
-LDFLAGS  += $(PKG_CONFIG_LIBS) "-Wl,-rpath,/usr/local/big_library/cJSON-1.7.18/lib"
+LDFLAGS  += $(PKG_CONFIG_LIBS) -Wl,-rpath,/usr/local/big_library/cJSON-1.7.18/lib
 
 PROJDIRS := .
 OBJDIR   := $(PROJDIRS)/obj
