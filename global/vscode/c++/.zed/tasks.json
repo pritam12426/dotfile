@@ -1,5 +1,21 @@
 [
 	{
-
+		"label": "Build Current Project",
+		"command": "cmake --build build --target run",
+		"args": [
+			""
+		],
+		"show_command": false,
+		"shell": {
+			"with_arguments": {
+				"program": "/bin/bash",
+				"args": [
+					"--login"
+				]
+			}
+		},
+		"tags": [
+			"Build"
+		]
 	}
 ]

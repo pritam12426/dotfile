@@ -12,7 +12,8 @@
 			"cmd-shift-b": [
 				"task::Spawn",
 				{
-					"task_name": "Build Current Project"
+					"task_name": "Build Current Project",
+					"reveal_target": "center"
 				}
 			]
 		}
@@ -24,7 +25,8 @@
 			"cmd-k": [
 				"task::Spawn",
 				{
-					"task_name": "Run Current file"
+					"task_name": "Run Current file",
+					"reveal_target": "center"
 				}
 			]
 		}

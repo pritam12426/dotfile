@@ -36,6 +36,12 @@ target_sources(${PROJECT_NAME} PRIVATE ${SRC_FILES} "./src/main.cpp")
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
 
+add_custom_target(
+  run
+  COMMAND ./${PROJECT_NAME}
+  DEPENDS ${PROJECT_NAME}
+  WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+)
 
 #### Unit Tests ####
 if(BUILD_TESTING)
