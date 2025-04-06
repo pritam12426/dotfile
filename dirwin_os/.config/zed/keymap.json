@@ -25,8 +25,7 @@
 			"cmd-k": [
 				"task::Spawn",
 				{
-					"task_name": "Run Current file",
-					"reveal_target": "center"
+					"task_name": "Run Current file"
 				}
 			]
 		}

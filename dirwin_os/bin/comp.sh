@@ -27,8 +27,16 @@ case "$file" in
 *.pl)
 	run_command+="perl $file "
 	;;
-*[Mm]akefile*)
+*/[Mm]akefile)
 	run_command+="make -C $path -f $file "
+	;;
+*/CMakeLists.txt)
+	run_command+="source /usr/local/big_library/env; rm -rf $path/build-arm64; cmake -S $path -B $path/build-arm64 -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON -DCMAKE_OSX_ARCHITECTURES=arm64 "
+
+	if [ -e "$(pbpaste)" ]; then
+		run_command+="-DCMAKE_INSTALL_PREFIX=$(pbpaste) "
+	fi
+
 	;;
 *.html)
 	run_command+="live-server -o --index $path "
@@ -48,6 +56,9 @@ case "$file" in
 	;;
 *.py)
 	run_command+="python3 $file "
+	;;
+*.lua)
+	run_command+="lua $file "
 	;;
 *.go)
 	run_command+="go run $file "
