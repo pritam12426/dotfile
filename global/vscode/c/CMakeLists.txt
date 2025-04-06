@@ -27,13 +27,24 @@ file(
 
 #### Dependencies ####
 # find_package(<X> REQUIRED)
+# pkg_check_modules(GSL REQUIRED gsl)
 
 #### Main Executable ####
-add_executable(${PROJECT_NAME})
-target_sources(${PROJECT_NAME} PRIVATE ${SRC_FILES} "./src/main.c")
-# target_link_libraries(${PROJECT_NAME} PRIVATE GTest::GTest)
-target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
-target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
+add_executable(${PROJECT_NAME}
+  ${SRC_FILES}
+  "./src/main.c"
+)
+
+target_link_libraries(${PROJECT_NAME} PRIVATE
+  # ${GSL_LIBRARIES}
+  # ${GSL_LDFLAGS}
+)
+
+target_include_directories(${PROJECT_NAME} PRIVATE
+  ${CMAKE_CURRENT_SOURCE_DIR}/src
+  ${CMAKE_CURRENT_BINARY_DIR}
+  # ${GSL_INCLUDE_DIRS}
+)
 
 
 #### Unit Tests ####

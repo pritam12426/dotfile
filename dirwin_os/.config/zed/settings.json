@@ -216,7 +216,7 @@
 			"soft_wrap": "preferred_line_length",
 
 			"language_servers": [
-				"pyright",
+				"pyright"
 				// "ruff"
 			],
 
@@ -313,13 +313,6 @@
 				]
 			}
 		},
-
-		// "pyright": {
-		// 	"binary": {
-		// 		"path": "/Users/pritam/Library/Python/3.9/bin/pyright",
-		// 		"ignore_system_version": false
-		// 	}
-		// },
 
 		"gopls": {
 			"initialization_options": {},
