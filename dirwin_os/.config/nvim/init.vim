@@ -18,7 +18,7 @@ set incsearch   " incremental searching
 set ignorecase  " searches are case insensitive...
 set smartcase   " ... unless they contain at least one capital letter
 set gdefault    " have :s///g flag by default on
-set listchars=eol:¬,tab:>·,trail:·,extends:>,precedes:<,space:·
+set listchars=eol:¬,tab:––,trail:·,extends:>,precedes:<,space:·
 set list
 
 " --- theme ---
