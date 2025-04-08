@@ -11,7 +11,7 @@
 #define ANSI_COLOR_WHITE   "\x1b[97m"
 #define ANSI_COLOR_RESET   "\x1b[0m"
 
-static const char *const envName[] = { "PATH", "MANPATH", "CMAKE_PREFIX_PATH", "PKG_CONFIG_PATH", "DYLD_LIBRARY_PATH", NULL };
+static const char *const envName[] = { "PATH", "MANPATH", "CMAKE_PREFIX_PATH", "PKG_CONFIG_PATH", NULL };
 
 uint32_t print_var(const char *var);
 void after_print(const uint32_t n);

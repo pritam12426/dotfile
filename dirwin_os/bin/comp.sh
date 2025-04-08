@@ -31,12 +31,8 @@ case "$file" in
 	run_command+="make -C $path -f $file "
 	;;
 */CMakeLists.txt)
-	run_command+="source /usr/local/big_library/env; rm -rf $path/build-arm64; cmake -S $path -B $path/build-arm64 -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON -DCMAKE_OSX_ARCHITECTURES=arm64 "
-
-	if [ -e "$(pbpaste)" ]; then
-		run_command+="-DCMAKE_INSTALL_PREFIX=$(pbpaste) "
-	fi
-
+	LIB="${PWD##*/}"
+	run_command+="source '$LIBS_DIR/env'; rm -rf '$path/build-arm64'; cmake -S '$path' -B '$path/build-arm64' -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON -DCMAKE_OSX_ARCHITECTURES=arm64 -DCMAKE_INSTALL_PREFIX='$LIBS_DIR/$LIB' "
 	;;
 *.html)
 	run_command+="live-server -o --index $path "

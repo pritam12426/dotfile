@@ -81,10 +81,7 @@ alias lh="command ls -AF| grep '^\.'"
 alias sayy="command pbpaste | command say -i"
 alias per="command find . -type f -exec chmod 644 {} \; && find . -type d -exec chmod 755 {} \;"
 alias seelog="command tail -n 1 -f -- "
-
-function exportlib() {
-    source /usr/local/big_library/env
-}
+alias exportlib="source $LIBS_DIR/env"
 
 function _make_() {
 	command make -qp | awk -F':' '/^[a-zA-Z0-9][^$#\/\t=]*:([^=]|$)/ {split($1,A,/ /);for(i in A)print A[i]}' | command sort -u
