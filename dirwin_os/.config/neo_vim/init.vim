@@ -12,7 +12,8 @@ autocmd InsertLeave * :set relativenumber
 
 " :colorscheme jellybeans
 " :colorscheme atom
-:colorscheme murphy
+:colorscheme habamax
+" :colorscheme murphy
 
 " Shortcut keys
 " For normal mode

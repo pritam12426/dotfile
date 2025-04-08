@@ -1,4 +1,5 @@
 --glob
+--no-ignore-dot
 !.git/*
 
 # Set the colors.
