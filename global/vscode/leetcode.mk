@@ -17,7 +17,7 @@ debug: d
 clean: c
 
 build: ${PROGRAM_FILE}
-	$(TIME) $(CXX) $(OPT) -s -O3 $(PROGRAM_FILE) -o $(BIN)
+	$(TIME) $(CXX) $(OPT) -O3 $(PROGRAM_FILE) -o $(BIN)
 	${LINE}
 
 d: ${PROGRAM_FILE}

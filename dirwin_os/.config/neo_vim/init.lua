@@ -1,5 +1,3 @@
-require("plugins")
-
 local opt = vim.opt
 
 -- line numbers
@@ -32,31 +30,3 @@ opt.backspace = "indent,eol,start"
 
 -- clipboard
 opt.clipboard:append("unnamedplus")
-
--- set leader key to space
-vim.g.mapleader = " "
-
-local keymap = vim.keymap -- for conciseness
-
----------------------
--- General Keymaps
----------------------
-
--- use jk to exit insert mode
-keymap.set("i", "jk", "<ESC>")
-
--- nice to have
--- keymap.set("n", "<leader>w", ":w<CR>")
--- keymap.set("n", "<leader>q", ":q!<CR>")
--- keymap.set("n", "<leader>x", ":x<CR>")
-
--- clear search highlights
-keymap.set("n", "<leader>nh", ":nohl<CR>")
-
--- delete single character without copying into register
-keymap.set("n", "x", '"_x')
-
--- increment/decrement numbers
-keymap.set("n", "<leader>+", "<C-a>") -- increment
-keymap.set("n", "<leader>-", "<C-x>") -- decrement
-

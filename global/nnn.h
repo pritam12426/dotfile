@@ -245,7 +245,7 @@ static struct key bindings[] = {
 	/* Open in a custom application */
 	{ 'o',            SEL_OPENWITH },
 	/* Create a new file */
-	{ 'c',            SEL_NEW },
+	{ 'n',            SEL_NEW },
 	/* Show rename prompt */
 	{ 'R',   SEL_RENAMEMUL },
 	/* Rename contents of current dir */
