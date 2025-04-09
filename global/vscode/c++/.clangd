@@ -5,8 +5,6 @@ CompileFlags:
     - "-pedantic"
     - "-Wall"
 
-    - "-include src/CmakeConfig.h.in"
-
 Index:
   Background: Build
   StandardLibrary: Yes

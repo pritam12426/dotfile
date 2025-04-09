@@ -8,7 +8,7 @@ project(
   LANGUAGES CXX
 )
 
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/src/CmakeConfig.h.in ${CMAKE_CURRENT_BINARY_DIR}/CmakeConfig.h)
+configure_file(${CMAKE_CURRENT_LIST_DIR}/src/CmakeConfig.h.in ${CMAKE_CURRENT_BINARY_DIR}/CmakeConfig.h)
 add_compile_options(-include "${CMAKE_CURRENT_BINARY_DIR}/CmakeConfig.h")
 # https://stackoverflow.com/questions/30027016/cannot-export-cmake-project-version-major-because-it-equals-zero
 
@@ -17,13 +17,10 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-#### Setting the conditional variable ####
-option(BUILD_TESTING "Enable unit testing" OFF)
-
 #### Source Files ####
 file(GLOB
   SRC_FILES
-  ${CMAKE_CURRENT_SOURCE_DIR}/src/functions.cpp
+  ${CMAKE_CURRENT_LIST_DIR}/src/functions.cpp
 )
 
 #### Dependencies ####
@@ -42,7 +39,7 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
 )
 
 target_include_directories(${PROJECT_NAME} PRIVATE
-  ${CMAKE_CURRENT_SOURCE_DIR}/src
+  ${PROJECT_SOURCE_DIR}/src
   ${CMAKE_CURRENT_BINARY_DIR}
   # ${GSL_INCLUDE_DIRS}
 )
@@ -50,13 +47,22 @@ target_include_directories(${PROJECT_NAME} PRIVATE
 add_custom_target(
   run
   COMMAND ./${PROJECT_NAME}
-  COMMENT "Runing the ${PROJECT_NAME} Binary"
+  COMMENT "Runing ${PROJECT_NAME}"
   DEPENDS ${PROJECT_NAME}
   WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
 )
+
+#### Setting the conditional variable ####
+option(BUILD_TESTING "Enable unit testing" OFF)
+option(BUILD_DOC "Enable unit testing" OFF)
 
 #### Unit Tests ####
 if(BUILD_TESTING)
   enable_testing()
   add_subdirectory(test)
+endif()
+
+#### Bulding doc ####
+if(BUILD_DOC)
+  add_subdirectory(doc)
 endif()
