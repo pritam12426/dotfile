@@ -1,7 +1,6 @@
 DISABLE_INDEX          = NO
 GENERATE_TREEVIEW      = YES
 FULL_SIDEBAR           = NO
-HTML_COLORSTYLE        = LIGHT
 
 
 GENERATE_LATEX         = NO
@@ -13,7 +12,7 @@ PLANTUML_JAR_PATH      = "@PLANT_UML_PATH_LINUX@"
 DOT_PATH               = "@DOT_PATH_LINUX@"
 
 
-HTML_EXTRA_STYLESHEET  = @CMAKE_CURRENT_LIST_DIR@/doxygen-awesome-css-theme/doxygen-awesome.css
+HTML_EXTRA_STYLESHEET  = @CMAKE_CURRENT_LIST_DIR@/doxygen-awesome-theme/doxygen-awesome-sidebar-only-darkmode-toggle.css
 HTML_HEADER            = @CMAKE_CURRENT_LIST_DIR@/header.html
 HTML_FOOTER            = @CMAKE_CURRENT_LIST_DIR@/footer.html
 
@@ -30,8 +29,8 @@ PROJECT_NUMBER          =  @PROJECT_VERSION@
 
 INPUT                   = "@PROJECT_SOURCE_DIR@/src"
 RECURSIVE               = YES
-USE_MDFILE_AS_MAINPAGE  = "@PROJECT_SOURCE_DIR@/README.md"
-HTML_OUTPUT             = "@CMAKE_CURRENT_BINARY_DIR@/html"
+USE_MDFILE_AS_MAINPAGE  = "@PROJECT_SOURCE_DIR@/readme.md"
+HTML_OUTPUT             = "@CMAKE_CURRENT_BINARY_DIR@/doc"
 IMAGE_PATH              = "@CMAKE_CURRENT_SOURCE_DIR_LINUX@"
 
 

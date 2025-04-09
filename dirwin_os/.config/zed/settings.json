@@ -329,7 +329,7 @@
 					"--function-arg-placeholders=0",
 					"--clang-tidy",
 					"--background-index",
-					"--compile-commands-dir=build",
+					"--compile-commands-dir=build-arm64",
 					"--all-scopes-completion"
 				]
 			},
