@@ -59,7 +59,7 @@ option(BUILD_DOC "Enable unit testing" OFF)
 #### Unit Tests ####
 if(BUILD_TESTING)
   enable_testing()
-  add_subdirectory(test)
+  add_subdirectory(tests)
 endif()
 
 #### Bulding doc ####
