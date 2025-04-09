@@ -4,7 +4,8 @@ find_package(Catch2 REQUIRED)
 
 set(TEST_BIN_NAME unitTests)
 
-set(TEST_SRC_FILES
+file(GLOB
+  TEST_SRC_FILES
   # "${CMAKE_CURRENT_LIST_DIR}/another.cpp"
 )
 

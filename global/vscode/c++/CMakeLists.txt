@@ -16,6 +16,7 @@ add_compile_options(-include "${CMAKE_CURRENT_BINARY_DIR}/CmakeConfig.h")
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+set(MAIN_BINARY "main")
 
 #### Source Files ####
 file(GLOB
@@ -28,17 +29,17 @@ file(GLOB
 # pkg_check_modules(GSL REQUIRED gsl)
 
 #### Main Executable ####
-add_executable(${PROJECT_NAME}
+add_executable(${MAIN_BINARY}
   ${SRC_FILES}
   "./src/main.cpp"
 )
 
-target_link_libraries(${PROJECT_NAME} PRIVATE
+target_link_libraries(${MAIN_BINARY} PRIVATE
   # ${GSL_LIBRARIES}
   # ${GSL_LDFLAGS}
 )
 
-target_include_directories(${PROJECT_NAME} PRIVATE
+target_include_directories(${MAIN_BINARY} PRIVATE
   ${PROJECT_SOURCE_DIR}/src
   ${CMAKE_CURRENT_BINARY_DIR}
   # ${GSL_INCLUDE_DIRS}
@@ -46,9 +47,9 @@ target_include_directories(${PROJECT_NAME} PRIVATE
 
 add_custom_target(
   run
-  COMMAND ./${PROJECT_NAME}
-  COMMENT "Runing ${PROJECT_NAME}"
-  DEPENDS ${PROJECT_NAME}
+  COMMAND ./${MAIN_BINARY}
+  COMMENT "Runing ${MAIN_BINARY}"
+  DEPENDS ${MAIN_BINARY}
   WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
 )
 

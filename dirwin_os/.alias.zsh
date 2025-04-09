@@ -172,9 +172,6 @@ function clanginit {
 
     echo $COMMAND | tr ';' '\n'
 	eval $COMMAND
-    touch input.txt
-
-	mkdir -p src test
 }
 
 
