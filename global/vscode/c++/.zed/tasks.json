@@ -1,7 +1,7 @@
 [
 	{
 		"label": "Build Current Project",
-		"command": "cmake --build build --target run",
+		"command": "cmake --build build-arm64 --target run",
 		"args": [
 			""
 		],
