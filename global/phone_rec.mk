@@ -1,5 +1,12 @@
-SCRCPY     = ${HOME}/.local/share/scrcpy-macos-x86_64-v3.1/scrcpy --print-fps
-ADB        = ${HOME}/.local/share/scrcpy-macos-x86_64-v3.1/adb
+# --turn-screen-off --lock-video-orientation
+#
+# To turn the device screen off when closing
+# --power-off-on-close
+# By default, on start, the device is powered on.
+# --no-power-on              scrcpy --show-touches
+
+SCRCPY     = scrcpy --print-fps --stay-awake
+ADB        = adb
 OPT        = --no-audio --no-control --max-fps=60
 CAM_OPT    = --video-source=camera --no-audio-playback --capture-orientation 270
 
@@ -72,14 +79,14 @@ config:
 	${ADB} tcpip ${PORT}
 	${ADB} connect ${IPV4}:${PORT}
 
-
 clean:
 	${DELETE}
 
+# open fount cam
 fcam:
 	${SCRCPY} $(CAM_OPT) --camera-facing=front -r "${FILE_PATH}_front-cam.mp4"
 
-
+# open back cam
 bcam:
 	${SCRCPY} $(CAM_OPT) --camera-facing=back -r "${FILE_PATH}_back-cam.mp4"
 
@@ -87,9 +94,11 @@ bcam:
 kill:
 	${ADB} kill-server
 
+# Record Screen with mic
 cc:
 	${SCRCPY} --audio-source=mic -r "${FILE_PATH}.mp4" --no-audio-playback
 
+# Record only audio
 ci:
 	${SCRCPY} --audio-source=mic --no-video --no-playback --no-window --no-control --record="${FILE_PATH}_audio.opus"
 
