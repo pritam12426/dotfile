@@ -170,8 +170,30 @@ function clanginit {
 		;;
 	esac
 
-    echo $COMMAND | tr ';' '\n'
+	echo $COMMAND | tr ';' '\n'
 	eval $COMMAND
+}
+
+function create_exec_symlinks() {
+	local target_dir="$HOME/.local/bin"
+	mkdir -p "$target_dir"
+
+	for arg in "$@"; do
+		local full_path="$(realpath "$arg" 2>/dev/null)"
+		if [[ ! -f "$full_path" || ! -x "$full_path" ]]; then
+			continue
+		fi
+
+		local filename="$(basename "$full_path")"
+		local link_path="$target_dir/$filename"
+
+		ln -sf "$full_path" "$link_path"
+	done
+}
+
+
+function delete_broken_symlinks() {
+	find . -d 1 -xtype l -exec rm -v {} +
 }
 
 
