@@ -10,4 +10,7 @@ The repo is organized by platform, with separate directories for Windows and Lin
 https://suckless.org/rocks/
 
 https://github.com/mikf/gallery-dl
+
 gallery-dl --cookies-from-browser firefox
+
+https://www.tug.org/texlive

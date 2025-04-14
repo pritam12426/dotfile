@@ -16,9 +16,9 @@ function show_help() {
 
 function phoneInfo() {
 	printf "{\n";
-	@printf "\"%s\": \"%s\",\n"        "Phone_IPV4"       "$IPV4"
-	@printf "\"%s\": \"%s\",\n"        "Android_Version"  "$ANDROID_V"
-	@printf "\"%s\": \"%s\",\n"        "Phone_Model"      "${MODEL}"
+	printf "\"%s\": \"%s\",\n"        "Phone_IPV4"       "$IPV4"
+	printf "\"%s\": \"%s\",\n"        "Android_Version"  "$ANDROID_V"
+	printf "\"%s\": \"%s\",\n"        "Phone_Model"      "${MODEL}"
 	printf "\"%s\": \"%s\",\n"        "Manufacturer"     "$(adb shell getprop ro.product.manufacturer | tr -d '\r')"
 	printf "\"%s\": \"%s\",\n"        "Hardware"         "$(adb shell getprop ro.hardware | tr -d '\r')"
 	printf "\"%s\": \"%s\",\n"        "Serial_Number"    "$(adb shell getprop ro.serialno | tr -d '\r')"

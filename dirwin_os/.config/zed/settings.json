@@ -58,7 +58,7 @@
 	"vim_mode": true,
 	"cursor_blink": false,
 
-	"soft_wrap": "editor_width",
+	// "soft_wrap": "editor_width",
 	"show_whitespaces": "all",
 	"preferred_line_length": 83,
 	"tab_size": 4,
@@ -66,7 +66,8 @@
 	"hard_tabs": true,
 	"auto_update": false,
 	"autosave": "on_focus_change",
-	"buffer_font_family": "JetBrains Mono",
+	"buffer_font_family": "PT Mono",
+	// "buffer_font_family": "JetBrains Mono",
 	// "buffer_font_family": "Monaspace Argon",
 	// "buffer_font_family": "Monaspace Neon",
 
@@ -97,7 +98,7 @@
 	"tabs": {
 		"file_icons": true,
 		"git_status": true,
-		"show_diagnostics": "all"
+		"show_diagnostics": "all",
 	},
 
 	"theme": {
@@ -136,7 +137,7 @@
 		"C++": {
 			"show_edit_predictions": false,
 			"show_wrap_guides": true,
-			"soft_wrap": "preferred_line_length",
+			// "soft_wrap": "preferred_line_length",
 			"formatter": {
 				"external": {
 					"command": "/Library/Developer/CommandLineTools/usr/bin/clang-format",
@@ -150,7 +151,7 @@
 
 		"C": {
 			"show_wrap_guides": true,
-			"soft_wrap": "preferred_line_length",
+			// "soft_wrap": "preferred_line_length",
 			"formatter": {
 				"external": {
 					"command": "/Library/Developer/CommandLineTools/usr/bin/clang-format",
@@ -164,7 +165,7 @@
 
 		"Java": {
 			"show_wrap_guides": true,
-			"soft_wrap": "preferred_line_length",
+			// "soft_wrap": "preferred_line_length",
 			"formatter": {
 				"external": {
 					"command": "/Library/Developer/CommandLineTools/usr/bin/clang-format",
@@ -213,7 +214,7 @@
 		},
 
 		"Python": {
-			"soft_wrap": "preferred_line_length",
+			// "soft_wrap": "preferred_line_length",
 
 			"language_servers": [
 				"pyright"
@@ -352,8 +353,6 @@
 	},
 
 	"terminal": {
-		"font_size": 20,
-
 		"env": {
 			"GIT_EDITOR": "zed --wait"
 		},
@@ -422,6 +421,7 @@
 
 	"command_aliases": {
 		"rr": "workspace: reload",
+		"srr": "editor: restart language server",
 		"cc": "editor: convert to ",
 		"ll": "language selector: toggle",
 		"ct": "editor: convert to title case"

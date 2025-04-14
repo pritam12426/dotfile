@@ -21,28 +21,27 @@ set(MAIN_BINARY "main")
 #### Source Files ####
 file(GLOB
   SRC_FILES
-  ${CMAKE_CURRENT_LIST_DIR}/src/functions.cpp
+  "${CMAKE_CURRENT_LIST_DIR}/src/functions.cpp"
 )
 
 #### Dependencies ####
-# find_package(<X> REQUIRED)
-# pkg_check_modules(GSL REQUIRED gsl)
+# find_package(PkgConfig REQUIRED)
+# pkg_check_modules(LIBXML REQUIRED libxml++-5.0)
 
 #### Main Executable ####
 add_executable(${MAIN_BINARY}
   ${SRC_FILES}
-  "./src/main.cpp"
+  "${CMAKE_CURRENT_LIST_DIR}/src/main.cpp"
 )
 
 target_link_libraries(${MAIN_BINARY} PRIVATE
-  # ${GSL_LIBRARIES}
-  # ${GSL_LDFLAGS}
+  # ${LIBXML_LDFLAGS}
 )
 
 target_include_directories(${MAIN_BINARY} PRIVATE
   ${PROJECT_SOURCE_DIR}/src
   ${CMAKE_CURRENT_BINARY_DIR}
-  # ${GSL_INCLUDE_DIRS}
+  # ${LIBXML_INCLUDE_DIRS}
 )
 
 add_custom_target(
@@ -55,7 +54,7 @@ add_custom_target(
 
 #### Setting the conditional variable ####
 option(BUILD_TESTING "Enable unit testing" OFF)
-option(BUILD_DOC "Enable unit testing" OFF)
+option(BUILD_DOC "Generate doc of the project" OFF)
 
 #### Unit Tests ####
 if(BUILD_TESTING)
