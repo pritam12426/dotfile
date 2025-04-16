@@ -32,7 +32,16 @@ case "$file" in
 	;;
 */CMakeLists.txt)
 	LIB="${PWD##*/}"
-	run_command+="source '$LIBS_DIR/env'; cmake -S '$path' -B '$path/build-arm64' -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON -DCMAKE_OSX_ARCHITECTURES=arm64 -DCMAKE_INSTALL_PREFIX='$LIBS_DIR/$LIB' "
+	BUILD_DIR="$path/build-arm64"
+	run_command+="source '$LIBS_DIR/env'; "
+	run_command+="cmake -S '$path' -B '$BUILD_DIR' "
+
+	if [ -d "$BUILD_DIR" ]; then
+		echo "myfile.txt is a regular file"
+	else
+		run_command+="-DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON -DCMAKE_OSX_ARCHITECTURES=arm64 -DCMAKE_INSTALL_PREFIX='$LIBS_DIR/$LIB' "
+	fi
+
 	;;
 *.html)
 	run_command+="live-server -o --index $path "

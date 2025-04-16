@@ -2,6 +2,7 @@
 	"show_whitespaces": "all",
 	"languages": {
 		"C++": {
+			"soft_wrap": "preferred_line_length",
 			"formatter": "language_server"
 		}
 	}

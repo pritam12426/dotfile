@@ -54,7 +54,7 @@ add_custom_target(
 
 #### Setting the conditional variable ####
 option(BUILD_TESTING "Enable unit testing" OFF)
-option(BUILD_DOC "Generate doc of the project" OFF)
+option(BUILD_DOC "Generate doc for the project" OFF)
 
 #### Unit Tests ####
 if(BUILD_TESTING)
