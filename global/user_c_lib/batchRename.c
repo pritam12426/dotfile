@@ -26,7 +26,7 @@ int main(int argc, char *argv[]) {
 
 	chdir(directoryPath);
 
-	maxPair fileStats = countFilesAndMaxNameLen(directoryPath);
+	maxPair fileStats = countFilesAndMaxNameLen(".");
 	if (fileStats.count == 0) {
 		printf("No files to rename.\n");
 		return EXIT_SUCCESS;
@@ -45,7 +45,7 @@ int main(int argc, char *argv[]) {
 		return EXIT_FAILURE;
 	}
 
-	DIR *dir = opendir(directoryPath);
+	DIR *dir = opendir(".");
 	if (!dir) {
 		perror("Failed to open directory");
 		fclose(file);

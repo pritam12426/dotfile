@@ -1,8 +1,10 @@
 CompileFlags:
-  Compiler: clang++
+  CompilationDatabase: build-arm64
+  Compiler: clang
   Add:
-    - "-std=c++17"
+    - "-std=c17"
     - "-pedantic"
+    - "-xc"
     - "-Wall"
 
     - "-include src/CmakeConfig.h.in"
