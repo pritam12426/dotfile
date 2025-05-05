@@ -1,0 +1,25 @@
+CompileFlags:
+  CompilationDatabase: build-arm64
+  Compiler: clang
+  Add:
+    - "-std=c17"
+    - "-pedantic"
+    - "-xc"
+    - "-Wall"
+
+    - "-include src/CmakeConfig.h.in"
+
+Index:
+  Background: Build
+  StandardLibrary: Yes
+
+InlayHints:
+  BlockEnd: false
+  Designators: false
+  Enabled: true
+  ParameterNames: true
+  DeducedTypes: true
+  TypeNameLimit: 24
+
+Hover:
+  ShowAKA: true

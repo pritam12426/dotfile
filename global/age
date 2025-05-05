@@ -1,0 +1,50 @@
+#!/usr/bin/env python3
+
+from datetime import date
+from argparse import ArgumentParser
+
+def calculate_age_details(birth_date):
+	today = date.today()
+	years = today.year - birth_date.year
+	months = today.month - birth_date.month
+	days = today.day - birth_date.day
+
+	if days < 0:
+		months -= 1
+		days += (date(today.year, today.month, 1) - date(today.year, today.month - 1, 1)).days
+
+	if months < 0:
+		years -= 1
+		months += 12
+
+	return years, months, days
+
+
+birth_date = date(2007, 4, 12)
+years, months, days = calculate_age_details(birth_date)
+
+print(f"{years} years, {months} months, and {days} days")
+
+data: str = """
+       ME                     Normal
+12th   :- 19 AGE          12th   :- 18 AGE
+b-tech :- 23 AGE          b-tech :- 22 AGE
+
+NDA:   16.5 - 19.5
+CDS:   20   - 24
+TGC:   20   - 27 with 8+ GPA (09 - 12 POST)
+Vayu:  17.5 - 21
+
+ISRO:  21   - 35 with 8+ GPA (30 - 40 POST)
+BARC:  21   - 26 with 8+ GPA (20 - 30 POST)
+SO IT: 20   - 30 with 8+
+"""
+
+parser = ArgumentParser(description="Print age details and optional data string")
+parser.add_argument('-d', '--data', action='store_true', help='Print data string')
+args = parser.parse_args()
+
+if args.data:
+    print(data)
+else:
+	print("\n-d For more info")

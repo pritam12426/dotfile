@@ -1,0 +1,19 @@
+CompileFlags:
+  Add:
+    - "-I/Applications/ArmGNUToolchain/14.2.rel1/arm-none-eabi/arm-none-eabi/include"
+    # - "-I/Applications/ArmGNUToolchain/14.2.rel1/arm-none-eabi/arm-none-eabi/include/c++/14.2.1"
+
+Index:
+  Background: Build
+  StandardLibrary: Yes
+
+InlayHints:
+  BlockEnd: false
+  Designators: false
+  Enabled: true
+  ParameterNames: true
+  DeducedTypes: true
+  TypeNameLimit: 24
+
+Hover:
+  ShowAKA: true

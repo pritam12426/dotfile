@@ -1,0 +1,22 @@
+CompileFlags:
+  CompilationDatabase: build-arm64
+  Compiler: clang++
+  Add:
+    - "-std=c++20"
+    - "-pedantic"
+    - "-Wall"
+
+Index:
+  Background: Build
+  StandardLibrary: Yes
+
+InlayHints:
+  BlockEnd: false
+  Designators: false
+  Enabled: true
+  ParameterNames: true
+  DeducedTypes: true
+  TypeNameLimit: 24
+
+Hover:
+  ShowAKA: true
