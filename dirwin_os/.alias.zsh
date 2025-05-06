@@ -104,7 +104,7 @@ function _make_() {
 function doc() {
     local docDir="$HOME/Documents/html/"
 
-    local doc=$(find $docDir -d 1 -type l | fzf)
+    local doc=$(find $docDir -d 1 | fzf)
     open "file://$doc/index.html"
 
 }

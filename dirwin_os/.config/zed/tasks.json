@@ -9,47 +9,10 @@
 		"hide": "always",
 		"shell": "system"
 	},
-
 	{
 		"label": "Run Current file",
 		"command": "rr $ZED_FILE",
 		"show_command": false,
 		"shell": "system"
-	},
-
-	{
-		"label": "Java :: Gradle: build",
-		"command": "./gradlew",
-		"args": [
-			"build"
-		],
-		"env": {},
-		"use_new_terminal": false,
-		"allow_concurrent_runs": false,
-		"reveal": "always"
-	},
-
-	{
-		"label": "Java :: Gradle: run",
-		"command": "./gradlew",
-		"args": [
-			"run"
-		],
-		"env": {},
-		"use_new_terminal": false,
-		"allow_concurrent_runs": false,
-		"reveal": "always"
-	},
-
-	{
-		"label": "Java :: Gradle: clean",
-		"command": "./gradlew",
-		"args": [
-			"clean"
-		],
-		"env": {},
-		"use_new_terminal": false,
-		"allow_concurrent_runs": false,
-		"reveal": "always"
-	},
+	}
 ]

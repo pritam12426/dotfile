@@ -11,10 +11,9 @@ set(ENV{PICO_SDK_PATH} "$ENV{HOME}/Developer/git_repositorys/pico/pico-sdk-2.1.1
 set(FREERTOS_KERNEL_PATH "$ENV{HOME}/Developer/git_repositorys/pico/FreeRTOS-Kernel-rp2040")
 set(ENV{PATH} "$ENV{PATH}:${ArmGNUToolChain}")
 
-# Import the Pico SDK CMake functions
+# Import the Pico SDK and FREE rtos CMake functions
 include("$ENV{PICO_SDK_PATH}/external/pico_sdk_import.cmake")
-include("${FREERTOS_KERNEL_PATH}/portable/ThirdParty/GCC/RP2040/FreeRTOS_Kernel_import.cmake")
-
+include("${FREERTOS_KERNEL_PATH}/${FREERTOS_KERNEL_RP2040_RELATIVE_PATH}/FreeRTOS_Kernel_import.cmake")
 
 # Project declaration
 project(
