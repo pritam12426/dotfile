@@ -41,8 +41,8 @@ vim.opt.listchars = {
 }
 
 -- Theme
-vim.cmd("colorscheme habamax")
--- vim.cmd("colorscheme vim")
+-- vim.cmd("colorscheme habamax")
+vim.cmd("colorscheme vim")
 -- vim.cmd("colorscheme murphy")
 
 -- Shortcut keys

@@ -66,8 +66,10 @@
 	"hard_tabs": true,
 	"auto_update": false,
 	"autosave": "on_focus_change",
-	"buffer_font_family": "PT Mono",
+	"buffer_font_family": "Iosevka",
+	// "buffer_font_family": "PT Mono",
 	// "buffer_font_family": "JetBrains Mono",
+	// "buffer_font_family": "Cascadia Mono",
 	// "buffer_font_family": "Monaspace Argon",
 	// "buffer_font_family": "Monaspace Neon",
 
@@ -86,7 +88,7 @@
 		"JetBrainsMono Nerd Font Mono"
 	],
 
-	"buffer_font_size": 16,
+	"buffer_font_size": 26,
 	"buffer_font_weight": 600,
 	"format_on_save": "off",
 	"hour_format": "hour12",
@@ -338,12 +340,11 @@
 		"clangd": {
 			"binary": {
 				"arguments": [
-					// "--header-insertion=never",
-					// "--function-arg-placeholders=0",
-					// "--clang-tidy",
-					// "--background-index"
-					// "--compile-commands-dir=build-arm64",
-					// "--all-scopes-completion"
+					"--header-insertion=never",
+					"--function-arg-placeholders=0",
+					"--clang-tidy",
+					// "--background-index",
+					"--all-scopes-completion"
 				]
 			},
 
@@ -381,6 +382,7 @@
 		},
 
 		"line_height": "standard",
+		"font_size": 24,
 		"button": false
 	},
 
