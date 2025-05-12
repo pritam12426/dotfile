@@ -24,6 +24,7 @@ target_link_libraries("${TEST_BIN_NAME}" PRIVATE
 
 target_include_directories(${TEST_BIN_NAME} PRIVATE
   "${PROJECT_SOURCE_DIR}/src"
+  "${PROJECT_BINARY_DIR}"
   "${CMAKE_CURRENT_LIST_DIR}"
   "${CMAKE_CURRENT_BINARY_DIR}"
 )

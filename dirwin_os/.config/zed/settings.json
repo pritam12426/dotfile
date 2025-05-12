@@ -48,7 +48,8 @@
 	"outline_panel": {
 		"scrollbar": {
 			"show": "system"
-		}
+		},
+
 	},
 
 	"prettier": {
@@ -139,7 +140,7 @@
 		"C++": {
 			"show_edit_predictions": false,
 			"show_wrap_guides": true,
-			// "soft_wrap": "preferred_line_length",
+			"soft_wrap": "preferred_line_length",
 			"formatter": {
 				"external": {
 					"command": "/Library/Developer/CommandLineTools/usr/bin/clang-format",
@@ -153,7 +154,7 @@
 
 		"C": {
 			"show_wrap_guides": true,
-			// "soft_wrap": "preferred_line_length",
+			"soft_wrap": "preferred_line_length",
 			"formatter": {
 				"external": {
 					"command": "/Library/Developer/CommandLineTools/usr/bin/clang-format",
@@ -167,7 +168,7 @@
 
 		"Java": {
 			"show_wrap_guides": true,
-			// "soft_wrap": "preferred_line_length",
+			"soft_wrap": "preferred_line_length",
 			"formatter": {
 				"external": {
 					"command": "/Library/Developer/CommandLineTools/usr/bin/clang-format",
@@ -408,7 +409,8 @@
 		"auto_fold_dirs": false,
 		"scrollbar": {
 			"show": "system"
-		}
+		},
+		"default_width": 100
 	},
 
 	"collaboration_panel": {

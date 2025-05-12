@@ -83,17 +83,25 @@ pico_add_extra_outputs(${MAIN_BINARY})
 add_custom_target(flash
   COMMAND printf "Looking for Pico mass storage device...\n"
   COMMAND picotool load -f ${CMAKE_BINARY_DIR}/${MAIN_BINARY}.uf2
+  DEPENDS ${MAIN_BINARY}
   COMMENT "Flashing UF2 to Raspberry Pi Pico :: ${MAIN_BINARY}.uf2"
 )
 
 add_custom_target(memmap
   COMMAND ${ArmGNUToolChain}/arm-none-eabi-nm -S --size-sort -t d ${CMAKE_BINARY_DIR}/${MAIN_BINARY}.elf > ${CMAKE_BINARY_DIR}/memmap.txt
   COMMAND less -Rir ${CMAKE_BINARY_DIR}/memmap.txt
+  DEPENDS ${MAIN_BINARY}
   COMMENT "Generating memory map report to memmap.txt"
 )
 
 add_custom_target(disasm
   COMMAND ${ArmGNUToolChain}/arm-none-eabi-objdump -d ${CMAKE_BINARY_DIR}/${MAIN_BINARY}.elf > ${CMAKE_BINARY_DIR}/disasm.S
   COMMAND bat ${CMAKE_BINARY_DIR}/disasm.S
+  DEPENDS ${MAIN_BINARY}
   COMMENT "Generating disassembly to disasm.S"
+)
+
+add_custom_target(smonitor
+  COMMAND screen /dev/tty.usbmodem* 115200
+  COMMENT "Connecting to serial monitor of pico"
 )

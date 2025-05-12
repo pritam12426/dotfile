@@ -9,7 +9,6 @@ project(
 )
 
 configure_file(${CMAKE_CURRENT_LIST_DIR}/src/CmakeConfig.h.in ${CMAKE_CURRENT_BINARY_DIR}/CmakeConfig.h)
-# https://stackoverflow.com/questions/30027016/cannot-export-cmake-project-version-major-because-it-equals-zero
 
 #### C++ Standard Settings ####
 set(CMAKE_CXX_STANDARD 20)
@@ -34,10 +33,10 @@ add_executable(${MAIN_BINARY}
 )
 
 # This will add -rpath to the bianry. Note this template will only work with pkg-config
-set_target_properties(${MAIN_BINARY} PROPERTIES
-  INSTALL_RPATH "${LIBXML_LIBRARY_DIRS}"
-  BUILD_WITH_INSTALL_RPATH TRUE
-)
+# set_target_properties(${MAIN_BINARY} PROPERTIES
+#   INSTALL_RPATH "${LIBXML_LIBRARY_DIRS}"
+#   BUILD_WITH_INSTALL_RPATH TRUE
+# )
 
 target_link_libraries(${MAIN_BINARY} PRIVATE
   # ${LIBXML_LDFLAGS}
@@ -45,13 +44,12 @@ target_link_libraries(${MAIN_BINARY} PRIVATE
 
 target_include_directories(${MAIN_BINARY} PRIVATE
   ${PROJECT_SOURCE_DIR}/src
-  ${CMAKE_CURRENT_BINARY_DIR}
+  ${PROJECT_BINARY_DIR}
   # ${LIBXML_INCLUDE_DIRS}
 )
 
-add_custom_target(
-  run
-  COMMAND ./${MAIN_BINARY}
+add_custom_target(run
+  COMMAND ${MAIN_BINARY}
   COMMENT "Runing ${MAIN_BINARY}"
   DEPENDS ${MAIN_BINARY}
   WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
@@ -59,7 +57,7 @@ add_custom_target(
 
 #### Setting the conditional variable ####
 option(BUILD_TESTING "Enable unit testing" OFF)
-option(BUILD_DOC "Generate doc for the project" OFF)
+option(BUILD_DOC     "Generate doc for the project" OFF)
 
 #### Unit Tests ####
 if(BUILD_TESTING)

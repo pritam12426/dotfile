@@ -9,7 +9,6 @@ project(
 )
 
 configure_file(${CMAKE_CURRENT_LIST_DIR}/src/CmakeConfig.h.in ${CMAKE_CURRENT_BINARY_DIR}/CmakeConfig.h)
-# https://stackoverflow.com/questions/30027016/cannot-export-cmake-project-version-major-because-it-equals-zero
 
 #### C++ Standard Settings ####
 set(CMAKE_CXX_STANDARD 17)
@@ -49,9 +48,8 @@ target_include_directories(${MAIN_BINARY} PRIVATE
   # ${LIBXML_INCLUDE_DIRS}
 )
 
-add_custom_target(
-  run
-  COMMAND ./${MAIN_BINARY}
+add_custom_target( run
+  COMMAND ${MAIN_BINARY}
   COMMENT "Runing ${MAIN_BINARY}"
   DEPENDS ${MAIN_BINARY}
   WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
