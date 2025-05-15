@@ -19,8 +19,8 @@ find_dirs() {
 }
 
 find /usr/local/big_library -type f -name '*.pc'     -exec ln -sf {} /usr/local/lib/pkgconfig/ \;
- find /usr/local/big_library -d 3 -path '*/include/*' -exec ln -sf {} /usr/local/include/ \;
-find /usr/local/big_library -type f -name '*.dylib'  -exec ln -sf {} /usr/local/lib/ \;
+find /usr/local/big_library -d 3 -path '*/include/*' -exec ln -sf {} /usr/local/include/ \;
+find /usr/local/big_library -d 3 -type f -path '*/lib/*'  -exec ln -sf {} /usr/local/lib/ \;
 find /usr/local/big_library -type f -name '*.cmake'  -exec ln -sf {} /usr/local/lib/cmake/ \;
 find /usr/local/big_library -type f -path "*/bin/*"  -exec ln -sf {} /usr/local/big_library-bin/ \;
 

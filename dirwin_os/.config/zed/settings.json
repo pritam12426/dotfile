@@ -67,10 +67,10 @@
 	"hard_tabs": true,
 	"auto_update": false,
 	"autosave": "on_focus_change",
-	"buffer_font_family": "Iosevka",
+	// "buffer_font_family": "Iosevka",
 	// "buffer_font_family": "PT Mono",
 	// "buffer_font_family": "JetBrains Mono",
-	// "buffer_font_family": "Cascadia Mono",
+	"buffer_font_family": "Cascadia Mono",
 	// "buffer_font_family": "Monaspace Argon",
 	// "buffer_font_family": "Monaspace Neon",
 
@@ -101,7 +101,7 @@
 	"tabs": {
 		"file_icons": true,
 		"git_status": true,
-		"show_diagnostics": "all",
+		"show_diagnostics": "all"
 	},
 
 	"theme": {
@@ -226,27 +226,17 @@
 			],
 
 			"hard_tabs": true,
-			"formatter": {
-				"language_server": {
-					"name": "ruff"
-				}
-			},
 
-			"format_on_save": {
-				"language_server": {
-					"name": "ruff"
+			"formatter": {
+				"external": {
+					"command": "ruff",
+					"arguments": [
+						"format",
+						"--stdin-filename",
+						"{buffer_path}"
+					]
 				}
 			}
-			// "formatter": {
-			// 	"external": {
-			// 		"command": "ruff",
-			// 		"arguments": [
-			// 			"format",
-			// 			"--stdin-filename",
-			// 			"{buffer_path}"
-			// 		]
-			// 	}
-			// }
 		},
 
 		"YAML": {

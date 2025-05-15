@@ -38,7 +38,7 @@ case "$file" in
 	# run_command+="-G Ninja "
 
 	if [ ! -d "$BUILD_DIR" ]; then
-		run_command+="-DCMAKE_BUILD_TYPE=Debug -DBUILD_SHARED_LIBS=ON -DCMAKE_OSX_ARCHITECTURES=arm64 -DCMAKE_INSTALL_PREFIX='$LIBS_DIR/$LIB' "
+		run_command+="-DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON -DCMAKE_OSX_ARCHITECTURES=arm64 -DCMAKE_INSTALL_PREFIX='$LIBS_DIR/$LIB' "
 	fi
 
 	;;

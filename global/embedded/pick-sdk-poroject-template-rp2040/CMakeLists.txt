@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 4.0)
 
 # About the pi-pico board
 set(PICO_BOARD pico_w)
-# set(PICO_PLATFORM RP2040)
+set(PICO_PLATFORM rp2040)
 
 # Manually extend PATH (needed only if toolchain isn't globally available)
 set(ArmGNUToolChain "/Applications/ArmGNUToolchain/14.2.rel1/arm-none-eabi/bin")
