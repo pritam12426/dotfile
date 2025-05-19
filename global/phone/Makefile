@@ -100,7 +100,7 @@ cc:
 
 # Record Screen with mic
 ccn:
-	${SCRCPY}  --no-window  --audio-source=mic -r "${FILE_PATH}.mp4" --no-audio-playback
+	${SCRCPY} --no-window  --audio-source=mic -r "${FILE_PATH}.mp4" --no-audio-playback
 
 # Record only audio
 ci:
