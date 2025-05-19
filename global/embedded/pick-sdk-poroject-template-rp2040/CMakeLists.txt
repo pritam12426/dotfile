@@ -71,6 +71,8 @@ target_include_directories(${MAIN_BINARY} PRIVATE
   ${CMAKE_CURRENT_BINARY_DIR}  # for the generated CmakeConfig.h
 )
 
+pico_set_binary_versio(${MAIN_BINARY} ${PROJECT_VERSION})
+
 ##### USB / UART output settings #####
 pico_enable_stdio_usb(${MAIN_BINARY} 1)   # Enable USB output
 pico_enable_stdio_uart(${MAIN_BINARY} 1)  # Enable UART output
