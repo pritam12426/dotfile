@@ -84,6 +84,12 @@ target_include_directories(${MAIN_BINARY} PRIVATE
 pico_enable_stdio_usb(${MAIN_BINARY} 1)   # Enable USB output
 pico_enable_stdio_uart(${MAIN_BINARY} 1)  # Enable UART output
 
+##### Adding metadate to the elf binry #####
+pico_set_program_name(${MAIN_BINARY} ${PROJECT_NAME})
+pico_set_program_url(${MAIN_BINARY} ${PROJECT_HOMEPAGE_URL})
+pico_set_program_version(${MAIN_BINARY} "${PROJECT_VERSION}")
+pico_set_program_description(${MAIN_BINARY} ${PROJECT_DESCRIPTION})
+
 ##### Generate UF2 and other output formats #####
 pico_add_extra_outputs(${MAIN_BINARY})
 
