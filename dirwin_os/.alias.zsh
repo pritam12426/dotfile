@@ -208,7 +208,6 @@ function clanginit {
 
 	echo $COMMAND | tr ';' '\n'
 	eval $COMMAND
-    echo ".clangd" >> .gitignore
 }
 
 function create_exec_symlinks() {
