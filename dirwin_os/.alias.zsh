@@ -16,7 +16,7 @@ NNN_PLUG+='e:!|exiftool "$nnn";'
 NNN_PLUG+='p:!ffplay "$nnn"*;'
 NNN_PLUG+='b:cdpath;'
 NNN_PLUG+='i:fzcd;'
-NNN_PLUG+='q:!qlmanage -p "$nnn"'
+NNN_PLUG+='q:!qlmanage -p "$nnn"*'
 export NNN_PLUG
 
 export NNN_COLORS="5236"
