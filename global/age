@@ -35,9 +35,22 @@ CDS:   20   - 24
 TGC:   20   - 27 with 8+ GPA (09 - 12 POST)
 Vayu:  17.5 - 21
 
-ISRO:  21   - 35 with 8+ GPA (30 - 40 POST)
-BARC:  21   - 26 with 8+ GPA (20 - 30 POST)
-SO IT: 20   - 30 with 8+
+
+https://www.youtube.com/watch?v=glpxKXBvBtc
+
+BARC:  21   - 26 with 8+ GPA (20 - 30 POST) -> (with gate, and BARC CBT)
+ISRO:  21   - 35 with 8+ GPA (30 - 40 POST) -> (with gate)
+DRDO:  21   - 26 with 8+ GPA (20 - 30 POST) -> (with gate <Not fix> , and DAT CBT, CEPTAM)
+BEL:   21   - 26 with 8+ GPA (20 - 30 POST) -> (with gate <Not fix> , and BEL)
+NIC:   21   - 26 with 8+ GPA (500 - 700 post) -> (with NIC :: Not every year)
+NPTCL: 21   - 26 with 8+ GPA (500 - 700 post) -> (with GATE for the scientist post :: NPCIL for non scientist post)
+
+SSC CGL:   21   - 26 with 8+ GPA (20 - 30 POST) -> (with NIC)
+AIT:       21   - 26 with 8+ GPA (20 - 30 POST) -> (with AIR not with gate)
+RBI IT:    21   - 26 with 8+ GPA (20 - 30 POST) -> (with NIC)
+RRB IT:    21   - 26 with 8+ GPA (20 - 30 POST) -> (with NIC)
+DDA:       21   - 26 with 8+ GPA (20 - 30 POST) -> (with NIC)
+SO IT:     20   - 30 with 8+
 """
 
 parser = ArgumentParser(description="Print age details and optional data string")

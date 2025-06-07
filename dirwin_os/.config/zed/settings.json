@@ -67,10 +67,10 @@
 	"hard_tabs": true,
 	"auto_update": false,
 	"autosave": "on_focus_change",
-	// "buffer_font_family": "Iosevka",
+	"buffer_font_family": "Iosevka",
 	// "buffer_font_family": "PT Mono",
 	// "buffer_font_family": "JetBrains Mono",
-	"buffer_font_family": "Cascadia Mono",
+	// "buffer_font_family": "Cascadia Mono",
 	// "buffer_font_family": "Monaspace Argon",
 	// "buffer_font_family": "Monaspace Neon",
 
