@@ -92,7 +92,7 @@ alias exportlib="source $LIBS_DIR/env"
 alias exportembdlib="source /Applications/ArmGNUToolchain/embedded-ENV"
 alias ninjalist="command ninja -t targets "
 alias chownroot="command sudo chown -R root:wheel"
-# alias cmake="command cmake -G Ninja CXXFLAGS='-fdiagnostics-color=always  -fcolor-diagnostics  ' "
+alias bookmark="open 'http://localhost:8080/'; shiori server"
 
 function _make_() {
 	# command make -qp | awk -F':' '/^[a-zA-Z0-9][^$#\/\t=]*:([^=]|$)/ {split($1,A,/ /);for(i in A)print A[i]}' | command sort -u
