@@ -8,7 +8,8 @@
 export SCRCPY     = scrcpy --print-fps
 export ADB        = adb
 export OPT        = --no-audio --no-control --max-fps=60
-export CAM_OPT    = --video-source=camera --no-audio-playback --capture-orientation 270
+# export CAM_OPT    = --video-source=camera --no-audio-playback --capture-orientation 270
+export CAM_OPT    = --video-source=camera --no-audio-playback
 
 export MODEL     := $(shell adb shell getprop ro.product.model | tr ' ' '_')
 export SIZE       = $(shell adb shell dumpsys battery | grep 'level' | awk '{print $$2}')

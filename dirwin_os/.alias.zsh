@@ -71,12 +71,11 @@ alias eza="$EDITOR ~/.alias.zsh"
 #  SYSTEM ALIAS
 alias o="command open ."
 alias todo="command $EDITOR ~/.TODO.md" 
-alias wget="command wget --no-check-certificate -c "
 alias sudo="command sudo -E"
 alias c.="command code ."
 alias z.="command zed ."
 alias live-server="command live-server -o"
-alias quicklook="command qlmanage -p"
+# alias quicklook="command qlmanage -p"
 alias tree="command tree -atsh "
 # alias tre="command tre -ae "
 alias which="command which -a "
@@ -93,6 +92,10 @@ alias exportembdlib="source /Applications/ArmGNUToolchain/embedded-ENV"
 alias ninjalist="command ninja -t targets "
 alias chownroot="command sudo chown -R root:wheel"
 alias bookmark="open 'http://localhost:8080/'; shiori server"
+
+function wget() {
+    command wget --no-check-certificate -c "$(pbpaste)"
+}
 
 function _make_() {
 	# command make -qp | awk -F':' '/^[a-zA-Z0-9][^$#\/\t=]*:([^=]|$)/ {split($1,A,/ /);for(i in A)print A[i]}' | command sort -u
