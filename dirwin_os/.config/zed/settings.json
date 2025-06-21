@@ -374,7 +374,7 @@
 
 		"line_height": "standard",
 		"font_size": 24,
-		"button": false
+		// "button": false
 	},
 
 	"experimental.theme_overrides": {
