@@ -13,7 +13,7 @@ export LSCOLORS=ExFxBxDxCxegedabagacad
 #  NNN FILE MANAGER
 NNN_PLUG='r:-!rrr "$nnn"*;'
 NNN_PLUG+='e:!|exiftool "$nnn";'
-NNN_PLUG+='p:!ffplay "$nnn"*;'
+NNN_PLUG+='p:!ffplay -loop -1 -sn -loglevel level+warning "$nnn"*;'
 NNN_PLUG+='b:cdpath;'
 NNN_PLUG+='i:fzcd;'
 NNN_PLUG+='q:!qlmanage -p "$nnn"*'
@@ -134,7 +134,7 @@ alias exfcpy="exf -TagsFromFile"
 
 #  YT-DLP
 # alias yt-dlpx="command yt-dlp -o '%(title)s.%(ext)s' -f 'best/bestvideo*+bestaudio*'"
-alias yt-dlpp="command yt-dlp -o '~/Downloads/yt_dlp/%(extractor_key)s/%(playlist)s-%(uploader)s/%(playlist_index)s-%(title)s.%(ext)s'"
+alias yt-dlpp="command yt-dlp -o '~/Downloads/yt_dlp/%(extractor_key)s/%(playlist)s-%(uploader)s/%(playlist_index)s-%(title)s.%(ext)s' --yes-playlist"
 
 function yt-dlpx() {
 	command yt-dlp -o '%(title)s.%(ext)s' -f 'best/bestvideo*+bestaudio*' $@ "$(pbpaste)"
