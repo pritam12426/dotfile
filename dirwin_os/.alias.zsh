@@ -70,7 +70,7 @@ alias eza="$EDITOR ~/.alias.zsh"
 
 #  SYSTEM ALIAS
 alias o="command open ."
-alias todo="command $EDITOR ~/.TODO.md" 
+alias todo="command $EDITOR ~/.TODO.md"
 alias sudo="command sudo -E"
 alias c.="command code ."
 alias z.="command zed ."
@@ -92,9 +92,10 @@ alias exportembdlib="source /Applications/ArmGNUToolchain/embedded-ENV"
 alias ninjalist="command ninja -t targets "
 alias chownroot="command sudo chown -R root:wheel"
 alias bookmark="open 'http://localhost:8080/'; shiori server"
+alias wget="command wget --no-check-certificate -c"
 
-function wget() {
-    command wget --no-check-certificate -c "$(pbpaste)"
+function ww() {
+	command wget --no-check-certificate -c "$(pbpaste)"
 }
 
 function _make_() {
