@@ -1,3 +1,4 @@
+# gpg -c
 # this will fix thie Apple could not verify “libsfml-audio.3.0.0.dylib” is free of malware that may harm your Mac or compromise your privacy
 # sudo xattr -r -d com.apple.quarantine  <file>
 # sudo xattr -rd com.apple.quarantine <file>
