@@ -194,8 +194,8 @@ function clanginit {
 
 	case "$lower_input" in
 	c)
-		COMMAND="   cp -rp  $DOT_FILE/../global/c-cpp-template/c/* ."
-		COMMAND+="; cp -rp  $DOT_FILE/../global/c-cpp-template/c/.* ."
+		COMMAND="   cp -rp  $DOT_FILE/global/c-cpp-template/* ."
+		COMMAND+="; cp -rp  $DOT_FILE/global/c-cpp-template/c/.* ."
 		;;
 	c++)
 		COMMAND="   cp -rp  $DOT_FILE/../global/c-cpp-template/c++/* ."
