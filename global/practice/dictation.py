@@ -18,8 +18,8 @@ print(f"{RED}{warning}{RESET}")
 os.system(f"{SAY} \"{warning}\"")
 time.sleep(0.2)
 
-FILE: str = ".today.txt"
-# FILE: str = ".vocabularh"
+# FILE: str = ".today.txt"
+FILE: str = ".vocabularh"
 
 # Load words
 try:

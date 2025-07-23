@@ -132,8 +132,11 @@ alias exfcpy="exf -TagsFromFile"
 
 
 #  YT-DLP
-# alias yt-dlpx="command yt-dlp -o '%(title)s.%(ext)s' -f 'best/bestvideo*+bestaudio*'"
 alias yt-dlpp="command yt-dlp -o '~/Downloads/yt_dlp/%(extractor_key)s/%(playlist)s-%(uploader)s/%(playlist_index)s-%(title)s.%(ext)s' --yes-playlist"
+
+function yt-dlpxx() {
+	command yt-dlp -o '~/Downloads/yt_dlp/.dlpxx/%(extractor_key)s-%(title)s.%(ext)s' -f 'best/bestvideo*+bestaudio*' $@ "$(pbpaste)"
+}
 
 function yt-dlpx() {
 	command yt-dlp -o '%(title)s.%(ext)s' -f 'best/bestvideo*+bestaudio*' $@ "$(pbpaste)"
@@ -229,11 +232,10 @@ function create_exec_symlinks() {
 	done
 }
 
-
-function delete_broken_symlinks() {
-	find . -d 1 -xtype l -exec rm -v {} +
+function gg() {
+    echo "$(pbpaste)"
+    gallery-dl --cookies-from-browser firefox $@ "$(pbpaste)"
 }
-
 
 #  FOR COMMIT THE COMMIT WITH GPG
 export GPG_TTY=$(tty)
