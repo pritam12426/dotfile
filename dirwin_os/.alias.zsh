@@ -13,7 +13,9 @@ export LSCOLORS=ExFxBxDxCxegedabagacad
 #  NNN FILE MANAGER
 NNN_PLUG='r:-!rrr "$nnn"*;'
 NNN_PLUG+='e:!|exiftool "$nnn";'
-NNN_PLUG+='p:!ffplay -loop -1 -sn -loglevel level+warning "$nnn"*;'
+NNN_PLUG+='o:!|otool -L "$nnn";'
+# NNN_PLUG+='p:!nohup ffplay -loop -1 -sn -loglevel level+warning -seek_interval 5 "$nnn" > /dev/null 2>&1 & *;'
+NNN_PLUG+='p:!ffplay -loop -1 -sn -loglevel level+warning -seek_interval 5 "$nnn" *;'
 NNN_PLUG+='b:cdpath;'
 NNN_PLUG+='i:fzcd;'
 NNN_PLUG+='q:!qlmanage -p "$nnn"*'

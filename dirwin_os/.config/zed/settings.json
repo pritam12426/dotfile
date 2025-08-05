@@ -227,7 +227,7 @@
 				"ruff"
 			],
 
-			"hard_tabs": true,
+			"hard_tabs": false,
 
 			"formatter": {
 				"external": {

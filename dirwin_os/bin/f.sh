@@ -52,10 +52,10 @@ title_opction=""
 		title_opction+="x"
 		title_opction+=$(ffprobe -v error -select_streams v:0 -show_entries stream=height -of csv=s=x:p=0 "$sk_passed_file")
 		title_opction+="p' • '"
-		fps=$(ffprobe -v error -select_streams v:0 -show_entries stream=r_frame_rate -of default=noprint_wrappers=1:nokey=1 "$sk_passed_file") 
+		fps=$(ffprobe -v error -select_streams v:0 -show_entries stream=r_frame_rate -of default=noprint_wrappers=1:nokey=1 "$sk_passed_file")
 		title_opction+=$(echo "scale=4; $fps" | bc | xargs printf "%.0f" )
 		title_opction+="fps'"
-		
+
 		command+="ffplay -nostats -loop -1 -sn -seek_interval 5 -window_title"
 	fi
 
