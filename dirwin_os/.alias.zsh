@@ -152,6 +152,7 @@ function insta() {
 	command yt-dlp --ignore-config  --config-locations '~/.config/yt-dlp/instagram.txt' $@ "$(pbpaste)"
 }
 
+
 export LC_ALL="en_US.UTF-8"
 #  NNN FILE MANGER CD ON QUIT
 function n () {
