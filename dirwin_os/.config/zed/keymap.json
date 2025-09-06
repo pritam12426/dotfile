@@ -1,0 +1,46 @@
+[
+	{
+		"context": "Editor",
+		"bindings": {
+			"cmd-i": "tab_switcher::Toggle"
+		}
+	},
+
+	{
+		// "context": "Editor",
+		"bindings": {
+			"cmd-shift-b": [
+				"task::Spawn",
+				{
+					"task_name": "Build Current Project",
+					"reveal_target": "center"
+				}
+			]
+		}
+	},
+
+	{
+		// "context": "Terminal && Workspace",
+		"bindings": {
+			"cmd-k": [
+				"task::Spawn",
+				{
+					"task_name": "Run Current file"
+
+				}
+			]
+		}
+	},
+
+	{
+		// "context": "Editor && Termil ",
+		"bindings": {
+			"cmd-shift-j": [
+				"task::Spawn",
+				{
+					"task_name": "External Terminal"
+				}
+			]
+		}
+	}
+]

@@ -1,0 +1,473 @@
+{
+	"agent": {
+		"play_sound_when_agent_done": true,
+		"always_allow_tool_actions": true,
+		"default_model": {
+			"provider": "copilot_chat",
+			"model": "gpt-4o"
+		},
+		"version": "2"
+	},
+
+	"hide_mouse": "on_typing_and_movement",
+
+	"show_edit_predictions": false,
+	"use_system_path_prompts": false,
+	"auto_signature_help": true,
+	"scroll_beyond_last_line": "vertical_scroll_margin",
+
+	"auto_install_extensions": {
+		"html": false,
+		"toml": true,
+		"java": true,
+		"git-firefly": true,
+		"sql": true,
+		"make": true,
+		"vscode-dark-modern": true,
+		"basher": true,
+		"neocmake": true
+	},
+
+	"auto_update_extensions": {
+		"html": false,
+		"toml": true,
+		"java": true,
+		"git-firefly": true,
+		"sql": true,
+		"make": true,
+		"vscode-dark-modern": true,
+		"basher": true,
+		"neocmake": true
+	},
+
+	"search": {
+		"include_ignored": true
+	},
+
+	"seed_search_query_from_cursor": "selection",
+	"use_smartcase_search": true,
+
+	"outline_panel": {
+		"scrollbar": {
+			"show": "system"
+		},
+
+	},
+
+	"prettier": {
+		"allowed": false
+	},
+
+	"vim_mode": true,
+	"cursor_blink": false,
+
+	// "soft_wrap": "editor_width",
+	"show_whitespaces": "all",
+	"preferred_line_length": 83,
+	"tab_size": 4,
+	"base_keymap": "VSCode",
+	"hard_tabs": true,
+	"auto_update": false,
+	"autosave": "on_focus_change",
+	"buffer_font_family": "Iosevka",
+	// "buffer_font_family": "PT Mono",
+	// "buffer_font_family": "JetBrains Mono",
+	// "buffer_font_family": "Cascadia Mono",
+	// "buffer_font_family": "Monaspace Argon",
+	// "buffer_font_family": "Monaspace Neon",
+
+
+	"buffer_font_fallbacks": [
+		"JetBrainsMono Nerd Font Mono"
+	],
+
+	"ui_font_family": "Monaspace Neon",
+	// "ui_font_family": "Monaspace Krypton",
+	// "ui_font_family": "IBM Plex Sans",
+	// "ui_font_family": "Cascadia Mono",
+	// "ui_font_family": "JetBrains Mono",
+
+	"ui_font_fallbacks": [
+		"JetBrainsMono Nerd Font Mono"
+	],
+
+	"buffer_font_size": 26,
+	"buffer_font_weight": 600,
+	"format_on_save": "off",
+	"hour_format": "hour12",
+	"always_treat_brackets_as_autoclosed": true,
+	"file_icons": true,
+	"ui_font_size": 17,
+	"ui_font_weight": 1000,
+
+	"tabs": {
+		"file_icons": true,
+		"git_status": true,
+		"show_diagnostics": "all"
+	},
+
+	"theme": {
+		"mode": "system",
+		"light": "One Light",
+		"dark": "VSCode Dark Modern"
+	},
+
+	"git": {
+		"git_gutter": "tracked_files",
+		"inline_blame": {
+			"enabled": true,
+			"delay_ms": 500
+		}
+	},
+
+	"scrollbar": {
+		"show": "auto",
+		"cursors": true
+	},
+
+	"indent_guides": {
+		"line_width": 2,
+		"active_line_width": 5,
+		"coloring": "indent_aware",
+		"background_coloring": "disabled"
+	},
+
+	"inlay_hints": {
+		"enabled": true,
+		"edit_debounce_ms": 100,
+		"scroll_debounce_ms": 20
+	},
+
+	"languages": {
+		"C++": {
+			"show_edit_predictions": false,
+			"show_wrap_guides": true,
+			"soft_wrap": "preferred_line_length",
+			"formatter": {
+				"external": {
+					"command": "/Library/Developer/CommandLineTools/usr/bin/clang-format",
+					"arguments": [
+						"--style=file:/Users/pritam/Developer/git_repositorys/my_dotfile/global/c-cpp-template/clang-format",
+						"--assume-filename={buffer_path}"
+					]
+				}
+			}
+		},
+
+		"C": {
+			"show_wrap_guides": true,
+			"soft_wrap": "preferred_line_length",
+			"formatter": {
+				"external": {
+					"command": "/Library/Developer/CommandLineTools/usr/bin/clang-format",
+					"arguments": [
+						"--style=file:/Users/pritam/Developer/git_repositorys/my_dotfile/global/c-cpp-template/clang-format",
+						"--assume-filename={buffer_path}"
+					]
+				}
+			}
+		},
+
+		"Java": {
+			"show_wrap_guides": true,
+			"soft_wrap": "preferred_line_length",
+			"formatter": {
+				"external": {
+					"command": "/Library/Developer/CommandLineTools/usr/bin/clang-format",
+					"arguments": [
+						"--style=file:/Users/pritam/Developer/git_repositorys/my_dotfile/global/c-cpp-template/clang-format",
+						"--assume-filename={buffer_path}"
+					]
+				}
+			}
+		},
+
+		"Swift": {
+			"formatter": {
+				"external": {
+					"command": "/Library/Developer/CommandLineTools/usr/bin/swift-format",
+					"arguments": [
+						"--configuration=/Users/pritam/Developer/git_repositorys/my_dotfile/global/vscode/swift-format",
+						"--assume-filename={buffer_path}"
+					]
+				}
+			}
+		},
+
+		"JSON": {
+			"formatter": {
+				"external": {
+					"command": "/Library/Developer/CommandLineTools/usr/bin/clang-format",
+					"arguments": [
+						"--style=file:/Users/pritam/Developer/git_repositorys/my_dotfile/global/c-cpp-template/clang-format",
+						"--assume-filename={buffer_path}"
+					]
+				}
+			}
+		},
+
+		"JSONC": {
+			"formatter": {
+				"external": {
+					"command": "/Library/Developer/CommandLineTools/usr/bin/clang-format",
+					"arguments": [
+						"--style=file:/Users/pritam/Developer/git_repositorys/my_dotfile/global/c-cpp-template/clang-format",
+						"--assume-filename={buffer_path}"
+					]
+				}
+			}
+		},
+
+		"Python": {
+			// "soft_wrap": "preferred_line_length",
+
+			"language_servers": [
+				"pyright",
+				"pylsp",
+				"ruff"
+			],
+
+			"hard_tabs": false,
+
+			"formatter": {
+				"external": {
+					"command": "ruff",
+					"arguments": [
+						"format",
+						"--stdin-filename",
+						"{buffer_path}"
+					]
+				}
+			}
+		},
+
+		"YAML": {
+			"hard_tabs": false,
+			"tab_size": 2
+		},
+
+		"Markdown": {
+			"enable_language_server": false,
+			"format_on_save": "off"
+		},
+
+		"Make": {
+			"enable_language_server": false,
+			"soft_wrap": "none",
+			"hard_tabs": true
+		},
+
+		"Rust": {
+			"show_edit_predictions": true,
+			"hard_tabs": true,
+			"soft_wrap": "preferred_line_length",
+			"formatter": "language_server"
+		},
+
+		"SQL": {
+			"prettier": null,
+			"auto_indent_on_paste": false,
+			"formatter": {
+				"external": {
+					"command": "/Users/pritam/.local/bin/sql-fmt",
+					"arguments": [
+						"{buffer_path}"
+					]
+				}
+			}
+		},
+
+		"CMake": {
+			"prettier": null,
+			"hard_tabs": false,
+			"tab_size": 2,
+			"soft_wrap": "none",
+			"formatter": {
+				"external": {
+					"command": "/Users/pritam/.local/bin/neocmakelsp-v0.8.22",
+					"arguments": [
+						"--format",
+						"{buffer_path}"
+					]
+				}
+			}
+		},
+
+		"TOML": {
+			"formatter": "language_server"
+		},
+
+		"Zig": {
+			"formatter": "language_server"
+		}
+	},
+
+	"lsp": {
+		"jdtls": {
+			"binary": {
+				"path": "/Users/pritam/.local/share/jdt-language-server-1.40/bin/jdtls",
+				"ignore_system_version": false
+			}
+		},
+
+		"ruff": {
+			"binary": {
+				"path": "/Users/pritam/.local/bin/ruff",
+				"ignore_system_version": false,
+				"arguments": [
+					"check"
+					// "server",
+					// "--verbose"
+				]
+			}
+		},
+
+		"gopls": {
+			"initialization_options": {},
+			"binary": {
+				"path": "/Users/pritam/go/bin/gopls",
+				"ignore_system_version": false
+			}
+		},
+
+		"clangd": {
+			"binary": {
+				"arguments": [
+					"--header-insertion=never",
+					"--function-arg-placeholders=0",
+					"--clang-tidy",
+					// "--background-index",
+					"--all-scopes-completion"
+				]
+			},
+
+			"initialization_options": {
+				"fallbackFlags": [
+					// "-std=c++20"
+				],
+				"clangdFileStatus": true,
+				"index": {
+					"background": true
+				}
+			}
+		},
+
+		"texlab": {
+			"settings": {
+				"texlab": {
+					"build": {
+						"onSave": true,
+						"forwardSearchAfter": true
+					},
+					"forwardSearch": {
+						"executable": "zathura",
+						"args": [
+							"--synctex-forward",
+							"%l:1:%f",
+							"-x",
+							"zed %%{input}:%%{line}",
+							"%p"
+						]
+					}
+				}
+			}
+		}
+	},
+
+	"telemetry": {
+		"diagnostics": false,
+		"metrics": false
+	},
+
+	"terminal": {
+		"env": {
+			"GIT_EDITOR": "zed --wait"
+		},
+
+		"blinking": "terminal_controlled",
+		"font_family": "Cascadia Mono",
+		"working_directory": "current_project_directory",
+		"font_fallbacks": [
+			"JetBrainsMono Nerd Font Mono"
+		],
+
+		"font_features": {
+			"calt": true
+		},
+
+		"line_height": "standard",
+		"font_size": 24,
+		// "button": false
+	},
+
+	"experimental.theme_overrides": {
+		"syntax": {
+			"comment": {
+				"font_style": "italic",
+				"font_weight": 400
+			}
+		}
+	},
+
+	"file_scan_exclusions": [
+		"**/CVS",
+		// ".git",
+		"**/.DS_Store",
+		"**/Thumbs.db"
+	],
+
+	"project_panel": {
+		"dock": "right",
+		"show_diagnostics": "all",
+		"auto_fold_dirs": false,
+		"scrollbar": {
+			"show": "system"
+		},
+		"default_width": 100
+	},
+
+	"collaboration_panel": {
+		"button": false
+	},
+
+	"chat_panel": {
+		"button": "never"
+	},
+
+	"confirm_quit": true,
+
+	"node": {
+		"path": "/Users/pritam/.local/share/node-v20.16.0/bin/node",
+		"npm_path": "/Users/pritam/.local/share/node-v20.16.0/bin/npm",
+		"ignore_system_version": false
+	},
+
+	"vim": {
+		"use_system_clipboard": "on_yank",
+		"use_multiline_find": true,
+		"use_smartcase_find": true,
+		"toggle_relative_line_numbers": true
+	},
+
+	"command_aliases": {
+		"rr": "workspace: reload",
+		"lsp": "editor: restart language server",
+		"cc": "editor: convert to ",
+		"ll": "language selector: toggle",
+		"ct": "editor: convert to title case"
+	},
+
+	"file_types": {
+		"YAML": [
+			"*clang*"
+		],
+
+		"C": [
+			"*.h"
+		],
+
+		"C++": [
+			"*.ino"
+		]
+	}
+}
