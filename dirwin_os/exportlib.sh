@@ -38,3 +38,8 @@ parse "$__MANPATH" "MANPATH"
 # parse "$__CMAKE_PREFIX_PATH" "CMAKE_PREFIX_PATH"
 
 printf "export PATH=/usr/local/big_library-bin:\$PATH" >> "$file"
+
+echo $PWD > $TMPDIR/data.txt
+find $PWD -type d -d 1 >> $TMPDIR/data.txt
+sudo cp $TMPDIR/data.txt index.txt
+

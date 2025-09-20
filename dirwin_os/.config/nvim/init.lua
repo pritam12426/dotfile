@@ -66,3 +66,9 @@ vim.keymap.set("i", "[", "[]<Left>")
 vim.keymap.set("i", '"', '""<Left>')
 vim.keymap.set("i", "'", "''<Left>")
 vim.keymap.set("i", "`", "``<Left>")
+
+
+vim.api.nvim_create_user_command("W", function()
+  vim.cmd("w !sudo tee % > /dev/null")
+end, {})
+
