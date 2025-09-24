@@ -7,7 +7,7 @@ set(TEST_BIN_NAME unitTests)
 
 file(GLOB
   TEST_SRC_FILES
-  # "${CMAKE_CURRENT_LIST_DIR}/another.cpp"
+  # "${CMAKE_CURRENT_LIST_DIR}/another.c"
 )
 
 add_executable(${TEST_BIN_NAME} "${CMAKE_CURRENT_LIST_DIR}/main.c")
@@ -17,8 +17,8 @@ target_sources(${TEST_BIN_NAME} PRIVATE
 )
 
 target_link_libraries("${TEST_BIN_NAME}" PRIVATE
-  # Catch2::Catch2WithMain
   unity::framework
+  # Catch2::Catch2WithMain
   # Test::GTest
 )
 

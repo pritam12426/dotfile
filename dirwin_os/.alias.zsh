@@ -4,6 +4,8 @@
 # sudo xattr -rd com.apple.quarantine <file>
 # this file is use for setting up the alias and functions for the zhs shell
 export ZED_ALLOW_ROOT=true
+export CMAKE_GENERATOR=Ninja
+export CMAKE_COLOR_DIAGNOSTICS=true
 
 #  LINUX LS COLOR THEME
 export CLICOLOR=true

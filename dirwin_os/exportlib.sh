@@ -18,13 +18,14 @@ find_dirs() {
 	find "$lib" -type d -name "$1" -print0 | tr '\0' ':'
 }
 
-find /usr/local/big_library -type f -name '*.pc'     -exec ln -sf {} /usr/local/lib/pkgconfig/ \;
-find /usr/local/big_library -d 3 -path '*/include/*' -exec ln -sf {} /usr/local/include/ \;
-find /usr/local/big_library -d 3 -type f -path '*/lib/*'  -exec ln -sf {} /usr/local/lib/ \;
-find /usr/local/big_library -type f -name '*.cmake'  -exec ln -sf {} /usr/local/lib/cmake/ \;
-find /usr/local/big_library -type f -path "*/bin/*"  -exec ln -sf {} /usr/local/big_library-bin/ \;
 
-__MANPATH="$(find_dirs 'man')$__MANPATH"
+find /usr/local/big_library -type f -path '*/lib/pkgconfig/*.pc'          -exec ln -sf {} /usr/local/lib/pkgconfig/ \;  ; echo "Adding the pkgconfig ...";
+find /usr/local/big_library -type f -path '*/lib/cmake/*Config.cmake' -exec ln -sf {} /usr/local/lib/cmake/ \;          ; echo "Adding the CMake file ...";
+find /usr/local/big_library -type f -path "*/bin/*"                   -exec ln -sf {} /usr/local/big_library-bin/ \;    ; echo "Adding the bin ...";
+find /usr/local/big_library -d 3 -type f -path '*/lib/*'            -exec ln -sf {} /usr/local/lib/ \;                  ; echo "Adding the libs ...";
+# find /usr/local/big_library -d 3 -path '*/include/*'                -exec ln -sf {} /usr/local/include/ \;
+
+__MANPATH="$(find_dirs 'man')$__MANPATH"; echo "Adding the man pages ...";
 # __PATH="$(find_dirs 'bin')$__PATH"
 # __PKG_CONFIG_PATH="$(find_dirs 'pkgconfig')$__PKG_CONFIG_PATH"
 # __DYLD_LIBRARY_PATH="$(find_dirs 'lib')$__DYLD_LIBRARY_PATH"
@@ -39,7 +40,7 @@ parse "$__MANPATH" "MANPATH"
 
 printf "export PATH=/usr/local/big_library-bin:\$PATH" >> "$file"
 
+echo "Updating the index ...";
 echo $PWD > $TMPDIR/data.txt
 find $PWD -type d -d 1 >> $TMPDIR/data.txt
 sudo cp $TMPDIR/data.txt index.txt
-
