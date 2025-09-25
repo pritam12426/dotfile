@@ -1,3 +1,6 @@
+# sudo install_name_tool -change @rpath/libglfw.3.dylib \
+# /usr/local/big_library/glfw-3.4/lib/libglfw.3.4.dylib \
+#
 # gpg -c
 # this will fix thie Apple could not verify “libsfml-audio.3.0.0.dylib” is free of malware that may harm your Mac or compromise your privacy
 # sudo xattr -r -d com.apple.quarantine  <file>
