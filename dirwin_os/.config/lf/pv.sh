@@ -18,10 +18,10 @@ case "$1" in
 	*.json)
 		bat --paging=never --style=numbers --wrap=never -f "$1" || true
 	;;
-
 	*)
 		if [ "${file_type%%/*}" = "text" ]; then
-			bat --paging=never --style=numbers --wrap=never -f "$1" || true
+			# bat --paging=never --style=numbers --wrap=never -f "$1" || true
+			bat --paging=never --wrap=never -f "$1" || true
 	else
 			exiftool -FileSize -FilePermissions -Comment -FileType -CreateDate -ModifyDate -TimeScale -Duration -TrackCreateDate -TrackModifyDate -MediaLanguageCode -HandlerType -ImageSize "$1"
 		fi
