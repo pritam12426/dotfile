@@ -7,7 +7,7 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 
-#include "functions.h"
+#include "user_functions.h"
 
 #define TEMP_FILE_PATH "/private/tmp/batchRename.txt"
 

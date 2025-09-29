@@ -443,8 +443,8 @@
 	"confirm_quit": true,
 
 	"node": {
-		"path": "/Users/pritam/.local/share/node-v22.17.0/bin/node",
-		"npm_path": "/Users/pritam/.local/share/node-v22.17.0/bin/npm",
+		"path": "/Users/pritam/.local/node-v22.20.0/bin/node",
+		"npm_path": "/Users/pritam/.local/node-v22.20.0/bin/npm",
 		"ignore_system_version": false
 	},
 

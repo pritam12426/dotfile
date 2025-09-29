@@ -16,6 +16,15 @@ export PAGER="less"
 export LESS="-Rir"
 export LSCOLORS=ExFxBxDxCxegedabagacad
 
+
+#  Change dir
+alias lldir="cd \` sk < $LIBS_DIR/index.txt \`"
+alias cpdir="cd /Users/pritam/Developer/cxx_lang"
+alias cdir="cd /Users/pritam/Developer/c_lang"
+alias gdir="cd /Users/pritam/Developer/git_repository"
+alias bdir="cd /Users/pritam/.local/bin"
+
+
 #  NNN FILE MANAGER
 NNN_PLUG='r:-!rrr "$nnn"*;'
 NNN_PLUG+='e:!|exiftool "$nnn";'
@@ -31,9 +40,9 @@ export NNN_COLORS="5236"
 export NNN_OPENER="/usr/bin/open"
 # export NNN_ORDER=""
 export NNN_OPTS="ARUNdxe"
-export NNN_SEL="/tmp/nnn.sel"
-export NNN_TMPFILE="/tmp/nnn.lastd"
-export NNN_FIFO="/tmp/nnn.fifo"
+export NNN_SEL="$TMPDIR/nnn.sel"
+export NNN_TMPFILE="$TMPDIR/nnn.lastd"
+export NNN_FIFO="$TMPDIR/nnn.fifon"
 export NNN_TRASH="/usr/bin/trash"
 export NNN_HELP="cat $DOT_FILE/../global/nnn_help.txt"
 export NNN_FCOLORS="c1e2272e006033f7c6d6abc4"
@@ -163,14 +172,13 @@ function insta() {
 
 
 export LC_ALL="en_US.UTF-8"
-#  NNN FILE MANGER CD ON QUIT
 function n () {
 	[ "${NNNLVL:-0}" -eq 0 ] || {
 		echo "nnn is already running"
 		return
 	}
 
-	command n "$@"
+	command nnn "$@"
 
 	[ ! -f "$NNN_TMPFILE" ] || {
 		. "$NNN_TMPFILE"
