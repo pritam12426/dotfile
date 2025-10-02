@@ -24,6 +24,8 @@ alias cdir="cd /Users/pritam/Developer/c_lang"
 alias gdir="cd /Users/pritam/Developer/git_repository"
 alias bdir="cd /Users/pritam/.local/bin"
 
+alias firefox="/Applications/Firefox.app/Contents/MacOS/firefox"
+
 
 #  NNN FILE MANAGER
 NNN_PLUG='r:-!rrr "$nnn"*;'
