@@ -21,6 +21,7 @@ find_dirs() {
 
 find /usr/local/big_library -type f -path '*/lib/pkgconfig/*.pc'      -exec ln -sf {} /usr/local/lib/pkgconfig/ \;     ; echo "Adding the pkgconfig ...";
 find /usr/local/big_library -type f -path '*/lib/cmake/*Config.cmake' -exec ln -sf {} /usr/local/lib/cmake/ \;         ; echo "Adding the CMake file ...";
+find /usr/local/big_library -type f -path '*/lib/cmake/*-config.cmake' -exec ln -sf {} /usr/local/lib/cmake/ \;         ; echo "Adding the CMake file ...";
 find /usr/local/big_library -type f -path "*/bin/*"                   -exec ln -sf {} /usr/local/big_library-bin/ \;   ; echo "Adding the bin ...";
 find /usr/local/big_library -d 3 -type f -path '*/lib/*.dylib'        -exec ln -sf {} /usr/local/lib/ \;               ; echo "Adding the libs ...";
 # find /usr/local/big_library -d 3 -path '*/include/*'                -exec ln -sf {} /usr/local/include/ \;
