@@ -32,20 +32,15 @@ add_executable(${MAIN_BINARY}
   "${CMAKE_CURRENT_LIST_DIR}/src/main.cpp"
 )
 
-# This will add -rpath to the bianry. Note this template will only work with pkg-config
-# set_target_properties(${MAIN_BINARY} PROPERTIES
-#   INSTALL_RPATH "${LIBXML_LIBRARY_DIRS}"
-#   BUILD_WITH_INSTALL_RPATH TRUE
-# )
-
 target_link_libraries(${MAIN_BINARY} PRIVATE
-  # ${LIBXML_LDFLAGS}
+  # ${<Pkg>_LDFLAGS}       # only if pkg-config used
+  # ${<Pkg>_LIBRARIES}
 )
 
 target_include_directories(${MAIN_BINARY} PRIVATE
   ${PROJECT_SOURCE_DIR}/src
   ${PROJECT_BINARY_DIR}
-  # ${LIBXML_INCLUDE_DIRS}
+  # ${<Pkg>_INCLUDE_DIRS}
 )
 
 add_custom_target(run
@@ -56,8 +51,8 @@ add_custom_target(run
 )
 
 #### Setting the conditional variable ####
-option(BUILD_TESTING "Enable unit testing" OFF)
-option(BUILD_DOC     "Generate doc for the project" OFF)
+option(BUILD_TESTING "Enable unit testing"           OFF)
+option(BUILD_DOC     "Generate doc for the project"  OFF)
 
 #### Unit Tests ####
 if(BUILD_TESTING)

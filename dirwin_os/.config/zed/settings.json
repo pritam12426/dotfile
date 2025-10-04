@@ -7,7 +7,7 @@
 		"default_model": {
 			"provider": "copilot_chat",
 			"model": "gpt-4o"
-		},
+		}
 	},
 
 	"hide_mouse": "on_typing_and_movement",
@@ -181,7 +181,7 @@
 				"external": {
 					"command": "/Library/Developer/CommandLineTools/usr/bin/clang-format",
 					"arguments": [
-						"--style=file:/Users/pritam/Developer/git_repositorys/my_dotfile/global/c-cpp-template/clang-format",
+						"--style=file:/Users/pritam/Developer/git_repository/my_dotfile/global/c-cpp-template/clang-format",
 						"--assume-filename={buffer_path}"
 					]
 				}
@@ -311,7 +311,7 @@
 	"lsp": {
 		"jdtls": {
 			"binary": {
-				"path": "/Users/pritam/.local/share/jdt-language-server-1.40/bin/jdtls",
+				"path": "/Users/pritam/.local/jdt-language-server-1.51.0/bin/jdtls",
 				"ignore_system_version": false
 			}
 		},
