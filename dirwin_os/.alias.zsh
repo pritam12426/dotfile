@@ -25,6 +25,7 @@ alias gdir="cd /Users/pritam/Developer/git_repository"
 alias bdir="cd /Users/pritam/.local/bin"
 
 alias firefox="/Applications/Firefox.app/Contents/MacOS/firefox"
+alias firefox-p="/Applications/Firefox.app/Contents/MacOS/firefox   --private-window"
 
 
 #  NNN FILE MANAGER

@@ -6,10 +6,10 @@
 #include <unistd.h>
 
 
-#define pRED(x)   "[\033[1;95m" x "\033[0m] "
-#define pYELLO(x) "[\033[1;33m" x "\033[0m] "
-#define pCYAN(x)  "[\033[1;36m" x "\033[0m] "
-#define pBLUE(x)  "[\033[1;31m" x "\033[0m] "
+#define pRED(x)   "[\033[1;95m-- " x " --\033[0m] "
+#define pYELLO(x) "[\033[1;33m-- " x " --\033[0m] "
+#define pCYAN(x)  "[\033[1;36m-- " x " --\033[0m] "
+#define pBLUE(x)  "[\033[1;31m-- " x " --\033[0m] "
 
 #define TARGET_DIRECT "/Users/pritam/Downloads/"
 
