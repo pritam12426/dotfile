@@ -28,3 +28,4 @@ function bash() {
 		source "$HOME/.bashrc"
 	fi
 }
+

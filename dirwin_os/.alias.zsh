@@ -16,7 +16,6 @@ export PAGER="less"
 export LESS="-Rir"
 export LSCOLORS=ExFxBxDxCxegedabagacad
 
-
 #  Change dir
 alias lldir="cd \` sk < $LIBS_DIR/index.txt \`"
 alias cpdir="cd /Users/pritam/Developer/cxx_lang"
@@ -26,7 +25,6 @@ alias bdir="cd /Users/pritam/.local/bin"
 
 alias firefox="/Applications/Firefox.app/Contents/MacOS/firefox"
 alias firefox-p="/Applications/Firefox.app/Contents/MacOS/firefox   --private-window"
-
 
 #  NNN FILE MANAGER
 NNN_PLUG='r:-!rrr "$nnn"*;'
