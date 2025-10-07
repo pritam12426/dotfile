@@ -1,5 +1,5 @@
 # sudo su
-# cp /etc/pam.d/sudo /etc/pam.d/sudo.bak; cp sudo /etc/pam.d/sudo
+# sudo cp /etc/pam.d/sudo /etc/pam.d/sudo.bak; cp sudo /etc/pam.d/sudo
 
 auth       sufficient     pam_tid.so
 auth       include        sudo_local

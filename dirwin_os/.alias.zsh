@@ -1,9 +1,9 @@
 # sudo install_name_tool -change @rpath/libglfw.3.dylib \
 # /usr/local/big_library/glfw-3.4/lib/libglfw.3.4.dylib \
-#
-# gpg -c
 # this will fix thie Apple could not verify “libsfml-audio.3.0.0.dylib” is free of malware that may harm your Mac or compromise your privacy
-# sudo xattr -r -d com.apple.quarantine  <file>
+
+# gpg -c
+
 # sudo xattr -rd com.apple.quarantine <file>
 # this file is use for setting up the alias and functions for the zhs shell
 export ZED_ALLOW_ROOT=true
@@ -73,12 +73,10 @@ alias ll='ls -lh'
 alias la='ls -A'
 alias l='ls -lAh'
 
-
 #  SOME MORE ALIES
 alias cp="command cp -ip"
 alias mv="command mv -i"
 alias du="command du -h"
-
 
 #  FOR NEO NVIM
 alias erc="$EDITOR ~/.zshrc"
@@ -88,7 +86,6 @@ alias eza="$EDITOR ~/.alias.zsh"
 
 #  SYSTEM ALIAS
 alias o="command open ."
-alias todo="command $EDITOR ~/.TODO.md"
 alias sudo="command sudo -E"
 alias c.="command code ."
 alias z.="command zed ."
@@ -97,7 +94,6 @@ alias live-server="command live-server -o"
 # alias tree="command tree -atsh "
 alias tree="command  tre -a "
 # alias tre="command tre -ae "
-alias which="command which -a "
 alias python="command python3 -u "
 alias nq="command networkquality -s"
 alias hc="command cat /dev/null > ~/.zsh_history"
@@ -107,7 +103,7 @@ alias sayy="command pbpaste | command say -i"
 alias per="command find . -type f -exec chmod 644 {} \; && find . -type d -exec chmod 755 {} \;"
 alias seelog="command tail -n 1 -f -- "
 alias exportlib="source $LIBS_DIR/env"
-alias exportembdlib="source /Applications/ArmGNUToolchain/embedded-ENV"
+# alias exportembdlib="source /Applications/ArmGNUToolchain/embedded-ENV"
 alias ninjalist="command ninja -t targets "
 alias chownroot="command sudo chown -R root:wheel"
 alias bk="open 'http://localhost:8080/'; shiori server"
@@ -118,20 +114,13 @@ function ww() {
 }
 
 function _make_() {
-	# command make -qp | awk -F':' '/^[a-zA-Z0-9][^$#\/\t=]*:([^=]|$)/ {split($1,A,/ /);for(i in A)print A[i]}' | command sort -u
-    /usr/local/big_library-bin/makefile2graph -B | /usr/local/big_library-bin/dot -Tsvg > $TMPDIR/_gp.svg
-    echo "qlmanage -p $TMPDIR/_gp.svg"
-    qlmanage -p $TMPDIR/_qp.svg
+	command make -qp | awk -F':' '/^[a-zA-Z0-9][^$#\/\t=]*:([^=]|$)/ {split($1,A,/ /);for(i in A)print A[i]}' | command sort -u
 }
 
 function doc() {
-    local doc=$(fzf < /usr/local/big_library/doc.txt)
-    open "file://$doc"
+	local doc=$(fzf < $LIBS_DIR/doc.txt)
+	open "file://$doc"
 
-}
-
-function _make() {
-	command make -qp | awk -F':' '/^[a-zA-Z0-9][^$#\/\t=]*:([^=]|$)/ {split($1,A,/ /);for(i in A)print A[i]}' | command sort -u
 }
 
 # Take screen short with shadow
@@ -144,11 +133,9 @@ function sss() {
 	screencapture -s "./Screen–short–$(date +"%Y-%b-%d_at_%H.%M.%S").png"
 }
 
-
 #  EXIFTOOL
 alias exf="command exiftool -sort -P -overwrite_original_in_place"
 alias exfcpy="exf -TagsFromFile"
-
 
 #  YT-DLP
 alias yt-dlp-u="command pip install --upgrade yt-dlp"
@@ -230,23 +217,6 @@ function clanginit {
 	esac
 
 	eval $COMMAND
-}
-
-function create_exec_symlinks() {
-	local target_dir="$HOME/.local/bin"
-	mkdir -p "$target_dir"
-
-	for arg in "$@"; do
-		local full_path="$(realpath "$arg" 2>/dev/null)"
-		if [[ ! -f "$full_path" || ! -x "$full_path" ]]; then
-			continue
-		fi
-
-		local filename="$(basename "$full_path")"
-		local link_path="$target_dir/$filename"
-
-		ln -sf "$full_path" "$link_path"
-	done
 }
 
 function gg() {
