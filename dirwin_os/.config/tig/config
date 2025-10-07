@@ -1,2 +1,1 @@
-bind generic S :source /Users/pritam/Developer/git_repositorys/my_dotfile/dirwin_os/.config/tig/config
-
+bind generic S :source ~/.config/tig/config

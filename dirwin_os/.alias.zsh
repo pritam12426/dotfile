@@ -207,7 +207,7 @@ function diff {
 
 function clanginit {
 	if [[ $# -eq 0 ]]; then
-		echo "Usage: $1 <c cxx c++>"
+		echo "Usage: $1 <c, cxx, c++>  <project name>"
 		return 1
 	fi
 
@@ -215,16 +215,13 @@ function clanginit {
 
 	case "$lower_input" in
 	c)
-		COMMAND="   cp -rp  $DOT_FILE/global/c-cpp-template/c/* ."
-		COMMAND+="; cp -rp  $DOT_FILE/global/c-cpp-template/c/.* ."
+		COMMAND="   cp -rp  $DOT_FILE/global/c-cpp-template/c/ $2"
 		;;
 	c++)
-		COMMAND="   cp -rp  $DOT_FILE/global/c-cpp-template/c++/* ."
-		COMMAND+="; cp -rp  $DOT_FILE/global/c-cpp-template/c++/.* ."
+		COMMAND="   cp -rp  $DOT_FILE/global/c-cpp-template/c++/ $2"
 		;;
 	cxx)
-		COMMAND="   cp -rp  $DOT_FILE/global/c-cpp-template/c++/* ."
-		COMMAND+="; cp -rp  $DOT_FILE/global/c-cpp-template/c++/.* ."
+		COMMAND="   cp -rp  $DOT_FILE/global/c-cpp-template/c++/ $2"
 		;;
 	*)
 		echo "Unsupported: <c cxx c++>: $1"
@@ -232,7 +229,6 @@ function clanginit {
 		;;
 	esac
 
-	echo $COMMAND | tr ';' '\n'
 	eval $COMMAND
 }
 
@@ -254,8 +250,8 @@ function create_exec_symlinks() {
 }
 
 function gg() {
-    echo "$(pbpaste)"
-    gallery-dl --cookies-from-browser firefox $@ "$(pbpaste)"
+	echo "$(pbpaste)"
+	gallery-dl --cookies-from-browser firefox $@ "$(pbpaste)"
 }
 
 #  FOR COMMIT THE COMMIT WITH GPG

@@ -1,12 +1,5 @@
 [
 	{
-		"context": "Editor",
-		"bindings": {
-			"cmd-i": "tab_switcher::Toggle"
-		}
-	},
-
-	{
 		// "context": "Editor",
 		"bindings": {
 			"cmd-shift-b": [
@@ -20,7 +13,7 @@
 	},
 
 	{
-		// "context": "Terminal && Workspace",
+		// "context": "(Editor && Terminal)",
 		"bindings": {
 			"cmd-k": [
 				"task::Spawn",
@@ -31,16 +24,10 @@
 			]
 		}
 	},
-
 	{
-		// "context": "Editor && Termil ",
+		"context": "(Editor)",
 		"bindings": {
-			"cmd-shift-j": [
-				"task::Spawn",
-				{
-					"task_name": "External Terminal"
-				}
-			]
+			"alt-z": "editor::ToggleSoftWrap"
 		}
 	}
 ]
