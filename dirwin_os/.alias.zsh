@@ -120,7 +120,6 @@ function _make_() {
 function doc() {
 	local doc=$(fzf < $LIBS_DIR/doc.txt)
 	open "file://$doc"
-
 }
 
 # Take screen short with shadow

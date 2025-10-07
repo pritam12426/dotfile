@@ -1,4 +1,29 @@
 {
+	"ssh_connections": [
+		{
+			"host": "utm-debian",
+			"args": [],
+			"projects": [
+				{
+					"paths": [
+						"/home/pritam/Developer/cxx_lang/practice"
+					]
+				}
+			]
+		}
+	],
+
+	"auto_indent_on_paste": false,
+	"autoscroll_on_clicks": true,
+
+	"snippet_sort_order": "top",
+	"edit_predictions": {
+		"mode": "eager"
+	},
+
+	"features": {
+		"edit_prediction_provider": "copilot"
+	},
 
 	"agent": {
 		"use_modifier_to_send": true,
@@ -61,11 +86,18 @@
 	"vim_mode": true,
 	"cursor_blink": false,
 
+	"minimap": {
+		"show": "auto",
+		"thumb": "always",
+		"thumb_border": "left_open",
+		"current_line_highlight": null
+	},
+
 	// "soft_wrap": "editor_width",
 	"show_whitespaces": "all",
 	"preferred_line_length": 83,
 	"tab_size": 4,
-	"base_keymap": "VSCode",
+	// "base_keymap": "VSCode",
 	"hard_tabs": true,
 	"auto_update": false,
 	"autosave": "on_focus_change",
@@ -102,7 +134,6 @@
 	"buffer_font_weight": 600,
 	"format_on_save": "off",
 	"always_treat_brackets_as_autoclosed": true,
-	// "file_icons": true,
 	"ui_font_size": 17,
 	"ui_font_weight": 600,
 
@@ -122,8 +153,14 @@
 		"git_gutter": "tracked_files",
 		"inline_blame": {
 			"enabled": true,
-			"delay_ms": 500
-		}
+			"delay_ms": 100,
+			"padding": 5
+			// "show_commit_summary": true
+		},
+		"branch_picker": {
+			"show_author_name": true
+		},
+		"hunk_style": "unstaged_hollow"
 	},
 
 	"scrollbar": {
@@ -217,7 +254,7 @@
 				"external": {
 					"command": "/Library/Developer/CommandLineTools/usr/bin/clang-format",
 					"arguments": [
-						"--style=file:/Users/pritam/Developer/git_repositorys/my_dotfile/global/c-cpp-template/clang-format",
+						"--style=file:/Users/pritam/Developer/git_repository/my_dotfile/global/c-cpp-template/clang-format",
 						"--assume-filename={buffer_path}"
 					]
 				}
@@ -288,15 +325,8 @@
 			"hard_tabs": false,
 			"tab_size": 2,
 			"soft_wrap": "none",
-			"formatter": {
-				"external": {
-					"command": "/Users/pritam/.local/bin/neocmakelsp-v0.8.22",
-					"arguments": [
-						"--format",
-						"{buffer_path}"
-					]
-				}
-			}
+			"formatter": "language_server"
+			// "formatter": "/Users/pritam/Library/Application Support/Zed/extensions/work/neocmake/neocmakelsp-v0.8.25",
 		},
 
 		"TOML": {
@@ -415,13 +445,6 @@
 		}
 	},
 
-	"file_scan_exclusions": [
-		"**/CVS",
-		// ".git",
-		"**/.DS_Store",
-		"**/Thumbs.db"
-	],
-
 	"project_panel": {
 		"dock": "right",
 		"show_diagnostics": "all",
@@ -436,9 +459,9 @@
 		"button": false
 	},
 
-	"chat_panel": {
-		"button": "never"
-	},
+	// "chat_panel": {
+	// 	"button": "never"
+	// },
 
 	"confirm_quit": true,
 
@@ -461,6 +484,17 @@
 		"ll": "language selector: toggle",
 		"ct": "editor: convert to title case"
 	},
+
+	"file_scan_exclusions": [
+		"**/CVS",
+		".git",
+		"**/.DS_Store",
+		"**/Thumbs.db"
+	],
+
+	"file_scan_inclusions": [
+		".env*"
+	],
 
 	"file_types": {
 		"YAML": [
