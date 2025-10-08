@@ -24,7 +24,8 @@ alias gdir="cd /Users/pritam/Developer/git_repository"
 alias bdir="cd /Users/pritam/.local/bin"
 
 alias firefox="/Applications/Firefox.app/Contents/MacOS/firefox"
-alias firefox-p="/Applications/Firefox.app/Contents/MacOS/firefox   --private-window"
+alias firefox-p="'/Applications/Firefox.app/Contents/MacOS/firefox   --private-window"
+alias neocmake="/Users/pritam/Library/Application\ Support/Zed/extensions/work/neocmake/neocmakelsp-v*"
 
 #  NNN FILE MANAGER
 NNN_PLUG='r:-!rrr "$nnn"*;'
