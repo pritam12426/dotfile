@@ -82,6 +82,9 @@ case "$file" in
 *.js)
 	run_command+="node $file "
 	;;
+*.ts)
+	run_command+="node $file "
+	;;
 *.sh)
 	# run_command+="bash -x $file "
 	run_command+="bash $file "

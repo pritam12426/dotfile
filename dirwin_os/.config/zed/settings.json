@@ -6,8 +6,7 @@
 			"projects": [
 				{
 					"paths": [
-						"/home/pritam/Developer/cxx_lang/practice",
-						"/home/pritam/Developer/python/practice"
+						"/home/pritam/Developer/cxx_lang/practice"
 					]
 				}
 			]
@@ -239,8 +238,8 @@
 	"confirm_quit": true,
 
 	"node": {
-		"path": "/Users/pritam/.local/node-v22.20.0/bin/node",
-		"npm_path": "/Users/pritam/.local/node-v22.20.0/bin/npm",
+		"path": "/Users/pritam/.local/dev-tools/node-v22.20.0/bin/node",
+		"npm_path": "/Users/pritam/.local/dev-tools/node-v22.20.0/lib/node_modules/npm/bin/npm-cli.js",
 		"ignore_system_version": true
 	},
 
@@ -462,6 +461,12 @@
 			"binary": {
 				"path": "~/go/bin/gopls",
 				"ignore_system_version": true
+			}
+		},
+
+		"dart": {
+			"settings": {
+				"lineLength": 140
 			}
 		},
 
