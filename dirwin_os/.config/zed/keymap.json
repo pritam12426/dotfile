@@ -15,11 +15,10 @@
 	{
 		// "context": "Editor",
 		"bindings": {
-			"cmd-shift-u": [
+			"cmd-shift-j": [
 				"task::Spawn",
 				{
-					"task_name": "Create class",
-					"reveal_target": "center"
+					"task_name": "Create class"
 				}
 			]
 		}

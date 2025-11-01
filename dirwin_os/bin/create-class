@@ -4,28 +4,27 @@
 HPP=$(cat <<'EOF'
 #pragma once
 
-#include <string>
 #include <iostream>
+#include <string>
 
 class ClassName {
-private:
-    int id;
-    std::string name;
+ private:
+	int id;
+	std::string name;
 
-public:
-    ClassName();
-    ClassName(int id, const std::string& name);
-    ~ClassName();
+ public:
+	ClassName();
+	ClassName(int id, const std::string& name);
+	~ClassName();
 
-    int getId() const;
-    std::string getName() const;
+	int getId() const;
+	std::string getName() const;
 
-    void setId(int id);
-    void setName(const std::string& name);
+	void setId(int id);
+	void setName(const std::string& name);
 
-    void displayInfo() const;
+	void displayInfo() const;
 };
-
 EOF
 )
 
@@ -33,19 +32,35 @@ EOF
 CPP=$(cat <<'EOF'
 #include "CLASSNAME.hpp"
 
-ClassName::ClassName() : id(0), name("Unnamed") {}
-ClassName::ClassName(int id, const std::string& name)
-    : id(id), name(name) {}
-ClassName::~ClassName() {}
+ClassName::ClassName() : id(0), name("Unnamed") {
+	;
+}
 
-int ClassName::getId() const { return id; }
-std::string ClassName::getName() const { return name; }
+ClassName::ClassName(int id, const std::string& name) : id(id), name(name) {
+	;
+}
 
-void ClassName::setId(int id) { this->id = id; }
-void ClassName::setName(const std::string& name) { this->name = name; }
+ClassName::~ClassName() {
+	;
+}
+
+int ClassName::getId() const {
+	return id;
+}
+std::string ClassName::getName() const {
+	return name;
+}
+
+void ClassName::setId(int id) {
+	this->id = id;
+}
+
+void ClassName::setName(const std::string& name) {
+	this->name = name;
+}
 
 void ClassName::displayInfo() const {
-    std::cout << "ID: " << id << ", Name: " << name << std::endl;
+	std::cout << "ID: " << id << ", Name: " << name << std::endl;
 }
 EOF
 )

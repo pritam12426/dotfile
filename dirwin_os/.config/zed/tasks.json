@@ -9,6 +9,16 @@
 		"hide": "always",
 		"shell": "system"
 	},
+
+	{
+		"label": "Create class",
+		// "command": "nohup /Users/pritam/Developer/git_repository/my_dotfile/dirwin_os/bin/create-class > /dev/null 2>&1 " ,
+		"command": "/Users/pritam/Developer/git_repository/my_dotfile/dirwin_os/bin/create-class" ,
+		"reveal": "never",
+		"hide": "always",
+		"shell": "system"
+	},
+
 	{
 		"label": "Run Current file",
 		"command": "rr $ZED_FILE",
