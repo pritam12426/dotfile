@@ -1,0 +1,2 @@
+-e bin.cache=true
+e dir.plugins = ~/.local/share/radare2/plugins

@@ -1,0 +1,84 @@
+set icons false
+set ignorecase true
+set previewer /Users/pritam/Developer/git_repositorys/my_dotfile/dirwin_os/.config/lf/pv.sh
+
+cmd mkdir ${{
+	printf "Directory Name: "
+	read ans
+	mkdir $ans
+}}
+
+
+cmd mkfile ${{
+	printf "File Name: "
+	read ans
+	$EDITOR $ans
+}}
+
+
+# Archive bindings
+cmd unarchive ${{
+	case "$f" in
+		*.zip) unzip "$f" ;;
+		*.rar) unrar x "$f" ;;
+		*.tar.gz) tar -xzvf "$f" ;;
+		*.tar.bz2) tar -xjvf "$f" ;;
+		*.tar) tar -xvf "$f" ;;
+		*.7z) 7z e "$f" ;;
+		*) echo "Unsupported format" ;;
+	esac
+}}
+
+cmd trash ${{
+	files=$(printf "$fx" | tr '\n' ';')
+	while [ "$files" ]; do
+	file=${files%%;*}
+
+	/usr/bin/trash "$(basename "$file")"
+	if [ "$files" = "$file" ]; then
+		files=''
+	else
+		files="${files#*;}"
+	fi
+	done
+	afplay ~/Developer/git_repositorys/my_dotfile/dirwin_os/.config/lf/drag_to_trash.aif &
+}}
+
+cmd RM ${{
+	files=$(printf "$fx" | tr '\n' ';')
+	while [ "$files" ]; do
+	file=${files%%;*}
+
+	rm -r "$(basename "$file")"
+	if [ "$files" = "$file" ]; then
+		files=''
+	else
+		files="${files#*;}"
+	fi
+	done
+	afplay ~/Developer/git_repositorys/my_dotfile/dirwin_os/.config/lf/drag_to_trash.aif &
+}}
+
+map m
+map d
+
+# Basic Functions
+map . set hidden!
+map dx trash
+map dX RM
+map R reload
+
+map p paste
+map x cut
+map y copy
+map <enter> open
+map R reload
+map mf mkfile
+map md mkdir
+
+# Movement
+map gc cd ~/.config
+map gD cd ~/Documents
+map gd cd ~/Downloads
+map gv cd ~/Movies
+map gb cd ~/.local/bin
