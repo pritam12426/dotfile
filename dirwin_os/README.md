@@ -20,6 +20,7 @@
 - [age]()
 - [arduino-cli](https://github.com/arduino/arduino-cli) `Use bin to install`
 - [bat]()
+- [batt](https://github.com/charlie0129/batt) `Use bin to install`
 - [batchrename]()
 - [brr]()
 - [clang-stat-cache]() `Ships with command online tools  /Library/Developer/CommandLineTools/usr/bin`
