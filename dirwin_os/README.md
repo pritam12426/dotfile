@@ -16,6 +16,9 @@
 - [sk](https://github.com/skim-rs/skim) `Use bin to install`
 - [joshuto - ranger](https://github.com/kamiyaa/joshuto) `Use bin to install`
 
+
+- [axel](https://github.com/axel-download-accelerator/axel)
+- [aria2c](https://github.com/aria2/aria2) `You have the binary on you github`
 - [aboutrepo]()
 - [age]()
 - [arduino-cli](https://github.com/arduino/arduino-cli) `Use bin to install`
@@ -42,7 +45,6 @@
 - [iina]()
 - [inkscape]()
 - [jdtls]()
-- [jq]()
 - [lf]()
 - [lgit]()
 - [mac-cleanup]()
