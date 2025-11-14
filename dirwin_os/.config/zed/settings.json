@@ -27,7 +27,8 @@
 			"projects": [
 				{
 					"paths": [
-						"/home/pritam/Developer/cxx_lang/practice"
+						// "/home/pritam/Developer/cxx_lang/practice"
+						"/home/pritam/radare2-6.0.4"
 					]
 				}
 			]
