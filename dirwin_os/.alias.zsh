@@ -28,16 +28,16 @@ alias firefox="/Applications/Firefox.app/Contents/MacOS/firefox"
 alias firefox-p="/Applications/Firefox.app/Contents/MacOS/firefox   --private-window"
 
 #  NNN FILE MANAGER
-NNN_PLUG='r:!rrr "$nnn" *;'
+NNN_PLUG='r:!rrr -- "$nnn" *;'
 NNN_PLUG+='b:cdpath;'
-NNN_PLUG+='a:!adb push --sync "$nnn" /sdcard/Download/$(hostname)/;'
 NNN_PLUG+='i:fzcd;'
-NNN_PLUG+='e:!|exiftool "$nnn";'
-NNN_PLUG+='o:!|otool -L "$nnn";'
+NNN_PLUG+="a:!adb push --sync -- "$nnn" /sdcard/Download/$(hostname)/;"
+NNN_PLUG+='e:!|exiftool -- "$nnn";'
+NNN_PLUG+='o:!|otool -L -- "$nnn";'
 NNN_PLUG+='p:!ffplay  -loop -1 -sn -loglevel level+warning -seek_interval 5 "$nnn" *;'
 NNN_PLUG+='f:!&ffplay -loop -1 -sn -loglevel level+warning -seek_interval 5 "$nnn" *;'
-NNN_PLUG+='q:!qlmanage -p "$nnn"*;'
-NNN_PLUG+='m:!&mpv "$nnn"*'
+NNN_PLUG+='q:!qlmanage -p -- "$nnn"*;'
+NNN_PLUG+='m:!&mpv -- "$nnn"*'
 export NNN_PLUG
 
 export NNN_COLORS="5236"
@@ -132,6 +132,7 @@ alias chownroot="command sudo chown -R root:wheel"
 alias chownself="command sudo chown -R pritam:staff"
 alias bk="open 'http://localhost:8080/'; shiori server"
 alias wget="command wget --no-check-certificate -c"
+alias off="pmset displaysleepnow"
 
 function ww() {
 	command wget \

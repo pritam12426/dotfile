@@ -20,7 +20,7 @@ notify() {
 	esac
 
 	# Send notification
-	osascript -e "display notification \"$msg\" with title \"$title\" sound name \"$sound\"" 2>/dev/null
+	osascript -e "display notification \"$msg\" with title \"$title\" sound name \"$sound\"" 2&>/dev/null
 }
 
 message() {
@@ -30,13 +30,13 @@ message() {
 
 	case "$type" in
 	error)
-		osascript -e "display alert \"$title\" message \"$msg\" as critical" 2>/dev/null
+		osascript -e "display alert \"$title\" message \"$msg\" as critical" 2&>/dev/null
 		;;
 	warning)
-		osascript -e "display alert \"$title\" message \"$msg\" as warning" 2>/dev/null
+		osascript -e "display alert \"$title\" message \"$msg\" as warning" 2&>/dev/null
 		;;
 	info | *)
-		osascript -e "display alert \"$title\" message \"$msg\" as informational" 2>/dev/null
+		osascript -e "display alert \"$title\" message \"$msg\" as informational" 2&>/dev/null
 		;;
 	esac
 }
@@ -120,7 +120,7 @@ end run
 EOF
 
 # === Get selected files/folders from Finder ===
-result=$(osascript -e "$AppleStripfileFolderSelect" 2>/dev/null)
+result=$(osascript -e "$AppleStripfileFolderSelect" 2&>/dev/null)
 
 # --- Error handling ---
 if [[ $result == ERROR:* ]]; then
@@ -237,9 +237,9 @@ output_file=$(zenity --file-selection --save \
 	if [[ $selected_format == "zip" && -n $password ]]; then
 		# Special case: password-protected ZIP using built-in zip
 		printf '%s\n%s\n' "$password" "$password" | zip -e -j "$output_file" "${files[@]}"
-		# printf '%s\n%s\n' "$password" "$password" | zip -e -j "$output_file" "${files[@]}" 2>/dev/null
+		# printf '%s\n%s\n' "$password" "$password" | zip -e -j "$output_file" "${files[@]}" 2&>/dev/null
 	elif [[ $selected_format == "zip" ]]; then
-		# zip -j "$output_file" "${files[@]}" 2>/dev/null
+		# zip -j "$output_file" "${files[@]}" 2&>/dev/null
 		zip -j "$output_file" "${files[@]}"
 	else
 		# All tar formats — use built-in tar (always available)
