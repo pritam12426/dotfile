@@ -279,18 +279,22 @@ function vcpkg() {
 		shift # Remove 'install'
 		for lib in "$@"; do
 			echo "===[ Installing $lib (Debug → Dynamic, debug-only)...    ]==="
+			echo "===> vcpkg install $lib --triplet arm64-osx-dynamic <==="
 			VCPKG_BUILD_TYPE=debug "$VCPKG" install "$lib" --triplet arm64-osx-dynamic
 
 			echo "===[ Installing $lib (Release → Static, Release-only)... ]==="
+			echo "===> vcpkg install $lib --triplet arm64-osx <==="
 			VCPKG_BUILD_TYPE=release "$VCPKG" install "$lib" --triplet arm64-osx
 		done
 	elif [[ $1 == "rem" ]]; then
 		shift # Remove 'rem'
 		for lib in "$@"; do
 			echo "===[ Removing $lib (Debug → Dynamic, debug-only)...    ]==="
+			echo "===> vcpkg remove $lib --triplet arm64-osx-dynamic <==="
 			"$VCPKG" remove "$lib" --triplet arm64-osx-dynamic
 
 			echo "===[ Removing $lib (Release → Static, Release-only)... ]==="
+			echo "===> vcpkg remove $lib --triplet arm64-osx <==="
 			"$VCPKG" remove "$lib" --triplet arm64-osx
 		done
 	else
