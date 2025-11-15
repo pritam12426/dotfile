@@ -9,8 +9,10 @@ The repo is organized by platform, with separate directories for Windows and Lin
 
 https://suckless.org/rocks/
 
-https://github.com/mikf/gallery-dl
+https://asciinema.org/
 
-gallery-dl --cookies-from-browser firefox
+https://terminaltrove.com/
+
+https://www.freecodecamp.org/news/essential-cli-tui-tools-for-developers/
 
 https://www.tug.org/texlive

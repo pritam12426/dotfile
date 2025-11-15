@@ -7,21 +7,30 @@
 - [scrcpy](https://github.com/Genymobile/scrcpy)  `Static binary is there on the github page of scrcpy`
 - [adbtuifm](https://github.com/darkhz/adbtuifm) `Use bin to install`
 - [broot](https://github.com/Canop/broot) `Use bin to install`
-- [bin](https://github.com/marcosnils/bin)
+- [bin](https://github.com/marcosnils/bin) `Use bin to install`
 - [clock](https://www.youtube.com/watch?v=0rUBhqR6ckw&t=12242s) `You have the binary on you github`
 - [cointop](https://github.com/cointop-sh/cointop) `You have the binary on you github`
-
 - [pinentry-touchid](https://github.com/jorgelbg/pinentry-touchid) `Use bin to install`
 - [shiori](https://github.com/go-shiori/shiori) `Use bin to install`
 - [sk](https://github.com/skim-rs/skim) `Use bin to install`
 - [joshuto - ranger](https://github.com/kamiyaa/joshuto) `Use bin to install`
-
-
-- [axel](https://github.com/axel-download-accelerator/axel)
 - [aria2c](https://github.com/aria2/aria2) `You have the binary on you github`
-- [aboutrepo]()
+- [axel](https://github.com/axel-download-accelerator/axel)
 - [gnu stow](https://www.gnu.org/software/stow/) `install manually with   https://formulae.brew.sh/formula/stow `
 - [hurl](https://hurl.dev/) `Use bin to install`
+- [atac](https://github.com/Julien-cpsn/ATAC) `Use bin to install`
+- [zellij](https://github.com/zellij-org/zellij) `Use bin to install`
+- [pandoc](https://github.com/jgm/pandoc) `manually install this for the  Releases page`
+- [sntop](https://terminaltrove.com/sntop/)
+- [doggo](https://github.com/mr-karan/doggo) `Use bin to install`
+- [asciinema](https://github.com/asciinema/asciinema) `Use bin to install`
+- [aichat](https://terminaltrove.com/aichat/) `Use bin to install`
+- [caligula](https://terminaltrove.com/caligula/) `Use bin to install`
+- [dra](https://terminaltrove.com/dra/) `like bin command in rust`
+- [dua](https://terminaltrove.com/dua/) `View disk space usage like ncdu`
+- [fclones](https://terminaltrove.com/fclones/)
+- [goaccess](https://terminaltrove.com/goaccess/)
+- [aboutrepo]()
 - [age]()
 - [arduino-cli](https://github.com/arduino/arduino-cli) `Use bin to install`
 - [bat]()
@@ -73,7 +82,7 @@
 - [sleek]()
 - [sql-fmt]()
 - [sqlmap]()
-- [taplo-0_9.3](https://github.com/tamasfe/taplo)
+- [taplo-0_9.3](https://github.com/tamasfe/taplo) `Use bin to install`
 - [test-graph]()
 - [tig]()
 - [tre]()
