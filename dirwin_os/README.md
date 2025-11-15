@@ -20,6 +20,8 @@
 - [axel](https://github.com/axel-download-accelerator/axel)
 - [aria2c](https://github.com/aria2/aria2) `You have the binary on you github`
 - [aboutrepo]()
+- [gnu stow](https://www.gnu.org/software/stow/) `install manually with   https://formulae.brew.sh/formula/stow `
+- [hurl](https://hurl.dev/) `Use bin to install`
 - [age]()
 - [arduino-cli](https://github.com/arduino/arduino-cli) `Use bin to install`
 - [bat]()

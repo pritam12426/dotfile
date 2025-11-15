@@ -301,8 +301,6 @@
 		"ct": "editor: convert to title case"
 	},
 
-
-	// ---------------
 	"file_scan_exclusions": [
 		"**/CVS",
 		".git",
@@ -332,6 +330,18 @@
 		"Dart": {
 			"soft_wrap": "preferred_line_length"
 		},
+
+		"Hurl": {
+			"formatter": {
+				"external": {
+					"command": "hurlfmt",
+					"arguments": [
+						"{buffer_path}"
+					]
+				}
+			}
+		},
+
 		"C++": {
 			"show_edit_predictions": false,
 			"show_wrap_guides": true,

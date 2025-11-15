@@ -31,7 +31,7 @@ alias firefox-p="/Applications/Firefox.app/Contents/MacOS/firefox   --private-wi
 NNN_PLUG='r:!rrr -- "$nnn" *;'
 NNN_PLUG+='b:cdpath;'
 NNN_PLUG+='i:fzcd;'
-NNN_PLUG+="a:!adb push --sync -- "$nnn" /sdcard/Download/$(hostname)/;"
+NNN_PLUG+="a:!adb push --sync -- "$nnn" /sdcard/Download/$(hostname -s)/;"
 NNN_PLUG+='e:!|exiftool -- "$nnn";'
 NNN_PLUG+='o:!|otool -L -- "$nnn";'
 NNN_PLUG+='p:!ffplay  -loop -1 -sn -loglevel level+warning -seek_interval 5 "$nnn" *;'
@@ -52,6 +52,22 @@ export NNN_TRASH="/usr/bin/trash"
 export NNN_HELP="cat $DOT_FILE/../global/nnn_help.txt"
 export NNN_ARCHIVE="\\.(7z|a|ace|alz|arc|arj|bz|bz2|cab|cpio|deb|gz|jar|lha|lz|lzh|lzma|lzo|rar|rpm|rz|t7z|tar|tbz|tbz2|tgz|tlz|txz|tZ|tzo|war|xpi|xz|Z|zip)$"
 export NNN_FCOLORS="c1e2272e006033f7c6d6abc4"
+
+# ------------FZF--------------
+# Set up fzf key bindings and fuzzy completion
+# export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git "
+# export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+# export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
+
+export FZF_DEFAULT_OPTS="--height 50% --layout=default --border --color=hl:#2dd4bf"
+
+# Setup fzf previews
+export FZF_CTRL_T_OPTS="--preview 'bat --color=always -n --line-range :500 {}'"
+export FZF_ALT_C_OPTS="--preview 'eza --icons=always --tree --color=always {} | head -200'"
+
+# fzf preview for tmux
+# export FZF_TMUX_OPTS=" -p90%,70% "
+# -----------------------------
 
 #  Color in man page
 export LESS_TERMCAP_mb=$(
