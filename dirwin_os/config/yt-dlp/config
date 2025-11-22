@@ -1,15 +1,147 @@
+################################################################################
+# yt-dlp Configuration File
+# This file customizes yt-dlp's behavior for downloads, authentication, metadata,
+# aliases, and more. Each section is heavily commented for clarity.
+################################################################################
+
+
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+# Download Options
+# These options control how files are downloaded and saved.
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+# Output template: Organizes downloads by extractor (site) and title.
+# %(extractor_key)s = site name (e.g., youtube)
+# %(title)s = video title
+# %(ext)s = file extension
 -o "~/Downloads/yt_dlp/%(extractor_key)s/%(title)s.%(ext)s"
--f "299+140/137+140/bestvideo*[height=1080][ext=mp4][fps<=30]+bestaudio*[ext=m4a]/bestvideo*[height=1080][ext=mp4][fps<=60]+bestaudio*[ext=m4a]/bestvideo*[height<=1080][ext=mp4]+bestaudio*[ext=m4a]/bestvideo*[height<=1080]+bestaudio*/bestvideo*+bestaudio*"
 
+# Format selection: Tries to get the best quality video/audio combinations.
+# - 299+140: YouTube 1080p60 video + m4a audio
+# - 137+140: YouTube 1080p30 video + m4a audio
+# - bestvideo*[height=1080][ext=mp4][fps<=30]+bestaudio*[ext=m4a]: 1080p mp4 video <=30fps + m4a audio
+# - bestvideo*[height=1080][ext=mp4][fps<=60]+bestaudio*[ext=m4a]: 1080p mp4 video <=60fps + m4a audio
+# - bestvideo*[height<=1080][ext=mp4]+bestaudio*[ext=m4a]: fallback to <=1080p mp4 + m4a audio
+# - bestvideo*[height<=1080]+bestaudio*: fallback to <=1080p any video + any audio
+# - bestvideo*+bestaudio*: fallback to best video + best audio
+-f "299+140/137+140/bestvideo*[height=1080][ext=mp4][fps<=30]+bestaudio*[ext=m4a]/bestvideo*[height=1080]\
+	[ext=mp4][fps<=60]+bestaudio*[ext=m4a]/bestvideo*[height<=1080][ext=mp4]+bestaudio*[ext=m4a]/bestvideo\
+	*[height<=1080]+bestaudio*/bestvideo*+bestaudio*"
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+
+
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+# Authentication Options
+# These options help yt-dlp access content that requires login/authentication.
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+# Use cookies from Firefox browser for authentication.
+--cookies-from-browser 'firefox'
+
+# Set a custom user-agent string to mimic a real browser.
+--user-agent "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+
+# Use .netrc file for login credentials (if available).
+--netrc
+
+# Use encrypted credentials via gpg.
+#--netrc-cmd 'gpg --decrypt ~/.authinfo.gpg'
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+
+
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+# General Options
+# These options affect general behavior and output.
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+# Enable verbose output for debugging.
+--verbose
+
+# Print HTTP traffic for troubleshooting network issues.
+--print-traffic
+
+# Embed subtitles (if available) into the downloaded video.
 --embed-subs
---no-playlist
---restrict-filenames
---embed-chapters
---embed-metadata
---embed-thumbnail
---write-auto-subs
---ignore-no-formats-error
---parse-metadata "video::(?P<description>)"
---cache-dir "~/Library/Caches/yt-dlp"
 
+# Download only single videos, not playlists.
+--no-playlist
+
+# Restrict filenames to safe characters (no spaces, special chars).
+--restrict-filenames
+
+# Embed chapters metadata into the file.
+--embed-chapters
+
+# Embed metadata (title, artist, etc.) into the file.
+--embed-metadata
+
+# Embed thumbnail image into the file.
+--embed-thumbnail
+
+# Download automatically generated subtitles (if available).
+--write-auto-subs
+
+# Ignore errors if no suitable formats are found.
+--ignore-no-formats-error
+
+# Embed full info JSON metadata into the file.
 --embed-info-json
+
+# Remove chapters matching a regex.
+#--remove-chapters REGEX
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+
+
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+# Alias Options
+# These options create custom shortcuts for frequently used command combinations.
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+# Example: Download best audio as mp3 to ~/Music/local
+--alias ysong "-f 'best/bestaudio*' -o '~/Music/local/%(title)s.%(ext)s' --audio-format m4a"
+
+# Example: Download best audio to ~/Music/local (no conversion)
+--alias savan "-f 'best/bestaudio*' -o '~/Music/local/%(title)s.%(ext)s'"
+
+# Example: Download the playlist to ~/Downloads/yt_dlp/<playlist title>
+--alias plist "--yes-playlist -o '~/Downloads/yt_dlp/%(extractor_key)s/%(playlist)s-%(uploader)s/%(playlist_index)s-%(title)s.%(ext)s'"
+
+# Example: Download the single video to $PWD
+--alias pwd "-o '%(title)s.%(ext)s'"
+
+# Example: Download the video to ~/Downloads/yt_dlp/.dlpxx (no conversion)
+--alias xx "-o '~/Downloads/yt_dlp/.dlpxx/%(extractor_key)s-%(channel)s-%(title)s.%(ext)s'"
+
+# Example: Download the playlist to ~/Downloads/yt_dlp/<playlist title> (no conversion)
+--alias short "-o '%(title)s.%(ext)s'  --no-embed-subs --no-write-auto-subs --ignore-no-formats-error --no-embed-thumbnail "
+
+# You can add more aliases for your workflow!
+# See yt-dlp --help for alias syntax and usage.
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+
+
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+# Metadata & Advanced Options
+# These options control metadata parsing, caching, plugins, and runtimes.
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+# Parse video description metadata.
+--parse-metadata "video::(?P<description>)"
+
+# Set cache directory for yt-dlp (speeds up repeated downloads).
+--cache-dir ~/Library/Caches/yt-dlp
+
+# Specify custom plugin directories for yt-dlp extensions.
+--plugin-dirs /Users/pritam/Developer/git_repository/my_dotfile/dirwin_os/config/yt-dlp/plugins
+
+# Specify JavaScript runtime for sites requiring JS execution.
+--js-runtimes node
+
+# Path to custom ffmpeg binary if needed.
+# --ffmpeg-location /path/to/ffmpeg
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+
+################################################################################
+# End of yt-dlp config file
+# Add or modify options above to customize your download experience!
+################################################################################

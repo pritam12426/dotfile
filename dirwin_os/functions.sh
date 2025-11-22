@@ -255,7 +255,7 @@ function vcpkg() {
 # Function to download content using gallery-dl
 function gg() {
 	# Default destination directory
-	local dest="~/Downloads/yt_dlp/posts"
+	local dest="$HOME/Downloads/yt_dlp/posts"
 	# local fileName="{category}-{username}-{date:%Y-%m-%d}-{num}.{extension}"
 
 	# If first argument is '-', use the current directory as destination
@@ -350,34 +350,6 @@ function clanginit {
 
 # ------------ YT-DLP Aliases and Functions ------------
 alias yt-dlp-u="command pip install --upgrade yt-dlp" # Update yt-dlp
-
-# Download playlist with yt-dlp
-function yt-dlpp() {
-	command yt-dlp \
-		-o "~/Downloads/yt_dlp/%(extractor_key)s/%(playlist)s-%(uploader)s/%(playlist_index)s-%(title)s.%(ext)s" \
-		--yes-playlist \
-		$@ "$(pbpaste)"
-}
-
-# Download single video with yt-dlp
-function yt-dlpx() {
-	command yt-dlp \
-	-o '%(title)s.%(ext)s' \
-	-f 'best/bestvideo*+bestaudio*' \
-	$@ "$(pbpaste)"
-}
-
-# Download single video with yt-dlp
-function yt-dlpxx() {
-	command yt-dlp \
-	--user-agent "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36" \
-	--cookies-from-browser 'firefox' \
-	-o '~/Downloads/yt_dlp/.dlpxx/%(extractor_key)s-%(channel)s-%(title)s.%(ext)s' \
-	-f 'best/bestvideo*+bestaudio*' \
-	$@ "$(pbpaste)"
-
-	cd ~/Downloads/yt_dlp/.dlpxx/
-}
 
 # Download short videos using custom config
 function short() {

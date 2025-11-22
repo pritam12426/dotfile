@@ -8,8 +8,8 @@
 --no-embed-subs
 --restrict-filenames
 --no-embed-thumbnail
---embed-thumbnail
 --embed-metadata
+--embed-thumbnail
 --no-write-auto-subs
 --ignore-no-formats-error
 --parse-metadata "video::(?P<description>)"
