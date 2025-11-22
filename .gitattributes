@@ -1,0 +1,3 @@
+/dirwin_os/bin/binary/*       binary
+*.svg                         binary
+*.db                          binary

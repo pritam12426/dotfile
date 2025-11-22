@@ -1,0 +1,10 @@
+--glob=!.git/*
+--no-ignore-dot
+
+--type-add
+web:*.{html,css,js}*
+
+# Set the colors.
+-i
+--colors=line:none
+--colors=line:style:bold

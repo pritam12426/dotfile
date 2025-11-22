@@ -1,0 +1,43 @@
+# git log --date=format:"%d-%b-%Y %I:%M %p"
+# https://gist.github.com/pksunkara/988716
+
+[user]
+	name  = Pritam
+	email = pritamkumar12426@gmail.com
+	username = pritam
+
+[core]
+	excludesFile = ~/.config/git/gitignore_globle
+	attributesfile = ~/.config/git/gitattributes
+	whitespace = space-before-tab,indent-with-non-tab,trailing-space
+	; pager = delta   # https://github.com/dandavison/delta
+
+[push]
+	autoSetupRemote = true
+
+[delta]
+	navigate = true  # use n and N to move between diff sections
+	dark = true      # or light = true, or omit for auto-detection
+
+[merge]
+	conflictStyle = zdiff3
+
+[interactive]
+	diffFilter = delta --color-only
+
+[init]
+	defaultBranch = main
+
+[alias]
+	slog = log --show-signature
+	gi = "!gi() { python3 $DOT_FILE/dirwin_os/bin/git_ignore/mk_git_ignore.py ;}; gi"
+
+[include]
+	path = ~/.config/tig/config.toml
+
+[includeIf "gitdir:/Users/pritam/Developer/git_repository/**"]
+	path = ~/.config/git/gitconfig_github
+
+[diff]
+	ignoreSubmodules = all
+	wsErrorHighlight = none
