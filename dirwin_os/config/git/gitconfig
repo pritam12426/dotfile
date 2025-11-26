@@ -1,0 +1,43 @@
+# https://gist.github.com/pksunkara/988716
+
+# ==========================================================
+# ----------------------------------------------------------
+# touch ~/.config/git/gitconfig_private
+# ----------------------------------------------------------
+# [user]
+#	name  = Pritam
+#	email = <Personal Email>
+#	username = pritam
+# ==========================================================
+
+[include]
+	path = ~/.config/git/gitconfig_private
+	path = ~/.config/tig/config.toml
+
+[user]
+	name  = Pritam
+	email = pritamkumar12426@gmail.com
+	username = pritam
+
+[core]
+	excludesFile = ~/.config/git/gitignore_globle
+	attributesfile = ~/.config/git/gitattributes
+	autocrlf = false
+	; pager = delta   # https://github.com/dandavison/delta
+
+[push]
+	autoSetupRemote = true
+
+[init]
+	defaultBranch = main
+
+[alias]
+	slog = log --show-signature
+	gi = "!gi() { python3 $HOME/.config/git/git_ignore/mk_git_ignore.py ;}; gi"
+
+[includeIf "gitdir:/Users/pritam/Developer/git_repository/**"]
+	path = ~/.config/git/gitconfig_github
+
+[diff]
+	ignoreSubmodules = all
+	wsErrorHighlight = none

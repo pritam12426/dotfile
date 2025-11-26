@@ -1,0 +1,25 @@
+[schema]
+path = "/Users/pritam/some.json"
+
+# Global formatting rules for all TOML files
+[formatting]
+# Enable indentation for tables and their subtables (keys indented under [table] blocks)
+indent_tables = true
+
+# Use a single tab character for each indentation level
+indent_string = "\t"
+
+# Optional: Set tab size for display (e.g., in editors; defaults to 4 spaces if not set)
+tab_size = 4
+
+# Optional: Maximum line width (affects array/table expansion; default 80)
+column_width = 100
+
+# Optional: Add trailing newline if missing
+trailing_newline = true
+
+# Optional: Align consecutive key-value pairs vertically (disabled for simpler tab-only indent)
+align_entries = false
+
+# Optional: Expand arrays over the column width to multiple indented lines
+array_auto_expand = true
