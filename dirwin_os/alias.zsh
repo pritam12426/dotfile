@@ -45,9 +45,11 @@ alias firefox-p="/Applications/Firefox.app/Contents/MacOS/firefox --private-wind
 
 # --- NNN file manager configuration ---
 # Define NNN plugins for various tasks
-NNN_PLUG='r:!rrr "$nnn" *;'
+# NNN_PLUG='r:!rrr "$nnn" *;'
+NNN_PLUG='r:fixname;'
 NNN_PLUG+='b:cdpath;'
 NNN_PLUG+='i:fzcd;'
+NNN_PLUG+='z:!&zed "$nnn" *;'
 NNN_PLUG+='a:!adb shell mkdir -p /sdcard/Download/$(hostname -s) && adb push --sync "$nnn" /sdcard/Download/$(hostname -s)/ *;'
 NNN_PLUG+='e:!|exiftool "$nnn";'
 NNN_PLUG+='o:!|otool -L "$nnn";'

@@ -394,6 +394,49 @@ function yt() {
 }
 # -------------------------------------------------------
 
+# ------------ Github cli Functions ------------
+function gh() {
+	if [[ $1 == "init" ]]; then
+		# Check if inside git repo
+		if [[ ! -d .git ]]; then
+			echo "❌ Not a git repository. Run: git init"
+			return 1
+		fi
+
+		# Ask privacy
+		echo "📦 Public or Private? (p/P=public, any key=private)"
+		read -r choice
+
+		if [[ $choice =~ ^[pP]$ ]]; then
+			privacy="--public"
+		else
+			privacy="--private"
+		fi
+
+		# Optional description prompt
+		echo "📝 Enter repository description (or leave empty):"
+		read -r description
+		if [[ -n $description ]]; then
+			desc_flag="--description \"$description\""
+		else
+			desc_flag=""
+		fi
+
+		# Create repo using folder name
+		repo_name=$(basename "$PWD")
+
+		eval command gh repo create "$repo_name" \
+			$privacy \
+			--source=. --remote=origin --push \
+			--license mit \
+			--disable-wiki \
+			--disable-issues \
+			$desc_flag \
+
+		echo "🚀 Done! Linked and pushed to GitHub."
+	fi
+}
+# ---------------------------------------------
 # Colorized diff output
 function diff {
 	command diff -u --color=always "$@" | less -r -

@@ -33,6 +33,8 @@
 - [goaccess](https://terminaltrove.com/goaccess/)
 - [wireproxy](https://www.youtube.com/watch?v=ESr0xid-kl4) `Use bin to install`
 - [shadowsocks](https://github.com/shadowsocks) `manually install this for the  Releases page`
+- [qmv](https://github.com/itchyny/mmv) `manually install this for the  Releases page`
+- [vidir](https://github.com/trapd00r/vidir/blob/master/bin/vidir) `manually install this for the  Releases page`
 - [aboutrepo]()
 - [age]()
 - [arduino-cli](https://github.com/arduino/arduino-cli) `Use bin to install`
