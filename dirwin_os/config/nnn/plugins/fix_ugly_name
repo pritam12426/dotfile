@@ -1,0 +1,47 @@
+#!/bin/bash
+# export NNN_PLUG="r:personal/fix_ugly_name"
+#
+# Description: Push files and folders to Android device via adb
+#
+# Dependencies: adb, fzf
+#
+# Shell: Bash
+# Author: Pritam <https://github.com/pritam12426>
+
+
+# ───── Get selection or current file ─────
+sel="${NNN_SEL:-${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.selection}"
+prompt=true
+
+# If something is selected in nnn (and .selection is non-empty)
+if [ -s "$sel" ]; then
+	targets=()
+	# Read null-delimited entries (nnn uses \0 as separator)
+	while IFS= read -r -d '' item || [ -n "$item" ]; do
+		targets+=("$item")
+	done <"$sel"
+else
+	targets=("$1")
+fi
+
+if $prompt; then
+	some -nv "${targets[@]}"
+	echo
+	printf "Proceed [Yn]? "
+	read -r input
+	case "$input" in
+	y | Y | '') ;;
+	*)
+		echo "Canceled"
+		exit
+		;;
+	esac
+fi
+
+some -nv "${targets[@]}"
+
+
+# Clear selection
+if [ -s "$sel" ] && [ -p "$NNN_PIPE" ]; then
+	printf "-" >"$NNN_PIPE"
+fi

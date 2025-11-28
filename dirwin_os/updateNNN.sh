@@ -2,19 +2,24 @@
 
 # working file with nnn v5.1
 
-cd $HOME/Developer/git_repository/nnn
+NNN_LOCAL_REPO="$HOME/Developer/git_repository/nnn"
 
-echo $PWD
-
-git clean -dfx
-git checkout -f
-git pull
+if [ ! -d "$NNN_LOCAL_REPO" ]; then
+	echo "Cloning nnn repository..."
+	git clone git@github.com:jarun/nnn.git "$NNN_LOCAL_REPO"
+else
+	cd "$NNN_LOCAL_REPO" || exit 1
+	git clean -dfx
+	git checkout -f
+	git pull
+fi
 
 command cp -p "$DOT_FILE/global/nnn.h" src/nnn.h
 
+make \
+O_PCRE2=1 \
+O_NOMOUSE=1 \
+O_GITSTATUS=1 \
+clean strip install
 
-export O_PCRE2=1
-export O_NOMOUSE=1
-export O_NOX11=1
-export O_GITSTATUS=1
-make clean strip install
+cp -p "$NNN_LOCAL_REPO/misc/auto-completion/zsh/_nnn" "$HOME/.zsh/completions/_nnn"

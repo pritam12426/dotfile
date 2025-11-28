@@ -1,5 +1,5 @@
 #!/bin/bash
-# export NNN_PLUG="a:adb_push"
+# export NNN_PLUG="a:personal/adb_push"
 
 # Description: Push files and folders to Android device via adb
 #
@@ -27,16 +27,12 @@ prompt=true
 if [ -s "$sel" ]; then
 	targets=()
 	# Read null-delimited entries (nnn uses \0 as separator)
-	while IFS= read -r -d '' item || [ -n "$item" ]; do
-		targets+=("$(readlink -f "$item")")
+	while IFS= read -r -d '' i || [ -n "$i" ]; do
+		targets+=("$(readlink -f "$i")")
 	done <"$sel"
+else
+	targets=("$(readlink -f "$1")")
 fi
-
-((${#targets[@]} == 0)) && {
-	printf "\aNothing to push :: "
-	read -rn1 -p "Press any key to exit..."
-	exit 1
-}
 
 # ───── Check ADB connection ─────
 if ! "$ADB" get-state >/dev/null 2>&1; then
@@ -45,14 +41,17 @@ if ! "$ADB" get-state >/dev/null 2>&1; then
 	exit 1
 fi
 
+# ───── Confirm and Push ─────
 if $prompt; then
+	counter=0
 	echo "The following files/folders will be pushed to the device at '$PHONE_DIR':"
 	for i in "${targets[@]}"; do
 		printf "    - %s/${YELLOW}%s${NC}\n" "$(dirname "$i")" "$(basename "$i")"
+		(( counter++ ))
 	done
 
 	echo
-	printf "Proceed [Yn]? "
+	printf "%d Items proceed [Yn]? " "$counter"
 	read -r input
 	case "$input" in
 	y | Y | '') ;;

@@ -11,7 +11,7 @@ NC='\033[0m' # No Color
 echo -e "${BLUE}=== nnn plugins installer ===${NC}"
 
 # Determine plugins directory (XDG compliant)
-PLUGINS_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/plugins"
+PLUGINS_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/plugins/personal"
 
 echo -e "${YELLOW}→ Target plugins directory:${NC} $PLUGINS_DIR"
 
@@ -35,7 +35,7 @@ if [[ ! -d "./plugins" ]]; then
 	exit 1
 fi
 
-cd ./plugins
+cd plugins
 
 find . -maxdepth 1 -print | while IFS= read -r file; do
 	filename="${file#./}" # Remove './' prefix
@@ -45,12 +45,12 @@ find . -maxdepth 1 -print | while IFS= read -r file; do
 		continue
 	fi
 
-	src_path="$(pwd)/plugins/$filename"
+	src_path="$(pwd)/$filename"
 	link_path="$PLUGINS_DIR/$filename"
 
 	# Create symbolic link (force overwrite)
-	# ln -sf "$src_path" "$link_path"
-	echo -e "ln -sf: ${RED}$filename ${NC} → ${YELLOW} $PLUGINS_DIR ${NC}"
+	ln -sf "$src_path" "$link_path"
+	echo -e "ln -sf: ${RED} $filename ${NC} → ${YELLOW} $link_path ${NC}"
 done
 
 echo -e "${BLUE}=== Installation complete ===${NC}"

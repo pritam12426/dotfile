@@ -45,18 +45,19 @@ alias firefox-p="/Applications/Firefox.app/Contents/MacOS/firefox --private-wind
 
 # --- NNN file manager configuration ---
 # Define NNN plugins for various tasks
-# NNN_PLUG='r:!rrr "$nnn" *;'
-NNN_PLUG='r:fixname;'
-NNN_PLUG+='b:cdpath;'
-NNN_PLUG+='i:fzcd;'
+NNN_PLUG_PERSONAL+="a:personal/adb_push;"
+NNN_PLUG_PERSONAL+="r:personal/fix_ugly_name;"
+
 NNN_PLUG+='z:!&zed "$nnn" *;'
-NNN_PLUG+='a:adb_push;'
+NNN_PLUG+='c:fzcd;'
 NNN_PLUG+='e:!|exiftool "$nnn";'
 NNN_PLUG+='o:!|otool -L "$nnn";'
 NNN_PLUG+='p:!ffplay  -loop -1 -sn -loglevel level+warning -seek_interval 5 "$nnn" *;'
 NNN_PLUG+='f:!&ffplay -loop -1 -sn -loglevel level+warning -seek_interval 5 "$nnn";'
 NNN_PLUG+='q:!qlmanage -p "$nnn"*;'
-NNN_PLUG+='m:!&mpv "$nnn"'
+NNN_PLUG+='m:!&mpv "$nnn";'
+
+NNN_PLUG+=$NNN_PLUG_PERSONAL
 export NNN_PLUG
 
 # Set NNN color scheme

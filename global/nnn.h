@@ -71,12 +71,10 @@ enum action {
 	SEL_CTX2,
 	SEL_CTX3,
 	SEL_CTX4,
-#ifdef CTX8
 	SEL_CTX5,
 	SEL_CTX6,
 	SEL_CTX7,
 	SEL_CTX8,
-#endif
 	SEL_MARK,
 	SEL_BMARK,
 	SEL_FLTR,
@@ -122,6 +120,7 @@ enum action {
 #ifndef NOMOUSE
 	SEL_CLICK,
 #endif
+	SEL_MAX,
 };
 
 /* Associate a pressed key to an action */
@@ -135,12 +134,12 @@ static struct key bindings[] = {
 	{ KEY_LEFT,       SEL_BACK },
 	{ 'h',            SEL_BACK },
 	/* Inside or select */
-// ! { KEY_ENTER,      SEL_OPEN },
-// ! { '\r',           SEL_OPEN },
+	// { KEY_ENTER,      SEL_OPEN },    // <<<<<
+	// { '\r',           SEL_OPEN },    // <<<<<
 	/* Pure navigate inside */
 	{ KEY_RIGHT,      SEL_NAV_IN },
 	{ 'l',            SEL_NAV_IN },
-	{ '\r',            SEL_NAV_IN },
+	{ '\r',            SEL_NAV_IN },    // <<<<<
 	/* Next */
 	{ 'j',            SEL_NEXT },
 	{ KEY_DOWN,       SEL_NEXT },
@@ -158,33 +157,29 @@ static struct key bindings[] = {
 	/* First entry */
 	{ KEY_HOME,       SEL_HOME },
 	{ 'g',            SEL_HOME },
-	{ CONTROL('E'),   SEL_HOME },
+	{ CONTROL('E'),   SEL_HOME },    // <<<<<
 	/* Last entry */
 	{ KEY_END,        SEL_END },
 	{ 'G',            SEL_END },
-	{ CONTROL('N'),   SEL_END },
+	{ CONTROL('N'),   SEL_END },    // <<<<<
 	/* Go to first file */
 	{ '\'',           SEL_FIRST },
 	/* Jump to an entry number/offset */
 	{ 'J',            SEL_JUMP },
 	{ CONTROL('Y'),   SEL_YOUNG },
 	/* HOME */
-
-	{ '~',            SEL_CDHOME },
-	{ 'H',            SEL_CDHOME },
+	{ 'H',            SEL_CDHOME },     // <<<<<
 	/* Initial directory */
 	{ '@',            SEL_CDBEGIN },
 	/* Last visited dir */
 	{ '-',            SEL_CDLAST },
 	/* Go to / */
-	{ '`',            SEL_CDROOT },
-	{ '\\',            SEL_CDROOT },
-
+	{ '\\',            SEL_CDROOT },     // <<<<<
 	/* Leader key */
 	{ 'b',            SEL_BMOPEN },
 	{ CONTROL('_'),   SEL_BMOPEN },
 	/* Connect to server over SSHFS */
-	{ 'C',            SEL_REMOTE },
+	{ 'C',            SEL_REMOTE },     // <<<<<
 	/* Cycle contexts in forward direction */
 	{ '\t',           SEL_CYCLE },
 	/* Cycle contexts in reverse direction */
@@ -194,12 +189,10 @@ static struct key bindings[] = {
 	{ '2',            SEL_CTX2 },
 	{ '3',            SEL_CTX3 },
 	{ '4',            SEL_CTX4 },
-#ifdef CTX8
 	{ '5',            SEL_CTX5 },
 	{ '6',            SEL_CTX6 },
 	{ '7',            SEL_CTX7 },
 	{ '8',            SEL_CTX8 },
-#endif
 	/* Mark a path to visit later */
 	{ ',',            SEL_MARK },
 	/* Create a bookmark */
@@ -207,21 +200,24 @@ static struct key bindings[] = {
 	/* Filter */
 	{ '/',            SEL_FLTR },
 	/* Toggle filter mode */
-	{ CONTROL('K'),   SEL_MFLTR },
+	{ CONTROL('K'),   SEL_MFLTR },     // <<<<<
 	/* Toggle hide .dot files */
 	{ '.',            SEL_HIDDEN },
 	/* Detailed listing */
 	{ 'd',            SEL_DETAIL },
 	/* File details */
 	{ 'f',            SEL_STATS },
+	// { CONTROL('F'),   SEL_STATS },                 // <<<<<
 	/* Toggle executable status */
 	{ '*',            SEL_CHMODX },
 	/* Create archive */
 	{ 'z',            SEL_ARCHIVE },
 	/* Sort toggles */
 	{ 't',            SEL_SORT },
+	// { CONTROL('T'),   SEL_SORT },                // <<<<<
 	/* Redraw window */
-	{ CONTROL('R'),   SEL_REDRAW },
+	// { CONTROL('L'),   SEL_REDRAW },             // <<<<<    refresh window
+	{ 'I',   SEL_REDRAW },            // <<<<<    refresh window
 	/* Select current file path */
 	{ ' ',            SEL_SEL },
 	{ '+',            SEL_SEL },
@@ -235,21 +231,27 @@ static struct key bindings[] = {
 	{ 'E',            SEL_SELEDIT },
 	/* Copy from selection buffer */
 	{ 'p',            SEL_CP },
+	// { CONTROL('P'),   SEL_CP },                    // <<<<<
 	/* Move from selection buffer */
 	{ 'v',            SEL_MV },
+	// { CONTROL('V'),   SEL_MV },                       // <<<<<
 	/* Copy/move from selection buffer and rename */
 	{ 'w',            SEL_CPMVAS },
+	// { CONTROL('W'),   SEL_CPMVAS },     // <<<<<
 	/* Delete from selection buffer */
 	{ 'x',            SEL_TRASH },
 	{ 'X',            SEL_RM_RF },
+	{ 'i',            SEL_RM_RF },       // <<<<<
+	// { CONTROL('X'),   SEL_TRASH },                       // <<<<<
 	/* Open in a custom application */
 	{ 'o',            SEL_OPENWITH },
+	// { CONTROL('O'),   SEL_OPENWITH },                    // <<<<<
 	/* Create a new file */
 	{ 'n',            SEL_NEW },
 	/* Show rename prompt */
-	{ 'R',   SEL_RENAMEMUL },
+	{ 'r',   SEL_RENAME },     // <<<<<
 	/* Rename contents of current dir */
-	{ 'r',            SEL_RENAME },
+	{ 'R',            SEL_RENAMEMUL },      // <<<<<
 	/* Disconnect a SSHFS mount point */
 	{ 'u',            SEL_UMOUNT },
 	/* Show help */
@@ -264,10 +266,11 @@ static struct key bindings[] = {
 	{ 'S',            SEL_SELSIZE },
 	/* Run command */
 	{ '!',            SEL_SHELL },
+	// { CONTROL(']'),   SEL_SHELL },    // <<<<<
 	/* Launcher */
 	{ '=',            SEL_LAUNCH },
 	/* Show command prompt */
-	{ ']',            SEL_PROMPT },
+	{ '<',            SEL_PROMPT },  // <<<<
 	/* Lock screen */
 	{ '0',            SEL_LOCK },
 	/* Manage sessions */
