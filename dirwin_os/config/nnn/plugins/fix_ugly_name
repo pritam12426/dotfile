@@ -1,9 +1,9 @@
 #!/bin/bash
 # export NNN_PLUG="r:personal/fix_ugly_name"
 #
-# Description: Push files and folders to Android device via adb
+# Description: Fix ugly name of file and folder
 #
-# Dependencies: adb, fzf
+# Dependencies:
 #
 # Shell: Bash
 # Author: Pritam <https://github.com/pritam12426>
@@ -25,7 +25,7 @@ else
 fi
 
 if $prompt; then
-	some -nv "${targets[@]}"
+	some -ns "${targets[@]}"
 	echo
 	printf "Proceed [Yn]? "
 	read -r input
@@ -38,8 +38,9 @@ if $prompt; then
 	esac
 fi
 
-some -nv "${targets[@]}"
+some "${targets[@]}"
 
+read -rn1 -p "Done :: Press any key to exit..."
 
 # Clear selection
 if [ -s "$sel" ] && [ -p "$NNN_PIPE" ]; then

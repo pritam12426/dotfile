@@ -135,7 +135,7 @@ for path in args.paths:
 
 	if (old_base_name.startswith(".")):
 		SKIPPED_HIDDEN_COUNT += 1
-		if args.dry_run is True:
+		if args.verbose is True:
 			logging.info(f"Skipping hidden file/folder: {old_abs_path}")
 		continue
 
@@ -144,12 +144,12 @@ for path in args.paths:
 	# todo: Use you Brain so hardo
 	if (old_dir_name == HOME_PATH):
 		if IS_HOME is False:
+			logging.warning(f"This file is not permitted to change: {old_base_name}")
 			IS_HOME = not IS_HOME
-			# Tdo: Add summary option
 
 		if args.force is not True:
-			if args.dry_run is True:
-				logging.warning("Refusing to work in home directory without --force")
+			if args.verbose is True:
+				logging.warning(f"This file is not permitted to change: {old_base_name}")
 		else:
 			RENAMED_HOME_ITEM += 1
 		continue
@@ -160,7 +160,7 @@ for path in args.paths:
 	for i in IGNORE_PATH:
 		if (old_base_name == i):
 			SKIPPED_IGNORED_COUNT += 1
-			if args.dry_run is True:
+			if args.verbose is True:
 				logging.info(f"Skipping ignored file/folder: {old_base_name}")
 			continue
 
@@ -176,9 +176,10 @@ for path in args.paths:
 			RENAMED_FILES_COUNT += 1
 
 			if args.dry_run is not True:
-				os.rename(old_abs_path, new_abs_path)
+				# os.rename(old_abs_path, new_abs_path)
+				pass
 
-		elif args.dry_run is True:
+		elif args.verbose is True:
 			logging.info(f"No change for file: {old_base_name}")
 
 	elif (os.path.isdir(old_abs_path)):
@@ -193,9 +194,10 @@ for path in args.paths:
 			RENAMED_FOLDERS_COUNT += 1
 
 			if args.dry_run is not True:
-				os.rename(old_abs_path, new_abs_path)
+				# os.rename(old_abs_path, new_abs_path)
+				pass
 
-		elif args.dry_run is True:
+		elif args.verbose is True:
 			logging.info(f"No change for folder: {old_base_name}")
 
 # summary option todo

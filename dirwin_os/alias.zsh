@@ -65,7 +65,7 @@ export NNN_COLORS="5236"
 # Set default opener for files
 export NNN_OPENER="/usr/bin/open"
 # Define NNN options
-export NNN_OPTS="AUBRdefagxp"
+export NNN_OPTS="AUBRNEdefagx"
 # Define NNN selection file
 export NNN_SEL="$TMPDIR/nnn.sel"
 # Define NNN temporary file for last directory

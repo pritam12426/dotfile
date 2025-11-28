@@ -134,7 +134,6 @@
 	// "show_whitespaces": "all",
 	"preferred_line_length": 83,
 	"tab_size": 4,
-	// "base_keymap": "VSCode",
 	"hard_tabs": true,
 	"auto_update": false,
 	"autosave": "on_focus_change",
@@ -166,6 +165,7 @@
 	"ui_font_fallbacks": [
 		"JetBrainsMono Nerd Font Mono"
 	],
+
 	"format_on_save": "off",
 	"always_treat_brackets_as_autoclosed": true,
 
@@ -242,8 +242,7 @@
 			"calt": true
 		},
 
-		"line_height": "standard",
-		// "button": false
+		"line_height": "standard"
 	},
 
 	"experimental.theme_overrides": {
@@ -277,7 +276,7 @@
 	"node": {
 		// do not download the new node version just the system system one
 		"path": "/Users/pritam/.local/dev-tools/node-v22.20.0/bin/node",
-		"npm_path": "/Users/pritam/.local/dev-tools/node-v22.20.0/lib/node_modules/npm/bin/npm-cli.js",
+		"npm_path": "/Users/pritam/.local/dev-tools/node-v22.20.0/bin/npm",
 		"ignore_system_version": false
 	},
 
@@ -291,19 +290,20 @@
 		"rr": "workspace: reload",
 		"lsp": "editor: restart language server",
 		"cc": "editor: convert to ",
-		"ll": "language selector: toggle",
-		"ct": "editor: convert to title case"
+		"ct": "editor: convert to title case",
+		"ll": "language selector: toggle"
 	},
 
 	"file_scan_exclusions": [
 		"**/CVS",
-		".git",
+		".git/",
 		"**/.DS_Store",
 		"**/Thumbs.db"
 	],
 
 	"file_scan_inclusions": [
-		".env*"
+		".env*",
+		".gitignore"
 	],
 
 	"file_types": {
@@ -322,10 +322,12 @@
 
 	"languages": {
 		"Dart": {
+			"allow_rewrap": "anywhere",
 			"soft_wrap": "preferred_line_length"
 		},
 
 		"Hurl": {
+			"allow_rewrap": "anywhere",
 			"formatter": {
 				"external": {
 					"command": "hurlfmt",
@@ -338,6 +340,7 @@
 
 		"C++": {
 			"show_edit_predictions": false,
+			"allow_rewrap": "anywhere",
 			"show_wrap_guides": true,
 			"soft_wrap": "preferred_line_length",
 			"formatter": {
@@ -353,6 +356,7 @@
 
 		"C": {
 			"show_wrap_guides": true,
+			"allow_rewrap": "anywhere",
 			"soft_wrap": "preferred_line_length",
 			"formatter": {
 				"external": {
@@ -367,6 +371,7 @@
 
 		"Java": {
 			"show_wrap_guides": true,
+			"allow_rewrap": "anywhere",
 			"soft_wrap": "preferred_line_length",
 			"formatter": {
 				"external": {
@@ -416,6 +421,7 @@
 		},
 
 		"HTML": {
+			"prettier": null,
 			"formatter": {
 				"external": {
 					"command": "/Users/pritam/.config/tidy/tidy-html.sh",
@@ -427,6 +433,7 @@
 		},
 
 		"XML": {
+						"prettier": null,
 			"formatter": {
 				"external": {
 					"command": "/Users/pritam/.config/tidy/tidy-xml.sh",
@@ -517,6 +524,7 @@
 				"taplo"
 			],
 
+
 			"formatter": {
 				"external": {
 					"command": "/Users/pritam/.config/taplo/taplo-zed.sh",
@@ -536,6 +544,16 @@
 		"jdtls": {
 			"binary": {
 				"path": "/Users/pritam/.local/dev-tools/jdt-language-server-1.51.0/bin/jdtls",
+				"ignore_system_version": false
+			}
+		},
+
+		"taplo": {
+			"binary": {
+				"arguments": [
+					"lsp",
+					"tcp"
+				],
 				"ignore_system_version": false
 			}
 		},

@@ -149,8 +149,8 @@ function gDrive() {
 }
 
 function ww() {
+		# --no-check-certificate \
 	command wget \
-		--no-check-certificate \
 		-c "$(pbpaste)"
 }
 
