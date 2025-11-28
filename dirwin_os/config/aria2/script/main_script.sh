@@ -1,4 +1,5 @@
 #!/bin/bash
+# --on-download-complete "myhook.sh '$PWD' '/path/to/aria2.log'"
 # https://aria2.github.io/manual/en/html/aria2c.html#event-hook
 
 # echo "Called with [$1] [$2] [$3]"
@@ -6,32 +7,39 @@
 # $2 ==> Number of file   (Bit torrent have multiple files in it)
 # $3 ==> full file path
 
+HISTORY_FILE="${XDG_DATA_HOME:-$HOME/.local/share}/aria2/aria2_downloads.sqlite3"
+SQL_HISTORY_STRUCTURE="$HOME/.config/aria2/script/sql_history_structure.sql"
+
+# Log the download information to the database -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+# Escape strings for SQL
+basename_safe=$(basename "$3" | sed "s/'/''/g")
+dirname_safe=$(dirname   "$3" | sed "s/'/''/g")
 
 
-# Write the downlad history to a file -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-HISTORY_FILE="$HOME/Downloads/aria2/download-history.txt"
+# Create DB directory
+mkdir -p "$(dirname "$HISTORY_FILE")"
 
-# FIX 1: The condition to check if the file does NOT exist.
-# -x checks if a file is EXECUTABLE.
-# ! -e checks if a file does NOT EXIST, which is what you want.
-if [[ ! -e "$HISTORY_FILE" ]]; then
-	(
-		# FIX 2: Corrected formatting for 5 distinct columns.
-		# This ensures "File" and "Path" are separate, aligned columns.
-		printf "%-18s | %-28s | %-5s | %-120s | %s\n" "GID" "Date" "Num" "File" "Path"
-
-		# BEST PRACTICE: A separator line that exactly matches the header widths.
-		# This is better than a hardcoded line of dashes.
-		printf "%-18s | %-28s | %-5s | %-120s | %s\n" \
-			"------------------" "----------------------------" "-----" "------------------------------------------------------------------------------------------------------------------------" "-----------"
-	) > "$HISTORY_FILE"
+# Ensure schema exists
+if [[ ! -f $HISTORY_FILE ]]; then
+	if [[ ! -f $SQL_HISTORY_STRUCTURE ]]; then
+		# echo "Schema file not found: $SQL_HISTORY_STRUCTURE"
+		exit 1
+	fi
+	sqlite3 "$HISTORY_FILE" < "$SQL_HISTORY_STRUCTURE"
 fi
 
-(
-	printf "%-18s | %-28s | %-5lld | %-120s | %s\n" "$1" "$(date +"%Y-%b-%d %Ih:%Mm:%Ss %p")" "$2" "$(basename "$3")" "$(dirname "$3")"
-) >> "$HISTORY_FILE"
+sqlite3 "$HISTORY_FILE" <<EOF
+INSERT INTO
+	DOWNLOAD_HISTORY (GID, TOTAL_FILES, BASE_NAME, PATH)
+VALUES (
+    "$1",
+    "$2",
+    "$basename_safe",
+    "$dirname_safe"
+);
+EOF
 # -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-
 
 
 # Remove the *.aria2 file -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-

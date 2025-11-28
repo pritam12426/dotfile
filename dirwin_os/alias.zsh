@@ -70,7 +70,7 @@ export NNN_SEL="$TMPDIR/nnn.sel"
 # Define NNN temporary file for last directory
 export NNN_TMPFILE="$TMPDIR/nnn.lastd"
 # Define NNN FIFO file
-export NNN_FIFO="$TMPDIR/nnn.fifon"
+export NNN_FIFO="$TMPDIR/nnn.fifo"
 # Define NNN trash command
 export NNN_TRASH="/usr/bin/trash"
 # Define NNN help file
