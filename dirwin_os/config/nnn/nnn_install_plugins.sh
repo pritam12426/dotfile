@@ -35,19 +35,22 @@ if [[ ! -d "./plugins" ]]; then
 	exit 1
 fi
 
-if [ -z "$(ls -A ./plugins/*.npl ./plugins/* 2>/dev/null || true)" ]; then
-	echo -e "${YELLOW}! Warning: No plugins found in ./plugins/${NC}"
-else
-	echo -e "${YELLOW}→ Found plugins, copying to $PLUGINS_DIR...${NC}"
-fi
+cd ./plugins
 
-# Copy plugins
-if cp -vp ./plugins/* "$PLUGINS_DIR"/ 2>/dev/null; then
-	echo -e "${GREEN}✓ Successfully installed nnn plugins!${NC}"
-	echo -e "${BLUE}You can now use them in nnn. Restart nnn if it's already running.${NC}"
-else
-	echo -e "${RED}✗ Failed to copy some plugins (check permissions or disk space)${NC}\a" >&2
-	exit 1
-fi
+find . -maxdepth 1 -print | while IFS= read -r file; do
+	filename="${file#./}" # Remove './' prefix
+
+	# Skip "." and ""
+	if [[ $filename == "." || -z $filename ]]; then
+		continue
+	fi
+
+	src_path="$(pwd)/plugins/$filename"
+	link_path="$PLUGINS_DIR/$filename"
+
+	# Create symbolic link (force overwrite)
+	# ln -sf "$src_path" "$link_path"
+	echo -e "ln -sf: ${RED}$filename ${NC} → ${YELLOW} $PLUGINS_DIR ${NC}"
+done
 
 echo -e "${BLUE}=== Installation complete ===${NC}"

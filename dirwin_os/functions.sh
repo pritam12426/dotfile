@@ -280,7 +280,7 @@ function gg() {
 
 # ------------ Link Executables Function -------
 # Function to create symbolic links for executables in a target directory
-function link_executables() {
+function link_item() {
 	local target_dir="$1"
 
 	# Validate input
@@ -306,9 +306,14 @@ function link_executables() {
 		src_path="$(pwd)/$filename"
 		link_path="$target_dir/$filename"
 
+		# Skip "." and ""
+		if [[ $filename == "." || -z $filename ]]; then
+			continue
+		fi
+
 		# Create symbolic link (force overwrite)
-		ln -sf "$src_path" "$link_path"
-		echo "Linked: $filename → $link_path"
+		# ln -sf "$src_path" "$link_path"
+		echo -e "ln -sf: \033[0;31m $filename \033[0m → \033[1;33m $link_path \033[0m"
 	done
 
 	return 0
@@ -431,7 +436,7 @@ function gh() {
 			--license mit \
 			--disable-wiki \
 			--disable-issues \
-			$desc_flag \
+			"$desc_flag"
 
 		echo "🚀 Done! Linked and pushed to GitHub."
 	fi
