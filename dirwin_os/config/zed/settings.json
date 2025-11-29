@@ -228,7 +228,8 @@
 		"default_height": 300.0,
 		"button": true,
 		"env": {
-			"GIT_EDITOR": "zed --wait"
+			"GIT_EDITOR": "zed --wait",
+			"NNN_OPTS": "AUBRNEdefag"
 		},
 
 		"blinking": "terminal_controlled",

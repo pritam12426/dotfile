@@ -20,8 +20,6 @@ TRACKERS="$LIST1,$(echo "$LIST2" | tr '\n' ',' | sed 's/,,*/,/g;s/,$//')"
 echo "🔧 Updating $ARIA2_CONF_LAUNCHCTL ..."
 
 BT_CONFIG_HEAD=$(cat <<EOF
-
-
 # Load additional BitTorrent trackers from external file =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 bt-tracker=$TRACKERS
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
@@ -32,3 +30,31 @@ echo "$BT_CONFIG_HEAD" >> "$ARIA2_CONF_LAUNCHCTL"
 
 echo "🎉 Trackers updated successfully!"
 echo "📌 Saved to: $ARIA2_CONF_LAUNCHCTL"
+
+
+# arai2c is running
+if pgrep -x aria2c > /dev/null; then
+	printf "aria2 is already running (PID: %d) Reload? (y/n): " "$(pgrep -x aria2c)"
+	read -r choice
+	echo
+	case "$choice" in
+			([yY])
+				launchctl unload ~/Library/LaunchAgents/com.user.aria2.plist
+				launchctl load ~/Library/LaunchAgents/com.user.aria2.plist
+				echo "🔄 aria2 reloaded successfully."
+				;;
+			([nN])
+				exit 0
+				;;
+	esac
+else
+	printf "Start aria2 server (y/n): "
+	read -r choice
+	echo
+	case "$choice" in
+			([yY])
+				launchctl load ~/Library/LaunchAgents/com.user.aria2.plist
+				echo "✅ aria2 started successfully."
+				;;
+	esac
+fi

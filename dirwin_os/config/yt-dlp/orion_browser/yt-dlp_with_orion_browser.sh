@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 export PATH="$HOME/.local/bin:$PATH"
 LOG_FILE="$HOME/.local/share/yt-dlp/orion_broser.log"
@@ -73,21 +73,19 @@ function yt () {
 	fi
 
 	if [[ $URL == https://www.youtube.com/watch* ]]; then
-		command+=" $* \"$URL\""
+		message "Standard YouTube video downloads are not supported in Orion Browser script." "Orion" "error"
+		exit 1
 	elif [[ $URL == https://www.youtube.com/playlist* ]]; then
-		command+="--pList $* \"$URL\""
+		message "Playlist downloads are not supported in Orion Browser script." "Orion" "error"
+		exit 1
 	elif [[ $URL == https://www.youtube.com/shorts* ]]; then
 		command+=" --st $* \"$URL\""
-	# elif [[ $URL == https://www.youtube.com/playlist* ]]; then #   ,,,,,,
-	# 	command+="--pList $* \"$URL\""
 	elif [[ $URL == https://www.instagram.com* ]]; then
 		command+="--st $* \"$URL\""
 	elif [[ $URL == https://www.jiosaavn.com* ]]; then
 		command+=" --savan $* \"$URL\""
 	elif [[ $URL == https://music.youtube.com* ]]; then
 		command+=" --ysong $* \"$URL\""
-	else
-		command+=" $* \"$URL\""
 	fi
 
 	notify "Starting download with $CC..." "Orion" "info"
