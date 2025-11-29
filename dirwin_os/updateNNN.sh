@@ -23,7 +23,7 @@ command cp -p "$DOT_FILE/global/nnn.h" src/nnn.h
 make \
 O_PCRE2=1 \
 O_NOMOUSE=1 \
-O_GITSTATUS=0 \
+O_GITSTATUS=1 \
 clean strip install
 
 cp -p "$NNN_LOCAL_REPO/misc/auto-completion/zsh/_nnn" "$HOME/.zsh/completions/_nnn"

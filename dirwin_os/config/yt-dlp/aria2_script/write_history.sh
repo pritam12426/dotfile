@@ -8,7 +8,9 @@
 
 #!/bin/bash
 
-HISTORY_FILE="$HOME/Library/Caches/yt-dlp/yt-dlp_aira2_download-history.txt"
+mkdir -p "$HOME/.local/share/yt-dlp"
+HISTORY_FILE="$HOME/.local/share/yt-dlp/yt-dlp_aira2_download-history.txt"
+# HISTORY_FILE="$HOME/Library/Caches/yt-dlp/yt-dlp_aira2_download-history.txt"
 
 # FIX 1: The condition to check if the file does NOT exist.
 # -x checks if a file is EXECUTABLE.
@@ -38,4 +40,3 @@ if [[ -f "$3.aria2" ]]; then
 	rm -f "$3.aria2"
 fi
 # -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-
