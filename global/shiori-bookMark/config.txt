@@ -1,0 +1,9 @@
+github:
+	https://github.com/go-shiori/shiori
+
+login Password:
+	user: shiori
+	pass: gopher
+
+command to setup this db with the macos:
+	ln -sf "$HOME/Library/Application Support/shiori/shiori.db" "shiori.db"
