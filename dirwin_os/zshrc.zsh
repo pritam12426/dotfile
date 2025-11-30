@@ -44,7 +44,11 @@ PROMPT="%B%F{green}%n@%m%f%b:%F{blue}%B%~%b%f$ " # bash theme
 # RPROMPT="~ %F{241}%t%f"
 
 # aliases ---------------------------------------------------
-HISTFILE="$HOME/.zhistory"
+# Load Apple’s default interactive zsh environment (fixes most issues)
+[ -f /etc/zshrc ] && source /etc/zshrc
+setopt SHARE_HISTORY
+
+# HISTFILE="$HOME/.zhistory"
 # completion using arrow keys (based on history)
 # bindkey '^[[A' history-search-backward
 # bindkey '^[[B' history-search-forward

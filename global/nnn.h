@@ -135,7 +135,7 @@ static struct key bindings[] = {
 	{ 'h',            SEL_BACK },
 	/* Inside or select */
 	// { KEY_ENTER,      SEL_OPEN },    // <<<<<
-	// { '\r',           SEL_OPEN },    // <<<<<
+	{ '\r',           SEL_OPEN },    // <<<<<
 	/* Pure navigate inside */
 	{ KEY_RIGHT,      SEL_NAV_IN },
 	{ 'l',            SEL_NAV_IN },
@@ -200,7 +200,7 @@ static struct key bindings[] = {
 	/* Filter */
 	{ '/',            SEL_FLTR },
 	/* Toggle filter mode */
-	{ CONTROL('K'),   SEL_MFLTR },     // <<<<<
+	// { CONTROL('K'),   SEL_MFLTR },     // <<<<<
 	/* Toggle hide .dot files */
 	{ '.',            SEL_HIDDEN },
 	/* Detailed listing */

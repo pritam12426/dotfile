@@ -47,14 +47,14 @@ alias firefox-p="/Applications/Firefox.app/Contents/MacOS/firefox --private-wind
 # Define NNN plugins for various tasks
 NNN_PLUG_PERSONAL+="a:personal/adb_push;"
 NNN_PLUG_PERSONAL+="r:personal/fix_ugly_name;"
+NNN_PLUG_PERSONAL+="p:personal/ffplay_playlist;"
 
 NNN_PLUG+='z:!&zed "$nnn" *;'
 NNN_PLUG+='c:fzcd;'
 NNN_PLUG+='e:!|exiftool "$nnn";'
 NNN_PLUG+='o:!|otool -L "$nnn";'
-# NNN_PLUG+='p:!ffplay  -loop -1 -sn -loglevel level+warning -seek_interval 5 "$nnn" *;'
 NNN_PLUG+='f:!&ffplay -loop -1 -sn -loglevel level+warning -seek_interval 5 "$nnn";'
-NNN_PLUG+='q:!qlmanage -p "$nnn"*;'
+NNN_PLUG+='q:!echo "qlmanage -p $nnn" >&2 && qlmanage -p "$nnn" > /dev/null*;'
 NNN_PLUG+='m:!&mpv "$nnn";'
 
 NNN_PLUG+=$NNN_PLUG_PERSONAL
@@ -65,7 +65,7 @@ export NNN_COLORS="5236"
 # Set default opener for files
 export NNN_OPENER="/usr/bin/open"
 # Define NNN options
-export NNN_OPTS="AUBRNEdefagx"
+export NNN_OPTS="AUBRNEdefag"
 # Define NNN selection file
 export NNN_SEL="$TMPDIR/nnn.sel"
 # Define NNN temporary file for last directory
@@ -75,7 +75,7 @@ export NNN_FIFO="$TMPDIR/nnn.fifo"
 # Define NNN trash command
 export NNN_TRASH="/usr/bin/trash"
 # Define NNN help file
-export NNN_HELP="cat $DOT_FILE/../global/nnn_help.txt"
+export NNN_HELP="cat $DOT_FILE/global/nnn_help.txt"
 # Define regex for archive file extensions
 export NNN_ARCHIVE="\\.(7z|a|ace|alz|arc|arj|bz|bz2|cab|cpio|deb|gz|jar|lha|lz|lzh|lzma|lzo|rar|rpm|rz|t7z|tar|tbz|tbz2|tgz|tlz|txz|tZ|tzo|war|xpi|xz|Z|zip)$"
 # Define NNN file colors
@@ -94,23 +94,32 @@ export FZF_CTRL_T_OPTS="--preview 'bat --color=always -n --line-range :500 {}'"
 # export FZF_TMUX_OPTS=" -p90%,70% "
 # --------------------------------------------
 
-# ------------ Man Page Colors (static) ------------
-# Green for blinking/bold text (mb, md)
-export LESS_TERMCAP_mb=$'\e[1;32m'
-export LESS_TERMCAP_md=$'\e[1;32m'
 
-# Yellow for standout text (so)
-export LESS_TERMCAP_so=$'\e[1;33m'
+# ------------ Red & Green Man Page Theme (2025 edition) ------------
 
-# Reset standout/bold (se)
+# Bold text & headings → Bright green (function names, section titles)
+export LESS_TERMCAP_md=$'\e[01;38;5;82m'   # vivid neon green
+
+# Start blinking (rarely used) → Bright red (makes it actually noticeable)
+export LESS_TERMCAP_mb=$'\e[05;38;5;196m'  # blinking bright red
+
+# Search highlight bar / standout → White text on red background (super visible)
+export LESS_TERMCAP_so=$'\e[01;97;41m'     # bright white on red
+
+# End standout
 export LESS_TERMCAP_se=$'\e[0m'
 
-# Red + underline for US
-export LESS_TERMCAP_US=$'\e[1;4;31m'
+# Underlined text (options, arguments, --flags) → Bright red underline
+export LESS_TERMCAP_us=$'\e[04;38;5;196m'  # bright red underline
 
-# Reset all (me)
+# End underline
+export LESS_TERMCAP_ue=$'\e[0m'
+
+# End all bold/attributes
 export LESS_TERMCAP_me=$'\e[0m'
-# -----------------------------------------
+
+# -----------------------------------------------------------------
+
 
 # ------------ LS and File Management Aliases ------------
 # Enable colorized output for common commands
