@@ -3,9 +3,11 @@
 -- Database: aria2_downloads.db
 
 CREATE TABLE IF NOT EXISTS "DOWNLOAD_HISTORY" (
-	"GID" TEXT,
-	"DATE" datetime DEFAULT (strftime('%Y-%m-%d %H:%M:%S', 'now')),
-	"TOTAL_FILES" INTEGER,
-	"BASE_NAME" TEXT,
-	"PATH" TEXT
+	"gid"           TEXT,
+	"date"          datetime DEFAULT (strftime('%Y-%m-%d %H:%M:%S', 'now')),
+	"total_files"   INTEGER,
+	"size_bytes"    INTEGER,
+	"size_human"    TEXT,
+	"base_name"     TEXT,
+	"path"          TEXT
 );

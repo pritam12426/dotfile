@@ -439,6 +439,8 @@ function gh() {
 			"$desc_flag"
 
 		echo "🚀 Done! Linked and pushed to GitHub."
+	else
+		command gh "$@"
 	fi
 }
 # ---------------------------------------------

@@ -12,10 +12,6 @@ SQL_HISTORY_STRUCTURE="$HOME/.config/aria2/script/sql_history_structure.sql"
 
 # Log the download information to the database -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
-# Escape strings for SQL
-basename_safe=$(basename "$3" | sed "s/'/''/g")
-dirname_safe=$(dirname   "$3" | sed "s/'/''/g")
-
 
 # Create DB directory
 mkdir -p "$(dirname "$HISTORY_FILE")"
@@ -31,12 +27,14 @@ fi
 
 sqlite3 "$HISTORY_FILE" <<EOF
 INSERT INTO
-	DOWNLOAD_HISTORY (GID, TOTAL_FILES, BASE_NAME, PATH)
+	DOWNLOAD_HISTORY (gid, total_files, size_bytes, size_human, base_name, path)
 VALUES (
     "$1",
     "$2",
-    "$basename_safe",
-    "$dirname_safe"
+    "$(du        "$3" | cut -f1)",
+    "$(du -h     "$3" | cut -f1)",
+    "$(basename  "$3" | sed "s/'/''/g")",
+    "$(dirname   "$3" | sed "s/'/''/g")"
 );
 EOF
 # -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
