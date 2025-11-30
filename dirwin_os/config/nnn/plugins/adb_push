@@ -19,6 +19,8 @@ BLUE='\033[0;34m'
 RED='\033[0;31m'
 NC='\033[0m' # No Color
 
+counter=0
+
 # ───── Get selection or current file ─────
 sel="${NNN_SEL:-${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.selection}"
 prompt=true
@@ -29,6 +31,7 @@ if [ -s "$sel" ]; then
 	# Read null-delimited entries (nnn uses \0 as separator)
 	while IFS= read -r -d '' i || [ -n "$i" ]; do
 		targets+=("$(readlink -f "$i")")
+		(( counter++ ))
 	done <"$sel"
 else
 	targets=("$(readlink -f "$1")")
@@ -43,11 +46,9 @@ fi
 
 # ───── Confirm and Push ─────
 if $prompt; then
-	counter=0
 	echo "The following files/folders will be pushed to the device at '$PHONE_DIR':"
 	for i in "${targets[@]}"; do
 		printf "    - %s/${YELLOW}%s${NC}\n" "$(dirname "$i")" "$(basename "$i")"
-		(( counter++ ))
 	done
 
 	echo
