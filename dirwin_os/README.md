@@ -3,10 +3,12 @@
 - Go to this page for move cli toos [Github awesome-tuis](https://github.com/rothgar/awesome-tuis/)
 
 - [yt-dlp](https://github.com/yt-dlp/yt-dlp) Media downlader. `By the help of pip`
-- [ADB]() tool for working with add `Static binary is there of the googel adb page or go with scrcpy`
-- [scrcpy](https://github.com/Genymobile/scrcpy)  `Static binary is there on the github page of scrcpy`
+- [ADB](https://github.com/Genymobile/scrcpy) tool for working with add `Static binary is there of the googel adb page or go with scrcpy`
+- [scrcpy](https://github.com/Genymobile/scrcpy)  ``Use bin to install`
 - [adbtuifm](https://github.com/darkhz/adbtuifm) `Use bin to install`
+- [sk](https://github.com/skim-rs/skim) `Use bin to install`
 - [broot](https://github.com/Canop/broot) `Use bin to install`
+- [taplo](https://github.com/tamasfe/taplo) `Use bin to install`
 - [bin](https://github.com/marcosnils/bin) `Use bin to install`
 - [clock](https://www.youtube.com/watch?v=0rUBhqR6ckw&t=12242s) `You have the binary on you github`
 - [cointop](https://github.com/cointop-sh/cointop) `You have the binary on you github`
@@ -22,76 +24,65 @@
 - [zellij](https://github.com/zellij-org/zellij) `Use bin to install`
 - [pandoc](https://github.com/jgm/pandoc) `manually install this for the  Releases page`
 - [sleek](https://github.com/nrempel/sleek) `sql formater manually install this for the  Releases page`
-- [sntop](https://terminaltrove.com/sntop/)
 - [doggo](https://github.com/mr-karan/doggo) `Use bin to install`
+- [dua](https://github.com/Byron/dua-cli) `Use bin to install`
+- [gh](https://github.com/cli/cli) `Use bin to install`
+- [dog](https://github.com/ogham/dog) `Use bin to install`
+- [lazygit](https://github.com/jesseduffield/lazygit) `Use bin to install`
 - [asciinema](https://github.com/asciinema/asciinema) `Use bin to install`
 - [aichat](https://terminaltrove.com/aichat/) `Use bin to install`
+- [sntop](https://terminaltrove.com/sntop/) 
 - [caligula](https://terminaltrove.com/caligula/) `Use bin to install`
 - [dra](https://terminaltrove.com/dra/) `like bin command in rust`
 - [dua](https://terminaltrove.com/dua/) `View disk space usage like ncdu`
-- [fclones](https://terminaltrove.com/fclones/)
+- [fclones](https://terminaltrove.com/fclones/) duplicate files on your system `you have the binary on you github`
 - [goaccess](https://terminaltrove.com/goaccess/)
 - [wireproxy](https://www.youtube.com/watch?v=ESr0xid-kl4) `Use bin to install`
 - [shadowsocks](https://github.com/shadowsocks) `manually install this for the  Releases page`
 - [qmv](https://github.com/itchyny/mmv) `manually install this for the  Releases page`
 - [vidir](https://github.com/trapd00r/vidir/blob/master/bin/vidir) `manually install this for the  Releases page`
-- [aboutrepo]()
-- [age]()
+- [croc](https://github.com/schollz/croc) `Use bin to install`
+- [syncthing](https://syncthing.net) `Use bin to install`
+- [lf](https://github.com/gokcehan/lf) `Use bin to install`
+- [rclone](https://github.com/rclone/rclone) `Use bin to install`
+- [cargo-seek](https://github.com/tareqimbasher/cargo-seek) `Use bin to install`
 - [arduino-cli](https://github.com/arduino/arduino-cli) `Use bin to install`
-- [bat]()
-- [batt](https://github.com/charlie0129/batt) `Use bin to install`
-- [batchrename]()
-- [brr]()
 - [clang-stat-cache]() `Ships with command online tools  /Library/Developer/CommandLineTools/usr/bin`
+- [d2](https://github.com/terrastruct/d2) `Use bin to install`
 - [clang-tidy]() `Ships with command online tools  /Library/Developer/CommandLineTools/usr/bin`
-- [d2]() `Use bin to install`
-- [displayline]()
+- [batt](https://github.com/charlie0129/batt) `Use bin to install`
+- [rg](https://github.com/BurntSushi/ripgrep) `Use bin to install`
+- [bat](https://github.com/charlie0129/batt/releases) `Use bin to install`
+- [fd](https://github.com/sharkdp/fd) `Use bin to install`
+- [neocmakelsp-v0_8.19](https://github.com/neocmakelsp/neocmakelsp) `Use bin to install`
+- [zenity](https://github.com/ncruces/zenity) `Use bin to install`
+- [ruff](https://github.com/astral-sh/ruff) `Use bin to install`
+- [taplo](https://github.com/tamasfe/taplo) `Use bin to install`
+- [mac-cleanup](https://github.com/mac-cleanup) `manually install this for the  Releases page`
+- [tig](https://github.com/jonas/tig) `You have the binary on you github / build from source for new verison esay to install`
+- [fzf](https://github.com/junegunn/fzf) `Use bin to install`
+- [entr](https://github.com/eradman/entr) `You have the binary on you github / build from source for new verison esay to install`
+- [pstree](https://github.com/FredHucht/pstree) `You have the binary on you github`
+- [shellcheck](https://github.com/koalaman/shellcheck) `Use bin to install`
+- [shfmt](https://github.com/patrickvane/shfmt) `Use bin to install`
+- [sqlmap]() `manually install this for the  Releases page`
+- [tre](https://github.com/dduan/tre) `Use bin to install`
+- [htop]() `You have the binary on you github`
+- [tree]() `you have the binary on you github`
+- [fastfetch / neofeatch]()
+
+
 - [doxygen]()
-- [entr]()
-- [envpath]()
-- [fastfetch]()
-- [fd]()
-- [ffmpeg]()
-- [ffplay]()
-- [ffprobe]()
-- [fzf]()
+- [envpath]() `You have the binary on you github`
 - [gradle]()
 - [gsed]() `You have the binary on you github`
-- [htop]()
-- [iina]()
-- [inkscape]()
 - [jdtls]()
-- [lf]()
-- [lgit]()
-- [mac-cleanup]()
 - [ncdu]() `You have the binary on you github`
-- [neocmakelsp-v0_8.19](https://github.com/neocmakelsp/neocmakelsp)
 - [ninja]()
-- [nnn]()
-- [nvim]()
 - [osm]()
 - [pkg-config]() `You have the binary on you github`
 - [pkgconf]() `You have the binary on you github`
-- [pstree]()
-- [quicklook]()
-- [rg]()
 - [rr]()
 - [rrr]()
 - [rrrr]()
-- [ruff](https://github.com/astral-sh/ruff) `Use bin to install`
-- [scrcpy]()
-- [shellcheck]()
-- [shfmt]()
-- [skimnotes]()
-- [skimpdf]()
-- [sleek]()
 - [sql-fmt]()
-- [sqlmap]()
-- [taplo-0_9.3](https://github.com/tamasfe/taplo) `Use bin to install`
-- [test-graph]()
-- [tig]()
-- [tre]()
-- [tree]()
-- [update_nnn.sh]()
-- [xxc]()
-- [zenity]()

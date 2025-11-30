@@ -4,7 +4,7 @@ set -e
 
 file="$1"
 
-file=$(realpath $file)
+file=$(realpath "$file")
 
 path=$(dirname "$file")
 filename=$(basename "$file")
@@ -15,20 +15,20 @@ run_command=""
 # Checking file type and setting up the run command
 case "$file" in
 *.c)
-	# run_command+="$CC -std=c17 $file -fsanitize=address "
-	run_command+="$CC -std=c17 $file "
+	# run_command+="$CC -std=c17 "$file" -fsanitize=address "
+	run_command+="$CC -std=c17 "$file" "
 	;;
 *.cpp)
-	run_command+="$CXX -std=c++20 $file "
+	run_command+="$CXX -std=c++20 "$file" "
 	;;
 *.rs)
 	run_command+="cargo run "
 	;;
 *.pl)
-	run_command+="perl $file "
+	run_command+="perl "$file" "
 	;;
 */[Mm]akefile)
-	run_command+="make -C $path -f $file "
+	run_command+="make -C $path -f "$file" "
 	;;
 */CMakeLists.txt)
 	LIB="${PWD##*/}"
@@ -42,52 +42,52 @@ case "$file" in
 
 	;;
 *.html)
-	run_command+="open $file "
+	run_command+="open "$file" "
 	;;
 *.d2)
 	first_line=$(head -n 1 "$file")
 
 	if [[ $first_line == \#!* ]]; then
-		run_command+="${first_line:2} $file "
+		run_command+="${first_line:2} "$file" "
 	else
-		run_command+="d2 --watch --layout elk --center $file "
+		run_command+="d2 --watch --layout elk --center "$file" "
 	fi
 
 	;;
 *.cal)
-	run_command+="bc -liqf $file "
+	run_command+="bc -liqf "$file" "
 	;;
 *.py)
-	run_command+="python3 $file "
+	run_command+="python3 "$file" "
 	;;
 *.lua)
-	run_command+="lua $file "
+	run_command+="lua "$file" "
 	;;
 *.go)
-	run_command+="go run $file "
+	run_command+="go run "$file" "
 	;;
 *.zig)
-	run_command+="zig run $file "
+	run_command+="zig run "$file" "
 	;;
 *.sql)
-	run_command+="sqlite3 -header -table -bail -nullvalue \"\u{F9E2}\" $path/$file_without_extension.sqlite3 < $file "
-	# run_command+="sqlite3 -header -table -bail -nullvalue \"\u{F9E2}\" < $file "
+	run_command+="sqlite3 -header -table -bail -nullvalue "-null-" $path/$file_without_extension.sqlite3 < "$file" "
+	# run_command+="sqlite3 -header -table -bail -nullvalue \"\u{F9E2}\" < "$file" "
 	;;
 *.cs)
 	run_command+="dotnet run "
 	;;
 *.java)
-	run_command+="java $file "
+	run_command+="java "$file" "
 	;;
 *.js)
-	run_command+="node $file "
+	run_command+="node "$file" "
 	;;
 *.ts)
-	run_command+="node $file "
+	run_command+="node "$file" "
 	;;
 *.sh | *.bash | *.zsh)
-	# run_command+="bash -x $file "
-	run_command+="bash $file "
+	# run_command+="bash -x "$file" "
+	run_command+="bash "$file" "
 	;;
 *)
 	$file

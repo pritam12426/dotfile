@@ -27,12 +27,11 @@ fi
 
 sqlite3 "$HISTORY_FILE" <<EOF
 INSERT INTO
-	DOWNLOAD_HISTORY (gid, total_files, size_bytes, size_human, base_name, path)
+	DOWNLOAD_HISTORY (gid, total_files, size_bytes, base_name, path)
 VALUES (
     "$1",
     "$2",
     "$(du        "$3" | cut -f1)",
-    "$(du -h     "$3" | cut -f1)",
     "$(basename  "$3" | sed "s/'/''/g")",
     "$(dirname   "$3" | sed "s/'/''/g")"
 );
