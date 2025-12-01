@@ -6,8 +6,7 @@
 # $2 ==> Number of file   (Bit torrent have multiple files in it)
 # $3 ==> full file path
 
-#!/bin/bash
-
+# -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 mkdir -p "$HOME/.local/share/yt-dlp"
 HISTORY_FILE="$HOME/.local/share/yt-dlp/yt-dlp_aira2_download-history.txt"
 # HISTORY_FILE="$HOME/Library/Caches/yt-dlp/yt-dlp_aira2_download-history.txt"
@@ -32,6 +31,37 @@ fi
 (
 	printf "%-18s | %-28s | %-5lld | %-120s | %s\n" "$1" "$(date +"%Y-%b-%d %Ih:%Mm:%Ss %p")" "$2" "$(basename "$3")" "$(dirname "$3")"
 ) >> "$HISTORY_FILE"
+# -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+
+# Log the download information to the database -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+HISTORY_FILE="${XDG_DATA_HOME:-$HOME/.local/share}/aria2/aria2_downloads.sqlite3"
+SQL_HISTORY_STRUCTURE="$HOME/.config/aria2/script/sql_history_structure.sql"
+
+# Create DB directory
+mkdir -p "$(dirname "$HISTORY_FILE")"
+
+# Ensure schema exists
+if [[ ! -f $HISTORY_FILE ]]; then
+	if [[ ! -f $SQL_HISTORY_STRUCTURE ]]; then
+		# echo "Schema file not found: $SQL_HISTORY_STRUCTURE"
+		exit 1
+	fi
+	sqlite3 "$HISTORY_FILE" < "$SQL_HISTORY_STRUCTURE"
+fi
+
+sqlite3 "$HISTORY_FILE" <<EOF
+INSERT INTO
+	DOWNLOAD_HISTORY (gid, total_files, size_bytes, base_name, path)
+VALUES (
+    "$1",
+    "$2",
+    "$(du        "$3" | cut -f1)",
+    "$(basename  "$3" | sed "s/'/''/g")",
+    "$(dirname   "$3" | sed "s/'/''/g")"
+);
+EOF
+# -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 
 # Remove the *.aria2 file -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
