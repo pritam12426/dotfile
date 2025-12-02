@@ -570,7 +570,7 @@
 		"gopls": {
 			"initialization_options": {},
 			"binary": {
-				"path": "/Users/pritam/.local/dev-tools/gopath/bin/gopls",
+				// "path": "/Users/pritam/.local/dev-tools/gopath/bin/gopls",
 				"ignore_system_version": false
 			}
 		},

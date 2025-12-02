@@ -55,6 +55,7 @@
 ## Manual / Releases
 
 - [gnu stow](https://www.gnu.org/software/stow/) `install manually with   https://formulae.brew.sh/formula/stow ` (Not Regularly Used)
+- [privacy-sexy](https://github.com/undergroundwires/privacy.sexy) `manually install this for the  Releases page` (Not Regularly Used)
 - [mac-cleanup](https://github.com/mac-cleanup) `manually install this for the  Releases page` (Regularly Used)
 - [pandoc](https://github.com/jgm/pandoc) `manually install this for the  Releases page` (Regularly Used)
 - [qmv](https://github.com/itchyny/mmv) `manually install this for the  Releases page` (Not Regularly Used)

@@ -118,6 +118,16 @@ function wireproxy-start() {
 	fi
 }
 
+function findDuplicate() {
+	find . -type f -size +1M -exec cksum {} \; |
+		tee /tmp/filelist.tmp |
+		cut -f 1,2 -d ' ' |
+		sort |
+		uniq -d |
+		grep -hif - /tmp/filelist.tmp |
+		sort -nrk2
+}
+
 function gDrive() {
 	# Check if at least one argument (a source) is provided.
 	if [ -z "$1" ]; then
@@ -149,7 +159,7 @@ function gDrive() {
 }
 
 function ww() {
-		# --no-check-certificate \
+	# --no-check-certificate \
 	command wget \
 		-c "$(pbpaste)"
 }
@@ -444,6 +454,7 @@ function gh() {
 	fi
 }
 # ---------------------------------------------
+
 # Colorized diff output
 function diff {
 	command diff -u --color=always "$@" | less -r -
