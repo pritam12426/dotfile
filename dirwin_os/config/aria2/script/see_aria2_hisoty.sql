@@ -1,6 +1,4 @@
-.mode box
-.open "/Users/pritam/.local/share/aria2/aria2_downloads.sqlite3"
-
+.mode box.open "/Users/pritam/.local/share/aria2/aria2_downloads.sqlite3"
 SELECT
     gid,
     (
@@ -34,7 +32,7 @@ SELECT
         '%d-%Y %I:%M:%S %p',
         datetime(date, 'unixepoch', 'localtime')
     ) AS date,
-    total_files,
+    -- total_files,
     CASE
         WHEN size_bytes < 1024 THEN size_bytes || ' B'
         WHEN size_bytes < 1024 * 1024 THEN ROUND(size_bytes / 1024.0, 2) || ' KB'
@@ -48,4 +46,6 @@ SELECT
     base_name,
     path
 FROM
-    DOWNLOAD_HISTORY;
+    DOWNLOAD_HISTORY
+ORDER BY
+    date DESC;
