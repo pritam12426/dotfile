@@ -33,7 +33,7 @@ title_opction=""
 	video_title=$(ffprobe -v error -select_streams v:0 -show_entries format_tags=title -of default=noprint_wrappers=1:nokey=1 "$sk_passed_file")
 
 	if [ -z "$video_title" ]; then
-		video_title+=$(echo $sk_passed_file | tr '_' ' ')
+		video_title+=$(echo "$sk_passed_file" | tr '_' ' ')
 	fi
 
 	title_opction+=", "
@@ -62,7 +62,7 @@ title_opction=""
 	title_opction+=" • '"
 	time+=$(ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 "$sk_passed_file")
 	time=$(printf "%.0f" "$time")
-	title_opction+=$(format_seconds $time )
+	title_opction+=$(format_seconds "$time" )
 	title_opction+="'"
 
 	echo "Title: $video_title"

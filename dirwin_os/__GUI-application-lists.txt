@@ -1,28 +1,25 @@
-# Auto-generated from  "Dhanno.local" on – 2025-Dec-02
+# Auto-generated from  "Dhanno.local" on – 2025-Dec-05
 
 DB Browser for SQLite.app
-codelite.app
 qbittorrent.app
 Maccy.app
 Numbers.app
 IINA.app
 Telegram.app
-Orion.app
 Inkscape.app
 Zed.app
 GPG Keychain.app
-AdBlock.app
 Utilities
 UTM.app
 WhatsApp.app
 Hot.app
+Icon Composer.app
 Keynote.app
 Color Picker.app
 Pixelmator Pro.app
 mpv.app
 Pages.app
 WireGuard.app
-Origami Studio.app
 AppCleaner.app
 KeePassXC.app
 Firefox.app
