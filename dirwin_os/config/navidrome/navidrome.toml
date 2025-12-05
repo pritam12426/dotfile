@@ -3,11 +3,9 @@
 # https://www.navidrome.org/docs/usage/configuration-options/#available-options
 # https://www.navidrome.org/docs/usage/configuration-options/
 
-LogLevel = "DEBUG"
+LogLevel = "INFO"
 Scanner.Schedule = "@every 24h"
 TranscodingCacheSize = "150MiB"
 MusicFolder = "/Users/pritam/Music/local"
-
-# This is the default path for Homebrew installed ffmpeg
-
-FFmpegPath = "/Users/pritam/.local/bin/ffmpeg"
+DataFolder = "/Users/pritam/Library/Application Support/navidrome"
+# ND_PORT = 4533

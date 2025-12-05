@@ -184,11 +184,10 @@
 	"git": {
 		"git_gutter": "tracked_files",
 		"inline_blame": {
-			"show_commit_summary": true,
+			// "show_commit_summary": true,
 			"enabled": true,
-			"delay_ms": 100,
+			"delay_ms": 500,
 			"padding": 5
-			// "show_commit_summary": true
 		},
 		"branch_picker": {
 			"show_author_name": true
