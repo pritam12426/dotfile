@@ -321,6 +321,9 @@
 	},
 
 	"languages": {
+		"Typst": {
+			"show_edit_predictions": true
+		},
 		"Dart": {
 			"allow_rewrap": "anywhere",
 			"soft_wrap": "preferred_line_length"
@@ -433,7 +436,7 @@
 		},
 
 		"XML": {
-						"prettier": null,
+			"prettier": null,
 			"formatter": {
 				"external": {
 					"command": "/Users/pritam/.config/tidy/tidy-xml.sh",
@@ -535,6 +538,10 @@
 			}
 		},
 
+		"typsty": {
+
+		},
+
 		"Zig": {
 			"formatter": "language_server"
 		}
@@ -599,6 +606,14 @@
 				"index": {
 					"background": true
 				}
+			}
+		},
+
+		"tinymist": {
+			// https://github.com/Myriad-Dreamin/tinymist/blob/main/editors/neovim/Configuration.md
+			"settings": {
+				"exportPdf": "onSave",
+				"outputPath": "$root/$name"
 			}
 		},
 
