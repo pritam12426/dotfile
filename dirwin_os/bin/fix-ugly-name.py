@@ -5,38 +5,28 @@ import argparse
 import logging
 import os
 import re  # Regular expression
-import string
-import unicodedata
+# import string
+# import unicodedata
 
 
-def format_string(text: str) -> str:
-	# Normalize unicode: é → e, ü → u, ñ → n, etc.
-	text = unicodedata.normalize("NFKD", text).encode("ascii", "ignore").decode()
+def format_string(_text: str) -> str:
+    _new_text: str = re.sub(r"[^\x00-\x7F]+", "", _text)
+    _new_text: str = re.sub(r"_+", "_", _new_text)
+    _new_text: str = re.sub(r" +", "_", _new_text)
+    # _new_text: str = re.sub(r'(?<=\b\w)\.(?=\w\b)(?!\.\d)', "_", _new_text)
 
-	# Replace whitespace with underscores, collapse multiple _
-	text = re.sub(r"[ \t]+", "_", text)
-	text = re.sub(r"_+", "_", text)
+    for _i in list(r"!#$%&'()*,-./:;<=>?@[]^_`{|}~"):
+        if f"_{_i}" in _new_text:
+            _new_text: str = _new_text.replace(f"_{_i}", f"{_i}")
 
-	# Allow only alphanumerics + punctuation
-	text = re.sub(rf"[^\w{re.escape(string.punctuation)}]+", "_", text)
+        if f"{_i}_" in _new_text:
+            _new_text: str = _new_text.replace(f"{_i}_", f"{_i}")
 
-	# Normalize hyphens to underscores
-	text = re.sub(r"-+", "_", text)
+        if f"{_i + _i}" in _new_text:
+            _new_text: str = _new_text.replace(f"{_i + _i}", _i)
 
-	# Remove underscore around punctuation, collapse repeated punctuation
-	punctuation = re.escape(string.punctuation)
-	text = re.sub(rf"_([{punctuation}])", r"\1", text)
-	text = re.sub(rf"([{punctuation}])_", r"\1", text)
-	text = re.sub(r"([!.,?;:\-])\1+", r"\1", text)
+    return _new_text.removesuffix("_").removeprefix("_").lower().replace(".", "_")
 
-	# Convert dots to underscores, strip trailing/leading underscores
-	text = text.replace(".", "_").strip("_")
-
-	# Lowercase result
-	text = text.lower()
-
-	# Ensure it’s never empty (optional)
-	return text or "_"
 
 
 def rename_file(old_name: str, old_abs_path: str) -> str:
@@ -176,7 +166,7 @@ for path in args.paths:
 			RENAMED_FILES_COUNT += 1
 
 			if args.dry_run is not True:
-				# os.rename(old_abs_path, new_abs_path)
+				os.rename(old_abs_path, new_abs_path)
 				pass
 
 		elif args.verbose is True:
@@ -194,7 +184,7 @@ for path in args.paths:
 			RENAMED_FOLDERS_COUNT += 1
 
 			if args.dry_run is not True:
-				# os.rename(old_abs_path, new_abs_path)
+				os.rename(old_abs_path, new_abs_path)
 				pass
 
 		elif args.verbose is True:

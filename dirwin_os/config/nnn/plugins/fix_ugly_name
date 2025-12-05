@@ -38,9 +38,9 @@ if $prompt; then
 	esac
 fi
 
+
 some "${targets[@]}"
 
-read -rn1 -p "Done :: Press any key to exit..."
 
 # Clear selection
 if [ -s "$sel" ] && [ -p "$NNN_PIPE" ]; then
