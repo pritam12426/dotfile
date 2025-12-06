@@ -322,7 +322,7 @@ function link_item() {
 		fi
 
 		# Create symbolic link (force overwrite)
-		# ln -sf "$src_path" "$link_path"
+		ln -sf "$src_path" "$link_path"
 		echo -e "ln -sf: \033[0;31m $filename \033[0m → \033[1;33m $link_path \033[0m"
 	done
 
