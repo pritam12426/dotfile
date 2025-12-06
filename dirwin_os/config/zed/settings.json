@@ -324,6 +324,7 @@
 		"Typst": {
 			"show_edit_predictions": true
 		},
+
 		"Dart": {
 			"allow_rewrap": "anywhere",
 			"soft_wrap": "preferred_line_length"
@@ -335,6 +336,7 @@
 				"external": {
 					"command": "hurlfmt",
 					"arguments": [
+						"--no-color",
 						"{buffer_path}"
 					]
 				}
@@ -527,7 +529,6 @@
 				"taplo"
 			],
 
-
 			"formatter": {
 				"external": {
 					"command": "/Users/pritam/.config/taplo/taplo-zed.sh",
@@ -536,10 +537,6 @@
 					]
 				}
 			}
-		},
-
-		"typsty": {
-
 		},
 
 		"Zig": {
@@ -612,8 +609,27 @@
 		"tinymist": {
 			// https://github.com/Myriad-Dreamin/tinymist/blob/main/editors/neovim/Configuration.md
 			"settings": {
-				"exportPdf": "onSave",
-				"outputPath": "$root/$name"
+				"formatterIndentSize": 4,
+				"formatterMode": "typstyle",
+				"compileStatus": "enable"
+				// 	"exportPdf": "onSave",
+				// 	"outputPath": "$root/$name"
+			},
+
+			// https://www.reddit.com/r/typst/comments/1ow2a0r/anyone_using_zed_to_work_with_typst/
+			// localhost:23635
+			"initialization_options": {
+				"preview": {
+					"background": {
+						"enabled": true
+					},
+
+					"invertColors": {
+						"image": "never"
+					},
+
+					"refresh": "onSave"
+				}
 			}
 		},
 
