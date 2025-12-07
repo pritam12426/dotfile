@@ -1,11 +1,10 @@
 export NNN_ORDER;
 
 # export HTML_TIDY="$HOME/.config/tidy/tidyrc"
-# export PANDOC_CONFIG="$HOME/.config/pandoc/defaults/markdown/"
 export PANDOC_CONFIG="$HOME/.config/pandoc/"
 export ARIA2C_SESSION_TOKEN="8adabed3-e9db-4ef4-acb3-ba56af3b6c4f"
 
-alias utm-l="utm start '74116267-CFC1-4A5F-BE9A-E682419A3DA8'; ssh l"
+alias utm-l="utm start '74116267-CFC1-4A5F-BE9A-E682419A3DA8' & ssh l"
 
 
 function ssh-push() {
@@ -41,11 +40,12 @@ export PATH="$GOPATH/bin:$PATH"
 export RUST_HOME="/Users/pritam/.local/dev-tools/rust-1.91.0";
 export PATH="$RUST_HOME/bin:$PATH"
 export PATH="$RUST_HOME/cargo/bin:$PATH"
-export PATH="$RUST_HOME/lib/rustlib/aarch64-apple-darwin/bin:$PATH"
+# export PATH="$RUST_HOME/lib/rustlib/aarch64-apple-darwin/bin:$PATH"
 export MANPATH="$RUST_HOME/share/man:$MANPATH"
 export CARGO_HOME="$RUST_HOME/cargo"
-export CARGO_TARGET_DIR="$RUST_HOME/../dev–libs–packages/cargo/bin"
+# export CARGO_TARGET_DIR="$RUST_HOME/../dev–libs–packages/cargo/bin"
 # . "$HOME/.cargo/env"
+
 
 # =========================================================================
 # -------------------------------------------------------------------------
@@ -55,9 +55,8 @@ export NPM_CONFIG_USERCONFIG="$HOME/.config/npm/npmrc"
 export PNPM_HOME="$HOME/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 export PATH="$HOME/.local/dev-tools/dev–libs–packages/node_modules/bin:$PATH"
-export PATH="$HOME/.local/dev-tools/gemini-cli/node_modules/.bin:$PATH"
-alias npm="pnpm"
 # =========================================================================
+
 
 # === VCPGK ===
 # export VCPKG_ROOT="/Users/pritam/Downloads/vcpkg/vcpkg-2025.10.17"    # new version
@@ -74,4 +73,4 @@ export VCPKG_TARGET_TRIPLET="arm64-osx"
 
 
 
-# source /Users/pritam/.config/broot/launcher/bash/br
+source /Users/pritam/.config/broot/launcher/bash/br

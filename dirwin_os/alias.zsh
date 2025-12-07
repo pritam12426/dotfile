@@ -55,7 +55,7 @@ NNN_PLUG+='e:!|exiftool "$nnn";'
 NNN_PLUG+='o:!|otool -L "$nnn";'
 NNN_PLUG+='f:!&ffplay -loop -1 -sn -loglevel level+warning -seek_interval 5 "$nnn";'
 NNN_PLUG+='q:!echo "qlmanage -p $nnn" >&2 && qlmanage -p "$nnn" > /dev/null*;'
-NNN_PLUG+='m:!&mpv "$nnn";'
+NNN_PLUG+='m:!mpv "$nnn"   *   *;'
 
 NNN_PLUG+=$NNN_PLUG_PERSONAL
 export NNN_PLUG
@@ -96,7 +96,6 @@ export FZF_CTRL_T_OPTS="--preview 'bat --color=always -n --line-range :500 {}'"
 
 
 # ------------ Red & Green Man Page Theme (2025 edition) ------------
-
 # Bold text & headings → Bright green (function names, section titles)
 export LESS_TERMCAP_md=$'\e[01;38;5;82m'   # vivid neon green
 
@@ -117,7 +116,6 @@ export LESS_TERMCAP_ue=$'\e[0m'
 
 # End all bold/attributes
 export LESS_TERMCAP_me=$'\e[0m'
-
 # -----------------------------------------------------------------
 
 

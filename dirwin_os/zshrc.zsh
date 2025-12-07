@@ -11,16 +11,12 @@ export PREFIX="$HOME/.local"
 # export GITHUB_AUTH_TOKEN="go to .zshenv"     # this pritam_lpu_12416
 # ==============================================================================
 
-# TEX-LIVE-SMALL ===============================================================
-export PATH="/usr/local/cli-programs/tex-live-small/bin/universal-darwin:$PATH"
-export PATH="/usr/local/big_library-bin:$PATH"
-# ==============================================================================
-
 # FOR THE DEVELOPER ============================================================
 export PATH="$HOME/Library/Python/3.9/bin:$PATH"
 export MANPATH="$HOME/Library/Python/3.9/share/man:$MANPATH"
 fpath=("$HOME/Library/Python/3.9/share/zsh/site-functions" $fpath)
 
+export PATH="/usr/local/big_library-bin:$PATH"
 export DYLD_LIBRARY_PATH="/usr/local/lib:$DYLD_LIBRARY_PATH"
 export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH"
 export CMAKE_PREFIX_PATH="/usr/local/lib/cmake:$CMAKE_PREFIX_PATH"
@@ -58,7 +54,7 @@ alias eenv="$EDITOR ~/.zshenv"
 # -----------------------------------------------------------
 
 # auto completion -----------------------------
-fpath=("$HOME/.zsh/completions" $fpath)
+fpath=("$HOME/.local/share/zsh/site-functions" $fpath)
 # Load and initialize the completion system
 autoload -Uz compinit
 compinit -i # -i ignores insecure directories
@@ -96,5 +92,3 @@ function zsh() {
 		source "$HOME/.zprofile"
 	fi
 }
-
-source /Users/pritam/.config/broot/launcher/bash/br

@@ -1,4 +1,6 @@
-.mode box.open "/Users/pritam/.local/share/aria2/aria2_downloads.sqlite3"
+.mode box
+.open "/Users/pritam/.local/share/aria2/aria2_downloads.sqlite3"
+
 SELECT
     gid,
     (
