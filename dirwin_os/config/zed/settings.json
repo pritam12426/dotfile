@@ -85,9 +85,8 @@
 		// "java": true,
 		"git-firefly": true,
 		// "sql": true,
-		"make": true,
-		"vscode-dark-modern": true,
-		"basher": true,
+		// "make": true,
+		// "basher": true,
 		// "neocmake": true,
 		"log": true
 	},
@@ -177,7 +176,7 @@
 
 	"theme": {
 		"mode": "system",
-		"light": "One Light",
+		"light": "Ayu Light",
 		"dark": "Ayu Dark"
 	},
 

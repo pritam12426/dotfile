@@ -49,7 +49,7 @@ setopt SHARE_HISTORY
 # bindkey '^[[A' history-search-backward
 # bindkey '^[[B' history-search-forward
 
-alias erc="$EDITOR ~/.zshrc"
+alias erc="$EDITOR  ~/.zshrc"
 alias eenv="$EDITOR ~/.zshenv"
 # -----------------------------------------------------------
 

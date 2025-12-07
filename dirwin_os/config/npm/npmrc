@@ -2,4 +2,4 @@
 userconfig=/Users/pritam/.config/npm/npmrc
 cache=/Users/pritam/Library/Caches/npm
 init-module=/Users/pritam/.config/npm/npm-init.js
-prefix=/Users/pritam/.local/dev-tools/dev–libs–packages/node_modules
+prefix=/Users/pritam/.local/lib/node_modules-global

@@ -5,7 +5,14 @@
 
 # --- General utility commands ---
 # Use gpg for encryption
-# gpg -c
+# gpg -c           # quick encryption with temp password
+# gpg  --encrypt --recipient <email>   <file>
+# gpg --decrypt  <file>
+
+# gpg  -er                   <email>   <file>
+# gpg -d  <file>
+
+
 # Use sips for working with image metadata
 # sips -g all
 
@@ -42,6 +49,11 @@ alias bdir="cd /Users/pritam/.local/bin"               # Navigate to local binar
 # --- Firefox aliases ---
 alias firefox="/Applications/Firefox.app/Contents/MacOS/firefox"                    # Launch Firefox
 alias firefox-p="/Applications/Firefox.app/Contents/MacOS/firefox --private-window" # Launch Firefox in private mode
+
+alias firefox-clean="rm -fv ~/Library/Application\ Support/Firefox/Profiles/*/formhistory.sqlite\
+					 rm -fv ~/Library/Application\ Support/Firefox/Profiles/*/formhistory.dat"
+# ----------------------------------------------------------
+
 
 # --- NNN file manager configuration ---
 # Define NNN plugins for various tasks
@@ -146,31 +158,31 @@ alias efz="$EDITOR $DOT_FILE/dirwin_os/functions.sh" # Edit alias file
 
 
 # System utility aliases
-alias o="command open ."                                                                        # Open current directory in Finder
-alias c.="command code ."                                                                       # Open current directory in VS Code
-alias z.="command zed ."                                                                        # Open current directory in Zed editor
-alias live-server="command live-server -H 127.0.0.1 -p 8085 -o"                                 # Start live server
-alias tree="command tre -a"                                                                     # Display directory tree
-alias python="command python3 -u"                                                               # Use Python 3 as default
-alias nq="command networkquality -s"                                                            # Check network quality
-alias hc="command cat /dev/null > ~/.zsh_history"                                               # Clear ZSH history
-alias search="command ls -AF | grep -i"                                                         # Search files in current directory
-alias sayy="command pbpaste | command say -i"                                                   # Convert clipboard text to speech
-alias per="command find . -type f -exec chmod 644 {} \; ; find . -type d -exec chmod 755 {} \;" # Fix permissions
-alias seelog="command tail -n 1 -f -- "                                                         # Tail logs
-alias exportlib="source $LIBS_DIR/env"                                                          # Load library environment
-alias zzz="bsdtar -xf "                                                                         # Extract archives
-alias exportembdlib="source $DOT_FILE/global/embedded/embedded-ENV.sh"                          # Load embedded environment
-alias ninja-tree="command ninja -t targets "                                                    # Display Ninja build targets
-alias chownroot="command sudo chown -R root:wheel"                                              # Change ownership to root
-alias chownself="command sudo chown -R pritam:staff"                                            # Change ownership to user
-alias bk="open 'http://localhost:8080/'; shiori server"                                         # Open bookmarks server
-alias wget="command wget --no-check-certificate -c"                                             # Download with wget
-alias off="pmset displaysleepnow"                                                               # Turn off display
-alias soff="pmset sleepnow"                                                                     # Put system to sleep
-alias zed-editor="eval \"export EDITOR='zed --wait'\""                                          # setting EDITOR = zed
-alias rclone-gui="rclone rcd --rc-web-gui --rc-no-auth"                                         # setting EDITOR = zed
-alias find-zombies="ps -axo pid,ppid,stat,command | grep -w Z+"                                 # Find zombies + parent PID
+alias o="command open ."                                                                           # Open current directory in Finder
+alias c.="command code ."                                                                          # Open current directory in VS Code
+alias z.="command zed ."                                                                           # Open current directory in Zed editor
+alias live-server="command live-server -H localhost -p 8085 -o"                                    # Start live server
+alias tree="command tre -ea"                                                                       # Display directory tree
+alias python="command python3 -u"                                                                  # Use Python 3 as default
+alias nq="command networkquality -s"                                                               # Check network quality
+alias hc="command cat /dev/null > ~/.zsh_history"                                                  # Clear ZSH history
+alias search="command ls -AF | grep -i"                                                            # Search files in current directory
+alias sayy="command pbpaste | command say -i"                                                      # Convert clipboard text to speech
+alias per="command find . -type f -exec chmod 644 {} \; ; find . -type d -exec chmod 755 {} \;"    # Fix permissions
+alias seelog="command tail -n 1 -f -- "                                                            # Tail logs
+# alias exportlib="source $LIBS_DIR/env"                                                           # Load library environment
+alias zzz="bsdtar -xf "                                                                            # Extract archives
+alias exportembdlib="source $DOT_FILE/global/embedded/embedded-ENV.sh"                             # Load embedded environment
+alias ninja-tree="command ninja -t targets "                                                       # Display Ninja build targets
+alias chownroot="command sudo chown -R root:wheel"                                                 # Change ownership to root
+alias chownself="command sudo chown -R pritam:staff"                                               # Change ownership to user
+alias bk="open 'http://localhost:8080/' &&bshiori server"                                          # Open bookmarks server
+alias wget="command wget -c"                                                                       # Download with wget
+alias off="pmset displaysleepnow"                                                                  # Turn off display
+alias soff="pmset sleepnow"                                                                        # Put system to sleep
+alias zed-editor="eval \"export EDITOR='zed --wait'\""                                             # setting EDITOR = zed
+alias rclone-gui="rclone rcd --rc-web-gui --rc-no-auth"                                            # setting EDITOR = zed
+alias find-zombies="ps -axo pid,ppid,stat,command | grep -w Z+"                                    # Find zombies + parent PID
 
 alias aria2-reload="launchctl unload ~/Library/LaunchAgents/com.user.aria2.plist &&
 				    launchctl load ~/Library/LaunchAgents/com.user.aria2.plist"
