@@ -139,10 +139,11 @@ alias fgrep="command fgrep --color=auto"
 alias egrep="command egrep --color=auto"
 
 # Common ls shortcuts
-alias ll="command ls -lh"                    # List with human-readable sizes
-alias la="command ls -A"                     # List all files, excluding . and ..
-alias l="command ls -lAh"                    # Detailed list including hidden files
-alias lh="command ls -d --color=auto .[^.]*" # List hidden directories
+alias ls="ls -GFh"
+alias ll="command ls -GFhl"                       # List with human-readable sizes
+alias la="command ls -AGFh"                       # List all files, excluding . and ..
+alias l="command ls -lAhFG"                       # Detailed list including hidden files
+alias lh="command ls -lhGFd --color=auto .[^.]*"  # List hidden directories
 
 # File operation aliases with safety prompts
 alias cp="command cp -ip" # Copy with interactive prompt
@@ -152,9 +153,9 @@ alias du="command du -h"  # Display disk usage in human-readable format
 
 # ------------ NeoVim and System Aliases ------------
 # Shortcuts for editing configuration files
-alias enrc="$EDITOR ~/.config/nvim/init.lua"         # Edit NeoVim config
-alias eza="$EDITOR $DOT_FILE/dirwin_os/alias.zsh"    # Edit alias file
-alias efz="$EDITOR $DOT_FILE/dirwin_os/functions.sh" # Edit alias file
+alias enrc="$EDITOR ~/.config/nvim/init.lua"                    # Edit NeoVim config
+alias eza="$EDITOR $DOT_FILE/config/zsh/alias.zsh"    # Edit alias file
+alias efz="$EDITOR $DOT_FILE/functions.sh"            # Edit alias file
 
 
 # System utility aliases

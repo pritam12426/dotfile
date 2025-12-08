@@ -49,7 +49,7 @@ vim.cmd("colorscheme vim")
 -- Normal mode
 vim.keymap.set("n", "<C-c>", ":set clipboard=unnamedplus<CR>")
 vim.keymap.set("n", ":q", ":q!")
-vim.keymap.set("n", "mm", ":! zed % <CR>")
+vim.keymap.set("n", "mm", ":execute '!zed ' . expand('%') . ':' . line('.') . ':' . col('.') <CR> <ESC> :q! <CR>")
 vim.keymap.set("n", "mn", ":Explore <CR>")
 vim.keymap.set("n", "mt", ":terminal <CR>")
 
