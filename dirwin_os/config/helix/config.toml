@@ -1,0 +1,4 @@
+theme = "autumn_night"
+
+[editor.cursor-shape]
+insert = "bar"

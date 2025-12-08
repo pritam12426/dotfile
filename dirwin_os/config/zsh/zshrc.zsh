@@ -33,6 +33,11 @@ if [ -f "$DOT_FILE/config/zsh/alias.zsh" ]; then
 	source "$DOT_FILE/config/zsh/alias.zsh"
 fi
 
+if [ -f "$PREFIX/share/fzf/__fzf-history__" ]; then
+	# fzf --zsh > "$PREFIX/share/fzf/__fzf-history__"
+	source "$PREFIX/share/fzf/__fzf-history__"
+fi
+
 #  PS1 Variables
 PROMPT="%B%F{green}%n@%m%f%b:%F{blue}%B%~%b%f$ " # bash theme
 # PROMPT="%B%F{magenta}%n@%m%f%b: [ %F{cyan}%B%U%~%u%b%f ] 🔪"$'\n'"  "

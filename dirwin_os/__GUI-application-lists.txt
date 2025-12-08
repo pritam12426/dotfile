@@ -1,4 +1,4 @@
-# Auto-generated from  "Dhanno.local" on – 2025-Dec-05
+# Auto-generated from  "Dhanno.local" on – 2025-Dec-08
 
 DB Browser for SQLite.app
 qbittorrent.app
@@ -9,6 +9,7 @@ Telegram.app
 Inkscape.app
 Zed.app
 GPG Keychain.app
+Digital-Logic-Sim.app
 Utilities
 UTM.app
 WhatsApp.app

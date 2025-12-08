@@ -23,11 +23,11 @@ log_info "Starting bin installer generator (macOS $(uname -m))"
 # 	json_file="$BIN_CONFIG"
 # else
 # 	log_info "ENV BIN_CONFIG not def"
-# 	json_file="${DOT_FILE}/dirwin_os/config/bin/config.json"
+# 	json_file="${DOT_FILE}/config/bin/config.json"
 # fi
 
 json_file="${HOME}/.config/bin/config.json"
-output_file="${DOT_FILE}/dirwin_os/__binPackageInstall.sh"
+output_file="${DOT_FILE}/__binPackageInstall.sh"
 
 # --- Prerequisites ---
 # 1. Check jq (macOS doesn't have it by default)
@@ -102,13 +102,13 @@ log_info "Output: $output_file"
 log_info "Ready to install: $installed_count package(s)"
 
 # --- Backup installed GUI applications and fonts ---
-log_info "Font list backup: ${DOT_FILE}/dirwin_os/__fonts-lists.txt"
-echo -e "# Auto-generated from  \"$( hostname )\" on – $(date +"%Y-%b-%d")\n" > "${DOT_FILE}/dirwin_os/__fonts-lists.txt"
-find "$HOME/Library/Fonts" -type d -d 1 -exec basename {} \;  >> "${DOT_FILE}/dirwin_os/__fonts-lists.txt"
+log_info "Font list backup: ${DOT_FILE}/__fonts-lists.txt"
+echo -e "# Auto-generated from  \"$( hostname )\" on – $(date +"%Y-%b-%d")\n" > "${DOT_FILE}/__fonts-lists.txt"
+find "$HOME/Library/Fonts" -type d -d 1 -exec basename {} \;  >> "${DOT_FILE}/__fonts-lists.txt"
 
 # --- Backup installed GUI applications and fonts ---
-log_info "Application list backup: ${DOT_FILE}/dirwin_os/__GUI-application-lists.txt"
-echo -e "# Auto-generated from  \"$( hostname )\" on – $(date +"%Y-%b-%d")\n" > "${DOT_FILE}/dirwin_os/__GUI-application-lists.txt"
-find "/Applications/" -type d -d 1 -exec basename {} \; >> "${DOT_FILE}/dirwin_os/__GUI-application-lists.txt"
+log_info "Application list backup: ${DOT_FILE}/__GUI-application-lists.txt"
+echo -e "# Auto-generated from  \"$( hostname )\" on – $(date +"%Y-%b-%d")\n" > "${DOT_FILE}/__GUI-application-lists.txt"
+find "/Applications/" -type d -d 1 -exec basename {} \; >> "${DOT_FILE}/__GUI-application-lists.txt"
 
 exit 0
