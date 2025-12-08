@@ -1,5 +1,6 @@
 export LIBS_DIR="/usr/local/big_library"
-export EDITOR="$HOME/.local/bin/nvim"
+# export EDITOR="$HOME/.local/bin/nvim"
+export EDITOR="$HOME/.local/bin/hx"
 export DOT_FILE="$HOME/Developer/git_repository/my_dotfile/dirwin_os/"
 
 export CXX="/usr/bin/clang++"
