@@ -176,8 +176,8 @@ function zsh() {
 		source "$HOME/.zhsenv"
 	fi
 
-	if [ -f "$DOT_FILE/config/zsh/functions.zsh" ]; then
-		source "$DOT_FILE/config/zsh/functions.zsh"
+	if [ -f "$DOT_FILE/config/zsh/functions.sh" ]; then
+		source "$DOT_FILE/config/zsh/functions.sh"
 	fi
 
 	if [ -f "$DOT_FILE/config/zsh/alias.zsh" ]; then

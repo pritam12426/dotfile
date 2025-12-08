@@ -45,6 +45,7 @@ alias cpdir="cd /Users/pritam/Developer/cxx_lang"      # Navigate to C++ develop
 alias cdir="cd /Users/pritam/Developer/c_lang"         # Navigate to C development directory
 alias gdir="cd /Users/pritam/Developer/git_repository" # Navigate to Git repository directory
 alias bdir="cd /Users/pritam/.local/bin"               # Navigate to local binaries directory
+alias dotdir="cd $DOT_FILE"               # Navigate to local binaries directory
 
 # --- Firefox aliases ---
 alias firefox="/Applications/Firefox.app/Contents/MacOS/firefox"                    # Launch Firefox

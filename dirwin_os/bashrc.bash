@@ -1,11 +1,11 @@
 export EDITOR="/Users/pritam/.local/bin/nvim"
 
-if [ -f "$DOT_FILE/dirwin_os/.alias.zsh" ]; then
-	source "$DOT_FILE/dirwin_os/.alias.zsh"
+if [ -f "$DOT_FILE/config/zsh/alias.zsh" ]; then
+	source "$DOT_FILE/config/zsh/alias.zsh"
 fi
 
-if [ -f "$DOT_FILE/dirwin_os/functions.sh" ]; then
-	source "$DOT_FILE/dirwin_os/functions.sh"
+if [ -f "$DOT_FILE/config/zsh/functions.sh" ]; then
+	source "$DOT_FILE/config/zsh/functions.sh"
 fi
 
 if [ -f "$HOME/.bash_profile" ]; then
@@ -27,12 +27,12 @@ HISTFILESIZE=200
 PS1=" \[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ "
 
 function bash() {
-	if [ -f "$DOT_FILE/dirwin_os/.alias.zsh" ]; then
-		source "$DOT_FILE/dirwin_os/.alias.zsh"
+	if [ -f "$DOT_FILE/config/zsh/alias.zsh" ]; then
+		source "$DOT_FILE/config/zsh/alias.zsh"
 	fi
 
-	if [ -f "$DOT_FILE/dirwin_os/functions.sh" ]; then
-		source "$DOT_FILE/dirwin_os/functions.sh"
+	if [ -f "$DOT_FILE/config/zsh/functions.sh" ]; then
+		source "$DOT_FILE/config/zsh/functions.sh"
 	fi
 
 	if [ -f "$HOME/.bashenv" ]; then
