@@ -1,6 +1,6 @@
 export LIBS_DIR="/usr/local/big_library"
-# export EDITOR="$HOME/.local/bin/nvim"
-export EDITOR="$HOME/.local/bin/hx"
+export EDITOR="$HOME/.local/bin/nvim"
+# export EDITOR="$HOME/.local/bin/hx"
 export DOT_FILE="$HOME/Developer/git_repository/my_dotfile/dirwin_os/"
 
 export CXX="/usr/bin/clang++"
@@ -57,21 +57,24 @@ alias eenv="$EDITOR ~/.zshenv"
 # auto completion -----------------------------
 # Load Apple’s default interactive zsh environment (fixes most issues)
 [ -f /etc/zshrc ] && source /etc/zshrc
-bindkey "^K" kill-whole-line    # ctrl-k
-bindkey "^[[3~" kill-whole-line # delete key
+bindkey "^K"      kill-whole-line    # ctrl-k
+bindkey "^[[3~"   kill-whole-line    # delete key
 
-bindkey "^[[1;2D" beginning-of-line # shift + left
-bindkey "^[[1;2C" end-of-line       # shift + right
+bindkey "^[[1;2D" beginning-of-line  # shift + left
+bindkey "^[[1;2C" end-of-line        # shift + right
 
-fpath=("$HOME/.local/share/zsh/site-functions" $fpath)
-# Load and initialize the completion system
-autoload -U compinit && compinit
+
+# https://zsh.sourceforge.io/Doc/Release/Zsh-Modules.html#The-zsh_002fzutil-Module
+# https://github.com/spicycode/ze-best-zsh-config
+# Enable Mods with zsh
 zmodload -i zsh/complist
+autoload -U compinit && compinit
+autoload -Uz colors && colors
 
 # man zshcontrib
 zstyle ':vcs_info:*' actionformats '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{3}|%F{1}%a%F{5}]%f '
-zstyle ':vcs_info:*' formats '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{5}]%f '
-zstyle ':vcs_info:*' enable git #svn cvs
+zstyle ':vcs_info:*' formats       '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{5}]%f '
+zstyle ':vcs_info:*' enable         git #svn cvs
 
 # Enable completion caching, use rehash to clear
 zstyle ':completion::complete:*' use-cache on
@@ -91,11 +94,10 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-
 
 # list of completers to use
 zstyle ':completion:*::::' completer _expand _complete _ignored _approximate
-
 zstyle ':completion:*' menu select=1 _complete _ignored _approximate
 
 # insert all expansions for expand completer
-# zstyle ':completion:*:expand:*' tag-order all-expansions
+zstyle ':completion:*:expand:*' tag-order all-expansions
 
 # match uppercase from lowercase
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
@@ -104,36 +106,43 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*:*:-subscript-:*' tag-order indexes parameters
 
 # formatting and messages
-zstyle ':completion:*' verbose yes
-zstyle ':completion:*:descriptions' format '%B%d%b'
-zstyle ':completion:*:messages' format '%d'
-zstyle ':completion:*:warnings' format 'No matches for: %d'
-zstyle ':completion:*:corrections' format '%B%d (errors: %e)%b'
-zstyle ':completion:*' group-name ''
+# https://www.masterzen.fr/2009/04/19/in-love-with-zsh-part-one/
+zstyle ':completion:*'                 verbose yes
+# zstyle ':completion:*'                 format '%B---- %d%b'
+# '\e[04;38;5;196m'
+zstyle ':completion:*:descriptions'    format $'========== %{\e[04;38;5;196m%}Completing %B%d%b%{\e[0m%}'
+# zstyle ':completion:*:descriptions' format "%{$fg[red]%}▶%{$reset_color%} %{$fg_bold[white]%}%d%{$reset_color%}"
+zstyle ':completion:*:messages'        format '%B%U+ %d%u%b'
+zstyle ':completion:*:warnings'        format 'No matches for: %d'
+zstyle ':completion:*:corrections'     format '%B%d (errors: %e)%b'
+zstyle ':completion:*' group-name  ''
 
 # ignore completion functions (until the _ignored completer)
 zstyle ':completion:*:functions' ignored-patterns '_*'
-zstyle ':completion:*:scp:*' tag-order files users 'hosts:-host hosts:-domain:domain hosts:-ipaddr"IP\ Address *'
-zstyle ':completion:*:scp:*' group-order files all-files users hosts-domain hosts-host hosts-ipaddr
-zstyle ':completion:*:ssh:*' tag-order users 'hosts:-host hosts:-domain:domain hosts:-ipaddr"IP\ Address *'
-zstyle ':completion:*:ssh:*' group-order hosts-domain hosts-host users hosts-ipaddr
-zstyle '*' single-ignored show
+zstyle ':completion:*:scp:*'     tag-order files users 'hosts:-host hosts:-domain:domain hosts:-ipaddr"IP\ Address *'
+zstyle ':completion:*:scp:*'     group-order files all-files users hosts-domain hosts-host hosts-ipaddr
+zstyle ':completion:*:ssh:*'     tag-order users 'hosts:-host hosts:-domain:domain hosts:-ipaddr"IP\ Address *'
+zstyle ':completion:*:ssh:*'     group-order hosts-domain hosts-host users hosts-ipaddr
+zstyle ':completion:*'           menu select
+zstyle '*'                       single-ignored show
 
 # ZAW styles
 zstyle ':filter-select:highlight' matched fg=yellow,standout
-zstyle ':filter-select' max-lines 10         # use 10 lines for filter-select
-zstyle ':filter-select' max-lines -10        # use $LINES - 10 for filter-select
-zstyle ':filter-select' rotate-list yes      # enable rotation for filter-select
-zstyle ':filter-select' case-insensitive yes # enable case-insensitive search
-zstyle ':filter-select' extended-search no   # see below
+zstyle ':filter-select' max-lines 10           # use 10 lines for filter-select
+zstyle ':filter-select' max-lines -10          # use $LINES - 10 for filter-select
+zstyle ':filter-select' rotate-list yes        # enable rotation for filter-select
+zstyle ':filter-select' case-insensitive yes   # enable case-insensitive search
+zstyle ':filter-select' extended-search no     # see below
+# -----------------------------------------------------------
 
+# ----------------------------------------------------------
 # ===== Basics
 
 # If you type foo, and it isn't a command, and it is a directory in your cdpath, go there
 setopt AUTO_CD
 
 # Allow comments even in interactive shells (especially for Muness)
-# setopt INTERACTIVE_COMMENTS
+setopt INTERACTIVE_COMMENTS
 
 # ===== History
 
@@ -168,9 +177,10 @@ setopt ALWAYS_TO_END
 # Enable parameter expansion, command substitution, and arithmetic expansion in the prompt
 setopt PROMPT_SUBST
 
-unsetopt MENU_COMPLETE
+# unsetopt MENU_COMPLETE
 setopt AUTO_MENU
 # -----------------------------------------------------------
+
 
 # =============================================
 # When you open a new terminal window on macOS Zsh, the order is:
