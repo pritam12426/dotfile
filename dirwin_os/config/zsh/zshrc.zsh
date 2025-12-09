@@ -52,6 +52,9 @@ PROMPT="%B%F{green}%n@%m%f%b:%F{blue}%B%~%b%f$ " # bash theme
 
 alias erc="$EDITOR  ~/.zshrc"
 alias eenv="$EDITOR ~/.zshenv"
+# https://www.masterzen.fr/2009/04/19/in-love-with-zsh-part-one/
+alias -g ..="../.."
+alias -s php=nano
 # -----------------------------------------------------------
 
 # auto completion -----------------------------
@@ -64,12 +67,13 @@ bindkey "^[[1;2D" beginning-of-line  # shift + left
 bindkey "^[[1;2C" end-of-line        # shift + right
 
 
-# https://zsh.sourceforge.io/Doc/Release/Zsh-Modules.html#The-zsh_002fzutil-Module
+# https://zsh.sourceforge.io/Doc/Release/Zsh-Modules.html
 # https://github.com/spicycode/ze-best-zsh-config
 # Enable Mods with zsh
+# See this dir "/usr/lib/zsh/5.9"
 zmodload -i zsh/complist
-autoload -U compinit && compinit
-autoload -Uz colors && colors
+autoload -U  compinit && compinit
+autoload -Uz colors   && colors
 
 # man zshcontrib
 zstyle ':vcs_info:*' actionformats '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{3}|%F{1}%a%F{5}]%f '
