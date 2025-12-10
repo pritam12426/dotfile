@@ -50,10 +50,12 @@ PROMPT="%B%F{green}%n@%m%f%b:%F{blue}%B%~%b%f$ " # bash theme
 # bindkey '^[[A' history-search-backward
 # bindkey '^[[B' history-search-forward
 
+fpath=("$HOME/.local/share/zsh/site-functions" $fpath)
+
 alias erc="$EDITOR  ~/.zshrc"
 alias eenv="$EDITOR ~/.zshenv"
 # https://www.masterzen.fr/2009/04/19/in-love-with-zsh-part-one/
-alias -g ..="../.."
+alias -g ...="../.."
 alias -s php=nano
 # -----------------------------------------------------------
 
