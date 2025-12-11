@@ -4,7 +4,7 @@
 
 set -euo pipefail
 
-bin install "https://github.com/arduino/arduino-cli/releases/tag/v1.4.0"
+bin install "https://github.com/arduino/arduino-cli"
 bin install "https://github.com/sharkdp/bat"
 bin install "https://github.com/charlie0129/batt"
 bin install "https://github.com/marcosnils/bin"

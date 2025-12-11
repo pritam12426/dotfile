@@ -18,7 +18,7 @@ else
 	git pull
 fi
 
-command cp -p "$DOT_FILE/global/nnn.h" src/nnn.h
+command cp -p "$DOT_FILE/../global/nnn.h" src/nnn.h
 
 make \
 O_PCRE2=1 \

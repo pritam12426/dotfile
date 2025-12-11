@@ -1,16 +1,21 @@
 # printf "Importing \t %s \n" "$HOME/.config/zsh/zshrc.zsh"
 
+[[ $- != *i* ]] && return
+
 # IMPORTING SOME PLUGINS =======================================================================================
 # # Load Apple’s default interactive zsh environment (fixes most issues)
-[ -f /etc/zshrc ] && source /etc/zshrc
-[ -f "$HOME/.config/zsh/functions.sh" ]  &&  source "$HOME/.config/zsh/functions.sh"
-[ -f "$HOME/.config/zsh/alias.zsh" ] && source "$HOME/.config/zsh/alias.zsh"
+# [ -f /etc/zshrc ] && source /etc/zshrc
+
+
+if [ -f "$HOME/.config/zsh/alias.zsh" ]; then
+	source "$HOME/.config/zsh/alias.zsh"
+fi
 
 if [ -f "$HOME/.local/share/zsh/plugins/__fzf-history__" ]; then
 	source "$HOME/.local/share/zsh/plugins/__fzf-history__"
 else
 	if hash fzf 2>/dev/null; then
-		printf "You have not installed the fzf history plugin \t %s:%d\n" "${0}" ${LINENO}
+		printf "You have not installed the fzf history plugin \t %s:%d\n" "$HOME/.config/zsh/zshrc.zsh" ${LINENO}
 	fi
 	# mkdir -vp "$HOME/.local/share/zsh/plugins/" && fzf --zsh > "$HOME/.local/share/zsh/plugins/__fzf-history__"
 	# fzf --zsh > "$HOME/.local/share/zsh/plugins/__fzf-history__"
@@ -19,7 +24,7 @@ fi
 if [ -f "$HOME/.local/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh" ]; then
 	source "$HOME/.local/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh"
 else
-	printf "You have not installed the fast-syntax-highlighting-plugin \t %s:%d\n" "${0}" ${LINENO}
+	printf "You have not installed the fast-syntax-highlighting-plugin \t %s:%d\n" "$HOME/.config/zsh/zshrc.zsh" ${LINENO}
 	# mkdir -vp "$HOME/.local/share/zsh/plugins/fast-syntax-highlighting"
 	# cd "$HOME/.local/share/zsh/plugins/zsh-autosuggestions"
 	# wget "https://github.com/zdharma-continuum/fast-syntax-highlighting/archive/refs/heads/master.zip"
@@ -28,7 +33,7 @@ fi
 if [ -f "$HOME/.local/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh" ]; then
 	source "$HOME/.local/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh"
 else
-	printf "You have not installed the zsh-autosuggestions-plugin \t %s:%d\n" "~/.zshrc" ${LINENO}
+	printf "You have not installed the zsh-autosuggestions-plugin \t %s:%d\n" "$HOME/.config/zsh/zshrc.zsh" ${LINENO}
 	# mkdir -vp "$HOME/.local/share/zsh/plugins/zsh-autosuggestions"
 	# cd "$HOME/.local/share/zsh/plugins/zsh-autosuggestions"
 	# wget "https://github.com/zsh-users/zsh-autosuggestions/archive/refs/heads/master.zip"
@@ -184,15 +189,48 @@ setopt AUTO_MENU
 # ============================================================================================================
 
 
-# SOME BASIC CONFIGURATION OF ZSH ============================================================================
+# SETTING THE ZSH PROMPT VAR && SOME CONFIG ==================================================================
 autoload -Uz colors && colors
 autoload -Uz add-zsh-hook
 
-PROMPT="%B%F{green}%n@%m%f%b:%F{blue}%B%~%b%f$ "
-# PROMPT="%F{green}%B%n@%m%b%f:%F{blue}%B%~%b%f%(#.#.$) " # bash theme
+if [[ -f /Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh ]]; then
+	# source "/Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh"
+else
+	printf "You have not installed the git-prompt plugin \t %s:%d\n" "$HOME/.config/zsh/zshrc.zsh" ${LINENO}
+	# curl "https://raw.githubusercontent.com/git/git/refs/heads/master/contrib/completion/git-prompt.sh" -o "$HOME/.local/share/zsh/plugins/git-prompt.sh"
+fi
+
+preexec() {
+	timer=$SECONDS
+}
+
+precmd() {
+	if [[ -n $timer ]]; then
+		local exit_code=${pipestatus[1]}
+		local timer_show
+		timer_show=$(printf "%.3f" "$((SECONDS - timer)).0")
+		unset timer
+
+		# Colors
+		local code_color="%B%F{red}"     # bold red for error code
+		local err_time_color="%B%F{208}" # bold orange for time on ERR
+		local dim="%F{245}"              # normal dim grey
+		local superdim="%F{240}"         # VERY dim grey (for time on success)
+
+		# If exit code == 0 → only dim time
+		if [[ $exit_code -eq 0 ]]; then
+			RPROMPT="${dim}${superdim}[ ${timer_show} ]%f%b"
+			return
+		fi
+
+		# Build RPROMPT on error
+		RPROMPT="${dim}[ ERR ${code_color}${exit_code}${dim} ] : ${err_time_color}${timer_show}s%f%b"
+	fi
+}
+
+
+PROMPT="%F{green}%B%n@%m%b%f:%F{blue}%B%~%b%f%(#.#.$) " # bash theme
 # PROMPT="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%m %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
-# PROMPT="%B%F{magenta}%n@%m%f%b: [ %F{cyan}%B%U%~%u%b%f ] 🔪"$'\n'"  "
-# RPROMPT="~ %F{241}%t%f"
 
 alias erc="$EDITOR    $HOME/.config/zsh/zshrc.zsh"
 alias eenv="$EDITOR   $HOME/.zshenv"
@@ -215,14 +253,6 @@ function zsh() {
 
 	if [ -f "$HOME/.zprofile" ]; then
 		source "$HOME/.zprofile"
-	fi
-
-	if [ -f "$HOME/.zshrc" ]; then
-		source "$HOME/.zshrc"
-	fi
-
-	if [ -f "$HOME/.config/zsh/functions.sh" ]; then
-		source "$HOME/.config/zsh/functions.sh"
 	fi
 
 	if [ -f "$HOME/.config/zsh/alias.zsh" ]; then

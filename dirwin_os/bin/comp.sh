@@ -33,11 +33,11 @@ case "$file" in
 */CMakeLists.txt)
 	LIB="${PWD##*/}"
 	BUILD_DIR="$path/build-arm64"
-	run_command+="source '$LIBS_DIR/env'; "
+	# run_command+="source '$CPP_LIB_DIR/env'; "
 	run_command+="cmake -S '$path' -B '$BUILD_DIR' "
 
 	if [ ! -d "$BUILD_DIR" ]; then
-		run_command+="-DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON -DCMAKE_OSX_ARCHITECTURES=arm64 -DCMAKE_INSTALL_PREFIX='$LIBS_DIR/$LIB' "
+		run_command+="-DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON -DCMAKE_OSX_ARCHITECTURES=arm64 -DCMAKE_INSTALL_PREFIX='$CPP_LIB_DIR/$LIB' "
 	fi
 
 	;;

@@ -484,7 +484,7 @@ function diff {
 
 # Pretty-print media file metadata using ffprobe and jq
 function hhhh() {
-	command ffprobe -v quiet -print_format json -show_format -show_streams $@ | jq
+	command ffprobe -v quiet -print_format json -show_format -show_streams "$@" | jq
 }
 
 

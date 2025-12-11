@@ -3,11 +3,13 @@
 ln -sf  "$DOT_FILE/config/git/gitconfig"     "$HOME/.gitconfig"
 ln -sf  "$DOT_FILE/config.toml"              "$CARGO_HOME/"
 ln -sf  "$DOT_FILE/bashrc.bash"              "$HOME/.bashrc"
-ln -sf  "$DOT_FILE/config/zsh/zshrc.zsh"      "$HOME/.zshrc"
-# ln -sf  "$DOT_FILE/zshenv"                    "$HOME/.zshenv"
+
+ln -sf  "$DOT_FILE/config/zsh/zshrc.zsh"     "$HOME/.zshrc"
+ln -sf  "$DOT_FILE/config/zsh/zprofile.zsh"  "$HOME/.zprofile"
 
 
 mkdir  -p "$HOME/.config/"
+ln -sf  "$DOT_FILE/config/zsh"              "$HOME/.config/"
 ln -sf  "$DOT_FILE/config/aria2"              "$HOME/.config/"
 ln -sf  "$DOT_FILE/config/bat"                "$HOME/.config/"
 ln -sf  "$DOT_FILE/config/broot"              "$HOME/.config/"

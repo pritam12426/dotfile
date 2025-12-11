@@ -41,63 +41,6 @@ alias firefox-clean="rm -fv ~/Library/Application\ Support/Firefox/Profiles/*/fo
 # ----------------------------------------------------------
 
 
-# ------------ NNN File Manager Integration ------------
-# Define NNN plugins for various tasks
-NNN_PLUG_PERSONAL+="a:personal/adb_push;"
-NNN_PLUG_PERSONAL+="r:personal/fix_ugly_name;"
-NNN_PLUG_PERSONAL+="p:personal/ffplay_playlist;"
-
-NNN_PLUG+='z:!&zed "$nnn" *;'
-NNN_PLUG+='c:fzcd;'
-NNN_PLUG+='e:!|exiftool "$nnn";'
-NNN_PLUG+='o:!|otool -L "$nnn";'
-NNN_PLUG+='f:!&ffplay -loop -1 -sn -loglevel level+warning -seek_interval 5 "$nnn";'
-NNN_PLUG+='q:!echo "qlmanage -p $nnn" >&2 && qlmanage -p "$nnn" > /dev/null*;'
-NNN_PLUG+='m:!mpv "$nnn"   *   *;'
-
-NNN_PLUG+=$NNN_PLUG_PERSONAL
-export NNN_PLUG
-
-
-# Set NNN color scheme
-export NNN_COLORS="5236"
-# Set default opener for files
-export NNN_OPENER="/usr/bin/open"
-# Define NNN options
-export NNN_OPTS="AUBRNEdefag"
-# Define NNN selection file
-export NNN_SEL="$TMPDIR/nnn.sel"
-# Define NNN temporary file for last directory
-export NNN_TMPFILE="$TMPDIR/nnn.lastd"
-# Define NNN FIFO file
-export NNN_FIFO="$TMPDIR/nnn.fifo"
-# Define NNN trash command
-export NNN_TRASH="/usr/bin/trash"
-# Define NNN help file
-export NNN_HELP="cat $DOT_FILE/global/nnn_help.txt"
-# Define regex for archive file extensions
-export NNN_ARCHIVE="\\.(7z|a|ace|alz|arc|arj|bz|bz2|cab|cpio|deb|gz|jar|lha|lz|lzh|lzma|lzo|rar|rpm|rz|t7z|tar|tbz|tbz2|tgz|tlz|txz|tZ|tzo|war|xpi|xz|Z|zip)$"
-# Define NNN file colors
-export NNN_FCOLORS="c1e2272e006033f7c6d6abc4"
-
-export LC_ALL="en_US.UTF-8"
-
-# cd ON QUIT WITH NNN FILE MANGER
-function n() {
-	[ "${NNNLVL:-0}" -eq 0 ] || {
-		echo "nnn is already running"
-		return
-	}
-
-	command nnn "$@"
-
-	[ ! -f "$NNN_TMPFILE" ] || {
-		. "$NNN_TMPFILE"
-	}
-}
-# -------------------------------------------------------
-
-
 # ------------ LS and File Management Aliases ------------
 # Enable colorized output for common commands
 alias ls="command ls --color=auto"
@@ -162,7 +105,6 @@ alias find-zombies="ps -axo pid,ppid,stat,command | grep -w Z+"                 
 alias aria2-reload="launchctl unload ~/Library/LaunchAgents/com.user.aria2.plist &&
 				    launchctl load ~/Library/LaunchAgents/com.user.aria2.plist"
 # --------------------------------------------------
-
 
 # ------------ EXIFTool Aliases ------------
 alias exf="command exiftool -sort -P -overwrite_original_in_place" # Modify metadata
