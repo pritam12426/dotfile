@@ -1,90 +1,57 @@
-export CPP_LIB_DIR="/usr/local/big_library"
-export EDITOR="$HOME/.local/bin/nvim"
-# export EDITOR="$HOME/.local/bin/hx"
-export DOT_FILE="$HOME/Developer/git_repository/my_dotfile/dirwin_os/"
+# printf "Importing \t %s \n" "$HOME/.config/zsh/zshrc.zsh"
 
-export CXX="/usr/bin/clang++"
-export CC="/usr/bin/clang"
-export PREFIX="$HOME/.local"
-
-# SUPPORTING SOME PRIVATE VARIABLES INSIDE .zshenv =============================
-# export ARIA2C_SESSION_TOKEN="go to .zshenv"
-# export GITHUB_AUTH_TOKEN="go to .zshenv"     # this pritam_lpu_12416
-# ==============================================================================
-
-# FOR THE DEVELOPER ============================================================
-export PATH="$HOME/Library/Python/3.9/bin:$PATH"
-export MANPATH="$HOME/Library/Python/3.9/share/man:$MANPATH"
-fpath=("$HOME/Library/Python/3.9/share/zsh/site-functions" $fpath)
-
-export PATH="/usr/local/big_library-bin:$PATH"
-export DYLD_LIBRARY_PATH="/usr/local/lib:$DYLD_LIBRARY_PATH"
-export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH"
-export CMAKE_PREFIX_PATH="/usr/local/lib/cmake:$CMAKE_PREFIX_PATH"
-
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/.local/github-releases-bin:$PATH"
-# ==============================================================================
-
-if [ -f "$DOT_FILE/config/zsh/functions.sh" ]; then
-	source "$DOT_FILE/config/zsh/functions.sh"
-fi
-
-if [ -f "$DOT_FILE/config/zsh/alias.zsh" ]; then
-	source "$DOT_FILE/config/zsh/alias.zsh"
-fi
-
-if [ -f "$PREFIX/share/fzf/__fzf-history__" ]; then
-	# fzf --zsh > "$PREFIX/share/fzf/__fzf-history__"
-	source "$PREFIX/share/fzf/__fzf-history__"
-fi
-
-#  PS1 Variables
-PROMPT="%B%F{green}%n@%m%f%b:%F{blue}%B%~%b%f$ " # bash theme
-# PROMPT="%B%F{magenta}%n@%m%f%b: [ %F{cyan}%B%U%~%u%b%f ] 🔪"$'\n'"  "
-# RPROMPT="~ %F{241}%t%f"
-
-# aliases ---------------------------------------------------
-# HISTFILE="$HOME/.zhistory"
-# completion using arrow keys (based on history)
-# bindkey '^[[A' history-search-backward
-# bindkey '^[[B' history-search-forward
-
-fpath=("$HOME/.local/share/zsh/site-functions" $fpath)
-
-alias erc="$EDITOR  ~/.zshrc"
-alias eenv="$EDITOR ~/.zshenv"
-# https://www.masterzen.fr/2009/04/19/in-love-with-zsh-part-one/
-alias -g ...="../.."
-alias -s php=nano
-# -----------------------------------------------------------
-
-# auto completion -----------------------------
-# Load Apple’s default interactive zsh environment (fixes most issues)
+# IMPORTING SOME PLUGINS =======================================================================================
+# # Load Apple’s default interactive zsh environment (fixes most issues)
 [ -f /etc/zshrc ] && source /etc/zshrc
-bindkey "^K"      kill-whole-line    # ctrl-k
-bindkey "^[[3~"   kill-whole-line    # delete key
+[ -f "$HOME/.config/zsh/functions.sh" ]  &&  source "$HOME/.config/zsh/functions.sh"
+[ -f "$HOME/.config/zsh/alias.zsh" ] && source "$HOME/.config/zsh/alias.zsh"
 
-bindkey "^[[1;2D" beginning-of-line  # shift + left
-bindkey "^[[1;2C" end-of-line        # shift + right
+if [ -f "$HOME/.local/share/zsh/plugins/__fzf-history__" ]; then
+	source "$HOME/.local/share/zsh/plugins/__fzf-history__"
+else
+	if hash fzf 2>/dev/null; then
+		printf "You have not installed the fzf history plugin \t %s:%d\n" "${0}" ${LINENO}
+	fi
+	# mkdir -vp "$HOME/.local/share/zsh/plugins/" && fzf --zsh > "$HOME/.local/share/zsh/plugins/__fzf-history__"
+	# fzf --zsh > "$HOME/.local/share/zsh/plugins/__fzf-history__"
+fi
+
+if [ -f "$HOME/.local/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh" ]; then
+	source "$HOME/.local/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh"
+else
+	printf "You have not installed the fast-syntax-highlighting-plugin \t %s:%d\n" "${0}" ${LINENO}
+	# mkdir -vp "$HOME/.local/share/zsh/plugins/fast-syntax-highlighting"
+	# cd "$HOME/.local/share/zsh/plugins/zsh-autosuggestions"
+	# wget "https://github.com/zdharma-continuum/fast-syntax-highlighting/archive/refs/heads/master.zip"
+fi
+
+if [ -f "$HOME/.local/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh" ]; then
+	source "$HOME/.local/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh"
+else
+	printf "You have not installed the zsh-autosuggestions-plugin \t %s:%d\n" "~/.zshrc" ${LINENO}
+	# mkdir -vp "$HOME/.local/share/zsh/plugins/zsh-autosuggestions"
+	# cd "$HOME/.local/share/zsh/plugins/zsh-autosuggestions"
+	# wget "https://github.com/zsh-users/zsh-autosuggestions/archive/refs/heads/master.zip"
+fi
+# ============================================================================================================
 
 
+# AUTO COMPLETION ============================================================================================
 # https://zsh.sourceforge.io/Doc/Release/Zsh-Modules.html
 # https://github.com/spicycode/ze-best-zsh-config
-# Enable Mods with zsh
 # See this dir "/usr/lib/zsh/5.9"
 zmodload -i zsh/complist
-autoload -U  compinit && compinit
-autoload -Uz colors   && colors
+autoload -Uz compinit && compinit
+autoload -Uz vcs_info
 
 # man zshcontrib
 zstyle ':vcs_info:*' actionformats '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{3}|%F{1}%a%F{5}]%f '
-zstyle ':vcs_info:*' formats       '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{5}]%f '
-zstyle ':vcs_info:*' enable         git #svn cvs
+zstyle ':vcs_info:*' formats '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{5}]%f '
+zstyle ':vcs_info:*' enable git #svn cvs
 
 # Enable completion caching, use rehash to clear
 zstyle ':completion::complete:*' use-cache on
-zstyle ':completion::complete:*' cache-path ~/.zsh/cache/$HOST
+zstyle ':completion::complete:*' cache-path "$HOME/.zsh/cache/$HOST"
 
 # Fallback to built in ls colors
 zstyle ':completion:*' list-colors ''
@@ -113,35 +80,64 @@ zstyle ':completion:*:*:-subscript-:*' tag-order indexes parameters
 
 # formatting and messages
 # https://www.masterzen.fr/2009/04/19/in-love-with-zsh-part-one/
-zstyle ':completion:*'                 verbose yes
+zstyle ':completion:*' verbose yes
 # zstyle ':completion:*'                 format '%B---- %d%b'
 # '\e[04;38;5;196m'
-zstyle ':completion:*:descriptions'    format $'========== %{\e[04;38;5;196m%}Completing %B%d%b%{\e[0m%}'
+zstyle ':completion:*:descriptions' format $'========== %{\e[04;38;5;196m%}Completing %B%d%b%{\e[0m%}'
 # zstyle ':completion:*:descriptions' format "%{$fg[red]%}▶%{$reset_color%} %{$fg_bold[white]%}%d%{$reset_color%}"
-zstyle ':completion:*:messages'        format '%B%U+ %d%u%b'
-zstyle ':completion:*:warnings'        format 'No matches for: %d'
-zstyle ':completion:*:corrections'     format '%B%d (errors: %e)%b'
-zstyle ':completion:*' group-name  ''
+zstyle ':completion:*:messages' format '%B%U+ %d%u%b'
+zstyle ':completion:*:warnings' format 'No matches for: %d'
+zstyle ':completion:*:corrections' format '%B%d (errors: %e)%b'
+zstyle ':completion:*' group-name ''
 
 # ignore completion functions (until the _ignored completer)
 zstyle ':completion:*:functions' ignored-patterns '_*'
-zstyle ':completion:*:scp:*'     tag-order files users 'hosts:-host hosts:-domain:domain hosts:-ipaddr"IP\ Address *'
-zstyle ':completion:*:scp:*'     group-order files all-files users hosts-domain hosts-host hosts-ipaddr
-zstyle ':completion:*:ssh:*'     tag-order users 'hosts:-host hosts:-domain:domain hosts:-ipaddr"IP\ Address *'
-zstyle ':completion:*:ssh:*'     group-order hosts-domain hosts-host users hosts-ipaddr
-zstyle ':completion:*'           menu select
-zstyle '*'                       single-ignored show
+zstyle ':completion:*:scp:*' tag-order files users 'hosts:-host hosts:-domain:domain hosts:-ipaddr"IP\ Address *'
+zstyle ':completion:*:scp:*' group-order files all-files users hosts-domain hosts-host hosts-ipaddr
+zstyle ':completion:*:ssh:*' tag-order users 'hosts:-host hosts:-domain:domain hosts:-ipaddr"IP\ Address *'
+zstyle ':completion:*:ssh:*' group-order hosts-domain hosts-host users hosts-ipaddr
+zstyle ':completion:*' menu select
+zstyle '*' single-ignored show
 
 # ZAW styles
 zstyle ':filter-select:highlight' matched fg=yellow,standout
-zstyle ':filter-select' max-lines 10           # use 10 lines for filter-select
-zstyle ':filter-select' max-lines -10          # use $LINES - 10 for filter-select
-zstyle ':filter-select' rotate-list yes        # enable rotation for filter-select
-zstyle ':filter-select' case-insensitive yes   # enable case-insensitive search
-zstyle ':filter-select' extended-search no     # see below
-# -----------------------------------------------------------
+zstyle ':filter-select' max-lines 10         # use 10 lines for filter-select
+zstyle ':filter-select' max-lines -10        # use $LINES - 10 for filter-select
+zstyle ':filter-select' rotate-list yes      # enable rotation for filter-select
+zstyle ':filter-select' case-insensitive yes # enable case-insensitive search
+zstyle ':filter-select' extended-search no   # see below
+# ============================================================================================================
 
-# ----------------------------------------------------------
+
+# ZSH KEYMAPKING ============================================================================================
+# VIM MODE =======
+# bindkey -v
+# export KEYTIMEOUT=1
+
+# Use vim keys in tab complete menu:
+# bindkey -M menuselect 'h' vi-backward-char
+# bindkey -M menuselect 'k' vi-up-line-or-history
+# bindkey -M menuselect 'l' vi-forward-char
+# bindkey -M menuselect 'j' vi-down-line-or-history
+# bindkey -v '^?' backward-delete-char
+
+# Edit line in vim with ctrl-e:
+# autoload edit-command-line && zle -N edit-command-line
+# bindkey '^e' edit-command-line
+# bindkey -M vicmd '^[[P' vi-delete-char
+# bindkey -M vicmd '^e' edit-command-line
+# bindkey -M visual '^[[P' vi-delete
+
+
+bindkey "^K"      kill-whole-line    # ctrl-k
+bindkey "^[[3~"   kill-whole-line    # delete key
+
+bindkey "^[[1;2D" beginning-of-line  # shift + left
+bindkey "^[[1;2C" end-of-line        # shift + right
+# ============================================================================================================
+
+
+# ZSH HISTORY ================================================================================================
 # ===== Basics
 
 # If you type foo, and it isn't a command, and it is a directory in your cdpath, go there
@@ -185,32 +181,52 @@ setopt PROMPT_SUBST
 
 # unsetopt MENU_COMPLETE
 setopt AUTO_MENU
-# -----------------------------------------------------------
+# ============================================================================================================
 
 
-# =============================================
+# SOME BASIC CONFIGURATION OF ZSH ============================================================================
+autoload -Uz colors && colors
+autoload -Uz add-zsh-hook
+
+PROMPT="%B%F{green}%n@%m%f%b:%F{blue}%B%~%b%f$ "
+# PROMPT="%F{green}%B%n@%m%b%f:%F{blue}%B%~%b%f%(#.#.$) " # bash theme
+# PROMPT="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%m %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
+# PROMPT="%B%F{magenta}%n@%m%f%b: [ %F{cyan}%B%U%~%u%b%f ] 🔪"$'\n'"  "
+# RPROMPT="~ %F{241}%t%f"
+
+alias erc="$EDITOR    $HOME/.config/zsh/zshrc.zsh"
+alias eenv="$EDITOR   $HOME/.zshenv"
+# alias hc="command cat /dev/null > $HISTFILE"
+# ============================================================================================================
+
+
+# ============================================================================================================
 # When you open a new terminal window on macOS Zsh, the order is:
-# ~/.zshenv → ~/.zprofile → ~/.zshrc → (then ~/.zlogin, if exists)
-# =============================================
+# ~/.zshenv → ~/.zprofile → ~/.zshrc → (then ~/.zlogin, if exists) --- at-exit ---> .zlogout  (then ~/.zlogin, if exists)
 
 function zsh() {
-	if [ -f "$HOME/.zhsenv" ]; then
-		source "$HOME/.zhsenv"
+	if [ -f "$HOME/.zshenv" ]; then
+		# THIS FILE WILL CONTAIN ALL THE PRIVATE CONFIGURATION, WHICH I CAN'T PUBLISH AND GET UP
+		source "$HOME/.zshenv"
+
+		#THIS FILE WILL CONTAIN ALL THE ENVIRONMENT VARIABLE AND THE CONFIGURATION WHICH I COMFORTABLE TO PUBLISH ON GITHUB
+		# source "$HOME/.config/zsh/zshenv-footer.zsh"
 	fi
 
-	if [ -f "$DOT_FILE/config/zsh/functions.sh" ]; then
-		source "$DOT_FILE/config/zsh/functions.sh"
-	fi
-
-	if [ -f "$DOT_FILE/config/zsh/alias.zsh" ]; then
-		source "$DOT_FILE/config/zsh/alias.zsh"
+	if [ -f "$HOME/.zprofile" ]; then
+		source "$HOME/.zprofile"
 	fi
 
 	if [ -f "$HOME/.zshrc" ]; then
 		source "$HOME/.zshrc"
 	fi
 
-	if [ -f "$HOME/.zprofile" ]; then
-		source "$HOME/.zprofile"
+	if [ -f "$HOME/.config/zsh/functions.sh" ]; then
+		source "$HOME/.config/zsh/functions.sh"
+	fi
+
+	if [ -f "$HOME/.config/zsh/alias.zsh" ]; then
+		source "$HOME/.config/zsh/alias.zsh"
 	fi
 }
+# ============================================================================================================

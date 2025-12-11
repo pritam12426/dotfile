@@ -1,3 +1,5 @@
+# printf "Importing \t %s \n" "$HOME/.config/zsh/functions.sh"
+
 # ===========================================================================
 # This shell script contains a collection of utility functions
 # and tools to enhance productivity and streamline workflows.
@@ -7,6 +9,7 @@
 # and more. Each function is designed to handle specific tasks
 # efficiently, with options for customization and flexibility.
 # ===========================================================================
+
 
 # ------------ Utility Functions ------------
 # Download file from clipboard URL using wget
@@ -42,6 +45,7 @@ function notify() {
 	osascript -e "display notification \"$msg\" with title \"$title\" sound name \"$sound\"" 2 &>/dev/null
 }
 
+
 function message() {
 	local msg="$1"
 	local title="${2:-Notification}"
@@ -68,6 +72,7 @@ function message() {
 		;;
 	esac
 }
+
 
 function wireproxy-start() {
 	# Start wireproxy in background if not already running
@@ -118,6 +123,7 @@ function wireproxy-start() {
 	fi
 }
 
+
 function findDuplicate() {
 	find . -type f -size +1M -exec cksum {} \; |
 		tee /tmp/filelist.tmp |
@@ -127,6 +133,7 @@ function findDuplicate() {
 		grep -hif - /tmp/filelist.tmp |
 		sort -nrk2
 }
+
 
 function gDrive() {
 	# Check if at least one argument (a source) is provided.
@@ -158,33 +165,39 @@ function gDrive() {
 	fi
 }
 
+
 function ww() {
 	# --no-check-certificate \
 	command wget \
 		-c "$(pbpaste)"
 }
 
+
 # List all Makefile targets
 function _make_() {
 	command make -qp | awk -F':' '/^[a-zA-Z0-9][^$#\/\t=]*:([^=]|$)/ {split($1,A,/ /);for(i in A)print A[i]}' | command sort -u
 }
 
+
 # Open documentation file using fzf
 function doc() {
-	local doc=$(sk <$CPP_LIB_DIR/doc.txt)
+	local doc=$(sk <$LIBS_DIR/doc.txt)
 	open "file://$doc"
 }
+
 
 # Take a screenshot with shadow
 function ss() {
 	screencapture -w "./Screen–short–$(date +"%Y-%b-%d_at_%H.%M.%S").png"
 }
 
+
 # Take a screenshot without shadow
 function sss() {
 	screencapture -s "./Screen–short–$(date +"%Y-%b-%d_at_%H.%M.%S").png"
 }
 # --------------------------------------------------
+
 
 # ------------ Aria2c Function ---------------
 # Function to download content using aria2c
@@ -214,6 +227,7 @@ function streem-aria2c() {
 		"$@" "$(pbpaste)"
 }
 # ---------------------------------------------
+
 
 # ------------ Vcpkg Function -----------------
 # Function to manage vcpkg libraries with smart triplet handling
@@ -260,6 +274,7 @@ function vcpkg() {
 }
 # --------------------------------------------------
 
+
 # ------------ Gallery-dl Function ------------
 # Function to download content using gallery-dl
 function gg() {
@@ -287,6 +302,7 @@ function gg() {
 	gallery-dl --cookies-from-browser firefox --destination "$dest" "$@" "$(pbpaste)"
 }
 # ---------------------------------------------
+
 
 # ------------ Link Executables Function -------
 # Function to create symbolic links for executables in a target directory
@@ -330,6 +346,7 @@ function link_item() {
 }
 # ---------------------------------------------
 
+
 # Initialize C/C++ project templates
 function clanginit {
 	if [[ $# -eq 0 ]]; then
@@ -361,6 +378,7 @@ function clanginit {
 
 	eval "$COMMAND"
 }
+
 
 # ------------ YT-DLP Functions ------------
 function yt() {
@@ -409,6 +427,7 @@ function yt() {
 }
 # -------------------------------------------------------
 
+
 # ------------ Github cli Functions ------------
 function gh() {
 	if [[ $1 == "init" ]]; then
@@ -455,7 +474,30 @@ function gh() {
 }
 # ---------------------------------------------
 
+
+# ------------ Miscellaneous Functions ------------
 # Colorized diff output
 function diff {
 	command diff -u --color=always "$@" | less -r -
 }
+
+
+# Pretty-print media file metadata using ffprobe and jq
+function hhhh() {
+	command ffprobe -v quiet -print_format json -show_format -show_streams $@ | jq
+}
+
+
+# Copy absolute file path to clipboard
+function pc {
+	local file="${1:-}"
+	if [[ $file != /* ]]; then
+		file="$PWD/$file"
+	fi
+	local abs_path=$(realpath "$file")
+	# Escape special characters in the path
+	abs_path=$(printf "\"%s\"" "$abs_path")
+	printf "$abs_path" | pbcopy
+	# echo -e "\033[1;36m==> [ \033[1;33mCopy to clipboard: \033[1;35m$abs_path\033[1;36m ] <==\033[0m"
+}
+# ---------------------------------------------
