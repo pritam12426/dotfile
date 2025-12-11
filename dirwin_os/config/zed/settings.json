@@ -48,7 +48,7 @@
 
 	"snippet_sort_order": "top",
 	"edit_predictions": {
-		"mode": "subtle"
+		"mode": "eager"
 	},
 
 	"features": {

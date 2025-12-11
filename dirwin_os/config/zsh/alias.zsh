@@ -40,7 +40,7 @@ export LSCOLORS="ExFxBxDxCxegedabagacad"
 # Use this var for use proxy
 
 # --- Directory navigation aliases ---
-alias lldir="cd \` sk < $LIBS_DIR/index.txt \`"        # Navigate to directory from index file
+alias lldir="cd \` sk < $CPP_LIB_DIR/index.txt \`"        # Navigate to directory from index file
 alias cpdir="cd /Users/pritam/Developer/cxx_lang"      # Navigate to C++ development directory
 alias cdir="cd /Users/pritam/Developer/c_lang"         # Navigate to C development directory
 alias gdir="cd /Users/pritam/Developer/git_repository" # Navigate to Git repository directory
@@ -172,7 +172,7 @@ alias search="command ls -AF | grep -i"                                         
 alias sayy="command pbpaste | command say -i"                                                      # Convert clipboard text to speech
 alias per="command find . -type f -exec chmod 644 {} \; ; find . -type d -exec chmod 755 {} \;"    # Fix permissions
 alias seelog="command tail -n 1 -f -- "                                                            # Tail logs
-# alias exportlib="source $LIBS_DIR/env"                                                           # Load library environment
+# alias exportlib="source $CPP_LIB_DIR/env"                                                           # Load library environment
 alias zzz="bsdtar -xf "                                                                            # Extract archives
 alias exportembdlib="source $DOT_FILE/global/embedded/embedded-ENV.sh"                             # Load embedded environment
 alias ninja-tree="command ninja -t targets "                                                       # Display Ninja build targets

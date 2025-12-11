@@ -171,7 +171,7 @@ function _make_() {
 
 # Open documentation file using fzf
 function doc() {
-	local doc=$(sk <$LIBS_DIR/doc.txt)
+	local doc=$(sk <$CPP_LIB_DIR/doc.txt)
 	open "file://$doc"
 }
 
