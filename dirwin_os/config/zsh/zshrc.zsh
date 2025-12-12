@@ -17,6 +17,7 @@ else
 	if hash fzf 2>/dev/null; then
 		printf "You have not installed the fzf history plugin \t %s:%d\n" "$HOME/.config/zsh/zshrc.zsh" ${LINENO}
 	fi
+
 	# mkdir -vp "$HOME/.local/share/zsh/plugins/" && fzf --zsh > "$HOME/.local/share/zsh/plugins/__fzf-history__"
 	# fzf --zsh > "$HOME/.local/share/zsh/plugins/__fzf-history__"
 fi
@@ -25,6 +26,7 @@ if [ -f "$HOME/.local/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-hig
 	source "$HOME/.local/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh"
 else
 	printf "You have not installed the fast-syntax-highlighting-plugin \t %s:%d\n" "$HOME/.config/zsh/zshrc.zsh" ${LINENO}
+
 	# mkdir -vp "$HOME/.local/share/zsh/plugins/fast-syntax-highlighting"
 	# cd "$HOME/.local/share/zsh/plugins/zsh-autosuggestions"
 	# wget "https://github.com/zdharma-continuum/fast-syntax-highlighting/archive/refs/heads/master.zip"
@@ -34,6 +36,7 @@ if [ -f "$HOME/.local/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.
 	source "$HOME/.local/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh"
 else
 	printf "You have not installed the zsh-autosuggestions-plugin \t %s:%d\n" "$HOME/.config/zsh/zshrc.zsh" ${LINENO}
+
 	# mkdir -vp "$HOME/.local/share/zsh/plugins/zsh-autosuggestions"
 	# cd "$HOME/.local/share/zsh/plugins/zsh-autosuggestions"
 	# wget "https://github.com/zsh-users/zsh-autosuggestions/archive/refs/heads/master.zip"
@@ -116,15 +119,15 @@ zstyle ':filter-select' extended-search no   # see below
 
 # ZSH KEYMAPKING ============================================================================================
 # VIM MODE =======
-# bindkey -v
-# export KEYTIMEOUT=1
+bindkey -v
+export KEYTIMEOUT=1
 
 # Use vim keys in tab complete menu:
-# bindkey -M menuselect 'h' vi-backward-char
-# bindkey -M menuselect 'k' vi-up-line-or-history
-# bindkey -M menuselect 'l' vi-forward-char
-# bindkey -M menuselect 'j' vi-down-line-or-history
-# bindkey -v '^?' backward-delete-char
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+bindkey -v '^?' backward-delete-char
 
 # Edit line in vim with ctrl-e:
 # autoload edit-command-line && zle -N edit-command-line
@@ -134,11 +137,11 @@ zstyle ':filter-select' extended-search no   # see below
 # bindkey -M visual '^[[P' vi-delete
 
 
-bindkey "^K"      kill-whole-line    # ctrl-k
-bindkey "^[[3~"   kill-whole-line    # delete key
+# bindkey "^K"      kill-whole-line    # ctrl-k
+# bindkey "^[[3~"   kill-whole-line    # delete key
 
-bindkey "^[[1;2D" beginning-of-line  # shift + left
-bindkey "^[[1;2C" end-of-line        # shift + right
+# bindkey "^[[1;2D" beginning-of-line  # shift + left
+# bindkey "^[[1;2C" end-of-line        # shift + right
 # ============================================================================================================
 
 

@@ -473,6 +473,11 @@ function gh() {
 		command gh "$@"
 	fi
 }
+
+function aboutrepo() {
+	gh repo view "$@" --json name,description,stargazerCount
+}
+
 # ---------------------------------------------
 
 
