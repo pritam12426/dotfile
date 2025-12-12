@@ -22,7 +22,7 @@ set main-view = \
 	commit-title:graph=yes,refs=yes,overflow=50
 bind main H ?git checkout "%(prompt Enter branch name: )"
 bind main p >git push origin %(repo:head)
-bind main P >git push origin %(repo:head) --force-if-includes
+bind main P >git push origin %(repo:head) --force-with-lease
 
 # === Blame-view ===
 set blame-view = \
@@ -53,7 +53,7 @@ bind status U @git add --all
 bind status x ?git restore --staged .
 bind status A @git commit --amend --no-edit
 bind status p >git push origin %(repo:head)
-bind status P >git push origin %(repo:head) --force-if-includes
+bind status P >git push origin %(repo:head) --force-with-lease
 
 
 # === Pull & Fetch ===
