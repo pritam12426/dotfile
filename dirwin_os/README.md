@@ -43,6 +43,7 @@
 - [shellcheck](https://github.com/koalaman/shellcheck)  (Regularly Used)
 - [shfmt](https://github.com/patrickvane/shfmt) (Regularly Used)
 - [shiori](https://github.com/go-shiori/shiori) (Regularly Used)
+- [readeck](https://codeberg.org/readeck/readeck) `Good alternatives for shiori` (Regularly Used)
 - [sk](https://github.com/skim-rs/skim) `A fuzzy finder written in Rust.` (Regularly Used)
 - [syncthing](https://syncthing.net)(Regularly Used)
 - [taplo](https://github.com/tamasfe/taplo) (Regularly Used)
@@ -52,6 +53,8 @@
 - [wireproxy](https://www.youtube.com/watch?v=ESr0xid-kl4) (Regularly Used)
 - [zellij](https://github.com/zellij-org/zellij) (Not Regularly Used)
 - [zenity](https://github.com/ncruces/zenity) (Regularly Used)
+- [Zellij](https://github.com/zellij-org/zellij) (Not Regularly Used)
+- [Onefeatch](https://github.com/o2sh/onefetch) (Regularly Used)
 
 ## Manual / Releases
 
@@ -65,6 +68,8 @@
 - [sqlmap](https://github.com/sqlmapproject/sqlmap) `manually install this for the  Releases page` (Regularly Used)
 - [vidir](https://github.com/trapd00r/vidir) `manually install this for the  Releases page` (Not Regularly Used)
 - [yt-dlp](https://github.com/yt-dlp/yt-dlp) Media downlader. `manually install this for the  Releases page` (Regularly Used)
+- [fastfetch](https://github.com/fastfetch-cli/fastfetch) `manually install this for the  Releases page` then after like the binary with bin.json (Regularly Used)
+- [hx](https://github.com/helix-editor/helix) `manually install this for the  Releases page` (Regularly Used)
 
 ## Github / Binary / Build From Source
 

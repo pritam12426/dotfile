@@ -1,11 +1,51 @@
 # printf "Importing \t %s \n" "$HOME.config/zsh/zshenv-footer.zsh"
 # echo "[ -f "$HOME.config/zsh/zshenv-footer.zsh" ] && source "$HOME.config/zsh/zshenv-footer.zsh"" >> ~/.zshenv
 
-
 # SUPPORTING SOME PRIVATE VARIABLES INSIDE .zshenv =============================
 # export ARIA2C_SESSION_TOKEN="go to ~/.zshenv"
 # export GITHUB_AUTH_TOKEN="go to    ~/.zshenv"     # this pritam_lpu_12416
 # ==============================================================================
+
+# -----------------------------------------------
+# Helper to safely add to PATH without duplicates
+# -----------------------------------------------
+typeset -g PATH MANPATH
+
+# Safely add a directory to PATH if it exists and is not already included
+export PATH="$PATH"
+__PATH_ADD() {
+    local dir="$1"
+    [[ -n "$dir" && -d "$dir" ]] || return
+    case ":$PATH:" in
+        *":$dir:"*) ;;                    # already present → do nothing
+        *) PATH="${PATH:+$PATH:}$dir" ;;  # append with colon only if PATH is non-empty
+    esac
+}
+
+# Safely add a directory to MANPATH if it exists and is not already included
+export MANPATH="$MANPATH"
+# echo $MANPATH
+__MANPATH_ADD() {
+    local dir="$1"
+
+    # directory must exist
+    [[ -n "$dir" && -d "$dir" ]] || return
+
+    # If MANPATH is empty -> add with trailing colon to keep system defaults
+    if [[ -z "$MANPATH" ]]; then
+        MANPATH="$dir:"
+        return
+    fi
+
+    # Remove trailing ':' to prevent "::"
+    MANPATH="${MANPATH%%:}"
+
+    # Add only if not already present
+    case ":$MANPATH:" in
+        *":$dir:"*) ;;   # already exists
+        *) MANPATH="$MANPATH:$dir" ;;
+    esac
+}
 
 
 # sudo curl -L https://curl.se/ca/cacert.pem -o /usr/local/etc/ca-certificates/cert.pem
@@ -17,28 +57,27 @@ export CC="/usr/bin/clang"
 export PREFIX="$HOME/.local"
 
 # FOR PYTHON ======
-export PATH="$HOME/Library/Python/3.9/bin:$PATH"
-export MANPATH="$MANPATH:$HOME/Library/Python/3.9/share/man"
+__PATH_ADD "$HOME/Library/Python/3.9/bin"
+__PATH_ADD "$HOME/Library/Python/3.9/share/man"
 fpath=($fpath "$HOME/Library/Python/3.9/share/zsh/site-functions")
 
 # FOR DEVELOPMENT LIBRARIES ==========
-export PATH="/usr/local/big_library-bin:$PATH"
+__PATH_ADD "/usr/local/big_library-bin"
 export DYLD_LIBRARY_PATH="/usr/local/lib:$DYLD_LIBRARY_PATH"
 export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH"
 export CMAKE_PREFIX_PATH="/usr/local/lib/cmake:$CMAKE_PREFIX_PATH"
 export CPP_LIB_DIR="/usr/local/big_library"
 
-
 # FOR DEVELOPMENT LIBRARIES ==========
-export PATH="$PATH:$HOME/.local/bin"
-export PATH="$PATH:$HOME/.local/github-releases-bin"
+__PATH_ADD "$HOME/.local/bin"
+__PATH_ADD "$HOME/.local/github-releases-bin"
+__MANPATH_ADD "$HOME/.local/share/man"
 fpath=($fpath "$HOME/.local/share/zsh/site-functions")
 
 export EDITOR="nvim"
 # export EDITOR="hx"
 export DOT_FILE="$HOME/Developer/git_repository/my_dotfile/dirwin_os"
 # ============================================================================================================
-
 
 # Linux LS color theme =======================================================================================
 # Allow Zed editor to run as root
@@ -63,7 +102,6 @@ export LESS="-Rir"
 export LSCOLORS="ExFxBxDxCxegedabagacad"
 # ============================================================================================================
 
-
 # FZF Configuration ==========================================================================================
 # Set up FZF default options for appearance and layout
 export FZF_DEFAULT_OPTS="--height 50% --layout=default --border --color=hl:#2dd4bf"
@@ -78,22 +116,21 @@ export FZF_CTRL_T_OPTS="--preview 'bat --color=always -n --line-range :500 {}'"
 # export FZF_TMUX_OPTS=" -p90%,70% "
 # ============================================================================================================
 
-
 # Red & Green Man Page Theme (2025 edition) ==================================================================
 # Bold text & headings → Bright green (function names, section titles)
-export LESS_TERMCAP_md=$'\e[01;38;5;82m'   # vivid neon green
+export LESS_TERMCAP_md=$'\e[01;38;5;82m' # vivid neon green
 
 # Start blinking (rarely used) → Bright red (makes it actually noticeable)
-export LESS_TERMCAP_mb=$'\e[05;38;5;196m'  # blinking bright red
+export LESS_TERMCAP_mb=$'\e[05;38;5;196m' # blinking bright red
 
 # Search highlight bar / standout → White text on red background (super visible)
-export LESS_TERMCAP_so=$'\e[01;97;41m'     # bright white on red
+export LESS_TERMCAP_so=$'\e[01;97;41m' # bright white on red
 
 # End standout
 export LESS_TERMCAP_se=$'\e[0m'
 
 # Underlined text (options, arguments, --flags) → Bright red underline
-export LESS_TERMCAP_us=$'\e[04;38;5;196m'  # bright red underline
+export LESS_TERMCAP_us=$'\e[04;38;5;196m' # bright red underline
 
 # End underline
 export LESS_TERMCAP_ue=$'\e[0m'
@@ -101,7 +138,6 @@ export LESS_TERMCAP_ue=$'\e[0m'
 # End all bold/attributes
 export LESS_TERMCAP_me=$'\e[0m'
 # ============================================================================================================
-
 
 # NNN File Manager Integration ===============================================================================
 # Define NNN plugins for various tasks
@@ -119,7 +155,6 @@ NNN_PLUG+='m:!mpv "$nnn"   *   *;'
 
 NNN_PLUG+=$NNN_PLUG_PERSONAL
 export NNN_PLUG
-
 
 # Set NNN color scheme
 export NNN_COLORS="5236"
@@ -158,7 +193,6 @@ function n() {
 	}
 }
 # ============================================================================================================
-
 
 # GPG CONFIGURATION ==========================================================================================
 # Set GPG_TTY for signing commits with GPG

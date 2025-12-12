@@ -1,55 +1,57 @@
 # printf "Importing \t %s \n" "$HOME/.zprofile"
 
+# ---------------------- Rust ------------------------
+if [[ -n $RUST_HOME && -d $RUST_HOME ]]; then
+	__PATH_ADD "$RUST_HOME/bin"
+	__PATH_ADD "$RUST_HOME/cargo/bin"
 
-# ===========================================================================================================
-if [[ -d "$RUST_HOME" ]]; then
-	export PATH="$RUST_HOME/bin:$PATH"
-	export PATH="$RUST_HOME/cargo/bin:$PATH"
-	export MANPATH="$RUST_HOME/share/man:$MANPATH"
 	export CARGO_HOME="$HOME/.local/lib/cargo"
+	__PATH_ADD "$CARGO_HOME/bin"
 
-	# export PATH="$RUST_HOME/lib/rustlib/aarch64-apple-darwin/bin:$PATH"
-	# . "$HOME/.cargo/env"
+	__MANPATH_ADD "$RUST_HOME/share/man"
 fi
 
-
-if [[ -d "$VCPKG_ROOT" ]]; then
+# ---------------------- VCPKG ------------------------
+if [[ -n $VCPKG_ROOT && -d $VCPKG_ROOT ]]; then
 	export CMAKE_TOOLCHAIN_FILE="$VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake"
-	export PKG_CONFIG_PATH="$VCPKG_ROOT/installed/arm64-osx-dynamic/share/pkgconfig:$PKG_CONFIG_PATH"
 	export VCPKG_DOWNLOADS="$HOME/.cache/vcpkg-downloads"
 	export VCPKG_TARGET_ARCHITECTURE="arm64"
 	export VCPKG_TARGET_TRIPLET="arm64-osx"
 
-	# export VCPKG_DEFAULT_TRIPLET=arm64-osx-dynamic
-	# export VCPKG_OVERLAY_TRIPLETS="$HOME/my-vcpplet-triplets"
+	# Optional dynamic pkg-config path
+	# VCPKG_TRIPLET="${VCPKG_TARGET_TRIPLET:-arm64-osx}"
+	# PKG_CONFIG_PATH="$VCPKG_ROOT/installed/$VCPKG_TRIPLET/share/pkgconfig:$PKG_CONFIG_PATH"
 fi
 
-
-if [[ -d "$JAVA_HOME" ]]; then
-	export PATH="$JAVA_HOME/bin:$PATH"
-	export MANPATH="$JAVA_HOME/man:$MANPATH"
+# ---------------------- Java ------------------------
+if [[ -d $JAVA_HOME ]]; then
+	__PATH_ADD     "$JAVA_HOME/bin"
+	__MANPATH_ADD  "$JAVA_HOME/man"
 fi
 
-
-if [[ -f "$NPM_CONFIG_USERCONFIG" ]]; then
+# ---------------------- Node / PNPM ------------------------
+if [[ -n $NPM_CONFIG_USERCONFIG && -f $NPM_CONFIG_USERCONFIG ]]; then
 	export PNPM_HOME="$HOME/Library/pnpm"
-	export PATH="$PNPM_HOME:$PATH"
-	export PATH="$HOME/.local/dev-tools/dev-libs-packages/node_modules/bin:$PATH"
+	__PATH_ADD "$PNPM_HOME"
+
+	__PATH_ADD "$HOME/.local/lib/node_modules-global/bin"
 fi
 
-
-if [[ -d "$GOPATH" ]]; then
-	export PATH="$GOPATH/bin:$PATH"
+# ---------------------- Go ------------------------
+if [[ -n $GOPATH && -d $GOPATH ]]; then
+	__PATH_ADD "$GOPATH/bin"
 fi
 
+# ---------------------- Android SDK ------------------------
+if [[ -n $ANDROID_HOME && -d $ANDROID_HOME ]]; then
+	export ANDROID_SDK_ROOT="$ANDROID_HOME"
 
-if [[ -d "$ANDROID_HOME" ]]; then
-	export PATH="$ANDROID_HOME/flutter/bin:$PATH"
-	export PATH="$ANDROID_HOME/cmdline-tools/latest/bin:$PATH"
+	__PATH_ADD "$ANDROID_SDK_ROOT/platform-tools"
+	__PATH_ADD "$ANDROID_SDK_ROOT/emulator"
+	__PATH_ADD "$ANDROID_SDK_ROOT/cmdline-tools/latest/bin"
+	__PATH_ADD "$ANDROID_SDK_ROOT/flutter/bin"
 
-	export PATH="$ANDROID_HOME/platform-tools:$PATH"
-	export PATH="$ANDROID_HOME/emulator:$PATH"
-	alias apktool="java -jar $ANDROID_HOME/reverse-engineering/dex-tools-v2.4/bin/apktool_2.12.1.jar "
-	alias dex-tools="$ANDROID_HOME/reverse-engineering/dex-tools-v2.4/bin/dex-tools "
+	# NOTE: aliases below should be moved to ~/.zshrc
+	alias apktool="java -jar \"$ANDROID_HOME/reverse-engineering/dex-tools-v2.4/bin/apktool_2.12.1.jar\""
+	alias dex-tools="\"$ANDROID_HOME/reverse-engineering/dex-tools-v2.4/bin/dex-tools\""
 fi
-# ===========================================================================================================

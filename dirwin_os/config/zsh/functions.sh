@@ -153,12 +153,13 @@ function gDrive() {
 	for source in "$@"; do
 		echo -e "\033[1;36m==> [ \033[1;33mCopy to Google drive: \033[1;35m$source\033[1;36m ] <==\033[0m"
 		command rclone copy "$source" "$dest" -vP
-		if [[ $? -eq 0 ]]; then
+		local rclone_exti=$!
+		if [[ $rclone_exti -eq 0 ]]; then
 			((num++))
 		fi
 	done
 
-	if [[ $? -eq 0 ]]; then
+	if [[ $rclone_exti -eq 0 ]]; then
 		notify "Move $num items" "Rclone" "into"
 	else
 		notify "Fail" "Rclone" "error"
