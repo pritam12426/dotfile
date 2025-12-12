@@ -1,9 +1,10 @@
-# Auto-generated from  "Dhanno.local" on – 2025-Dec-10
+# Auto-generated from  "Dhanno.local" on – 2025-Dec-12
 
 UbuntuMono
 Permanent_Marker
 Jacquard_24
 Ubuntu_Mono
+zed-sans-1.2.0
 CascadiaCode
 Archivo_Black
 Gloria_Hallelujah

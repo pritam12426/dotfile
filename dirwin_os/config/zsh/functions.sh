@@ -442,33 +442,36 @@ function gh() {
 		echo "📦 Public or Private? (p/P=public, any key=private)"
 		read -r choice
 
+		privacy="--private"
 		if [[ $choice =~ ^[pP]$ ]]; then
 			privacy="--public"
-		else
-			privacy="--private"
 		fi
 
 		# Optional description prompt
 		echo "📝 Enter repository description (or leave empty):"
 		read -r description
+		desc_flag=""
 		if [[ -n $description ]]; then
-			desc_flag="--description \"$description\""
-		else
-			desc_flag=""
+			desc_flag="--description='$description'"
 		fi
 
 		# Create repo using folder name
 		repo_name=$(basename "$PWD")
 
-		eval command gh repo create "$repo_name" \
-			$privacy \
-			--source=. --remote=origin --push \
-			--license mit \
+		command gh repo create "$repo_name" \
+			"$privacy" \
+			--source . \
+			--remote=origin \
+			--push \
 			--disable-wiki \
-			--disable-issues \
-			"$desc_flag"
+			"$desc_flag" \
+			--disable-issues
 
 		echo "🚀 Done! Linked and pushed to GitHub."
+	elif [[ $1 == "info" ]]; then
+		command gh repo view \
+		hyprwm/Hyprland \
+		--json name,description,stargazerCount
 	else
 		command gh "$@"
 	fi

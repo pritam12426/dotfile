@@ -1,3 +1,16 @@
+## INSTALLATION
+
+``` sh
+mkdir -p "$HOME/Developer/git_repository"
+cd "$HOME/Developer/git_repository"
+# Change the https origin to ssh url with git command
+git clone "https://github.com/pritam12426/dotfile.git" my_dotfile
+
+cd my_dotfile/dirwin_os
+export DOT_FILE="$PWD"
+./install.sh
+```
+
 ## References 
 
 - [Github awesome-tuis](https://github.com/rothgar/awesome-tuis/)
@@ -15,6 +28,7 @@
 - [bat](https://github.com/charlie0129/batt/releases)  (Regularly Used)
 - [batt](https://github.com/charlie0129/batt)  (Regularly Used)
 - [bin](https://github.com/marcosnils/bin) (Regularly Used)
+- [eget](/Users/pritam/.local/dev-tools/eget-1.3.4/) (Regularly Used)
 - [broot](https://github.com/Canop/broot)  (Not Regularly Used)
 - [caligula](https://terminaltrove.com/caligula/)  (Not Regularly Used)
 - [cargo-seek](https://github.com/tareqimbasher/cargo-seek) (Not Regularly Used)

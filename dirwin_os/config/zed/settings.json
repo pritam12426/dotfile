@@ -181,7 +181,7 @@
 	},
 
 	"git": {
-		"git_gutter": "tracked_files",
+		// "git_gutter": "tracked_files",
 		"inline_blame": {
 			// "show_commit_summary": true,
 			"enabled": true,

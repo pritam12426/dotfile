@@ -1,6 +1,5 @@
-# Auto-generated from  "Dhanno.local" on – 2025-Dec-10
+# Auto-generated from  "Dhanno.local" on – 2025-Dec-12
 
-Tor Browser.app
 DB Browser for SQLite.app
 qbittorrent.app
 Maccy.app
@@ -21,6 +20,7 @@ Pixelmator Pro.app
 mpv.app
 Pages.app
 WireGuard.app
+iTerm.app
 AppCleaner.app
 KeePassXC.app
 Firefox.app

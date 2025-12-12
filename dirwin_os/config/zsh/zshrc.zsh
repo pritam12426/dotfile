@@ -23,7 +23,7 @@ else
 fi
 
 if [ -f "$HOME/.local/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh" ]; then
-	source "$HOME/.local/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh"
+	# source "$HOME/.local/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh"
 else
 	printf "You have not installed the fast-syntax-highlighting-plugin \t %s:%d\n" "$HOME/.config/zsh/zshrc.zsh" ${LINENO}
 
@@ -32,8 +32,18 @@ else
 	# wget "https://github.com/zdharma-continuum/fast-syntax-highlighting/archive/refs/heads/master.zip"
 fi
 
+if [[ -f "$HOME/.local/share/zsh/plugins/zsh-you-should-use/you-should-use.plugin.zsh" ]]; then
+	source "$HOME/.local/share/zsh/plugins/zsh-you-should-use/you-should-use.plugin.zsh"
+else
+	printf "You have not installed the you-should-use-plugin \t %s:%d\n" "$HOME/.config/zsh/zshrc.zsh" ${LINENO}
+
+	# mkdir -vp "$HOME/.local/share/zsh/plugins/you-should-use-plugin"
+	# wget "https://raw.githubusercontent.com/MichaelAquilina/zsh-you-should-use/refs/heads/master/you-should-use.plugin.zsh" -P \
+	# "$HOME/.local/share/zsh/plugins/you-should-use-plugin" -O "you-should-use.plugin.zsh"
+fi
+
 if [ -f "$HOME/.local/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh" ]; then
-	source "$HOME/.local/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh"
+	# source "$HOME/.local/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh"
 else
 	printf "You have not installed the zsh-autosuggestions-plugin \t %s:%d\n" "$HOME/.config/zsh/zshrc.zsh" ${LINENO}
 
@@ -62,7 +72,7 @@ zstyle ':completion::complete:*' use-cache on
 zstyle ':completion::complete:*' cache-path "$HOME/.zsh/cache/$HOST"
 
 # Fallback to built in ls colors
-zstyle ':completion:*' list-colors ''
+# zstyle ':completion:*' list-colors ''
 
 # Make the list prompt friendly
 zstyle ':completion:*' list-prompt '%SAt %p: Hit TAB for more, or the character to insert%s'
@@ -91,11 +101,11 @@ zstyle ':completion:*:*:-subscript-:*' tag-order indexes parameters
 zstyle ':completion:*' verbose yes
 # zstyle ':completion:*'                 format '%B---- %d%b'
 # '\e[04;38;5;196m'
-zstyle ':completion:*:descriptions' format $'========== %{\e[04;38;5;196m%}Completing %B%d%b%{\e[0m%}'
+# zstyle ':completion:*:descriptions' format $'========== %{\e[04;38;5;196m%}Completing %B%d%b%{\e[0m%}'
 # zstyle ':completion:*:descriptions' format "%{$fg[red]%}▶%{$reset_color%} %{$fg_bold[white]%}%d%{$reset_color%}"
-zstyle ':completion:*:messages' format '%B%U+ %d%u%b'
-zstyle ':completion:*:warnings' format 'No matches for: %d'
-zstyle ':completion:*:corrections' format '%B%d (errors: %e)%b'
+# zstyle ':completion:*:messages' format '%B%U+ %d%u%b'
+# zstyle ':completion:*:warnings' format 'No matches for: %d'
+# zstyle ':completion:*:corrections' format '%B%d (errors: %e)%b'
 zstyle ':completion:*' group-name ''
 
 # ignore completion functions (until the _ignored completer)
@@ -119,15 +129,15 @@ zstyle ':filter-select' extended-search no   # see below
 
 # ZSH KEYMAPKING ============================================================================================
 # VIM MODE =======
-bindkey -v
-export KEYTIMEOUT=1
+# bindkey -v
+# export KEYTIMEOUT=1
 
 # Use vim keys in tab complete menu:
-bindkey -M menuselect 'h' vi-backward-char
-bindkey -M menuselect 'k' vi-up-line-or-history
-bindkey -M menuselect 'l' vi-forward-char
-bindkey -M menuselect 'j' vi-down-line-or-history
-bindkey -v '^?' backward-delete-char
+# bindkey -M menuselect 'h' vi-backward-char
+# bindkey -M menuselect 'k' vi-up-line-or-history
+# bindkey -M menuselect 'l' vi-forward-char
+# bindkey -M menuselect 'j' vi-down-line-or-history
+# bindkey -v '^?' backward-delete-char
 
 # Edit line in vim with ctrl-e:
 # autoload edit-command-line && zle -N edit-command-line
@@ -237,7 +247,7 @@ PROMPT="%F{green}%B%n@%m%b%f:%F{blue}%B%~%b%f%(#.#.$) " # bash theme
 
 alias erc="$EDITOR    $HOME/.config/zsh/zshrc.zsh"
 alias eenv="$EDITOR   $HOME/.zshenv"
-# alias hc="command cat /dev/null > $HISTFILE"
+# alias hc=': > "$HISTFILE"; fc -p'
 # ============================================================================================================
 
 

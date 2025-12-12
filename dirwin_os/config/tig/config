@@ -7,6 +7,10 @@ set horizontal-scroll = 30%
 set commit-order = topo
 set show-untracked = true
 set status-show-untracked-dirs = true
+set vertical-split = false
+set split-view-height = 70%
+set focus-child = true
+# set focus-child = true
 # color cursor black white bold
 bind generic S :source ~/.config/tig/config
 
@@ -18,7 +22,7 @@ set main-view = \
 	commit-title:graph=yes,refs=yes,overflow=50
 bind main H ?git checkout "%(prompt Enter branch name: )"
 bind main p >git push origin %(repo:head)
-bind main P >git push origin %(repo:head) -f
+bind main P >git push origin %(repo:head) --force-if-includes
 
 # === Blame-view ===
 set blame-view = \
@@ -49,7 +53,7 @@ bind status U @git add --all
 bind status x ?git restore --staged .
 bind status A @git commit --amend --no-edit
 bind status p >git push origin %(repo:head)
-bind status P >git push origin %(repo:head) -f
+bind status P >git push origin %(repo:head) --force-if-includes
 
 
 # === Pull & Fetch ===
