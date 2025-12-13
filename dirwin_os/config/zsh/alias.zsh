@@ -1,5 +1,6 @@
 # printf "Importing \t %s \n" "$HOME/.config/zsh/alias.zsh"
 
+[[ $- != *i* ]] && return
 
 # --- Fix Apple verification issue for certain libraries ---
 # Uncomment and use the following command to fix the "Apple could not verify" issue for specific libraries.
@@ -43,18 +44,17 @@ alias firefox-clean="rm -fv ~/Library/Application\ Support/Firefox/Profiles/*/fo
 
 # ------------ LS and File Management Aliases ------------
 # Enable colorized output for common commands
-alias ls="command ls --color=auto"
-alias grep="command grep --color=auto"
-alias fgrep="command fgrep --color=auto"
-alias egrep="command egrep --color=auto"
-alias rsync="command rsync -vrPlu"
+alias ls="ls --color=auto -GFh"
+alias grep="grep --color=auto"
+alias fgrep="fgrep --color=auto"
+alias egrep="egrep --color=auto"
+alias rsync="rsync -vrPlu"
 
 # Common ls shortcuts
-alias ls="ls -GFh"
-alias ll="ls -GFhl"                       # List with human-readable sizes
-alias la="ls -AGFh"                       # List all files, excluding . and ..
-alias l="ls -lAhFG"                       # Detailed list including hidden files
-alias lh="ls -lhGFd --color=auto .[^.]*"  # List hidden directories
+alias ll="ls -l"                       # List with human-readable sizes
+alias la="ls -A"                       # List all files, excluding . and ..
+alias l="ls -lA"                       # Detailed list including hidden files
+alias lh="ls -ld --color=auto .[^.]*"  # List hidden directories
 
 # File operation aliases with safety prompts
 alias cp="cp -ip"  # Copy with interactive prompt
@@ -77,26 +77,27 @@ alias o="open ."                                                                
 alias c.="code ."                                                                          # Open current directory in VS Code
 alias z.="zed ."                                                                           # Open current directory in Zed editor
 alias live-server="live-server -H localhost -p 8085 -o"                                    # Start live server
-alias tree="tre -ea"                                                                       # Display directory tree
+alias tre="tre -ea"                                                                        # Display directory tree
 alias python="python3 -u"                                                                  # Use Python 3 as default
+alias envpath="envpath | less"                                                             # Print the environment variable in prettiest form
 alias nq="networkquality -s"                                                               # Check network quality
-alias search="ls -AF | grep -i"                                                            # Search files in current directory
+alias search="command ls -AF | grep -i"                                                    # Search files in current directory
 alias sayy="pbpaste | command say -i"                                                      # Convert clipboard text to speech
 alias per="find . -type f -exec chmod 644 {} \; ; find . -type d -exec chmod 755 {} \;"    # Fix permissions
 alias seelog="tail -n 1 -f -- "                                                            # Tail logs
-alias exportlib="source $LIBS_DIR/env"                                                             # Load library environment
-alias zzz="bsdtar -xf "                                                                            # Extract archives
-alias exportembdlib="source $DOT_FILE/../embedded/embedded-ENV.sh"                             # Load embedded environment
-alias ninja-tree="ninja -t targets "                                                       # Display Ninja build targets
+alias exportlib="source $LIBS_DIR/env"                                                     # Load library environment
+alias zzz="bsdtar -xf"                                                                     # Extract archives
+alias exportembdlib="source $DOT_FILE/../global/embedded/embedded-ENV.sh"                  # Load embedded environment
+alias ninja-tree="ninja -t targets"                                                        # Display Ninja build targets
 alias chownroot="sudo chown -R root:wheel"                                                 # Change ownership to root
 alias chownself="sudo chown -R pritam:staff"                                               # Change ownership to user
-alias bk="open 'http://localhost:8080/' && shiori server"                                          # Open bookmarks server
+alias bk="open 'http://localhost:8080/' && shiori server"                                  # Open bookmarks server
 alias wget="wget -c"                                                                       # Download with wget
-alias off="pmset displaysleepnow"                                                                  # Turn off display
-alias soff="pmset sleepnow"                                                                        # Put system to sleep
-alias zed-editor="eval \"export EDITOR='zed --wait'\""                                             # setting EDITOR = zed
-alias gui-rclone="rclone rcd --rc-web-gui --rc-no-auth"                                            # setting EDITOR = zed
-alias find-zombies="ps -axo pid,ppid,stat,command | grep -w Z+"                                    # Find zombies + parent PID
+alias off="pmset displaysleepnow"                                                          # Turn off display
+alias soff="pmset sleepnow"                                                                # Put system to sleep
+alias zed-editor="eval \"export EDITOR='zed --wait'\""                                     # setting EDITOR = zed
+alias gui-rclone="rclone rcd --rc-web-gui --rc-no-auth"                                    # setting EDITOR = zed
+alias find-zombies="ps -axo pid,ppid,stat,command | grep -w Z+"                            # Find zombies + parent PID
 
 alias aria2-reload="launchctl unload ~/Library/LaunchAgents/com.user.aria2.plist &&
 				    launchctl load ~/Library/LaunchAgents/com.user.aria2.plist"

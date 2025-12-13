@@ -63,9 +63,11 @@ fpath=($fpath "$HOME/Library/Python/3.9/share/zsh/site-functions")
 
 # FOR DEVELOPMENT LIBRARIES ==========
 __PATH_ADD "/usr/local/big_library-bin"
+export CMAKE_GENERATOR=Ninja
 export DYLD_LIBRARY_PATH="/usr/local/lib:$DYLD_LIBRARY_PATH"
 export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH"
 export CMAKE_PREFIX_PATH="/usr/local/lib/cmake:$CMAKE_PREFIX_PATH"
+export CMAKE_INSTALL_PATH="$PREFIX"
 export CPP_LIB_DIR="/usr/local/big_library"
 
 # FOR DEVELOPMENT LIBRARIES ==========
@@ -82,9 +84,6 @@ export DOT_FILE="$HOME/Developer/git_repository/my_dotfile/dirwin_os"
 # Linux LS color theme =======================================================================================
 # Allow Zed editor to run as root
 export ZED_ALLOW_ROOT=true
-
-# Set CMake generator to Ninja
-export CMAKE_GENERATOR=Ninja
 
 # Enable colored diagnostics in CMake
 export CMAKE_COLOR_DIAGNOSTICS=true

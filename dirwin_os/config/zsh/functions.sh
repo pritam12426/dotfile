@@ -182,7 +182,7 @@ function _make_() {
 
 # Open documentation file using fzf
 function doc() {
-	local doc=$(sk <$LIBS_DIR/doc.txt)
+	local doc=$(sk < $CPP_LIB_DIR/doc.txt)
 	open "file://$doc"
 }
 
@@ -452,33 +452,28 @@ function gh() {
 		read -r description
 		desc_flag=""
 		if [[ -n $description ]]; then
-			desc_flag="--description='$description'"
+			desc_flag="--description=$description "
 		fi
 
 		# Create repo using folder name
 		repo_name=$(basename "$PWD")
 
-		command gh repo create "$repo_name" \
+		command gh repo create "$repo_name" "$desc_flag" \
 			"$privacy" \
 			--source . \
 			--remote=origin \
 			--push \
 			--disable-wiki \
-			"$desc_flag" \
 			--disable-issues
 
 		echo "🚀 Done! Linked and pushed to GitHub."
 	elif [[ $1 == "info" ]]; then
 		command gh repo view \
-		hyprwm/Hyprland \
-		--json name,description,stargazerCount
+			hyprwm/Hyprland \
+			--json name,description,stargazerCount
 	else
 		command gh "$@"
 	fi
-}
-
-function aboutrepo() {
-	gh repo view "$@" --json name,description,stargazerCount
 }
 
 # ---------------------------------------------
@@ -496,6 +491,21 @@ function hhhh() {
 	command ffprobe -v quiet -print_format json -show_format -show_streams "$@" | jq
 }
 
+function todo() {
+	local todo_file="$HOME/.todo.md"
+
+	if [[ $1 == "add" ]]; then
+		shift
+		echo "$*" >> "$todo_file"
+		echo "$*"
+	elif [[ $1 == "list" ]]; then
+		bat --theme gruvbox-dark --style=plain --paging=always "$todo_file"
+	elif [[ $1 == "clean" ]]; then
+		cat /dev/null > "$todo_file"
+	else
+		"$EDITOR" "$todo_file"
+	fi
+}
 
 # Copy absolute file path to clipboard
 function pc {

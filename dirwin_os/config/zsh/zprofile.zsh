@@ -3,7 +3,7 @@
 # ---------------------- Rust ------------------------
 if [[ -n $RUST_HOME && -d $RUST_HOME ]]; then
 	__PATH_ADD "$RUST_HOME/bin"
-	__PATH_ADD "$RUST_HOME/cargo/bin"
+	__PATH_ADD "$RUST_HOME/lib/rustlib/aarch64-apple-darwin/bin"
 
 	export CARGO_HOME="$HOME/.local/lib/cargo"
 	__PATH_ADD "$CARGO_HOME/bin"
