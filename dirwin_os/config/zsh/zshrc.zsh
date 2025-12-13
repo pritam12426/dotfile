@@ -248,6 +248,10 @@ PROMPT="%F{green}%B%n@%m%b%f:%F{blue}%B%~%b%f%(#.#.$) " # bash theme
 alias erc="$EDITOR    $HOME/.config/zsh/zshrc.zsh"
 alias eenv="$EDITOR   $HOME/.zshenv"
 # alias hc=': > "$HISTFILE"; fc -p'
+
+alias -g ...="../.."
+# https://www.masterzen.fr/2009/04/19/in-love-with-zsh-part-one/
+alias -s php=nano
 # ============================================================================================================
 
 

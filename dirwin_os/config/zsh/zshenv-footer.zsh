@@ -144,10 +144,10 @@ export LESS_TERMCAP_me=$'\e[0m'
 NNN_PLUG_PERSONAL+="a:personal/adb_push;"
 NNN_PLUG_PERSONAL+="r:personal/fix_ugly_name;"
 NNN_PLUG_PERSONAL+="p:personal/ffplay_playlist;"
+NNN_PLUG_PERSONAL+="e:personal/fetch_metadata;"
 
 NNN_PLUG+='z:!&zed "$nnn" *;'
 NNN_PLUG+='c:fzcd;'
-NNN_PLUG+='e:!|exiftool "$nnn";'
 NNN_PLUG+='o:!|otool -L "$nnn";'
 NNN_PLUG+='f:!&ffplay -loop -1 -sn -loglevel level+warning -seek_interval 5 "$nnn";'
 NNN_PLUG+='q:!echo "qlmanage -p $nnn" >&2 && qlmanage -p "$nnn" > /dev/null*;'

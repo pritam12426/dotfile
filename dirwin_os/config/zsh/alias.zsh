@@ -25,7 +25,7 @@
 
 
 # --- Directory navigation aliases ---
-alias lldir="cd \` sk < $LIBS_DIR/index.txt \`"        #navigate To Directory From Index File
+alias lldir="cd \` sk < $CPP_LIB_DIR/index.txt \`"        #navigate To Directory From Index File
 alias cpdir="cd /Users/pritam/Developer/cxx_lang"      # Navigate To C++ Development Directory
 alias cdir="cd /Users/pritam/Developer/c_lang"         # Navigate To C Development Directory
 alias gdir="cd /Users/pritam/Developer/git_repository" # Navigate To Git Repository Directory
@@ -51,19 +51,15 @@ alias rsync="command rsync -vrPlu"
 
 # Common ls shortcuts
 alias ls="ls -GFh"
-alias ll="command ls -GFhl"                       # List with human-readable sizes
-alias la="command ls -AGFh"                       # List all files, excluding . and ..
-alias l="command ls -lAhFG"                       # Detailed list including hidden files
-alias lh="command ls -lhGFd --color=auto .[^.]*"  # List hidden directories
+alias ll="ls -GFhl"                       # List with human-readable sizes
+alias la="ls -AGFh"                       # List all files, excluding . and ..
+alias l="ls -lAhFG"                       # Detailed list including hidden files
+alias lh="ls -lhGFd --color=auto .[^.]*"  # List hidden directories
 
 # File operation aliases with safety prompts
-alias cp="command cp -ip" # Copy with interactive prompt
-alias mv="command mv -i"  # Move with interactive prompt
-alias du="command du -h"  # Display disk usage in human-readable format
-
-# https://www.masterzen.fr/2009/04/19/in-love-with-zsh-part-one/
-alias -g ...="../.."
-alias -s php=nano
+alias cp="cp -ip"  # Copy with interactive prompt
+alias mv="mv -vi"  # Move with interactive prompt
+alias du="du -h"   # Display disk usage in human-readable format
 # ---------------------------------------------------------
 
 
@@ -77,29 +73,29 @@ alias efz="$EDITOR  $HOME/.config/zsh/functions.sh"       # Edit alias file
 
 
 # System utility aliases ------------------------------
-alias o="command open ."                                                                           # Open current directory in Finder
-alias c.="command code ."                                                                          # Open current directory in VS Code
-alias z.="command zed ."                                                                           # Open current directory in Zed editor
-alias live-server="command live-server -H localhost -p 8085 -o"                                    # Start live server
-alias tree="command tre -ea"                                                                       # Display directory tree
-alias python="command python3 -u"                                                                  # Use Python 3 as default
-alias nq="command networkquality -s"                                                               # Check network quality
-alias search="command ls -AF | grep -i"                                                            # Search files in current directory
-alias sayy="command pbpaste | command say -i"                                                      # Convert clipboard text to speech
-alias per="command find . -type f -exec chmod 644 {} \; ; find . -type d -exec chmod 755 {} \;"    # Fix permissions
-alias seelog="command tail -n 1 -f -- "                                                            # Tail logs
+alias o="open ."                                                                           # Open current directory in Finder
+alias c.="code ."                                                                          # Open current directory in VS Code
+alias z.="zed ."                                                                           # Open current directory in Zed editor
+alias live-server="live-server -H localhost -p 8085 -o"                                    # Start live server
+alias tree="tre -ea"                                                                       # Display directory tree
+alias python="python3 -u"                                                                  # Use Python 3 as default
+alias nq="networkquality -s"                                                               # Check network quality
+alias search="ls -AF | grep -i"                                                            # Search files in current directory
+alias sayy="pbpaste | command say -i"                                                      # Convert clipboard text to speech
+alias per="find . -type f -exec chmod 644 {} \; ; find . -type d -exec chmod 755 {} \;"    # Fix permissions
+alias seelog="tail -n 1 -f -- "                                                            # Tail logs
 alias exportlib="source $LIBS_DIR/env"                                                             # Load library environment
 alias zzz="bsdtar -xf "                                                                            # Extract archives
-alias exportembdlib="source $DOT_FILE/global/embedded/embedded-ENV.sh"                             # Load embedded environment
-alias ninja-tree="command ninja -t targets "                                                       # Display Ninja build targets
-alias chownroot="command sudo chown -R root:wheel"                                                 # Change ownership to root
-alias chownself="command sudo chown -R pritam:staff"                                               # Change ownership to user
+alias exportembdlib="source $DOT_FILE/../embedded/embedded-ENV.sh"                             # Load embedded environment
+alias ninja-tree="ninja -t targets "                                                       # Display Ninja build targets
+alias chownroot="sudo chown -R root:wheel"                                                 # Change ownership to root
+alias chownself="sudo chown -R pritam:staff"                                               # Change ownership to user
 alias bk="open 'http://localhost:8080/' && shiori server"                                          # Open bookmarks server
-alias wget="command wget -c"                                                                       # Download with wget
+alias wget="wget -c"                                                                       # Download with wget
 alias off="pmset displaysleepnow"                                                                  # Turn off display
 alias soff="pmset sleepnow"                                                                        # Put system to sleep
 alias zed-editor="eval \"export EDITOR='zed --wait'\""                                             # setting EDITOR = zed
-alias rclone-gui="rclone rcd --rc-web-gui --rc-no-auth"                                            # setting EDITOR = zed
+alias gui-rclone="rclone rcd --rc-web-gui --rc-no-auth"                                            # setting EDITOR = zed
 alias find-zombies="ps -axo pid,ppid,stat,command | grep -w Z+"                                    # Find zombies + parent PID
 
 alias aria2-reload="launchctl unload ~/Library/LaunchAgents/com.user.aria2.plist &&
@@ -107,20 +103,20 @@ alias aria2-reload="launchctl unload ~/Library/LaunchAgents/com.user.aria2.plist
 # --------------------------------------------------
 
 # ------------ EXIFTool Aliases ------------
-alias exf="command exiftool -sort -P -overwrite_original_in_place" # Modify metadata
+alias exf="exiftool -sort -P -overwrite_original_in_place" # Modify metadata
 alias exfcpy="exf -TagsFromFile"                                   # Copy metadata from another file
 # ============================================================================================================
 
 # IP and MAC Address Aliases =================================================================================
 # Fetch public IP information
-alias ipinfo="command curl https://raw.githubusercontent.com/jarun/nnn/master/plugins/ipinfo 2> /dev/null | sh | $PAGER"
+alias ipinfo="curl https://raw.githubusercontent.com/jarun/nnn/master/plugins/ipinfo 2> /dev/null | sh | $PAGER"
 
 # Fetch WAN (public) IP address
-alias wanip="command curl -s http://checkip.dyndns.org/ | sed 's/[a-zA-Z<>/ :]//g'"
+alias wanip="curl -s http://checkip.dyndns.org/ | sed 's/[a-zA-Z<>/ :]//g'"
 
 # Fetch MAC address of the computer
-alias macid="command ifconfig -a | grep ether | grep -oE '([0-9][0-9]:[a-z][0-9]:[a-z][a-z]:[a-z][a-z]:[0-9][0-9]:[0-9][0-9])' | head -n 1"
+alias macid="ifconfig -a | grep ether | grep -oE '([0-9][0-9]:[a-z][0-9]:[a-z][a-z]:[a-z][a-z]:[0-9][0-9]:[0-9][0-9])' | head -n 1"
 
 # Fetch LAN (local) IP address
-alias lanip="command ifconfig -a | egrep -A 7 '^en0' | grep inet | grep -oE '((1?[0-9][0-9]?|2[0-4][0-9]|25[0-5])\.){3}(1?[0-9][0-9]?|2[0-4][0-9]|25[0-5])' | head -n 1"
+alias lanip="ifconfig -a | egrep -A 7 '^en0' | grep inet | grep -oE '((1?[0-9][0-9]?|2[0-4][0-9]|25[0-5])\.){3}(1?[0-9][0-9]?|2[0-4][0-9]|25[0-5])' | head -n 1"
 # ============================================================================================================
