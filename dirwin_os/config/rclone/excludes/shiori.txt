@@ -13,4 +13,4 @@
 *-shm
 *-wal
 archive/
-
+thumb/

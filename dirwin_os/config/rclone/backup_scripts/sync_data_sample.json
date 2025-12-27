@@ -2,7 +2,8 @@
 	{
 		"name": "Shell Config",
 		"local": "~/.zshenv",
-		"remote": "zsh/config/",
+		"remote": "zsh/",
+		"remote_name": "Gdrive",
 		"mode": "sync",
 		"enabled": true,
 		"exclude": "~/.config/rclone/excludes/shell.txt",
