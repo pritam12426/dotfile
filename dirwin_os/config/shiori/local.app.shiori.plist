@@ -8,14 +8,15 @@
 		<dict>
 			<key>SHIORI_HTTP_SECRET_KEY</key>
 			<string>70a173f0-d800-11f0-b5e8-bb81530202ef</string>
+
+			<key>SHIORI_HTTP_PORT</key>
+			<string>8873</string>
 		</dict>
 		<key>ProgramArguments</key>
 		<array>
-			<string>/Users/pritam/.local/github-releases-bin/shiori</string>
+			<string>/Users/pritam/.local/github-releases-binary/shiori</string>
 			<string>server</string>
 			<string>--access-log</string>
-			<!-- <string>--storage-directory</string> -->
-			<!-- <string>/absolute/path/to/shiori/storage/directory</string> -->
 		</array>
 		<key>RunAtLoad</key>
 		<true/>

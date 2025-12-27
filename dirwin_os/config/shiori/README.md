@@ -16,7 +16,7 @@ launchctl load ~/Library/LaunchAgents/local.app.shiori.plist
 
 ## For restarting
 ``` sh
-alias shiori-reload="launchctl unload ~/Library/LaunchAgents/local.app.shiori.plist &&
+alias reload-shiori="launchctl unload ~/Library/LaunchAgents/local.app.shiori.plist &&
 				    launchctl load ~/Library/LaunchAgents/local.app.shiori.plist"
 
 ```
