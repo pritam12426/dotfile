@@ -1,0 +1,10 @@
+[
+	{
+		"local": "~/.local/share/keepassxc",
+		"remote": "keepassxc"
+	},
+	{
+		"local": "~/.zshenv",
+		"remote": "zshenv"
+	}
+]

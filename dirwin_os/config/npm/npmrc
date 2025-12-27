@@ -1,0 +1,5 @@
+; export NPM_CONFIG_USERCONFIG="$HOME/.config/npm/npmrc" >> ~/.zshenv
+userconfig=/Users/pritam/.config/npm/npmrc
+cache=/Users/pritam/Library/Caches/npm
+init-module=/Users/pritam/.config/npm/npm-init.js
+prefix=/Users/pritam/.local/lib/node_modules-global
