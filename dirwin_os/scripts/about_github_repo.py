@@ -76,20 +76,20 @@ class GetAndParseRepoInfo:
 		self.convert_numbers_to_words()  # Now we call it!
 
 		print("=== GitHub Repository Information ===")
-		print(f"Repository Name   : {self.name}")
-		print(f"Owner			 : {self.owner}")
-		print(f"Description	   : {self.description or 'No description'}")
-		print(f"Language		  : {self.language or 'Not specified'}")
-		print(f"Default Branch	: {self.default_branch}")
-		print(f"Created At		: {self.created_at}")
-		print(f"Updated At		: {self.updated_at}")
-		print(f"Last Push		 : {self.pushed_at}")
-		print(f"Stars			 : {self.stargazers_count} ({getattr(self, 'stars_in_words', self.stargazers_count)})")
-		print(f"Forks			 : {self.forks_count} ({getattr(self, 'forks_in_words', self.forks_count)})")
-		print(f"Open Issues	   : {self.open_issues} ({getattr(self, 'issues_in_words', self.open_issues)})")
-		print(f"HTML URL		  : {self.html_url}")
-		print(f"Clone URL (HTTPS) : {self.clone_url}")
-		print(f"Clone URL (SSH)   : {self.ssh_url}")
+		print(f"Repository Name    : {self.name}")
+		print(f"Owner              : {self.owner}")
+		print(f"Description	       : {self.description or 'No description'}")
+		print(f"Language           : {self.language or 'Not specified'}")
+		print(f"Default Branch     : {self.default_branch}")
+		print(f"Created At         : {self.created_at}")
+		print(f"Updated At         : {self.updated_at}")
+		print(f"Last Push          : {self.pushed_at}")
+		print(f"Stars              : {self.stargazers_count} ({getattr(self, 'stars_in_words', self.stargazers_count)})")
+		print(f"Forks              : {self.forks_count} ({getattr(self, 'forks_in_words', self.forks_count)})")
+		print(f"Open Issues        : {self.open_issues} ({getattr(self, 'issues_in_words', self.open_issues)})")
+		print(f"HTML URL           : {self.html_url}")
+		print(f"Clone URL (HTTPS)  : {self.clone_url}")
+		print(f"Clone URL (SSH)    : {self.ssh_url}")
 		print("=====================================\n")
 
 	def __str__(self):
@@ -163,3 +163,5 @@ if __name__ == "__main__":
 		print(f"Error: {e}")
 	except Exception as e:
 		print(f"Unexpected error: {e}")
+
+# sed -i 's/	/\t/g'

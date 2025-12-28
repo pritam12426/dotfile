@@ -50,13 +50,13 @@ rclone_flags=(
 	--checkers 8
 	--metadata
 	--update      # Skip files that are newer on destination
-	--tpslimit 10 # Avoid API rate limits
+	# --tpslimit 10 # Avoid API rate limits
 	--stats 30s
 )
 
 if $dry_run; then
 	rclone_flags+=(--dry-run)
-	echo -e "${YELLOW}⚡ DRY-RUN MODE ENABLED (no changes will be made)${NC}"
+	echo -e "⚡️ ${YELLOW}DRY-RUN MODE ENABLED (no changes will be made)${NC}"
 fi
 
 success_count=0
@@ -65,7 +65,7 @@ failed_items=()
 
 for source in "${sources[@]}"; do
 	if [[ ! -e $source ]]; then
-		echo -e "${RED}✗ Error: Source does not exist: \"$source\"${NC}"
+		echo -e "🚫 ${RED} Error: Source does not exist: \"$source\"${NC}"
 		((fail_count++))
 		failed_items+=("$source")
 		continue
@@ -85,9 +85,9 @@ for source in "${sources[@]}"; do
 	exit_code=$?
 	if [[ $exit_code -eq 0 ]]; then
 		((success_count++))
-		echo -e "${GREEN}✓ Success:${NC} \"$source\"\n"
+		echo -e "✅ ${GREEN} Success:${NC} \"$source\"\n"
 	else
-		echo -e "${RED}✗ Failed:${NC} \"$source\" (exit code: $exit_code)\n"
+		echo -e "🚫 ${RED} Failed:${NC} \"$source\" (exit code: $exit_code)\n"
 		((fail_count++))
 		failed_items+=("$source")
 	fi
