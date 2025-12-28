@@ -4,46 +4,12 @@
 # This shell script contains a collection of utility functions
 # and tools to enhance productivity and streamline workflows.
 # It includes functions for notifications, managing proxy settings,
-# interacting with Google Drive via rclone, downloading files using
 # wget and aria2c, taking screenshots, managing vcpkg libraries,
 # and more. Each function is designed to handle specific tasks
 # efficiently, with options for customization and flexibility.
 # ===========================================================================
 
 # ------------ Utility Functions ------------
-# Download file from clipboard URL using wget
-function notify() {
-	local msg="$1"
-	local title="${2:-Notification}"
-	local type="${3:-info}" # info | error | log
-
-	# Check for --help option
-	if [[ $msg == "--help" ]]; then
-		echo "Usage: notify <message> [title] [type]"
-		echo "  <message>: The notification message to display."
-		echo "  [title]:   Optional. The title of the notification. Default is 'Notification'."
-		echo "  [type]:    Optional. The type of notification. Can be 'info', 'error', or 'log'. Default is 'info'."
-		return 0
-	fi
-
-	# Choose sound based on type
-	local sound="default"
-	case "$type" in
-	error)
-		sound="Basso"
-		;; # macOS built-in alert
-	log)
-		sound="Pop"
-		;; # subtle sound
-	info)
-		sound="default"
-		;; # generic notification
-	esac
-
-	# Send notification
-	osascript -e "display notification \"$msg\" with title \"$title\" sound name \"$sound\"" 2 &>/dev/null
-}
-
 function message() {
 	local msg="$1"
 	local title="${2:-Notification}"
@@ -130,37 +96,6 @@ function findDuplicate() {
 		sort -nrk2
 }
 
-function gDrive() {
-	# Check if at least one argument (a source) is provided.
-	if [ -z "$1" ]; then
-		echo "Usage: gDrive <source_path> [<source_path>...]"
-		return 1
-	fi
-
-	# Define the destination directory. The trailing slash is important
-	# to ensure rclone treats it as a directory.
-	local dest="Gdrive:/rclone/$(hostname -s)/"
-
-	echo "Copying files to $dest"
-
-	# Loop through every argument provided to the function.
-	num=0
-	for source in "$@"; do
-		echo -e "\033[1;36m==> [ \033[1;33mCopy to Google drive: \033[1;35m$source\033[1;36m ] <==\033[0m"
-		command rclone copy "$source" "$dest" -vP
-		local rclone_exti=$!
-		if [[ $rclone_exti -eq 0 ]]; then
-			((num++))
-		fi
-	done
-
-	if [[ $rclone_exti -eq 0 ]]; then
-		notify "Move $num items" "Rclone" "into"
-	else
-		notify "Fail" "Rclone" "error"
-	fi
-}
-
 function ww() {
 	# --no-check-certificate \
 	command wget \
@@ -182,8 +117,9 @@ function lldoc() {
 		open "file://$doc"
 	elif [[ $doc == http* ]]; then
 		open "$doc"
+	else
+		printf '"%s" not exist' "$doc"
 	fi
-
 }
 
 # Take a screenshot with shadow
@@ -377,16 +313,16 @@ function clanginit {
 
 	case "$lower_input" in
 	c)
-		COMMAND="   cp -rp  $DOT_FILE/../global/c-cpp-template/c/ $2"
+		COMMAND="   cp -rvp  $DOT_FILE/../global/c-cpp-template/c/ $2"
 		;;
 	c++)
-		COMMAND="   cp -rp  $DOT_FILE/../global/c-cpp-template/c++/ $2"
+		COMMAND="   cp -rvp  $DOT_FILE/../global/c-cpp-template/c++/ $2"
 		;;
 	cxx)
-		COMMAND="   cp -rp  $DOT_FILE/../global/c-cpp-template/c++/ $2"
+		COMMAND="   cp -rvp  $DOT_FILE/../global/c-cpp-template/c++/ $2"
 		;;
 	ard)
-		COMMAND="   cp -rp  $DOT_FILE/../global/embedded/arduino-cli-uno/ $2; \
+		COMMAND="   cp -rvp  $DOT_FILE/../global/embedded/arduino-cli-uno/ $2; \
 		            mv '$2/arduino-cli-uno.ino' '$2/$2.ino' "
 		;;
 	*)

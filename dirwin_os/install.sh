@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/zsh -x
 # Note: definitely I am using ./config/.zsh  folder to store the configuration of ZSH but behind the scene, it is important to
 # PUT sim link to ~
 
@@ -67,6 +67,7 @@ ln -sf   "$DOT_FILE/config/zed/zedtasks.json"      "$HOME/.config/zed/"
 mkdir -p "$HOME/.local/bin"
 mkdir -p "$HOME/.local/etc"
 mkdir -p "$HOME/.local/share"
+
 ln -sf   "$DOT_FILE/scripts/about_github_repo.py"  "$HOME/.local/bin/aboutrepo"
 ln -sf   "$DOT_FILE/scripts/comp.sh"               "$HOME/.local/bin/rr"
 ln -sf   "$DOT_FILE/scripts/create-class.sh"       "$HOME/.local/bin/create-class"
@@ -74,10 +75,12 @@ ln -sf   "$DOT_FILE/scripts/extractor.sh"          "$HOME/.local/bin/zzz"
 ln -sf   "$DOT_FILE/scripts/f.sh"                  "$HOME/.local/bin/f"
 ln -sf   "$DOT_FILE/scripts/ff.py"                 "$HOME/.local/bin/ff"
 ln -sf   "$DOT_FILE/scripts/fff.py"                "$HOME/.local/bin/fff"
-ln -sf   "$DOT_FILE/scripts/make-archive.sh"       "$HOME/.local/bin/fff"
-ln -sf   "$DOT_FILE/scripts/fix-ugly-name.py"      "$HOME/.local/bin/rrr"
 ln -sf   "$DOT_FILE/scripts/fix-ugly-name.py"      "$HOME/.local/bin/fix-ugly-name"
+ln -sf   "$DOT_FILE/scripts/fix-ugly-name.py"      "$HOME/.local/bin/rrr"
 ln -sf   "$DOT_FILE/scripts/fontify.py"            "$HOME/.local/bin/fontify"
+ln -sf   "$DOT_FILE/scripts/gDrive.sh"             "$HOME/.local/bin/gDrive"
+ln -sf   "$DOT_FILE/scripts/make-archive.sh"       "$HOME/.local/bin/fff"
+ln -sf   "$DOT_FILE/scripts/notify.sh"             "$HOME/.local/bin/notify"
 ln -sf   "$DOT_FILE/scripts/zed-root.sh"           "$HOME/.local/bin/zed-root"
 
 
@@ -105,7 +108,9 @@ ln -sf "$DOT_FILE/binary/wget"             "$HOME/.local/bin/"
 ln -sf "$DOT_FILE/binary/wget2"            "$HOME/.local/bin/"
 ln -sf "$DOT_FILE/binary/xxc-with-c"       "$HOME/.local/bin/xxc"
 
-ln -sf   "$DOT_FILE/../global/age.py"      "$HOME/.local/bin/age"
+
+ln -sf   "$DOT_FILE/../global/age.py"                                 "$HOME/.local/bin/age"
+ln -sf   "$DOT_FILE/config/rclone/backup_scripts/syncLocalfiles.py"   "$HOME/.local/bin/syncLocalfiles"
 
 
 mkdir -p  ~/Library/Preferences/navi/
