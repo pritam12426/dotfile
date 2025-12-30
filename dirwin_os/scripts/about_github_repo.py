@@ -78,7 +78,7 @@ class GetAndParseRepoInfo:
 		print("=== GitHub Repository Information ===")
 		print(f"Repository Name    : {self.name}")
 		print(f"Owner              : {self.owner}")
-		print(f"Description	       : {self.description or 'No description'}")
+		print(f"Description        : {self.description or 'No description'}")
 		print(f"Language           : {self.language or 'Not specified'}")
 		print(f"Default Branch     : {self.default_branch}")
 		print(f"Created At         : {self.created_at}")
