@@ -143,14 +143,14 @@ NNN_PLUG+="p:personal/ffplay_playlist;"
 NNN_PLUG+="e:personal/fetch_metadata;"
 NNN_PLUG+="q:personal/perview_with_quicklook;"
 NNN_PLUG+="C:personal/copy_path;"
+NNN_PLUG+='i:personal/zoxide;'
+NNN_PLUG+='m:personal/mpv_playlist;'
 
-NNN_PLUG+='i:autojump;'
 # NNN_PLUG+='I:cbcopy-mac;'
 
 NNN_PLUG+='z:!&zed "$nnn" ;'
 NNN_PLUG+='o:!|otool -L "$nnn" ;'
 NNN_PLUG+='f:!&ffplay -loop -1 -sn -loglevel level+warning -seek_interval 5 "$nnn" ;'
-NNN_PLUG+='m:!&mpv --force-window=immediate "$nnn" * ;'
 
 export NNN_PLUG
 export NNN_COLORS="5236"                                # Set NNN color scheme
