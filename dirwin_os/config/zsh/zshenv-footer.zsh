@@ -155,46 +155,37 @@ export LESS_TERMCAP_me=$'\e[0m'
 
 # NNN File Manager Integration ===============================================================================
 # Define NNN plugins for various tasks
-NNN_PLUG_PERSONAL+="a:personal/adb_push;"
-NNN_PLUG_PERSONAL+="r:personal/fix_ugly_name;"
-NNN_PLUG_PERSONAL+="p:personal/ffplay_playlist;"
-NNN_PLUG_PERSONAL+="e:personal/fetch_metadata;"
-NNN_PLUG_PERSONAL+="q:personal/perview_with_quicklook;"
-NNN_PLUG_PERSONAL+="C:personal/copy_path;"
+NNN_PLUG+="a:personal/adb_push;"
+NNN_PLUG+="r:personal/fix_ugly_name;"
+NNN_PLUG+="p:personal/ffplay_playlist;"
+NNN_PLUG+="e:personal/fetch_metadata;"
+NNN_PLUG+="q:personal/perview_with_quicklook;"
+NNN_PLUG+="C:personal/copy_path;"
+
+NNN_PLUG+='i:autojump;'
+NNN_PLUG+='I:cbcopy-mac;'
 
 NNN_PLUG+='z:!&zed "$nnn" *;'
-NNN_PLUG+='c:fzcd;'
 NNN_PLUG+='o:!|otool -L "$nnn";'
 NNN_PLUG+='f:!&ffplay -loop -1 -sn -loglevel level+warning -seek_interval 5 "$nnn";'
 NNN_PLUG+='m:!&mpv "$nnn"   *   *;'
 
-NNN_PLUG+=$NNN_PLUG_PERSONAL
 export NNN_PLUG
 
-# Set NNN color scheme
-export NNN_COLORS="5236"
-# Set default opener for files
-export NNN_OPENER="/usr/bin/open"
-# Define NNN options
-export NNN_OPTS="AUBRNEdefag"
-# Define NNN selection file
-export NNN_SEL="$TMPDIR/nnn.sel"
-# Define NNN temporary file for last directory
-export NNN_TMPFILE="$TMPDIR/nnn.lastd"
-# Define NNN FIFO file
-export NNN_FIFO="$TMPDIR/nnn.fifo"
-# Define NNN trash command
-export NNN_TRASH="/usr/bin/trash"
-# Define NNN help file
-export NNN_HELP="cat $DOT_FILE/../global/nnn_help.txt"
-# Define regex for archive file extensions
-export NNN_ARCHIVE="\\.(7z|a|ace|alz|arc|arj|bz|bz2|cab|cpio|deb|gz|jar|lha|lz|lzh|lzma|lzo|rar|rpm|rz|t7z|tar|tbz|tbz2|tgz|tlz|txz|tZ|tzo|war|xpi|xz|Z|zip)$"
-# Define NNN file colors
-export NNN_FCOLORS="c1e2272e006033f7c6d6abc4"
-
+export NNN_COLORS="5236"                                # Set NNN color scheme
+export NNN_OPTS="AUBRNEodefag"                          # Define NNN options
+export NNN_SEL="$TMPDIR/nnn.sel"                        # Define NNN selection file
+export NNN_OPENER="/usr/bin/open"                       # Set default opener for files
+export NNN_TRASH="/usr/bin/trash"                       # Define NNN trash command
+export NNN_FIFO="$TMPDIR/nnn.fifo"                      # Define NNN FIFO file
+export NNN_TMPFILE="$TMPDIR/nnn.lastd"                  # Define NNN temporary file for last directory
+export NNN_FCOLORS="c1e2272e006033f7c6d6abc4"           # Define NNN file colors
+export NNN_HELP="cat $DOT_FILE/config/nnn/nnn_help.txt" # Define NNN help file
+export NNN_ARCHIVE="\\.(7z|a|ace|alz|arc|arj|bz|bz2|cab|cpio|deb|gz|jar|lha|lz|lzh|lzma|lzo|rar|rpm|rz|t7z|tar|tbz|tbz2|tgz|tlz|txz|tZ|tzo|war|xpi|xz|Z|zip)$" # Define regex for archive file extensions
 export LC_ALL="en_US.UTF-8"
 
-# cd ON QUIT WITH NNN FILE MANGER
+
+# cd ON QUIT WITH FILE MANGER(S)
 function n() {
 	[ "${NNNLVL:-0}" -eq 0 ] || {
 		echo "nnn is already running"
@@ -208,12 +199,19 @@ function n() {
 	}
 }
 
-function lf () {
-	tmp="$TMPDIR/lf_cd"
+function y() {
+	tmp="$TMPDIR/yazi-cwd.XXXXXX"
+	command yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+}
+
+function lf() {
+	local tmp="$TMPDIR/lf_cd"
 	command lf -last-dir-path="$tmp" "$@"
 	if [ -f "$tmp" ]; then
 		dir="$(< "$tmp")"
-		[ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && builtin cd "$dir"
+		[ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && builtin cd -- "$dir"
 	fi
 }
 
@@ -224,20 +222,11 @@ function lf () {
 export GPG_TTY=$(tty)
 # ============================================================================================================
 
-### SETTING OTHER ENVIRONMENT VARIABLES ======================================================================
-if [ -z "$XDG_CONFIG_HOME" ] ; then
-    export XDG_CONFIG_HOME="$HOME/.config"
-fi
-
-if [ -z "$XDG_DATA_HOME" ] ; then
-    export XDG_DATA_HOME="$HOME/.local/share"
-fi
-
-if [ -z "$XDG_CACHE_HOME" ] ; then
-    export XDG_CACHE_HOME="$HOME/Library/Caches"
-fi
+### SETTING XDG ENVIRONMENT VARIABLES ========================================================================
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CACHE_HOME="$HOME/Library/Caches"
 # ============================================================================================================
-
 
 if [ -f "$HOME/.config/zsh/functions.sh" ]; then
 	source "$HOME/.config/zsh/functions.sh"

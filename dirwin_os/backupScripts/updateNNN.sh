@@ -19,7 +19,7 @@ builtin cd "$NNN_LOCAL_REPO" || exit 1
 # Hard reset to upstream
 git clean -dfx
 git checkout -f
-git pull --rebase
+# git pull --rebase
 
 # Apply your patch
 if git apply --check "$NNN_PATCH" 2>/dev/null; then
@@ -38,15 +38,18 @@ command cp -p "$DOT_FILE/config/nnn/patchs/nnn-v5.h" src/nnn.h
 make \
 O_PCRE2=1 \
 O_NOMOUSE=1 \
+O_EMOJI=1 \
+O_NOFIFO=1\
 O_GITSTATUS=1 \
+O_NOX11=1 \
 clean strip install
 
 cp -p "$NNN_LOCAL_REPO/misc/auto-completion/zsh/_nnn" "$HOME/.local/share/zsh/site-functions/_nnn"
 
 if [ -f "$HOME/.config/nnn/plugins/.ntfy" ]; then
-	cp -p "$HOME/.config/nnn/plugins/.ntfy" "$HOME/.config/nnn/plugins/.ntfy-bk"
+	mv "$HOME/.config/nnn/plugins/.ntfy" "$HOME/.config/nnn/plugins/.ntfy-bk"
 fi
 
 if [ -f "$HOME/.config/nnn/plugins/.cbcp" ]; then
-	cp -p "$HOME/.config/nnn/plugins/.cbcp" "$HOME/.config/nnn/plugins/.cbcp-bk"
+	mv  "$HOME/.config/nnn/plugins/.cbcp" "$HOME/.config/nnn/plugins/.cbcp-bk"
 fi

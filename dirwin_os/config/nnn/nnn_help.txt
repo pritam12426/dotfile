@@ -9,4 +9,4 @@
             r   Rename the current Item     SEL_RENAME
             <   Start the nav bar prompt    SEL_PROMPT
     shift + q   Close all tabs
------------------------------------------------------------
+================================================================

@@ -19,6 +19,7 @@ bind generic S :source ~/.config/tig/config
 bind generic Y @sh -c "printf '%(commit)' | pbcopy"
 
 # === Main-view ===
+color main-commit  244 default
 set main-view = \
 	date:custom \
 	date:relative \
@@ -26,8 +27,8 @@ set main-view = \
 	id:yes,color \
 	commit-title:graph=yes,refs=yes,overflow=50
 bind main H ?git checkout "%(prompt Enter branch name: )"
-bind main p >git push origin %(repo:head)
-bind main P >git push --force-with-lease origin %(repo:head)
+#bind main p >git push origin %(repo:head)
+#bind main P >git push --force-with-lease origin %(repo:head)
 bind main I :toggle id
 bind main R ?git reset --hard %(commit)
 
@@ -53,7 +54,6 @@ set tree-view = \
 
 
 # === Status-view ===
-color main-commit  244 default
 set status-view = \
 	status:long \
 	file-name:yes
@@ -69,7 +69,6 @@ bind status Z ?git restore --source=HEAD --staged --worktree %(repo:file)
 bind status D ?git clean -fd
 
 
-
 # === Diff-view ===
 set diff-view = \
 	line-number:yes,interval=1 \
@@ -82,6 +81,3 @@ bind stage <Enter> :/^@@
 set pager-view = \
 	line-number:yes,interval=10 \
 	text
-
-
-# === Relative date heatmap ===
