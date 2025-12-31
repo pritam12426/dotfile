@@ -2,6 +2,8 @@
 # Note: definitely I am using ./config/.zsh  folder to store the configuration of ZSH but behind the scene, it is important to
 # PUT sim link to ~
 
+[ -e $HOME/.hushlogin ] || touch $HOME/.hushlogin
+
 # if "$HOME/.zshenv"  not exists
 if [ ! -f "$HOME/.zshenv" ]; then
 	echo "[ -f "$HOME/.config/zsh/zshenv-header.zsh" ] && source "$HOME/.config/zsh/zshenv-header.zsh"" >> ~/.zshenv
@@ -14,6 +16,11 @@ ln -sf  "$DOT_FILE/config/zsh/zprofile.zsh"  "$HOME/.zprofile" && source "$HOME/
 ln -sf  "$DOT_FILE/config/git/gitconfig"     "$HOME/.gitconfig"
 ln -sf  "$DOT_FILE/cargo_config.toml"        "$CARGO_HOME/"
 ln -sf  "$DOT_FILE/bashrc.bash"              "$HOME/.bashrc"
+ln -sf  "$DOT_FILE/wgetrc"                   "$HOME/.wgetrc"
+ln -sf  "$DOT_FILE/curlrc"                   "$HOME/.curlrc"
+
+# Tighten permissions on `~/.ssh' directory
+# chmod go-rwx $HOME.ssh/*
 
 mkdir  -p "$HOME/.config/"
 ln -sf  "$DOT_FILE/config/aria2"              "$HOME/.config/"

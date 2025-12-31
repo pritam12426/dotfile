@@ -18,6 +18,7 @@ export DOT_FILE="$PWD"
 - [Suckless](https://suckless.org/rocks/)
 - [Asciinema](https://asciinema.org/)
 - [FreeCodeCamp](https://www.freecodecamp.org/news/essential-cli-tui-tools-for-developers/)
+- [Github - Alhadis](https://github.com/Alhadis/.files)
 
 ## Some release binary managers
 
