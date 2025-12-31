@@ -166,7 +166,7 @@ NNN_PLUG+='z:!&zed "$nnn" *;'
 NNN_PLUG+='c:fzcd;'
 NNN_PLUG+='o:!|otool -L "$nnn";'
 NNN_PLUG+='f:!&ffplay -loop -1 -sn -loglevel level+warning -seek_interval 5 "$nnn";'
-NNN_PLUG+='m:!mpv "$nnn"   *   *;'
+NNN_PLUG+='m:!&mpv "$nnn"   *   *;'
 
 NNN_PLUG+=$NNN_PLUG_PERSONAL
 export NNN_PLUG
