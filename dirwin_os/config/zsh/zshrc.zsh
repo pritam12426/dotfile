@@ -1,13 +1,12 @@
 # printf "Importing \t %s \n" "$HOME/.config/zsh/zshrc.zsh"
 
 # ============================================================================================================
-# SOME REFERENCES
-# https://zsh.sourceforge.io/Doc/Release/Zsh-Modules.html
-# https://github.com/spicycode/ze-best-zsh-config
-# https://gist.github.com/elliottminns/09a598082d77f795c88e93f7f73dba61
-# See this dir "/usr/lib/zsh/5.9"
-
-# https://www.youtube.com/watch?v=3fVAtaGhUyU
+# REFERENCES
+#	https://zsh.sourceforge.io/Doc/Release/Zsh-Modules.html
+#	https://github.com/spicycode/ze-best-zsh-config
+#	https://gist.github.com/elliottminns/09a598082d77f795c88e93f7f73dba61
+#	See this dir "/usr/lib/zsh/5.9"
+#	https://www.youtube.com/watch?v=3fVAtaGhUyU
 # ============================================================================================================
 
 
@@ -31,8 +30,6 @@ fi
 # fzf history widget
 if [[ -f "$HOME/.local/share/zsh/plugins/__fzf-history__" ]]; then
 	source "$HOME/.local/share/zsh/plugins/__fzf-history__"
-	# Ctrl+F → fzf history search
-	bindkey '^F' fzf-history-widget
 else
 	if hash fzf 2>/dev/null; then
 		printf "Warning: fzf history widget not installed (%s:%d)\n" "$HOME/.zshrc" $LINENO
@@ -160,7 +157,8 @@ export HISTFILE="${HISTFILE:-$HOME/.zsh_history}"
 export HISTSIZE=100000
 export SAVEHIST=100000
 
-setopt APPEND_HISTORY          # Append to history file
+setopt SHARE_HISTORY           # Append to history file
+# setopt INC_APPEND_HISTORY      # Append to history file
 setopt INC_APPEND_HISTORY      # Write immediately
 setopt EXTENDED_HISTORY        # Save timestamp
 setopt HIST_IGNORE_DUPS        # Ignore consecutive duplicates
@@ -182,9 +180,17 @@ setopt AUTO_MENU            # Show completion menu on successive tab press
 # PROMPT & COMMAND TIMER
 # ============================================================================================================
 
-source "/Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh"
+# source "/Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh"
 # curl "https://raw.githubusercontent.com/git/git/refs/heads/master/contrib/completion/git-prompt.sh" \
 # 	-o "$HOME/.local/share/zsh/plugins/git-prompt.sh"
+
+# Show more detailed Git status in prompt
+# export GIT_PS1_SHOWDIRTYSTATE=1        # * for unstaged, + for staged
+# export GIT_PS1_SHOWSTASHSTATE=1        # $ if something is stashed
+# export GIT_PS1_SHOWUNTRACKEDFILES=1    # % if untracked files
+# export GIT_PS1_SHOWUPSTREAM="auto"     # < behind, > ahead, <> diverged, = equal
+# export GIT_PS1_SHOWCOLORHINTS=1        # Colored output (works great in Zsh)
+# export GIT_PS1_DESCRIBE_STYLE="describe"  # Optional: use describe if no branch
 
 
 zmodload zsh/datetime
@@ -234,9 +240,15 @@ precmd() {
 # Simple, clean prompt: user@host:dir $
 PROMPT="%F{green}%B%n@%m%b%f:%F{blue}%B%~%b%f%(#.#.$) "
 
+# Simple, clean prompt: user@host:dir (git) $
+# PROMPT="%F{green}%B%n@%m%b%f:%F{blue}%B%~%b%f\$(__git_ps1 \" (%s)\")%(#.#.$) "
+
 # ============================================================================================================
 # KEY BINDINGS & ALIASES
 # ============================================================================================================
+
+# Ctrl+F → fzf history search
+bindkey '^F' fzf-history-widget
 
 # Use Emacs keybindings by default (you explicitly set this)
 bindkey -e
@@ -252,6 +264,7 @@ alias hc=': > "$HISTFILE"; fc -p'
 # Handy global aliases
 alias -g ...="../.."
 alias -g R=" | rg"
+alias -g J='| jq'
 alias -g L=" | less"
 alias -g C=" | pbcopy"
 alias -g P="pbpaste"
@@ -261,12 +274,27 @@ alias -g NULL=">/dev/null 2>&1"
 
 # Suffix alias: open .json files with jless
 alias -s json=jless
-
+alias -s txt=less
+alias -s md=bat
+alias -s log=bat
+alias -s html=open  # macOS: open in default browser
 
 bindkey "^K"      kill-whole-line    # ctrl-k
 bindkey "^[[3~"   kill-whole-line    # delete key
 bindkey "^[[1;2D" beginning-of-line  # shift + left
 bindkey "^[[1;2C" end-of-line        # shift + right
+
+# ============================================================================================================
+# Hotkey Insertions - Text Snippets
+# ============================================================================================================
+# Insert git commit template (Ctrl+X, G, C)
+# \C-b moves cursor back one position
+bindkey -s '^Xgc' 'git commit -m ""\C-b'
+
+# More examples:
+bindkey -s '^Xgp' 'git push origin '
+bindkey -s '^Xgs' 'git status\n'
+bindkey -s '^Xgl' 'git log --oneline -n 10\n'
 
 # ============================================================================================================
 # NOTES ON ZSH STARTUP ORDER (kept for reference)
