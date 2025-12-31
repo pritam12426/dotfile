@@ -30,6 +30,7 @@ fi
 # fzf history widget
 if [[ -f "$HOME/.local/share/zsh/plugins/__fzf-history__" ]]; then
 	source "$HOME/.local/share/zsh/plugins/__fzf-history__"
+	bindkey '^F' fzf-history-widget
 else
 	if hash fzf 2>/dev/null; then
 		printf "Warning: fzf history widget not installed (%s:%d)\n" "$HOME/.zshrc" $LINENO
@@ -50,12 +51,10 @@ fi
 # zoxide widget
 if [[ -f "$HOME/.local/share/zsh/plugins/__zoxide__" ]]; then
 	source "$HOME/.local/share/zsh/plugins/__zoxide__"
-	alias cd="z"
 else
 	if hash zoxide 2>/dev/null; then
 		printf "Warning: zoxide widget not installed (%s:%d)\n" "$HOME/.zshrc" $LINENO
 		# To install: zoxide init --cmd cd zsh > "$HOME/.local/share/zsh/plugins/__zoxide__"
-		# To install: zoxide init zsh > "$HOME/.local/share/zsh/plugins/__zoxide__"
 	fi
 fi
 
@@ -130,6 +129,7 @@ chpwd() {
 # COMPLETION SYSTEM
 # ============================================================================================================
 
+zmodload -i zsh/parameter
 autoload -Uz compinit && compinit
 zmodload -i zsh/complist
 
@@ -164,15 +164,12 @@ zstyle ':completion:*:ssh:*' group-order hosts-domain hosts-host users hosts-ipa
 # HISTORY CONFIGURATION
 # ============================================================================================================
 
-export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|history|cd -|cd ..|cd ...)"
+export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo|history|cd -|cd ..|cd ...|clean|cdi|n)"
 export HISTFILE="${HISTFILE:-$HOME/.zsh_history}"
 export HISTSIZE=100000
 export SAVEHIST=100000
 
-setopt SHARE_HISTORY           # Append to history file
-# setopt INC_APPEND_HISTORY      # Append to history file
-setopt INC_APPEND_HISTORY      # Write immediately
-setopt EXTENDED_HISTORY        # Save timestamp
+setopt INC_APPEND_HISTORY      # Append to history file immediately
 setopt HIST_IGNORE_DUPS        # Ignore consecutive duplicates
 setopt HIST_FIND_NO_DUPS       # Don't cycle through duplicates when searching
 setopt HIST_REDUCE_BLANKS      # Remove superfluous blanks
@@ -191,19 +188,19 @@ setopt AUTO_MENU            # Show completion menu on successive tab press
 # ============================================================================================================
 # PROMPT & COMMAND TIMER
 # ============================================================================================================
+# Show more detailed Git status in prompt
+#export GIT_PS1_SHOWUNTRACKEDFILES=1       # % if untracked files
+#export GIT_PS1_SHOWCOLORHINTS=1           # Colored output (works great in Zsh)
+#export GIT_PS1_DESCRIBE_STYLE="describe"  # Optional: use describe if no branch
+#export GIT_PS1_SHOWDIRTYSTATE=1           # * for unstaged, + for staged
+#export GIT_PS1_SHOWSTASHSTATE=1           # $ if something is stashed
+#export GIT_PS1_SHOWUPSTREAM="auto"        # < behind, > ahead, <> diverged, = equal
 
-# source "/Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh"
+
+#RPROMPT="${superdim}[ ${timer_show} ]%f%b \$(__git_ps1 '(%s) ')"
+#source "/Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh"
 # curl "https://raw.githubusercontent.com/git/git/refs/heads/master/contrib/completion/git-prompt.sh" \
 # 	-o "$HOME/.local/share/zsh/plugins/git-prompt.sh"
-
-# Show more detailed Git status in prompt
-# export GIT_PS1_SHOWDIRTYSTATE=1        # * for unstaged, + for staged
-# export GIT_PS1_SHOWSTASHSTATE=1        # $ if something is stashed
-# export GIT_PS1_SHOWUNTRACKEDFILES=1    # % if untracked files
-# export GIT_PS1_SHOWUPSTREAM="auto"     # < behind, > ahead, <> diverged, = equal
-# export GIT_PS1_SHOWCOLORHINTS=1        # Colored output (works great in Zsh)
-# export GIT_PS1_DESCRIBE_STYLE="describe"  # Optional: use describe if no branch
-
 
 zmodload zsh/datetime
 autoload -Uz add-zsh-hook
@@ -259,9 +256,6 @@ PROMPT="%F{green}%B%n@%m%b%f:%F{blue}%B%~%b%f%(#.#.$) "
 # KEY BINDINGS & ALIASES
 # ============================================================================================================
 
-# Ctrl+F → fzf history search
-bindkey '^F' fzf-history-widget
-
 # Use Emacs keybindings by default (you explicitly set this)
 # bindkey -e
 
@@ -275,14 +269,14 @@ alias hc=': > "$HISTFILE"; fc -p'
 
 # Handy global aliases
 alias -g ...="../.."
-alias -g R=" | rg"
-alias -g J='| jq'
+alias -g R=" | rg --smart-case "
+alias -g J=" | jq"
 alias -g L=" | less"
 alias -g C=" | pbcopy"
-alias -g P="pbpaste"
-alias -g NE="2>/dev/null"
-alias -g DN=">/dev/null"
-alias -g NULL=">/dev/null 2>&1"
+alias -g P=" pbpaste"
+alias -g NE="2> /dev/null"
+alias -g DN="> /dev/null"
+alias -g NULL="> /dev/null 2>&1"
 
 # Suffix alias: open .json files with jless
 alias -s json=jless

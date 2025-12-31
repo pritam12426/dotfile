@@ -101,20 +101,8 @@ export LSCOLORS="ExFxBxDxCxegedabagacad" # Define ls color scheme
 # ============================================================================================================
 
 # FZF & SK Configuration ==========================================================================================
+export FZF_DEFAULT_OPTS_FILE="$HOME/.config/fzf/config"
 # export SKIM_DEFAULT_COMMAND="fd --type f || git ls-tree -r --name-only HEAD || rg --files || find ."
-
-# Set up FZF default options for appearance and layout
-# export FZF_DEFAULT_OPTS="--height 50% --layout=default --border --color=hl:#2dd4bf"
-export FZF_DEFAULT_OPTS="--layout=reverse --exact --border=bold --border=rounded --margin=3% --color=dark"
-
-# Configure FZF previews for file selection
-# export FZF_CTRL_T_OPTS="--preview 'bat --color=always -n --line-range :500 {}'"
-
-# Uncomment the following line to enable directory previews with eza
-# export FZF_ALT_C_OPTS="--preview 'eza --icons=always --tree --color=always {} | head -200'"
-
-# Uncomment to enable FZF preview for tmux
-# export FZF_TMUX_OPTS=" -p90%,70% "
 # ============================================================================================================
 
 # Red & Green Man Page Theme (2025 edition) ==================================================================

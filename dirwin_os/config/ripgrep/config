@@ -1,10 +1,12 @@
 --glob=!.git/*
---no-ignore-dot
+--hidden
 
 --type-add
 web:*.{html,css,js}*
 
 # Set the colors.
--i
 --colors=line:none
 --colors=line:style:bold
+
+# Because who cares about case!?
+--smart-case
