@@ -8,4 +8,5 @@ Scanner.Schedule = "@every 24h"
 TranscodingCacheSize = "150MiB"
 MusicFolder = "/Users/pritam/Music/local"
 DataFolder = "/Users/pritam/Library/Application Support/navidrome"
-# ND_PORT = 4533
+ND_CACHEFOLDER = "/Users/pritam/Library/Caches/navidrome"
+ND_PORT = 4533

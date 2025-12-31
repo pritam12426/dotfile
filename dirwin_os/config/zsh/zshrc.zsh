@@ -50,10 +50,12 @@ fi
 # zoxide widget
 if [[ -f "$HOME/.local/share/zsh/plugins/__zoxide__" ]]; then
 	source "$HOME/.local/share/zsh/plugins/__zoxide__"
+	alias cd="z"
 else
 	if hash zoxide 2>/dev/null; then
 		printf "Warning: zoxide widget not installed (%s:%d)\n" "$HOME/.zshrc" $LINENO
 		# To install: zoxide init --cmd cd zsh > "$HOME/.local/share/zsh/plugins/__zoxide__"
+		# To install: zoxide init zsh > "$HOME/.local/share/zsh/plugins/__zoxide__"
 	fi
 fi
 

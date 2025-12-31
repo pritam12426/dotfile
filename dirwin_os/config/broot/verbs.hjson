@@ -43,6 +43,7 @@ verbs: [
     # Example 2: creating a new file without leaving broot
     {
          name: touch
+         shortcut: t
          invocation: touch {new_file}
          execution: "touch {directory}/{new_file}"
          leave_broot: false
@@ -80,7 +81,7 @@ verbs: [
     # the file. If you prefer to have the file moved to the system
     # trash, you may use the ':trash' internal with the verb below:
 	{
-    #     invocation: "rm"
+        invocation: "rm"
 		internal: "trash"
 		leave_broot: false
 	}
@@ -107,11 +108,11 @@ verbs: [
     # }
 
     # Here's an example of a shortcut bringing you to your home directory
-    # {
-    #     invocation: home
-    #     key: ctrl-home
-    #     execution: ":focus ~"
-    # }
+     {
+         invocation: home
+         key: ctrl-h
+         execution: ":focus ~"
+     }
 
     # Here's going to the work-dir root of the current git repository
     # {
@@ -140,10 +141,10 @@ verbs: [
 
     # If you develop using git, you might like to often switch
     # to the git status filter:
-    # {
-    #     key: alt-g
-    #     execution: ":toggle_git_status"
-    # }
+    {
+        key: alt-g
+        execution: ":toggle_git_status"
+    }
 
     # You can reproduce the bindings of Norton Commander
     # on copying or moving to the other panel:
