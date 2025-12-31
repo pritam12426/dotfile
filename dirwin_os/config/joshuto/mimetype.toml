@@ -17,7 +17,7 @@
 		{ command = "mpv", args = [ "--", ], fork = true, silent = true },
 		{ command = "mpv", args = [ "--mute", "on", "--", ], fork = true, silent = true },
 		{ command = "open", fork = true, silent = true },
-		{ command = "mediainfo", pager = true },
+		{ command = "mediainfo", pager = true }
 	]
 
 	text_default = [
@@ -28,10 +28,7 @@
 	]
 
 	reader_default = [
-		{ command = "open", fork = true, silent = true }
-	]
-
-	libreoffice_default = [
+		{ command = "qlmanage", args = [ "-p", "--", ] },
 		{ command = "open", fork = true, silent = true }
 	]
 
@@ -176,17 +173,17 @@
 		{ command = "bat", pager = true },
 	]
 
-	odt.inherit = "libreoffice_default"
-	odf.inherit = "libreoffice_default"
-	ods.inherit = "libreoffice_default"
-	odp.inherit = "libreoffice_default"
+	odt.inherit = "reader_default"
+	odf.inherit = "reader_default"
+	ods.inherit = "reader_default"
+	odp.inherit = "reader_default"
 
-	doc.inherit = "libreoffice_default"
-	docx.inherit = "libreoffice_default"
-	xls.inherit = "libreoffice_default"
-	xlsx.inherit = "libreoffice_default"
-	ppt.inherit = "libreoffice_default"
-	pptx.inherit = "libreoffice_default"
+	doc.inherit = "reader_default"
+	docx.inherit = "reader_default"
+	xls.inherit = "reader_default"
+	xlsx.inherit = "reader_default"
+	ppt.inherit = "reader_default"
+	pptx.inherit = "reader_default"
 
 	pdf.inherit = "reader_default"
 

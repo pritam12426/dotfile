@@ -102,6 +102,9 @@ export PAGER="less"                      # Set default pager to less
 export LESS="-Rir --tabs=2 -j5"          # Configure less for raw control characters, case-insensitive search
 export LSCOLORS="ExFxBxDxCxegedabagacad" # Define ls color scheme
 export LS_COLORS="$LSCOLORS"
+export GREP_COLORS="sl=38;5;240:mt=1;38;5;10;48;5;22:fn=38;5;242:se=38;5;237:ln=38;5;10"
+export JQ_COLORS='1;39:0;36:0;36:0;33:0;32:2;37:2;37'
+export TROFFONTS="$HOME/Library/Fonts"
 # ============================================================================================================
 
 # FZF & SK Configuration ==========================================================================================
