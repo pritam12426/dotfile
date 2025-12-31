@@ -316,6 +316,10 @@
 
 		"C++": [
 			"*.ino"
+		],
+
+		"Git Config": [
+			"config"
 		]
 	},
 

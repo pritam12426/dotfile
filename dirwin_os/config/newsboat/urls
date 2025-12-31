@@ -1,0 +1,76 @@
+# YOUTUBE ================================================================================================================
+https://www.youtube.com/feeds/videos.xml?channel_id=UCg6gPGh8HU2U01vaFCAsvmQ  "~YOUTUBE: channel/Chris Titus Tech"    youtube vidoes media linux
+https://www.youtube.com/feeds/videos.xml?channel_id=UCEbYhDd6c6vngsF5PQpFVWg  "~YOUTUBE: channel/Tsoding"             youtube vidoes media dev coding
+https://www.youtube.com/feeds/videos.xml?channel_id=UCXuqSBlHAE6Xw-yeJA0Tunw  "~YOUTUBE: channel/Linus Tech Tips"     youtube vidoes media tech tips
+https://www.youtube.com/feeds/videos.xml?channel_id=UCxQKHvKbmSzGMvUrVtJYnUA  "~YOUTUBE: channel/Learn Linux TV"      youtube vidoes media linux tips
+https://www.youtube.com/feeds/videos.xml?channel_id=UCld68syR8Wi-GY_n4CaoJGA  "~YOUTUBE: channel/Learn Linux TV"      youtube vidoes media linux tips
+https://www.youtube.com/feeds/videos.xml?channel_id=UC6biysICWOJ-C3P4Tyeggzg  "~YOUTUBE: channel/Low Level"           youtube vidoes media linux tips
+https://www.youtube.com/feeds/videos.xml?channel_id=UCVls1GmFKf6WlTraIb_IaJg "~YOUTUBE: channel/DistroTube"           youtube vidoes media linux tips
+# ========================================================================================================================
+
+
+# REDDIT =================================================================================================================
+https://www.reddit.com/r/indianmemer.rss "~REDDIT:  r/indianmemer" youtube vidoes post media
+# ========================================================================================================================
+
+# TWICH ==================================================================================================================
+https://twitchrss.com/feeds/?username=lowleveltv&feed=streams "~TWITCH:  user/lowleveltv" twich vidoes post media coding dev
+# ========================================================================================================================
+
+
+# NEWS ===================================================================================================================
+#https://www.reddit.com/r/rss/comments/1hco1ur/best_rss_links_for_news/
+https://feeds.bbci.co.uk/news/rss.xml            "~NEWS:    bbc/word"    NEWS
+https://feeds.bbci.co.uk/news/world/asia/rss.xml "~NEWS:    bbc/asia"    NEWS
+https://www.bbc.com/news/health                  "~NEWS:    bbc/health"  NEWS
+https://www.bbc.com/innovation/technology        "~NEWS:    bbc/tech"    NEWS tech
+https://www.bbc.com/culture/film-tv              "~NEWS:    bbc/film"    NEWS
+
+https://www.thehindu.com/news/national/feeder/default.rss      "~NEWS:    thehindu/india"       NEWS
+https://www.thehindu.com/news/international/feeder/default.rss "~NEWS:    thehindu/word"        NEWS
+https://www.thehindu.com/opinion/editorial/feeder/default.rss  "~NEWS:    thehindu/editorial"   NEWS
+
+#https://timesofindia.indiatimes.com/rss.cms
+http://timesofindia.indiatimes.com/rssfeeds/66949542.cms "~NEWS:    indiatimes/tech"    NEWS tech
+# ========================================================================================================================
+
+
+# MISCELLANEOUS ==========================================================================================================
+https://brew.sh/atom.xml                     "~BREW:    blog"        language  rust  coding      dev
+
+https://blog.rust-lang.org/feed.xml          "~RUST:    blog"        ruby      cli   mis
+https://ubuntu.com/rss.xml                   "~LINUX:   ubuntu/news"  linux     os    mis
+
+https://www.debian.org//News/news            "~LINUX:   debian/news"        linux     os    mis
+https://www.debian.org//News/weekly/news     "~LINUX:   debian/weekly/news" linux     os    mis
+https://www.debian.org//security/dsa         "~LINUX:   debian/dsa"         linux     os    mis
+https://www.debian.org//security/dsa-long    "~LINUX:   debian/dsa-long"    linux     os    mis
+
+https://archlinux.org/feeds/news             "~LINUX:   arch/news"          linux     os    mis
+https://archlinux.org/feeds/packages         "~LINUX:   arch/packages"      linux     cli   mis
+
+https://hypr.land/rss.xml                    "~LINUX:   hyprland/news"      linux           mis
+# ========================================================================================================================
+
+
+# GITHUB =================================================================================================================
+https://github.com/yt-dlp/yt-dlp/releases.atom                  "~GITHUB:  repo/releases/yt-dlp"          github python cli coding
+https://github.com/newsboat/newsboat/releases.atom              "~GITHUB:  repo/releases/newsboat"        github c++    cli coding
+https://github.com/pkgxdev/pkgx/releases.atom                   "~GITHUB:  repo/releases/pkgx"            github rust   cli coding
+https://github.com/astral-sh/uv/releases.atom                   "~GITHUB:  repo/releases/uv"              github rust   cli coding
+https://neovim.io/./news.xml                                    "~GITHUB:  repo/releases/neovim"          github c      cli coding
+https://github.com/pemistahl/grex/releases.atom                 "~GITHUB:  repo/releases/grex"            github rust   cli coding
+https://github.com/astral-sh/uv/releases.atom                   "~GITHUB:  repo/releases/uv"              github rust   cli coding
+https://www.ffmpeg.org/main.rss                                 "~GITHUB:  repo/releases/ffmpeg"          github c      cli coding
+https://github.com/jarun/nnn/releases.atom                      "~GITHUB:  repo/releases/nnn"             github c      cli coding
+https://github.com/arduino/arduino-cli/releases.atom            "~GITHUB:  repo/releases/arduino-cli"     github rust   cli coding
+https://github.com/rust-lang/rust/releases.atom                 "~GITHUB:  repo/releases/rust"            github rust   cli coding
+https://github.com/junegunn/fzf/releases.atom                   "~GITHUB:  repo/releases/fzf"             github golang cli coding
+https://github.com/jesseduffield/lazygit/releases.atom          "~GITHUB:  repo/releases/lazygit"         github golang cli coding
+https://github.com/Genymobile/scrcpy/releases.atom              "~GITHUB:  repo/releases/scrcpy"          github c      cli coding
+https://github.com/fastfetch-cli/fastfetch/releases.atom        "~GITHUB:  repo/releases/fastfetch-cli"   github c++    cli coding
+https://helix-editor.com/atom.xml                               "~GITHUB:  repo/releases/helix"           github rust   cli coding
+https://github.com/jgm/pandoc/releases.atom                     "~GITHUB:  repo/releases/pandoc"          github c      cli coding
+https://github.com/undergroundwires/privacy.sexy/releases.atom  "~GITHUB:  repo/releases/privacy.sexy"    github c++    cli coding
+https://github.com/aria2/aria2/releases.atom                    "~GITHUB:  repo/releases/aria2"           github c++    cli coding
+# ========================================================================================================================
