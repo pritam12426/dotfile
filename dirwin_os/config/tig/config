@@ -58,9 +58,10 @@ set status-view = \
 	status:long \
 	file-name:yes
 bind status U @git add --all
-bind status x ?git restore --staged %(repo:file)
+bind status I @/Users/pritam/.config/tig/scripts/tig_add_to_ignore "%(file)" "%(repo:git-dir)/.."
+bind status x ?git restore --staged %(file)
 bind status A @git commit --amend --no-edit
-bind status p >git push origin %(repo:head)
+bind status p > git push origin %(repo:head)
 bind status P >git push origin %(repo:head) --force-with-lease
 bind status f >git fetch origin
 bind status F >git pull origin %(repo:head)
