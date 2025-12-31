@@ -213,6 +213,7 @@ preexec() { timer=$EPOCHREALTIME }
 
 precmd() {
 	if [[ -n $timer ]]; then
+		local exit_code=${pipestatus[1]}
 		local now=$EPOCHREALTIME
 		local start_int=${timer%.*} start_frac=${timer#*.}
 		local now_int=${now%.*}     now_frac=${now#*.}
@@ -234,7 +235,6 @@ precmd() {
 			timer_show="${m}m ${s}.$(printf '%03d' $ms)s"
 		fi
 
-		local exit_code=${pipestatus[1]}
 		local dim="%F{245}" superdim="%F{240}" err="%B%F{red}" err_time="%B%F{208}"
 
 		if (( exit_code == 0 )); then
@@ -301,7 +301,7 @@ bindkey "^[[1;2C" end-of-line        # shift + right
 # ============================================================================================================
 # Insert git commit template (Ctrl+X, G, C)
 # \C-b moves cursor back one position
-bindkey -s '^Xgc' 'git commit -m ""\C-b'
+bindkey -s '^Xgc' 'git commit -m ""'
 
 # More examples:
 bindkey -s '^Xgp' 'git push origin '

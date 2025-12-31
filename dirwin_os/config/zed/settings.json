@@ -123,7 +123,7 @@
 	"vim_mode": true,
 
 	"minimap": {
-		"show": "auto",
+		"show": "always",
 		"thumb": "always",
 		"thumb_border": "left_open",
 		"current_line_highlight": null

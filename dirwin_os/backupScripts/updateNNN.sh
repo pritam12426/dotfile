@@ -3,10 +3,23 @@
 
 # working file with nnn v5.1
 
+NNN_PATCH="$DOT_FILE/config/nnn/patchs/"
 NNN_LOCAL_REPO="$HOME/Developer/git_repository/online-repos/nnn"
-NNN_PATCH="$DOT_FILE/config/nnn/patchs/nnn-builtin-cd-lastdir-v5.patch"
 
 export PREFIX="$HOME/.local"
+
+applyPatch() {
+	# Apply your patch
+	if git apply --check "$1" 2> /dev/null; then
+		git apply "$1"
+	else
+		echo "⚠ Patch failed to apply cleanly — attempting 3-way merge"
+		git apply --3way "$1" || {
+			echo "❌ Patch could not be applied. Manual fix required."
+			exit 1
+		}
+	fi
+}
 
 if [ ! -d "$NNN_LOCAL_REPO" ]; then
 	echo "Cloning nnn repository..."
@@ -19,18 +32,10 @@ builtin cd "$NNN_LOCAL_REPO" || exit 1
 # Hard reset to upstream
 git clean -dfx
 git checkout -f
-# git pull --rebase
+git pull --rebase
 
-# Apply your patch
-if git apply --check "$NNN_PATCH" 2> /dev/null; then
-	git apply "$NNN_PATCH"
-else
-	echo "⚠ Patch failed to apply cleanly — attempting 3-way merge"
-	git apply --3way "$NNN_PATCH" || {
-		echo "❌ Patch could not be applied. Manual fix required."
-		exit 1
-	}
-fi
+applyPatch "$NNN_PATCH/nnn-builtin-cd-lastdir-v5.patch"
+applyPatch "$NNN_PATCH/icons-v5.2.patch"
 
 # Your custom header
 command cp -p "$DOT_FILE/config/nnn/patchs/nnn-v5.h" src/nnn.h
