@@ -56,7 +56,7 @@ export CXX="/usr/bin/clang++"
 export CC="/usr/bin/clang"
 export PREFIX="$HOME/.local"
 export Boost_DIR="/usr/local/boost-1.87.0"
-
+export PKGX_DIR="$HOME/.local/pkgx-env"
 
 # FOR PYTHON ======
 __PATH_ADD "/Library/Frameworks/Python.framework/Versions/3.14/bin"

@@ -19,6 +19,16 @@ export DOT_FILE="$PWD"
 - [Asciinema](https://asciinema.org/)
 - [FreeCodeCamp](https://www.freecodecamp.org/news/essential-cli-tui-tools-for-developers/)
 
+## Some release binary managers
+
+- [brew](https://brew.sh/)
+- [bin](https://github.com/marcosnils/bin)
+- [kelp](https://github.com/crhuber/kelp)
+- [pkgx](https://github.com/pkgxdev/pkgx)  `Nice tool`
+- [rudix](https://github.com/rudix-mac/rudix)
+- [pkgsrc](https://www.pkgsrc.org/)   `Nice tool`
+- [asdf](https://github.com/asdf-vm/asdf)
+
 ## Install with Bin command
 
 - [adbtuifm](https://github.com/darkhz/adbtuifm) (Not Regularly Used)
@@ -27,7 +37,6 @@ export DOT_FILE="$PWD"
 - [atac](https://github.com/Julien-cpsn/ATAC)  (Not Regularly Used)
 - [bat](https://github.com/charlie0129/batt/releases)  (Regularly Used)
 - [batt](https://github.com/charlie0129/batt)  (Regularly Used)
-- [bin](https://github.com/marcosnils/bin) (Regularly Used)
 - [broot](https://github.com/Canop/broot)  (Not Regularly Used)
 - [caligula](https://terminaltrove.com/caligula/)  (Not Regularly Used)
 - [cargo-seek](https://github.com/tareqimbasher/cargo-seek) (Not Regularly Used)

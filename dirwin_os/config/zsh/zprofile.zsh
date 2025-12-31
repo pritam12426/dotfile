@@ -65,3 +65,13 @@ if [[ -n $ANDROID_HOME && -d $ANDROID_HOME ]]; then
 	alias apktool="java -jar \"$ANDROID_HOME/reverse-engineering/dex-tools-v2.4/bin/apktool_2.12.1.jar\""
 	alias dex-tools="\"$ANDROID_HOME/reverse-engineering/dex-tools-v2.4/bin/dex-tools\""
 fi
+
+if [ -d "/opt/homebrew" ]; then
+	eval "$(/opt/homebrew/bin/brew shellenv)"
+	export HOMEBREW_GITHUB_API_TOKEN="$GITHUB_AUTH_TOKEN"
+	export HOMEBREW_GITHUB_PACKAGES_TOKEN="$GITHUB_AUTH_TOKEN"
+
+	export PKG_CONFIG_PATH="$HOMEBREW_PREFIX/lib/pkgconfig:$PKG_CONFIG_PATH"
+	export CMAKE_PREFIX_PATH="$HOMEBREW_PREFIX/lib/cmake:$CMAKE_PREFIX_PATH"
+	export DYLD_LIBRARY_PATH="$HOMEBREW_PREFIX/lib:$DYLD_LIBRARY_PATH"
+fi
