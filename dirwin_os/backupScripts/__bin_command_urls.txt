@@ -6,6 +6,7 @@ https://github.com/arduino/arduino-cli
 https://github.com/asciinema/agg
 https://github.com/asciinema/asciinema
 https://github.com/astral-sh/ruff
+https://github.com/atanunq/viu
 https://github.com/BurntSushi/ripgrep
 https://github.com/caddyserver/caddy
 https://github.com/charlie0129/batt
@@ -14,6 +15,7 @@ https://github.com/cointop-sh/cointop
 https://github.com/dandavison/delta
 https://github.com/dduan/tre
 https://github.com/ducaale/xh
+https://github.com/gitui-org/gitui
 https://github.com/glanceapp/glance
 https://github.com/go-shiori/shiori
 https://github.com/gokcehan/lf

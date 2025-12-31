@@ -9,6 +9,9 @@ case "$1" in
 	*.zip)
 		unzip -l "$1"
 	;;
+	image/*)
+		chafa -f sixel -s "$2x$3" --animate off --polite on "$1"
+		;;
 	*.rar)
 		unrar l "$1"
 	;;

@@ -1,6 +1,6 @@
 set icons false
 set ignorecase true
-set previewer /Users/pritam/Developer/git_repositorys/my_dotfile/dirwin_os/.config/lf/pv.sh
+set previewer ~/.config/lf/previewer
 
 cmd mkdir ${{
 	printf "Directory Name: "
@@ -19,12 +19,12 @@ cmd mkfile ${{
 # Archive bindings
 cmd unarchive ${{
 	case "$f" in
-		*.zip) unzip "$f" ;;
-		*.rar) unrar x "$f" ;;
-		*.tar.gz) tar -xzvf "$f" ;;
+		*.zip)     unzip "$f" ;;
+		*.rar)     unrar x "$f" ;;
+		*.tar.gz)  tar -xzvf "$f" ;;
 		*.tar.bz2) tar -xjvf "$f" ;;
-		*.tar) tar -xvf "$f" ;;
-		*.7z) 7z e "$f" ;;
+		*.tar)     tar -xvf "$f" ;;
+		*.7z)      7z e "$f" ;;
 		*) echo "Unsupported format" ;;
 	esac
 }}
@@ -41,7 +41,7 @@ cmd trash ${{
 		files="${files#*;}"
 	fi
 	done
-	afplay ~/Developer/git_repositorys/my_dotfile/dirwin_os/.config/lf/drag_to_trash.aif &
+	afplay ~/.config/lf/drag_to_trash.aif &
 }}
 
 cmd RM ${{
@@ -56,7 +56,7 @@ cmd RM ${{
 		files="${files#*;}"
 	fi
 	done
-	afplay ~/Developer/git_repositorys/my_dotfile/dirwin_os/.config/lf/drag_to_trash.aif &
+	afplay ~/.config/lf/drag_to_trash.aif &
 }}
 
 map m
