@@ -67,7 +67,8 @@ if [[ -n $ANDROID_HOME && -d $ANDROID_HOME ]]; then
 fi
 
 if [ -d "/opt/homebrew" ]; then
-	eval "$(/opt/homebrew/bin/brew shellenv)"
+	source "$HOME/.config/homebrew/__brew_envs__"
+	# /opt/homebrew/bin/brew shellenv > $HOME/.config/homebrew/__brew_envs__
 	export HOMEBREW_GITHUB_API_TOKEN="$GITHUB_AUTH_TOKEN"
 	export HOMEBREW_GITHUB_PACKAGES_TOKEN="$GITHUB_AUTH_TOKEN"
 

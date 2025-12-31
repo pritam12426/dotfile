@@ -7,6 +7,7 @@
 #	https://gist.github.com/elliottminns/09a598082d77f795c88e93f7f73dba61
 #	See this dir "/usr/lib/zsh/5.9"
 #	https://www.youtube.com/watch?v=3fVAtaGhUyU
+#   https://www.reddit.com/r/zsh/comments/nm2vun/a_guide_to_the_zsh_autocompletion_with_examples/
 # ============================================================================================================
 
 
@@ -18,7 +19,7 @@
 # ============================================================================================================
 # IMPORTING EXTERNAL FILES AND PLUGINS
 # ============================================================================================================
-
+export __ZSH_PULGINS_DIR="$HOME/.local/share/zsh/plugins"
 # # Load Apple’s default interactive zsh environment (fixes most issues)
 # [ -f /etc/zshrc ] && source /etc/zshrc
 
@@ -28,49 +29,53 @@ if [[ -f "$HOME/.config/zsh/alias.zsh" ]]; then
 fi
 
 # fzf history widget
-if [[ -f "$HOME/.local/share/zsh/plugins/__fzf-history__" ]]; then
-	source "$HOME/.local/share/zsh/plugins/__fzf-history__"
+if [[ -f "$__ZSH_PULGINS_DIR/fzf/__fzf-history__" ]]; then
+	source "$__ZSH_PULGINS_DIR/fzf/__fzf-history__"
+	source "$__ZSH_PULGINS_DIR/fzf/fzf-tab-master/fzf-tab.zsh"
 	bindkey '^F' fzf-history-widget
 else
 	if hash fzf 2>/dev/null; then
 		printf "Warning: fzf history widget not installed (%s:%d)\n" "$HOME/.zshrc" $LINENO
-		# To install: mkdir -p "$HOME/.local/share/zsh/plugins" && fzf --zsh > "$HOME/.local/share/zsh/plugins/__fzf-history__"
+		# To install: mkdir -p "$__ZSH_PULGINS_DIR/fzf"
+		# fzf --zsh > "$__ZSH_PULGINS_DIR/fzf/__fzf-history__"
+		# wget "https://github.com/Aloxaf/fzf-tab/archive/refs/heads/master.zip" -P "$__ZSH_PULGINS_DIR/fzf"
+		# bsdtar -vxf "$__ZSH_PULGINS_DIR/fzf/master.zip" -C "$__ZSH_PULGINS_DIR/fzf" && rm "$__ZSH_PULGINS_DIR/fzf/master.zip"
 	fi
 fi
 
 # navi widget
-if [[ -f "$HOME/.local/share/zsh/plugins/__navi_widget__" ]]; then
-	source "$HOME/.local/share/zsh/plugins/__navi_widget__"
+if [[ -f "$__ZSH_PULGINS_DIR/__navi_widget__" ]]; then
+	source "$__ZSH_PULGINS_DIR/__navi_widget__"
 else
 	if hash navi 2>/dev/null; then
 		printf "Warning: navi widget not installed (%s:%d)\n" "$HOME/.zshrc" $LINENO
-		# To install: navi widget zsh > "$HOME/.local/share/zsh/plugins/__navi_widget__"
+		# To install: navi widget zsh > "$__ZSH_PULGINS_DIR/__navi_widget__"
 	fi
 fi
 
 # zoxide widget
-if [[ -f "$HOME/.local/share/zsh/plugins/__zoxide__" ]]; then
-	source "$HOME/.local/share/zsh/plugins/__zoxide__"
+if [[ -f "$__ZSH_PULGINS_DIR/__zoxide__" ]]; then
+	source "$__ZSH_PULGINS_DIR/__zoxide__"
 else
 	if hash zoxide 2>/dev/null; then
 		printf "Warning: zoxide widget not installed (%s:%d)\n" "$HOME/.zshrc" $LINENO
-		# To install: zoxide init --cmd cd zsh > "$HOME/.local/share/zsh/plugins/__zoxide__"
+		# To install: zoxide init --cmd cd zsh > "$__ZSH_PULGINS_DIR/__zoxide__"
 	fi
 fi
 
 # zsh-you-should-use (actively used)
-if [[ -f "$HOME/.local/share/zsh/plugins/zsh-you-should-use/you-should-use.plugin.zsh" ]]; then
-	source "$HOME/.local/share/zsh/plugins/zsh-you-should-use/you-should-use.plugin.zsh"
+if [[ -f "$__ZSH_PULGINS_DIR/zsh-you-should-use/you-should-use.plugin.zsh" ]]; then
+	source "$__ZSH_PULGINS_DIR/zsh-you-should-use/you-should-use.plugin.zsh"
 fi
 
 # fast-syntax-highlighting — currently disabled (uncomment if you want it later)
-# if [[ -f "$HOME/.local/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh" ]]; then
-#   source "$HOME/.local/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh"
+# if [[ -f "$__ZSH_PULGINS_DIR/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh" ]]; then
+#   source "$__ZSH_PULGINS_DIR/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh"
 # fi
 
 # zsh-autosuggestions — currently disabled (uncomment if you want it later)
-# if [[ -f "$HOME/.local/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh" ]]; then
-#   source "$HOME/.local/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
+# if [[ -f "$__ZSH_PULGINS_DIR/zsh-autosuggestions/zsh-autosuggestions.zsh" ]]; then
+#   source "$__ZSH_PULGINS_DIR/zsh-autosuggestions/zsh-autosuggestions.zsh"
 # fi
 
 # ============================================================================================================
@@ -99,17 +104,17 @@ hash -d dot=$DOT_FILE
 hash -d dl=~/Downloads
 
 # Copy current command buffer to clipboard (macOS)
-copy-buffer-to-clipboard() {
+funcion copy-buffer-to-clipboard() {
 	printf "%s" "$BUFFER" | pbcopy
 	zle -M "Copied current command to clipboard"
 }
 zle -N copy-buffer-to-clipboard
-bindkey '^Xc' copy-buffer-to-clipboard
+bindkey '^Zc' copy-buffer-to-clipboard
 
-# Edit command line in $EDITOR (Ctrl+Esc)
+# Edit command line in $EDITOR (Ctrl+E)
 autoload -Uz edit-command-line
 zle -N edit-command-line
-bindkey '^[e' edit-command-line  # Esc key (you had this as '^[e')
+bindkey '^Ze' edit-command-line  # Esc key (you had this as '^E')
 
 # Perform history expansion on space (e.g. !docker)
 bindkey ' ' magic-space
@@ -120,8 +125,8 @@ chpwd() {
 		source .venv/bin/activate 2>/dev/null
 	elif [[ -d venv ]]; then
 		source venv/bin/activate 2>/dev/null
-	elif [[ -n "$VIRTUAL_ENV"  ]]; then
-		deactivate 2>/dev/null
+	# elif [[ -n "$VIRTUAL_ENV"  ]]; then
+	# 	deactivate 2>/dev/null
 	fi
 }
 
@@ -132,18 +137,33 @@ chpwd() {
 zmodload -i zsh/parameter
 autoload -Uz compinit && compinit
 zmodload -i zsh/complist
+setopt MENU_COMPLETE AUTO_MENU
+
+zle -C alias-expension complete-word _generic
+bindkey '^a' alias-expension
+zstyle ':completion:alias-expension:*' completer _expand_alias
+
+zstyle ':fzf-tab:*' fzf-flags --height=60% --bind=tab:accept
+zstyle ':fzf-tab:*' use-fzf-default-opts yes
 
 # Cache completion data
 zstyle ':completion::complete:*' use-cache on
-zstyle ':completion::complete:*' cache-path "$HOME/.zsh/cache/$HOST"
+zstyle ':completion::complete:*' cache-path "$XDG_CACHE_HOME/zsh/cache"
 
-# Group and format completion menus nicely
+# Group completion menus nicely
+zstyle ':completion:*' file-list all
 zstyle ':completion:*' menu select
 zstyle ':completion:*' list-prompt '%SAt %p: Hit TAB for more%s'
 zstyle ':completion:*' select-prompt '%SScrolling active: current selection at %p%s'
-zstyle ':completion:*:descriptions' format "%{$fg[red]%}▶%{$reset_color%} %{$fg_bold[white]%}%d%{$reset_color%}"
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' verbose yes
+
+# format completion menus nicely
+#zstyle ':completion:*:*:*:*:descriptions' format '%F{green}-- %d --%f'
+#zstyle ':completion:*:*:*:*:corrections' format '%F{yellow}!- %d (errors: %e) -!%f'
+#zstyle ':completion:*:messages' format ' %F{purple} -- %d --%f'
+#zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'
+#zstyle ':completion:*:descriptions' format '%U%K{yellow} %F{green}-- %F{red} %BNICE!1! %b%f %d --%f%k%u'
 
 # Matching and ordering
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'  # case-insensitive
@@ -200,7 +220,7 @@ setopt AUTO_MENU            # Show completion menu on successive tab press
 #RPROMPT="${superdim}[ ${timer_show} ]%f%b \$(__git_ps1 '(%s) ')"
 #source "/Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh"
 # curl "https://raw.githubusercontent.com/git/git/refs/heads/master/contrib/completion/git-prompt.sh" \
-# 	-o "$HOME/.local/share/zsh/plugins/git-prompt.sh"
+# 	-o "$__ZSH_PULGINS_DIR/git-prompt.sh"
 
 zmodload zsh/datetime
 autoload -Uz add-zsh-hook
@@ -256,9 +276,6 @@ PROMPT="%F{green}%B%n@%m%b%f:%F{blue}%B%~%b%f%(#.#.$) "
 # KEY BINDINGS & ALIASES
 # ============================================================================================================
 
-# Use Emacs keybindings by default (you explicitly set this)
-# bindkey -e
-
 # Quick edit config files
 alias erc="$EDITOR  ~/.zshrc"
 alias ezp="$EDITOR  ~/.zprofile"
@@ -272,12 +289,12 @@ alias -g ...="../.."
 alias -g R=" | rg --smart-case "
 alias -g J=" | jq"
 alias -g L=" | less"
-alias -g H="--help | less"
 alias -g C=" | pbcopy"
-alias -g P=" pbpaste"
-alias -g NE="2> /dev/null"
-alias -g DN="> /dev/null"
-alias -g NULL="> /dev/null 2>&1"
+alias -g P="\"pbpaste\""
+alias -g DN=" > /dev/null"
+alias -g NE=" 2> /dev/null"
+alias -g H=" --help | less"
+alias -g NULL=" > /dev/null 2>&1"
 
 # Suffix alias: open .json files with jless
 alias -s json=jless
@@ -287,7 +304,7 @@ alias -s log=bat
 alias -s html=open  # macOS: open in default browser
 
 bindkey "^K"      kill-whole-line    # ctrl-k
-bindkey "^[[3~"   kill-whole-line    # delete key
+# bindkey "^[[3~"   kill-whole-line    # delete key
 bindkey "^[[1;2D" beginning-of-line  # shift + left
 bindkey "^[[1;2C" end-of-line        # shift + right
 
@@ -296,12 +313,12 @@ bindkey "^[[1;2C" end-of-line        # shift + right
 # ============================================================================================================
 # Insert git commit template (Ctrl+X, G, C)
 # \C-b moves cursor back one position
-bindkey -s '^Xgc' 'git commit -m ""'
+# bindkey -s '^Xgc' 'git commit -m ""'
 
 # More examples:
-bindkey -s '^Xgp' 'git push origin '
-bindkey -s '^Xgs' 'git status\n'
-bindkey -s '^Xgl' 'git log --oneline -n 10\n'
+# bindkey -s '^Xgp' 'git push origin '
+# bindkey -s '^Xgs' 'git status\n'
+# bindkey -s '^Xgl' 'git log --oneline -n 10\n'
 
 # ============================================================================================================
 # NOTES ON ZSH STARTUP ORDER (kept for reference)

@@ -83,6 +83,7 @@ ln -sf   "$DOT_FILE/scripts/fix-ugly-name.py"      "$HOME/.local/bin/rrr"
 ln -sf   "$DOT_FILE/scripts/fontify.py"            "$HOME/.local/bin/fontify"
 ln -sf   "$DOT_FILE/scripts/gDrive.sh"             "$HOME/.local/bin/gDrive"
 ln -sf   "$DOT_FILE/scripts/make-archive.sh"       "$HOME/.local/bin/fff"
+	ln -sf   "$DOT_FILE/scripts/message.sh"            "$HOME/.local/bin/message"
 ln -sf   "$DOT_FILE/scripts/notify.sh"             "$HOME/.local/bin/notify"
 ln -sf   "$DOT_FILE/scripts/zed-root.sh"           "$HOME/.local/bin/zed-root"
 

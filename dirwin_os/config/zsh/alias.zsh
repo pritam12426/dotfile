@@ -37,7 +37,8 @@ alias bdir="cd ~/.local/bin"                           # Navigate To Local Binar
 alias .dir="cd $DOT_FILE"                              # Navigate To your dotfiles Directory
 
 # --- Firefox aliases ---
-alias firefox="open -a /Applications/Firefox.app"   # Launch Firefox
+# alias firefox="open -a /Applications/Firefox.app"   # Launch Firefox
+alias firefox="/Applications/Firefox.app/Contents/MacOS/firefox"
 alias firefox-p="firefox --private-window"          # Launch Firefox in private mode
 
 alias firefox-clean="rm -fv ~/Library/Application\ Support/Firefox/Profiles/*/formhistory.sqlite ; \
@@ -72,7 +73,7 @@ alias enrc="$EDITOR ~/.config/nvim/init.lua"          # Edit NeoVim config
 alias enhc="$EDITOR ~/.config/helix/config.toml"      # Edit helix config
 alias eza="$EDITOR  ~/.config/zsh/alias.zsh"          # Edit alias file
 alias efz="$EDITOR  ~/.config/zsh/functions.sh"       # Edit functon file
-alias .e="edot"                                           # Edit functon file
+alias .e="edot"                                       # Edit functon file
 # ---------------------------------------------------------
 
 
@@ -106,6 +107,7 @@ alias gui-rclone="rclone rcd --rc-web-gui --rc-no-auth"                         
 alias eget="eget --download-only "                                                         # Tell eget to only download the System wise release zip file
 alias find-zombies="ps -axo pid,ppid,stat,command | grep -w Z+"                            # Find zombies + parent PID
 alias aria2="aria2c --dir . --summary-interval=10"                                         # aria2c download file in $PWD
+alias agg="agg -v --idle-time-limit 0.7 --fps-cap 30 --font-size 20 --font-family 'JetBrains Mono'"
 
 alias reload-aria2c="launchctl unload ~/Library/LaunchAgents/com.user.aria2.plist &&
 				    launchctl load ~/Library/LaunchAgents/com.user.aria2.plist"

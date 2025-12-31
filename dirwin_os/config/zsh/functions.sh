@@ -10,33 +10,6 @@
 # ===========================================================================
 
 # ------------ Utility Functions ------------
-function message() {
-	local msg="$1"
-	local title="${2:-Notification}"
-	local type="${3:-info}"
-
-	# Check for --help option
-	if [[ $msg == "--help" ]]; then
-		echo "Usage: message <message> [title] [type]"
-		echo "  <message>: The notification message to display."
-		echo "  [title]:   Optional. The title of the notification. Default is 'Notification'."
-		echo "  [type]:    Optional. The type of notification. Can be 'info', 'error', or 'log'. Default is 'info'."
-		return 0
-	fi
-
-	case "$type" in
-	error)
-		osascript -e "display alert \"$title\" message \"$msg\" as critical" 2 &>/dev/null
-		;;
-	warning)
-		osascript -e "display alert \"$title\" message \"$msg\" as warning" 2 &>/dev/null
-		;;
-	info | *)
-		osascript -e "display alert \"$title\" message \"$msg\" as informational" 2 &>/dev/null
-		;;
-	esac
-}
-
 function wireproxy-start() {
 	# Start wireproxy in background if not already running
 	if pgrep -x wireproxy >/dev/null; then

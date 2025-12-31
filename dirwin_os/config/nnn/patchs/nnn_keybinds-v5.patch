@@ -1,16 +1,8 @@
 diff --git a/src/nnn.h b/src/nnn.h
-index 5f749093..cb7fe2c1 100644
+index 5f749093..67f604e2 100644
 --- a/src/nnn.h
 +++ b/src/nnn.h
-@@ -135,7 +135,6 @@ static struct key bindings[] = {
- 	{ 'h',            SEL_BACK },
- 	/* Inside or select */
- 	{ KEY_ENTER,      SEL_OPEN },
--	{ '\r',           SEL_OPEN },
- 	/* Pure navigate inside */
- 	{ KEY_RIGHT,      SEL_NAV_IN },
- 	{ 'l',            SEL_NAV_IN },
-@@ -149,7 +148,7 @@ static struct key bindings[] = {
+@@ -149,7 +149,7 @@ static struct key bindings[] = {
  	{ KEY_NPAGE,      SEL_PGDN },
  	/* Page up */
  	{ KEY_PPAGE,      SEL_PGUP },
@@ -19,7 +11,7 @@ index 5f749093..cb7fe2c1 100644
  	{ CONTROL('D'),   SEL_CTRL_D },
  	/* Ctrl+U */
  	{ CONTROL('U'),   SEL_CTRL_U },
-@@ -167,16 +166,15 @@ static struct key bindings[] = {
+@@ -167,16 +167,15 @@ static struct key bindings[] = {
  	{ 'J',            SEL_JUMP },
  	{ CONTROL('Y'),   SEL_YOUNG },
  	/* HOME */
@@ -38,7 +30,7 @@ index 5f749093..cb7fe2c1 100644
  	/* Connect to server over SSHFS */
  	{ 'c',            SEL_REMOTE },
  	/* Cycle contexts in forward direction */
-@@ -206,14 +204,12 @@ static struct key bindings[] = {
+@@ -206,14 +205,12 @@ static struct key bindings[] = {
  	{ 'd',            SEL_DETAIL },
  	/* File details */
  	{ 'f',            SEL_STATS },
@@ -53,7 +45,7 @@ index 5f749093..cb7fe2c1 100644
  	/* Redraw window */
  	{ CONTROL('L'),   SEL_REDRAW },
  	/* Select current file path */
-@@ -240,15 +236,16 @@ static struct key bindings[] = {
+@@ -240,15 +237,16 @@ static struct key bindings[] = {
  	{ 'x',            SEL_TRASH },
  	{ CONTROL('X'),   SEL_TRASH },
  	{ 'X',            SEL_RM_RF },
@@ -72,7 +64,7 @@ index 5f749093..cb7fe2c1 100644
  	/* Disconnect a SSHFS mount point */
  	{ 'u',            SEL_UMOUNT },
  	/* Show help */
-@@ -263,11 +260,12 @@ static struct key bindings[] = {
+@@ -263,11 +261,12 @@ static struct key bindings[] = {
  	{ 'S',            SEL_SELSIZE },
  	/* Run command */
  	{ '!',            SEL_SHELL },

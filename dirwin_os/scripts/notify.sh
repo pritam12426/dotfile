@@ -1,32 +1,58 @@
 #!/bin/bash
 
+# file: ~/.local/bin/notify.sh
+# description: a simple prescription for getting notifications on macOS
 
-msg="$1"
-title="${2:-Notification}"
-type="${3:-info}" # info | error | log
+quiet=false
 
-# Check for --help option
-if [[ $msg == "--help" ]]; then
-	echo "Usage: notify <message> [title] [type]"
-	echo "  <message>: The notification message to display."
-	echo "  [title]:   Optional. The title of the notification. Default is 'Notification'."
-	echo "  [type]:    Optional. The type of notification. Can be 'info', 'error', or 'log'. Default is 'info'."
-	return 0
-fi
+# ---- option parsing ----
+while [[ $# -gt 0 ]]; do
+	case "$1" in
+	-q | --quiet)
+		quiet=true
+		shift
+		;;
+	--help)
+		echo "Usage: notify [-q|--quiet] <message> [title] [type]"
+		echo "  <message>: The notification message to display."
+		echo "  [title]:   Optional. Default: Notification"
+		echo "  [type]:    info | error | log"
+		exit 0
+		;;
+	--)
+		shift
+		break
+		;;
+	-*)
+		echo "Unknown option: $1"
+		exit 1
+		;;
+	*)
+		break
+		;;
+	esac
+done
 
-# Choose sound based on type
-sound="default"
+# ---- positional args ----
+msg="$1"; shift || true
+title="${1:-Notification}";  shift || true
+type="${1:-info}"
+
+# ---- sound mapping ----
 case "$type" in
-error)
-	sound="Basso"
-	;; # macOS built-in alert
-log)
-	sound="Pop"
-	;; # subtle sound
-info)
-	sound="default"
-	;; # generic notification
+	error) sound="Basso" ;;
+	log)   sound="Pop" ;;
+	*)     sound="default" ;;
 esac
 
-# Send notification
-osascript -e "display notification \"$msg\" with title \"$title\" sound name \"$sound\"" 2 &>/dev/null
+# ---- escape for AppleScript ----
+msg=${msg//\\/\\\\};     msg=${msg//\"/\\\"}
+title=${title//\\/\\\\}; title=${title//\"/\\\"}
+
+# ---- notify ----
+if ! $quiet; then
+	# escape quotes to avoid AppleScript breakage
+	osascript -e "display notification \"$msg\" with title \"$title\" sound name \"$sound\"" > /dev/null 2>&1
+else
+	osascript -e "display notification \"$msg\" with title \"$title\""
+fi

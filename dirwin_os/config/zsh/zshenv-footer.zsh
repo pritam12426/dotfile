@@ -84,8 +84,11 @@ __PATH_ADD "$HOME/.local/github-releases-binary"
 __MANPATH_ADD "$HOME/.local/share/man"
 fpath=($fpath "$HOME/.local/share/zsh/site-functions")
 
+# https://www.reddit.com/r/zsh/comments/p8ir7r/how_to_disable_vi_style_keybinds_in_zsh/
+#  ln -sf "$PREFIX/bin/nvim" "$PREFIX/bin/zsh-editor"
+
 # export EDITOR="hx"
-export EDITOR="$PREFIX/bin/nvim"  # $EDITOR use nvim in terminal
+export EDITOR="$PREFIX/bin/zsh-editor"  # $EDITOR use nvim in terminal
 # export VISUAL="zed --wait"      # $VISUAL use zed  in GUI mode
 export DOT_FILE="$HOME/Developer/git_repository/my_dotfile/dirwin_os"
 export TERM="xterm-256color"                      # getting proper colors
@@ -98,6 +101,7 @@ export CLICOLOR=true                     # Enable colored output for ls
 export PAGER="less"                      # Set default pager to less
 export LESS="-Rir --tabs=2 -j5"          # Configure less for raw control characters, case-insensitive search
 export LSCOLORS="ExFxBxDxCxegedabagacad" # Define ls color scheme
+export LS_COLORS="$LSCOLORS"
 # ============================================================================================================
 
 # FZF & SK Configuration ==========================================================================================
@@ -146,7 +150,6 @@ NNN_PLUG+='f:!&ffplay -loop -1 -sn -loglevel level+warning -seek_interval 5 "$nn
 NNN_PLUG+='m:!&mpv --force-window=immediate "$nnn" * ;'
 
 export NNN_PLUG
-
 export NNN_COLORS="5236"                                # Set NNN color scheme
 export NNN_OPTS="AUBRNEodefag"                          # Define NNN options
 export NNN_SEL="$TMPDIR/nnn.sel"                        # Define NNN selection file

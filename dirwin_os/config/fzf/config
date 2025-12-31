@@ -5,8 +5,8 @@
 # FZF previews for file selection
 #--preview 'bat --color=always -n --line-range :100 {}'
 
---border=top
+--border=none
 --header-border=sharp
 --input-border=bottom
 --footer-border=sharp
---list-border=sharp
+--list-border=none
