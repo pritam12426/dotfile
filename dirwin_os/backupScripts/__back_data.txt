@@ -57,6 +57,7 @@ D: poco-1.14.2
 D: Catch2-3.8.0
 D: googletest-1.16.0
 D: autoconf-2.72
+D: tomlplusplus-v3.4.0
 D: uuid-1.6.2
 D: mysql-connector-c++-9.4.0
 D: ncurses-6.5
@@ -95,8 +96,8 @@ D: capstone-5.0.6
 D: confuse-3.3
 D: libidn2-2.3.8
 D: expat-2.7.3
+f: exportLib
 D: bzip2-1.0.8
-D: tiny-process-library
 D: opencv-4.11.0
 f: exportlib.sh
 D: libunistring-2.72.0
@@ -109,6 +110,7 @@ D: boost-process
 D: cryptopp-8.9.0
 D: libtorch-2.7.0
 D: gmp-6.3.0
+D: tiny-process-library-v2.0.4
 D: mpfr-4.2.2
 D: CSFML-2.6.1
 D: pcre-8.45
@@ -155,6 +157,7 @@ CMake.app
 # ========== Dev-tools ==========
 D: scrcpy-v3.3.3
 D: pandoc-3.8.2.1-arm64
+D: ffmpeg
 D: nvim-v0.11.5
 D: go-v1.25.4
 D: ffmpeg-v8.0

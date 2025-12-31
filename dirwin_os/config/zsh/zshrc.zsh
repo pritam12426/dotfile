@@ -24,7 +24,7 @@
 
 # Load aliases (you already use this)
 if [[ -f "$HOME/.config/zsh/alias.zsh" ]]; then
-  source "$HOME/.config/zsh/alias.zsh"
+	source "$HOME/.config/zsh/alias.zsh"
 fi
 
 # fzf history widget
@@ -44,6 +44,16 @@ else
 	if hash navi 2>/dev/null; then
 		printf "Warning: navi widget not installed (%s:%d)\n" "$HOME/.zshrc" $LINENO
 		# To install: navi widget zsh > "$HOME/.local/share/zsh/plugins/__navi_widget__"
+	fi
+fi
+
+# zoxide widget
+if [[ -f "$HOME/.local/share/zsh/plugins/__zoxide__" ]]; then
+	source "$HOME/.local/share/zsh/plugins/__zoxide__"
+else
+	if hash zoxide 2>/dev/null; then
+		printf "Warning: zoxide widget not installed (%s:%d)\n" "$HOME/.zshrc" $LINENO
+		# To install: zoxide init --cmd cd zsh > "$HOME/.local/share/zsh/plugins/__zoxide__"
 	fi
 fi
 
@@ -98,7 +108,7 @@ bindkey '^Xc' copy-buffer-to-clipboard
 # Edit command line in $EDITOR (Ctrl+Esc)
 autoload -Uz edit-command-line
 zle -N edit-command-line
-bindkey '^[' edit-command-line  # Esc key (you had this as '^[')
+bindkey '^[e' edit-command-line  # Esc key (you had this as '^[e')
 
 # Perform history expansion on space (e.g. !docker)
 bindkey ' ' magic-space
@@ -251,7 +261,7 @@ PROMPT="%F{green}%B%n@%m%b%f:%F{blue}%B%~%b%f%(#.#.$) "
 bindkey '^F' fzf-history-widget
 
 # Use Emacs keybindings by default (you explicitly set this)
-bindkey -e
+# bindkey -e
 
 # Quick edit config files
 alias erc="$EDITOR  ~/.zshrc"
@@ -308,7 +318,7 @@ bindkey -s '^Xgl' 'git log --oneline -n 10\n'
 
 function zsh() {
 	if [ -f "$HOME/.zshenv" ]; then
-		# THIS FILE WILL CONTAIN ALL THE PRIVATE CONFIGURATION, WHICH I CAN'T PUBLISH AND GET UP
+		# THIS FILE WILL CONTAIN ALL THE PRIVATE CONFIGURATION, WHICH I CAN'T PUBLISH ON git hub
 		source "$HOME/.zshenv"
 
 		#THIS FILE WILL CONTAIN ALL THE ENVIRONMENT VARIABLE AND THE CONFIGURATION WHICH I COMFORTABLE TO PUBLISH ON GITHUB

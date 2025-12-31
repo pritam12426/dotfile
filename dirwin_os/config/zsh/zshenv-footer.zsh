@@ -87,7 +87,7 @@ __MANPATH_ADD "$HOME/.local/share/man"
 fpath=($fpath "$HOME/.local/share/zsh/site-functions")
 
 # export EDITOR="hx"
-export EDITOR="nvim"                               # $EDITOR use nvim in terminal
+export EDITOR="/Users/pritam/.local/dev-tools/nvim-v0.11.5/bin/nvim"                               # $EDITOR use nvim in terminal
 # export VISUAL="zed --wait"                         # $VISUAL use zed  in GUI mode
 export DOT_FILE="$HOME/Developer/git_repository/my_dotfile/dirwin_os"
 export TERM="xterm-256color"                      # getting proper colors
@@ -160,6 +160,7 @@ NNN_PLUG_PERSONAL+="r:personal/fix_ugly_name;"
 NNN_PLUG_PERSONAL+="p:personal/ffplay_playlist;"
 NNN_PLUG_PERSONAL+="e:personal/fetch_metadata;"
 NNN_PLUG_PERSONAL+="q:personal/perview_with_quicklook;"
+NNN_PLUG_PERSONAL+="C:personal/copy_path;"
 
 NNN_PLUG+='z:!&zed "$nnn" *;'
 NNN_PLUG+='c:fzcd;'
