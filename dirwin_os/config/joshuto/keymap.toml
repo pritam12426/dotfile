@@ -57,7 +57,7 @@ keymap = [
 	{ keys = ["l"], commands = ["open"] },
 	{ keys = ["g", "g"], commands = ["cursor_move_home"] },
 	{ keys = ["G"], commands = ["cursor_move_end"] },
-	# { keys = ["r"], commands = ["open_with"] },
+	{ keys = ["o", "w"], commands = ["open_with"] },
 
 	{ keys = ["H"], commands = ["cursor_move_page_home"] },
 	{ keys = ["L"], commands = ["cursor_move_page_middle"] },
@@ -85,6 +85,7 @@ keymap = [
 	{ keys = ["p", "o"], commands = ["paste_files --overwrite=true"] },
 
 	{ keys = ["a"], commands = ["rename_append"] },
+	{ keys = ["r"], commands = ["rename_append"] },
 	{ keys = ["A"], commands = ["rename_prepend"] },
 
 	{ keys = ["f", "t"], commands = [":touch "] },
@@ -132,12 +133,12 @@ keymap = [
 	{ keys = ["g", "d"], commands = ["cd ~/Downloads"] },
 	{ keys = ["g", "h"], commands = ["cd ~/"] },
 	{ keys = ["g", "y"], commands = ["cd ~/Downloads/yt_dlp"] },
-	{ keys = ["?"], commands = ["help"] },
 
-	# System command
-	{ keys = [";", "q"], commands = ["shell qlmanage -p %p"] },
-	{ keys = [";", "p"], commands = ["shell ffplay -loop -1 -sn -loglevel level+warning -seek_interval 5 %p"] },
-	{ keys = [";", "f"], commands = ["shell nohup ffplay -loop -1 -sn -loglevel level+warning -seek_interval 5 %p > /dev/null 2>&1 &"] },
+	{ keys = ["b", "g"], commands = ["cd_bookmark"] },
+	{ keys = ["b", "a"], commands = ["add_bookmark"] },
+
+	{ keys = ["z", "i"], commands = ["zi"] },
+	{ keys = ["?"], commands = ["help"] },
 
 	# For ADB
 	{ keys = ["x", "p"], commands = ["shell adb push --sync %p /sdcard/Download/"] },

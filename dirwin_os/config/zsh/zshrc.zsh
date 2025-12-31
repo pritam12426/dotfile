@@ -104,7 +104,7 @@ hash -d dot=$DOT_FILE
 hash -d dl=~/Downloads
 
 # Copy current command buffer to clipboard (macOS)
-funcion copy-buffer-to-clipboard() {
+function copy-buffer-to-clipboard() {
 	printf "%s" "$BUFFER" | pbcopy
 	zle -M "Copied current command to clipboard"
 }

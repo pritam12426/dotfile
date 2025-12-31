@@ -1,45 +1,41 @@
 [class]
-	audio_default = [{ command = "mpv", args = ["--"] }, { command = "mediainfo", pager = true }]
+	audio_default = [
+		{ command = "mpv", args = ["--"] },
+		{ command = "mediainfo", pager = true },
+		{ command = "ffplay", args = [ "-loop", "0", "-seek_interval", "5", ], fork = true, silent = true }
+	]
 
 	image_default = [
-		{ command = "qimgv", args = [
-			"--",
-		], fork = true, silent = true },
-		{ command = "krita", args = [
-			"--",
-		], fork = true, silent = true },
-		{ command = "exiftool", pager = true },
-		{ command = "swappy", args = [
-			"-f",
-		], fork = true },
+		{ command = "ffplay", args = [ "-loop", "1", ], fork = true, silent = true },
+		{ command = "qlmanage", args = [ "-p", "--", ], fork = true, silent = true },
+		{ command = "open", fork = true, silent = true },
+		{ command = "exiftool", pager = true }
 	]
 
 	video_default = [
-		{ command = "mpv", args = [
-			"--",
-		], fork = true, silent = true },
+		{ command = "ffplay", args = [ "-loop", "0", "-seek_interval", "5", ], fork = true, silent = true },
+		{ command = "mpv", args = [ "--", ], fork = true, silent = true },
+		{ command = "mpv", args = [ "--mute", "on", "--", ], fork = true, silent = true },
+		{ command = "open", fork = true, silent = true },
 		{ command = "mediainfo", pager = true },
-		{ command = "mpv", args = [
-			"--mute",
-			"on",
-			"--",
-		], fork = true, silent = true },
 	]
 
 	text_default = [
-		{ command = "micro" },
-		{ command = "gedit", fork = true, silent = true },
-		{ command = "bat", args = [
-			"--paging=always",
-		] },
+		{ command = "nvim" },
+		{ command = "zed", fork = true, silent = true },
+		{ command = "less", pager = true },
+		{ command = "bat", args = [ "--paging=always", ], pager = true },
 	]
 
-	reader_default = [{ command = "evince", fork = true, silent = true }]
+	reader_default = [
+		{ command = "open", fork = true, silent = true }
+	]
 
-	libreoffice_default = [{ command = "libreoffice", fork = true, silent = true }]
+	libreoffice_default = [
+		{ command = "open", fork = true, silent = true }
+	]
 
 [extension]
-
 	## image formats
 	avif.inherit = "image_default"
 	bmp.inherit = "image_default"
@@ -55,7 +51,7 @@
 	webp.inherit = "image_default"
 
 	svg.app_list = [
-		{ command = "inkview", fork = true, silent = true },
+		{ command = "qlmanage", args = [ "-p", "--", ] },
 		{ command = "inkscape", fork = true, silent = true },
 	]
 	tiff.app_list = [
@@ -138,62 +134,45 @@
 
 	# archive formats
 	7z.app_list = [
-		{ command = "file-roller", fork = true, silent = true },
-		{ command = "7z", args = [
-			"x",
-		] },
+		{ command = "open", fork = true, silent = true },
+		{ command = "bsdtar", args = [ "-xvf", ] }
 	]
 	bz2.app_list = [
-		{ command = "file-roller", fork = true, silent = true },
-		{ command = "tar", args = [
-			"-xvjf",
-		] },
+		{ command = "open", fork = true, silent = true },
+		{ command = "bsdtar", args = [ "-xvf", ] }
 	]
 	gz.app_list = [
-		{ command = "file-roller", fork = true, silent = true },
-		{ command = "tar", args = [
-			"-xvzf",
-		] },
+		{ command = "open", fork = true, silent = true },
+		{ command = "bsdtar", args = [ "-xvf", ] }
 	]
 	tar.app_list = [
-		{ command = "file-roller", fork = true, silent = true },
-		{ command = "tar", args = [
-			"-xvf",
-		] },
+		{ command = "open", fork = true, silent = true },
+		{ command = "bsdtar", args = [ "-xvf", ] }
 	]
 	tgz.app_list = [
-		{ command = "file-roller", fork = true, silent = true },
-		{ command = "tar", args = [
-			"-xvzf",
-		] },
+		{ command = "open", fork = true, silent = true },
+		{ command = "bsdtar", args = [ "-xvf", ] }
 	]
 	rar.app_list = [
-		{ command = "file-roller", fork = true, silent = true },
-		{ command = "unrar", args = [
-			"x",
-		] },
+		{ command = "open", fork = true, silent = true },
+		{ command = "bsdtar", args = [ "-xvf", ] }
 	]
 	xz.app_list = [
-		{ command = "file-roller", fork = true, silent = true },
-		{ command = "tar", args = [
-			"-xvJf",
-		] },
+		{ command = "open", fork = true, silent = true },
+		{ command = "bsdtar", args = [ "-xvf", ] }
 	]
-	zip.app_list = [{ command = "file-roller", fork = true, silent = true }, { command = "unzip" }]
+	zip.app_list = [
+		{ command = "open", fork = true, silent = true },
+		{ command = "bsdtar", args = [ "-xvf", ] }
+	]
 	zst.app_list = [
-		{ command = "file-roller", fork = true, silent = true },
-		{ command = "zstd", args = [
-			"-d",
-		] },
+		{ command = "open",  silent = true },
+		{ command = "bsdtar", args = [ "-xvf", ] },
 	]
-
-	# misc formats
-	aup.app_list = [{ command = "audacity", fork = true, silent = true }]
 
 	m3u.app_list = [
-		{ command = "micro" },
 		{ command = "mpv" },
-		{ command = "gedit", fork = true, silent = true },
+		{ command = "zed", fork = true, silent = true },
 		{ command = "bat", pager = true },
 	]
 
@@ -211,20 +190,16 @@
 
 	pdf.inherit = "reader_default"
 
-	kra.app_list = [{ command = "krita", fork = true, silent = true }]
-	kdenlive.app_list = [{ command = "kdenlive", fork = true, silent = true }]
-
 	tex.app_list = [
-		{ command = "micro" },
-		{ command = "gedit", fork = true, silent = true },
+		{ command = "zed", fork = true, silent = true },
 		{ command = "bat", pager = true },
-		{ command = "pdflatex" },
 	]
 
-	torrent.app_list = [{ command = "transmission-gtk" }]
+	torrent.app_list = [
+		{ command = "open", args = [ "-a", "qBittorrent", ], silent = true }
+	]
 
 [mimetype]
-
 	# application/octet-stream
 	[mimetype.application.subtype.octet-stream]
 		inherit = "video_default"

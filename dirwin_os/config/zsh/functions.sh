@@ -10,24 +10,13 @@
 # ===========================================================================
 
 # Print bytes by decimal value
-bytes(){
+function bytes(){
 	case $1 in -h|--help|-\?|'')
 		printf >&2 'Usage: bytes [0..255]\n'; [ "$1" ]
 		return ;;
 	esac
 	printf %b "`printf \\\\%03o "$@"`"
 }
-
-# Convert a font using FontForge
-convertfont()(
-	cmd=~/.files/etc/convert-font.ff
-	ext=${1#.}
-	shift
-	while [ $# -gt 0 ]; do
-		fontforge -quiet -lang=ff -script "$cmd" "$1" "${1%.*}.$ext" || return $?
-		shift
-	done
-)
 
 # ------------ Utility Functions ------------
 function wireproxy-start() {

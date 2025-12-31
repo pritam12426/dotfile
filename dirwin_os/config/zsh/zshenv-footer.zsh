@@ -191,6 +191,28 @@ funcion lf() {
 	done
 }
 
+function ranger() {
+	ID="$$"
+	OUTPUT_FILE="$TMPDIR/joshuto-cwd-$ID"
+	command joshuto --output-file "$OUTPUT_FILE" "$@"
+	exit_code="$?"
+
+	case "$exit_code" in
+	# regular exit
+	0) ;;
+	# output contains current directory
+	101)
+		JOSHUTO_CWD=$(<"$OUTPUT_FILE")
+		builtin cd "$JOSHUTO_CWD" || return
+		;;
+	# output selected files
+	102) ;;
+	*)
+		echo "Exit code: $exit_code"
+		;;
+	esac
+}
+
 # ============================================================================================================
 
 # GPG CONFIGURATION ==========================================================================================
