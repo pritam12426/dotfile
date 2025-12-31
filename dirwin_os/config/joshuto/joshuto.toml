@@ -1,6 +1,7 @@
 numbered_command = false
 
 mouse_support = true
+tilde_in_titlebar = true
 focus_on_create = true
 use_trash = true
 watch_files = true
@@ -34,7 +35,7 @@ linemode = "size"
 [display.sort]
 # lexical, mtime, natural, size, ext
 sort_method = "natural"
-case_sensitive = false
+case_sensitive = true
 directories_first = true
 reverse = false
 

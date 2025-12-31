@@ -1,5 +1,5 @@
 diff --git a/src/icons.h b/src/icons.h
-index cc10cb26..a7b65abb 100644
+index cc10cb26..e134049e 100644
 --- a/src/icons.h
 +++ b/src/icons.h
 @@ -63,6 +63,7 @@
@@ -10,7 +10,17 @@ index cc10cb26..a7b65abb 100644
  #define ICON_DJVU          ICON_STR(FA_PAPERCLIP, "", "📎")
  #define ICON_DOCUMENT      ICON_STR(FA_FILE_TEXT_O, "󰈙", "🗒 ")
  #define ICON_DOWNLOADS     ICON_STR(FA_DOWNLOAD, "󰃘", "📥")
-@@ -103,14 +104,16 @@
+@@ -70,7 +71,8 @@
+ #define ICON_ENCRYPT       ICON_STR("", "󰌆", "🔒")
+ #define ICON_FSHARP        ICON_STR(DEV_FSHARP, "", "")
+ #define ICON_FONT          ICON_STR(FILE_FONT, "", "🔤")
+-#define ICON_GIT           ICON_STR(FA_GIT, "", "🌱")
++#define ICON_GIT           ICON_STR(FA_GIT, "", "🔨")
++#define ICON_GITHUB        ICON_STR(FA_GIT, "", "🐙")
+ #define ICON_HASKELL       ICON_STR("", "", "")
+ #define ICON_HTML          ICON_STR(FA_FILE_CODE_O, "󰌝", "🌍")
+ #define ICON_JAVA          ICON_STR(MFIZZ_JAVA, "", "☕")
+@@ -103,14 +105,16 @@
  #define ICON_VIDEOS        ICON_STR(FA_FILM, "󰈰", "🎬")
  #define ICON_VIM           ICON_STR(DEV_VIM, "", "")
  #define ICON_WORDDOC       ICON_STR(FILE_WORD, "󰈬", "📘")
@@ -28,7 +38,15 @@ index cc10cb26..a7b65abb 100644
  #define ICON_EXT_JSON      ICON_STR(ICON_JAVASCRIPT, "", ICON_JAVASCRIPT)
  #define ICON_EXT_LUA       ICON_STR(FILE_LUA, "", "🌘")
  #define ICON_EXT_M         ICON_STR("", "󰠞", "📊")
-@@ -193,6 +196,55 @@ static const struct icon_pair icons_name[] = {
+@@ -181,6 +185,7 @@ static const struct icon exec_icon = {ICON_EXEC, 0};
+ 
+ static const struct icon_pair icons_name[] = {
+ 	{".git",        ICON_GIT,       0},
++	{".github",     ICON_GITHUB,    0},
+ 	{"Desktop",     ICON_DESKTOP,   0},
+ 	{"Documents",   ICON_BRIEFCASE, 0},
+ 	{"Downloads",   ICON_DOWNLOADS, 0},
+@@ -193,6 +198,55 @@ static const struct icon_pair icons_name[] = {
  	{"configure",   ICON_CONFIGURE, 0},
  	{"License",     ICON_LICENSE,   COLOR_DOCS},
  	{"Makefile",    ICON_MAKEFILE,  0},
@@ -84,7 +102,7 @@ index cc10cb26..a7b65abb 100644
  };
  
  #ifdef ICONS_GENERATE
-@@ -214,12 +266,14 @@ static const struct icon_pair icons_ext[] = { /* All entries are case-insensitiv
+@@ -214,12 +268,14 @@ static const struct icon_pair icons_ext[] = { /* All entries are case-insensitiv
  	/* A */
  	{"a",          ICON_MANUAL,         0},
  	{"apk",        ICON_ARCHIVE,        COLOR_ARCHIVE},
@@ -99,7 +117,17 @@ index cc10cb26..a7b65abb 100644
  	{"bib",        ICON_TEX,            0},
  	{"bin",        ICON_EXT_BIN,        0},
  	{"bmp",        ICON_PICTUREFILE,    COLOR_IMAGE},
-@@ -440,6 +494,7 @@ static const struct icon_pair icons_ext[] = { /* All entries are case-insensitiv
+@@ -281,6 +337,9 @@ static const struct icon_pair icons_ext[] = { /* All entries are case-insensitiv
+ 	/* G */
+ 	{"gem",        ICON_RUBY,           COLOR_RUBY},
+ 	{"gif",        ICON_PICTUREFILE,    COLOR_IMAGE},
++	{"gitignore",  ICON_GIT,            COLOR_DOCUMENT},
++	{"gitconfig",  ICON_GIT,            COLOR_DOCUMENT},
++ {"gitattributes", ICON_GIT,            COLOR_DOCUMENT},
+ 	{"go",         ICON_EXT_GO,         COLOR_C},
+ 	{"gpg",        ICON_ENCRYPT,        COLOR_ARCHIVE},
+ 	{"gz",         ICON_ARCHIVE,        COLOR_ARCHIVE},
+@@ -440,6 +499,7 @@ static const struct icon_pair icons_ext[] = { /* All entries are case-insensitiv
  	{"zip",        ICON_ARCHIVE,        COLOR_ARCHIVE},
  	{"zsh",        ICON_SCRIPT,         COLOR_SHELL},
  	{"zst",        ICON_ARCHIVE,        COLOR_ARCHIVE},

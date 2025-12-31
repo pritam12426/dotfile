@@ -14,9 +14,9 @@ lscolors_enabled = true
 
 # Style of active tab & current directory
 [tabs.styles.active]
-bg = "light_blue"
-fg = "black"
-bold = true
+# bg = "light_blue"
+# fg = "black"
+# bold = true
 
 # Style of inactive tabs
 [tabs.styles.inactive]
