@@ -28,7 +28,7 @@ https://ubuntu.com/rss.xml                   "~LINUX:   ubuntu/news"  linux     
 https://www.debian.org//News/news            "~LINUX:   debian/news"  linux     os    mis
 https://archlinux.org/feeds/news             "~LINUX:   arch/news"    linux     os    mis
 
-https://www.debian.org//News/weekly/news     "~LINUX:   debian/weekly/news" linux     os    mis
+https://www.kernel.org/feeds/all.atom.xml    "~LINUX:   kernel/archive-releases"    linux     os    mis
 # ========================================================================================================================
 
 
@@ -36,13 +36,11 @@ https://www.debian.org//News/weekly/news     "~LINUX:   debian/weekly/news" linu
 https://github.com/yt-dlp/yt-dlp/releases.atom                  "~GITHUB:  repo/releases/yt-dlp"          github python cli coding
 https://github.com/newsboat/newsboat/releases.atom              "~GITHUB:  repo/releases/newsboat"        github c++    cli coding
 https://github.com/pkgxdev/pkgx/releases.atom                   "~GITHUB:  repo/releases/pkgx"            github rust   cli coding
-https://github.com/astral-sh/uv/releases.atom                   "~GITHUB:  repo/releases/uv"              github rust   cli coding
+https://github.com/astral-sh/uv/releases.atom                   "~GITHUB:  repo/releases/uv"              github python cli coding
 https://neovim.io/./news.xml                                    "~GITHUB:  repo/releases/neovim"          github c      cli coding
 https://github.com/pemistahl/grex/releases.atom                 "~GITHUB:  repo/releases/grex"            github rust   cli coding
-https://github.com/astral-sh/uv/releases.atom                   "~GITHUB:  repo/releases/uv"              github rust   cli coding
 https://www.ffmpeg.org/main.rss                                 "~GITHUB:  repo/releases/ffmpeg"          github c      cli coding
 https://github.com/jarun/nnn/releases.atom                      "~GITHUB:  repo/releases/nnn"             github c      cli coding
-https://github.com/arduino/arduino-cli/releases.atom            "~GITHUB:  repo/releases/arduino-cli"     github rust   cli coding
 https://github.com/rust-lang/rust/releases.atom                 "~GITHUB:  repo/releases/rust"            github rust   cli coding
 https://github.com/junegunn/fzf/releases.atom                   "~GITHUB:  repo/releases/fzf"             github golang cli coding
 https://github.com/jesseduffield/lazygit/releases.atom          "~GITHUB:  repo/releases/lazygit"         github golang cli coding
