@@ -268,6 +268,8 @@ precmd() {
 
 # Simple, clean prompt: user@host:dir $
 PROMPT="%F{green}%B%n@%m%b%f:%F{blue}%B%~%b%f%(#.#.$) "
+# https://github.com/jarun/nnn/wiki/Basic-use-cases#shell-depth-indicator
+[ -n "$NNNLVL" ] && PS1="N$NNNLVL $PS1"
 
 # Simple, clean prompt: user@host:dir (git) $
 # PROMPT="%F{green}%B%n@%m%b%f:%F{blue}%B%~%b%f\$(__git_ps1 \" (%s)\")%(#.#.$) "

@@ -1,5 +1,5 @@
 diff --git a/src/nnn.h b/src/nnn.h
-index 5f749093..67f604e2 100644
+index 5f749093..d61235e9 100644
 --- a/src/nnn.h
 +++ b/src/nnn.h
 @@ -149,7 +149,7 @@ static struct key bindings[] = {
@@ -64,17 +64,17 @@ index 5f749093..67f604e2 100644
  	/* Disconnect a SSHFS mount point */
  	{ 'u',            SEL_UMOUNT },
  	/* Show help */
-@@ -263,11 +261,12 @@ static struct key bindings[] = {
+@@ -263,11 +261,11 @@ static struct key bindings[] = {
  	{ 'S',            SEL_SELSIZE },
  	/* Run command */
  	{ '!',            SEL_SHELL },
+-	{ CONTROL(']'),   SEL_SHELL },
 +	{ 'i',            SEL_SHELL },
- 	{ CONTROL(']'),   SEL_SHELL },
  	/* Launcher */
  	{ '=',            SEL_LAUNCH },
  	/* Show command prompt */
 -	{ ']',            SEL_PROMPT },
-+	{ '<',            SEL_PROMPT },
++	{ ':',            SEL_PROMPT },
  	/* Lock screen */
  	{ '0',            SEL_LOCK },
  	/* Manage sessions */

@@ -136,21 +136,23 @@ export LESS_TERMCAP_me=$'\e[0m'
 # ============================================================================================================
 
 # NNN File Manager Integration ===============================================================================
+NNN_GUI_PLUG="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/plugins/personal"
 # Define NNN plugins for various tasks
-NNN_PLUG+="a:personal/adb_push;"
+NNN_PLUG="a:personal/adb_push;"
 NNN_PLUG+="r:personal/fix_ugly_name;"
 NNN_PLUG+="p:personal/ffplay_playlist;"
-NNN_PLUG+="e:personal/fetch_metadata;"
-NNN_PLUG+="q:personal/perview_with_quicklook;"
-NNN_PLUG+="C:personal/copy_path;"
+NNN_PLUG+="e:-personal/fetch_metadata;"
+NNN_PLUG+="q:-personal/perview_with_quicklook;"
+NNN_PLUG+="C:-personal/copy_path;"
 NNN_PLUG+='i:personal/zoxide;'
 NNN_PLUG+='m:personal/mpv_playlist;'
 
+# NNN_PLUG+="Z:!&nohup '$NNN_GUI_PLUG/mpv_playlist' >/dev/null 2>&1;"
 # NNN_PLUG+='I:cbcopy-mac;'
 
-NNN_PLUG+='z:!&zed "$nnn" ;'
-NNN_PLUG+='o:!|otool -L "$nnn" ;'
-NNN_PLUG+='f:!&ffplay -loop -1 -sn -loglevel level+warning -seek_interval 5 "$nnn" ;'
+NNN_PLUG+='z:-!&zed "$nnn" ;'
+NNN_PLUG+='o:-!|otool -L "$nnn" ;'
+NNN_PLUG+='f:-!&ffplay -loop -1 -sn -loglevel level+warning -seek_interval 5 "$nnn" ;'
 
 export NNN_PLUG
 export NNN_COLORS="5236"                                # Set NNN color scheme
@@ -164,7 +166,6 @@ export NNN_FCOLORS="c1e2272e006033f7c6d6abc4"           # Define NNN file colors
 export NNN_HELP="cat $DOT_FILE/config/nnn/nnn_help.txt" # Define NNN help file
 export NNN_ARCHIVE="\\.(7z|a|ace|alz|arc|arj|bz|bz2|cab|cpio|deb|gz|jar|lha|lz|lzh|lzma|lzo|rar|rpm|rz|t7z|tar|tbz|tbz2|tgz|tlz|txz|tZ|tzo|war|xpi|xz|Z|zip)$" # Define regex for archive file extensions
 export LC_ALL="en_US.UTF-8"
-
 
 # cd ON QUIT WITH FILE MANGER(S)
 function n() {
@@ -227,6 +228,7 @@ export GPG_TTY=$(tty)
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/Library/Caches"
+export XDG_RUNTIME_DIR="$TMPDIR"
 # ============================================================================================================
 
 if [ -f "$HOME/.config/zsh/functions.sh" ]; then
