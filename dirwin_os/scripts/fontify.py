@@ -549,7 +549,7 @@ def fzf() -> list[int]:
 	result = run(
 		# https://github.com/skim-rs/skim
 		# Note: Use can also use fzf here
-		f"sk -m --prompt '<Tab> for multiple selection: ' < {str(HOME_BREW_FONT_FZF_FILE_INDEX)}",
+		f"sk -m --prompt '<Tab> for multiple selection: ' < '{str(HOME_BREW_FONT_FZF_FILE_INDEX)}'",
 		shell=True,
 		text=True,
 		capture_output=True
