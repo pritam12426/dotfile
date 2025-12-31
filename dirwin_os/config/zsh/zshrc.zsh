@@ -60,6 +60,44 @@ else
 fi
 # ============================================================================================================
 
+# Bookmark dir ====================================
+hash -d  go="$HOME/Developer/go_lang"
+
+
+# Copy current command buffer to clipboard (macOS)
+function copy-buffer-to-clipboard() {
+  echo -n "$BUFFER" | pbcopy
+  zle -M "Copied to clipboard"
+}
+zle -N copy-buffer-to-clipboard
+bindkey '^Xc' copy-buffer-to-clipboard
+# =================================================
+
+
+# OPEN BUFFER LINE INTO EDITOR FOR EDITING =======================================================
+# https://www.youtube.com/watch?v=3fVAtaGhUyU
+# https://gist.github.com/elliottminns/09a598082d77f795c88e93f7f73dba61
+
+bindkey -e # user emac key pattern by defalut
+autoload -Uz edit-command-line
+autoload -Uz zmv
+zle -N edit-command-line
+bindkey '^[' edit-command-line
+
+bindkey ' ' magic-space #!?docker?
+
+chpwd() {
+	if [[ -d .venv ]]; then
+		source .venv/bin/activate
+	elif [[ -d venv ]]; then
+		source venv/bin/activate
+	elif [[ -n "$VIRTUAL_ENV" ]]; then
+		deactivate
+	fi
+}
+
+# ================================================================================================
+
 
 # AUTO COMPLETION ============================================================================================
 # https://zsh.sourceforge.io/Doc/Release/Zsh-Modules.html
@@ -285,9 +323,15 @@ alias hc=': > "$HISTFILE"; fc -p'
 
 alias -g ...="../.."
 alias -g R=" | rg"
-alias -g PB=" | pbcopy"
+alias -g L=" | less"
+alias -g C=" | pbcopy"
+alias -g P="pbpaste"
+alias -g NE="2 > /dev/null"
+alias -g DN=" > /dev/null"
+alias -g NULL=" > /dev/null 2>&1"
+alias -s json="jless"l
+
 # https://www.masterzen.fr/2009/04/19/in-love-with-zsh-part-one/
-alias -s php=nano
 # ============================================================================================================
 
 

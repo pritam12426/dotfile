@@ -27,15 +27,18 @@
 
 # --- Directory navigation aliases ---
 alias lldir="cd \` sk < $CPP_LIB_DIR/index.txt \`"     # Navigate To Directory From Index File
-alias cpdir="cd /Users/pritam/Developer/cxx_lang"      # Navigate To C++ Development Directory
-alias cdir="cd /Users/pritam/Developer/c_lang"         # Navigate To C Development Directory
-alias gdir="cd /Users/pritam/Developer/git_repository" # Navigate To Git Repository Directory
-alias bdir="cd /Users/pritam/.local/bin"               # Navigate To Local Binaries Directory
+alias cpdir="cd ~/Developer/cxx_lang"                  # Navigate To C++ Development Directory
+alias cdir="cd ~/Developer/c_lang"                     # Navigate To C Development Directory
+alias godir="cd ~/Developer/go_lang"                   # Navigate To C Development Directory
+alias rdir="cd ~/Developer/rust_lang"                  # Navigate To C Development Directory
+alias gdir="cd ~/Developer/git_repository"             # Navigate To Git Repository Directory
+alias bdir="cd ~/.local/bin"                           # Navigate To Local Binaries Directory
+alias bdir="cd ~/.local/bin"                           # Navigate To Local Binaries Directory
 alias .dir="cd $DOT_FILE"                              # Navigate To your dotfiles Directory
 
 # --- Firefox aliases ---
-alias firefox="/Applications/Firefox.app/Contents/MacOS/firefox"                    # Launch Firefox
-alias firefox-p="/Applications/Firefox.app/Contents/MacOS/firefox --private-window" # Launch Firefox in private mode
+alias firefox="open -a /Applications/Firefox.app"   # Launch Firefox
+alias firefox-p="firefox --private-window"          # Launch Firefox in private mode
 
 alias firefox-clean="rm -fv ~/Library/Application\ Support/Firefox/Profiles/*/formhistory.sqlite ; \
 					 rm -fv ~/Library/Application\ Support/Firefox/Profiles/*/formhistory.dat"
@@ -65,10 +68,10 @@ alias du="du -hs"        # Display disk usage in human-readable format
 
 # ------------ NeoVim and System Aliases ------------
 # Shortcuts for editing configuration files
-alias enrc="$EDITOR $HOME/.config/nvim/init.lua"          # Edit NeoVim config
-alias enhc="$EDITOR $HOME/.config/helix/config.toml"      # Edit helix config
-alias eza="$EDITOR  $HOME/.config/zsh/alias.zsh"          # Edit alias file
-alias efz="$EDITOR  $HOME/.config/zsh/functions.sh"       # Edit functon file
+alias enrc="$EDITOR ~/.config/nvim/init.lua"          # Edit NeoVim config
+alias enhc="$EDITOR ~/.config/helix/config.toml"      # Edit helix config
+alias eza="$EDITOR  ~/.config/zsh/alias.zsh"          # Edit alias file
+alias efz="$EDITOR  ~/.config/zsh/functions.sh"       # Edit functon file
 alias .e="edot"                                           # Edit functon file
 # ---------------------------------------------------------
 
