@@ -50,6 +50,7 @@ autoload -Uz colors && colors
 
 # sudo curl -L https://curl.se/ca/cacert.pem -o /usr/local/etc/ca-certificates/cert.pem
 export SSL_CERT_FILE="/usr/local/etc/ca-certificates/cert.pem"
+export BROWSER="/Applications/Firefox.app/Contents/MacOS/firefox"
 
 # FOR THE DEVELOPER===========================================================================================
 export CXX="/usr/bin/clang++"

@@ -38,9 +38,6 @@ applyPatch "$NNN_PATCH/nnn-builtin-cd-lastdir-v5.patch"
 applyPatch "$NNN_PATCH/icons-v5.2.patch"
 applyPatch "$NNN_PATCH/nnn_keybinds-v5.patch"
 
-# Your custom header
-# command cp -p "$NNN_PATCH/nnn-v5.h" src/nnn.h
-
 # O_NOFIFO=1 \
 make \
 	O_PCRE2=1 \

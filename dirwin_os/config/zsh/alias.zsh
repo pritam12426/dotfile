@@ -29,7 +29,8 @@
 alias bup='brew update && brew upgrade && brew cleanup --prune=all -s'  # Update installed Homebrew formulae
 alias blc='brew livecheck -q --newer-only --tap alhadis/troff'          # Run livecheck for `alhadis/troff` tap
 # Display information about Homebrew formulae
-alias bi='brew info'
+alias bino='brew info'
+alias bi='brew install'
 alias bd='brew desc'
 
 # --- Directory navigation aliases ---

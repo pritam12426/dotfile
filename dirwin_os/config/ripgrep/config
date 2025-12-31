@@ -9,4 +9,5 @@ web:*.{html,css,js}*
 --colors=line:style:bold
 
 # Because who cares about case!?
---smart-case
+-i
+# --smart-case

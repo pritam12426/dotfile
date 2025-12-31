@@ -1,5 +1,5 @@
 diff --git a/src/nnn.h b/src/nnn.h
-index 5f749093..d61235e9 100644
+index 5f749093..e25c7a17 100644
 --- a/src/nnn.h
 +++ b/src/nnn.h
 @@ -149,7 +149,7 @@ static struct key bindings[] = {
@@ -30,7 +30,15 @@ index 5f749093..d61235e9 100644
  	/* Connect to server over SSHFS */
  	{ 'c',            SEL_REMOTE },
  	/* Cycle contexts in forward direction */
-@@ -206,14 +205,12 @@ static struct key bindings[] = {
+@@ -199,23 +198,21 @@ static struct key bindings[] = {
+ 	/* Filter */
+ 	{ '/',            SEL_FLTR },
+ 	/* Toggle filter mode */
+-	{ CONTROL('N'),   SEL_MFLTR },
++	{ CONTROL('F'),   SEL_MFLTR },
+ 	/* Toggle hide .dot files */
+ 	{ '.',            SEL_HIDDEN },
+ 	/* Detailed listing */
  	{ 'd',            SEL_DETAIL },
  	/* File details */
  	{ 'f',            SEL_STATS },
@@ -43,16 +51,19 @@ index 5f749093..d61235e9 100644
  	{ 't',            SEL_SORT },
 -	{ CONTROL('T'),   SEL_SORT },
  	/* Redraw window */
- 	{ CONTROL('L'),   SEL_REDRAW },
+-	{ CONTROL('L'),   SEL_REDRAW },
++	{ 'L',   SEL_REDRAW },
  	/* Select current file path */
-@@ -240,15 +237,16 @@ static struct key bindings[] = {
+ 	{ ' ',            SEL_SEL },
+ 	{ '+',            SEL_SEL },
+@@ -240,15 +237,15 @@ static struct key bindings[] = {
  	{ 'x',            SEL_TRASH },
  	{ CONTROL('X'),   SEL_TRASH },
  	{ 'X',            SEL_RM_RF },
 +	{ KEY_DC,         SEL_RM_RF },
  	/* Open in a custom application */
  	{ 'o',            SEL_OPENWITH },
- 	{ CONTROL('O'),   SEL_OPENWITH },
+-	{ CONTROL('O'),   SEL_OPENWITH },
  	/* Create a new file */
  	{ 'n',            SEL_NEW },
  	/* Show rename prompt */
@@ -64,7 +75,7 @@ index 5f749093..d61235e9 100644
  	/* Disconnect a SSHFS mount point */
  	{ 'u',            SEL_UMOUNT },
  	/* Show help */
-@@ -263,11 +261,11 @@ static struct key bindings[] = {
+@@ -263,11 +260,11 @@ static struct key bindings[] = {
  	{ 'S',            SEL_SELSIZE },
  	/* Run command */
  	{ '!',            SEL_SHELL },
