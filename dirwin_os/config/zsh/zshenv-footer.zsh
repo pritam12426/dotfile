@@ -29,8 +29,7 @@ export MANPATH="$MANPATH"
 __MANPATH_ADD() {
 	local dir="$1"
 
-	# directory must exist
-	[[ -n $dir && -d $dir ]] || return
+	[[ -n $dir && -d $dir ]] || return # directory must exist
 
 	# If MANPATH is empty -> add with trailing colon to keep system defaults
 	if [[ -z $MANPATH ]]; then
@@ -38,13 +37,12 @@ __MANPATH_ADD() {
 		return
 	fi
 
-	# Remove trailing ':' to prevent "::"
-	MANPATH="${MANPATH%%:}"
+	MANPATH="${MANPATH%%:}" # Remove trailing ':' to prevent "::"
 
 	# Add only if not already present
 	case ":$MANPATH:" in
-	*":$dir:"*) ;; # already exists
-	*) MANPATH="$MANPATH:$dir" ;;
+		*":$dir:"*) ;; # already exists
+		*) MANPATH="$MANPATH:$dir" ;;
 	esac
 }
 
@@ -87,30 +85,19 @@ __MANPATH_ADD "$HOME/.local/share/man"
 fpath=($fpath "$HOME/.local/share/zsh/site-functions")
 
 # export EDITOR="hx"
-export EDITOR="/Users/pritam/.local/dev-tools/nvim-v0.11.5/bin/nvim"                               # $EDITOR use nvim in terminal
-# export VISUAL="zed --wait"                         # $VISUAL use zed  in GUI mode
+export EDITOR="$PREFIX/bin/nvim"  # $EDITOR use nvim in terminal
+# export VISUAL="zed --wait"      # $VISUAL use zed  in GUI mode
 export DOT_FILE="$HOME/Developer/git_repository/my_dotfile/dirwin_os"
 export TERM="xterm-256color"                      # getting proper colors
 # ============================================================================================================
 
 # Linux LS color theme =======================================================================================
-# Allow Zed editor to run as root
-export ZED_ALLOW_ROOT=true
-
-# Enable colored diagnostics in CMake
-export CMAKE_COLOR_DIAGNOSTICS=true
-
-# Enable colored output for ls
-export CLICOLOR=true
-
-# Set default pager to less
-export PAGER="less"
-
-# Configure less for raw control characters and case-insensitive search
-export LESS="-Rir -j5"
-
-# Define ls color scheme
-export LSCOLORS="ExFxBxDxCxegedabagacad"
+export ZED_ALLOW_ROOT=true               # Allow Zed editor to run as root
+export CMAKE_COLOR_DIAGNOSTICS=true      # Enable colored diagnostics in CMake
+export CLICOLOR=true                     # Enable colored output for ls
+export PAGER="less"                      # Set default pager to less
+export LESS="-Rir --tabs=2 -j5"          # Configure less for raw control characters, case-insensitive search
+export LSCOLORS="ExFxBxDxCxegedabagacad" # Define ls color scheme
 # ============================================================================================================
 
 # FZF & SK Configuration ==========================================================================================
@@ -163,12 +150,12 @@ NNN_PLUG+="q:personal/perview_with_quicklook;"
 NNN_PLUG+="C:personal/copy_path;"
 
 NNN_PLUG+='i:autojump;'
-NNN_PLUG+='I:cbcopy-mac;'
+# NNN_PLUG+='I:cbcopy-mac;'
 
-NNN_PLUG+='z:!&zed "$nnn" *;'
-NNN_PLUG+='o:!|otool -L "$nnn";'
-NNN_PLUG+='f:!&ffplay -loop -1 -sn -loglevel level+warning -seek_interval 5 "$nnn";'
-NNN_PLUG+='m:!&mpv "$nnn"   *   *;'
+NNN_PLUG+='z:!&zed "$nnn" ;'
+NNN_PLUG+='o:!|otool -L "$nnn" ;'
+NNN_PLUG+='f:!&ffplay -loop -1 -sn -loglevel level+warning -seek_interval 5 "$nnn" ;'
+NNN_PLUG+='m:!&mpv --force-window=immediate "$nnn" * ;'
 
 export NNN_PLUG
 
@@ -206,13 +193,11 @@ function y() {
 	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
 }
 
-function lf() {
-	local tmp="$TMPDIR/lf_cd"
-	command lf -last-dir-path="$tmp" "$@"
-	if [ -f "$tmp" ]; then
-		dir="$(< "$tmp")"
-		[ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && builtin cd -- "$dir"
-	fi
+funcion lf() {
+	dir="$(command lf -print-last-dir "$@")"
+	while ! cd "$dir" 2>/dev/null; do
+		dir="$(dirname -- "$dir")"
+	done
 }
 
 # ============================================================================================================

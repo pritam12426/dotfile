@@ -20,38 +20,39 @@
 # fi      -       # FILE
 
 # file types (with matching order)
-ln             # LINK
-or             # ORPHAN
-tw      t       # STICKY_OTHER_WRITABLE
-ow      🗂️       # OTHER_WRITABLE
-st      t       # STICKY
-di      🗂️       # DIR
-pi      p       # FIFO
-so      s       # SOCK
-bd      b       # BLK
-cd      c       # CHR
-su      u       # SETUID
-sg      g       # SETGID
-ex      🚀       # EXEC
-fi      🗒️       # FILE
+#ln             # LINK
+#or             # ORPHAN
+#tw      t       # STICKY_OTHER_WRITABLE
+#ow      🗂️       # OTHER_WRITABLE
+#st      t       # STICKY
+#di      🗂️       # DIR
+#pi      p       # FIFO
+#so      s       # SOCK
+#bd      b       # BLK
+#cd      c       # CHR
+#su      u       # SETUID
+#sg      g       # SETGID
+#ex      🚀       # EXEC
+#fi      🗒️       # FILE
 
 # disable some default filetype icons, let them choose icon by filename
-# ln      🔗       # LINK
-# or      🖇️       # ORPHAN
-# tw              # STICKY_OTHER_WRITABLE
-# ow              # OTHER_WRITABLE
-# st              # STICKY
-# di      🗂️       # DIR
-# pi              # FIFO
-# so              # SOCK
-# bd              # BLK
-# cd              # CHR
-# su              # SETUID
-# sg              # SETGID
-# ex              # EXEC
-# fi      🗒️       # FILE
+#ln      🔗       # LINK
+#or      🖇️       # ORPHAN
+#tw              # STICKY_OTHER_WRITABLE
+#ow              # OTHER_WRITABLE
+#st              # STICKY
+#di      "🗂️ "   # DIR
+#pi              # FIFO
+#so              # SOCK
+#bd              # BLK
+#cd              # CHR
+#su              # SETUID
+#sg              # SETGID
+#ex              # EXEC
+#fi      "🗒️ "   # FILE
 
 # file extensions (vim-devicons)
+Developer      "🛠️ "
 *.styl          
 *.sass          
 *.scss          
