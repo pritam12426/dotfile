@@ -25,6 +25,13 @@
 # sudo xattr -rd com.apple.quarantine <file>
 
 
+# --- HOMEBREW ---------------------
+alias bup='brew update && brew upgrade && brew cleanup --prune=all -s'  # Update installed Homebrew formulae
+alias blc='brew livecheck -q --newer-only --tap alhadis/troff'          # Run livecheck for `alhadis/troff` tap
+# Display information about Homebrew formulae
+alias bi='brew info'
+alias bd='brew desc'
+
 # --- Directory navigation aliases ---
 alias lldir="cd \` sk < $CPP_LIB_DIR/index.txt \`"     # Navigate To Directory From Index File
 alias cpdir="cd ~/Developer/cxx_lang"                  # Navigate To C++ Development Directory
@@ -64,6 +71,10 @@ alias lh="ls -ld --color=auto .[^.]*"  # List hidden directories
 alias cp="cp -ip"        # Copy with interactive prompt
 alias mv="mv -vi"        # Move with interactive prompt
 alias du="du -hs"        # Display disk usage in human-readable format
+alias bc='bc -l'
+alias df='df -h'
+alias scp='scp -pr'
+alias nl='nl -ba'
 # ---------------------------------------------------------
 
 
@@ -76,15 +87,29 @@ alias efz="$EDITOR  ~/.config/zsh/functions.sh"       # Edit functon file
 alias .e="edot"                                       # Edit functon file
 # ---------------------------------------------------------
 
+# Generate nicer-looking hexadecimal dumps
+alias hexdump='hexdump -v \
+	-e \""[2m│[22m0x%08.8_ax[2m│[22m "\" \
+	-e '\''16/1 "%02X "'\'' \
+	-e \"" [2m│[22m"\" \
+	-e '\''16/1 "%_p" "'\''"[2m│[22m"'\''\n"'\'
+
 
 # System utility aliases ------------------------------
 alias o="open ."                                                                           # Open current directory in Finder
 alias c.="code ."                                                                          # Open current directory in VS Code
 alias z.="zed ."                                                                           # Open current directory in Zed editor
+alias sqldump='sqlite3 /dev/stdin .dump <'                                                 # Dump an SQLite database in human-readable form
+alias prune='find -L . -name . -o -type d -prune -o -type l -exec rm -v {} +'              # Delete broken symlinks in the current directory
+alias hardlinks='find . \! -type d \! -links 1'                                            # List files with at least one hard-link
+alias xxd='NO_COLOR=1 xxd -u -g1'                                                          # Generate nicer-looking hexadecimal dumps
+alias peek='qlmanage -p >/dev/null 2>&1'                                                   # Preview a file using Quick Look
+alias pow='pmset -g batt' 	                                                               # Print power diagnostics (battery-level and charge status)
+alias umount='diskutil unmount'                                                            # Apple recommend diskutil(1) be used instead of umount(1)
 # alias live-server="open 'http://localhost:8085/' && python3 -m http.server 8085"           # Start live server with python
 alias live-server="live-server -H localhost -p 8085 -o"                                    # Start live server with rust binary
 # alias tre="tre -a -E '.git'"                                                               # Display directory tree
-# alias python="python3 -u"                                                                # Use Python 3 as default
+# alias python="python3 -u"                                                                  # Use Python 3 as default
 alias envpath="envpath | less"                                                             # Print the environment variable in prettiest form
 alias nq="networkquality -s"                                                               # Check network quality
 alias search="command ls -AF | grep -i"                                                    # Search files in current directory
@@ -98,7 +123,7 @@ alias ninja-tree="ninja -t targets"                                             
 alias chownroot="sudo chown -R root:wheel"                                                 # Change ownership to root
 alias chownself="sudo chown -R pritam:staff"                                               # Change ownership to user
 alias bk="open 'http://localhost:8080/' && shiori server"                                  # Open bookmarks server
-alias wget="wget -c"                                                                       # Download with wget
+alias wget="wget --xattr -c"                                                               # Download with wget
 alias off="pmset displaysleepnow"                                                          # Turn off display
 alias soff="pmset sleepnow"                                                                # Put system to sleep
 alias zed-editor="eval \"export EDITOR='zed --wait'\""                                     # setting EDITOR = zed
@@ -120,14 +145,11 @@ alias exfcpy="exf -TagsFromFile"                           # Copy metadata from 
 
 # IP and MAC Address Aliases =================================================================================
 # Fetch public IP information
-alias ipinfo="curl https://raw.githubusercontent.com/jarun/nnn/master/plugins/ipinfo 2> /dev/null | sh | $PAGER"
+alias ipinfo="curl https://raw.githubusercontent.com/jarun/nnn/master/plugins/ipinfo 2> /dev/null | sh | less"
 
 # Fetch WAN (public) IP address
-alias wanip="curl -s http://checkip.dyndns.org/ | sed 's/[a-zA-Z<>/ :]//g'"
-
-# Fetch MAC address of the computer
-alias macid="ifconfig -a | grep ether | grep -oE '([0-9][0-9]:[a-z][0-9]:[a-z][a-z]:[a-z][a-z]:[0-9][0-9]:[0-9][0-9])' | head -n 1"
+alias myip="curl -s http://checkip.dyndns.org/ | sed 's/[a-zA-Z<>/ :]//g'"
 
 # Fetch LAN (local) IP address
-alias lanip="ifconfig -a | egrep -A 7 '^en0' | grep inet | grep -oE '((1?[0-9][0-9]?|2[0-4][0-9]|25[0-5])\.){3}(1?[0-9][0-9]?|2[0-4][0-9]|25[0-5])' | head -n 1"
+alias lanip="ipconfig getifaddr en0"
 # ============================================================================================================

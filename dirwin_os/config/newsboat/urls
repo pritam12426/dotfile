@@ -3,7 +3,7 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCg6gPGh8HU2U01vaFCAsvmQ  "~
 https://www.youtube.com/feeds/videos.xml?channel_id=UCEbYhDd6c6vngsF5PQpFVWg  "~YOUTUBE: channel/Tsoding"             youtube vidoes media dev coding
 https://www.youtube.com/feeds/videos.xml?channel_id=UCXuqSBlHAE6Xw-yeJA0Tunw  "~YOUTUBE: channel/Linus Tech Tips"     youtube vidoes media tech tips
 https://www.youtube.com/feeds/videos.xml?channel_id=UCxQKHvKbmSzGMvUrVtJYnUA  "~YOUTUBE: channel/Learn Linux TV"      youtube vidoes media linux tips
-https://www.youtube.com/feeds/videos.xml?channel_id=UCld68syR8Wi-GY_n4CaoJGA  "~YOUTUBE: channel/Learn Linux TV"      youtube vidoes media linux tips
+https://www.youtube.com/feeds/videos.xml?channel_id=UCld68syR8Wi-GY_n4CaoJGA  "~YOUTUBE: channel/Brodie Robertson"    youtube vidoes media linux tips
 https://www.youtube.com/feeds/videos.xml?channel_id=UC6biysICWOJ-C3P4Tyeggzg  "~YOUTUBE: channel/Low Level"           youtube vidoes media linux tips
 https://www.youtube.com/feeds/videos.xml?channel_id=UCVls1GmFKf6WlTraIb_IaJg  "~YOUTUBE: channel/DistroTube"          youtube vidoes media linux tips
 # ========================================================================================================================
@@ -13,43 +13,22 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCVls1GmFKf6WlTraIb_IaJg  "~
 https://www.reddit.com/r/indianmemer.rss "~REDDIT:  r/indianmemer" youtube vidoes post media
 # ========================================================================================================================
 
-# TWICH ==================================================================================================================
-https://twitchrss.com/feeds/?username=lowleveltv&feed=streams "~TWITCH:  user/lowleveltv" twich vidoes post media coding dev
-# ========================================================================================================================
-
-
 # NEWS ===================================================================================================================
 #https://www.reddit.com/r/rss/comments/1hco1ur/best_rss_links_for_news/
-https://feeds.bbci.co.uk/news/rss.xml            "~NEWS:    bbc/word"    NEWS
-https://feeds.bbci.co.uk/news/world/asia/rss.xml "~NEWS:    bbc/asia"    NEWS
-https://www.bbc.com/news/health                  "~NEWS:    bbc/health"  NEWS
-https://www.bbc.com/innovation/technology        "~NEWS:    bbc/tech"    NEWS tech
-https://www.bbc.com/culture/film-tv              "~NEWS:    bbc/film"    NEWS
-
-https://www.thehindu.com/news/national/feeder/default.rss      "~NEWS:    thehindu/india"       NEWS
-https://www.thehindu.com/news/international/feeder/default.rss "~NEWS:    thehindu/word"        NEWS
-https://www.thehindu.com/opinion/editorial/feeder/default.rss  "~NEWS:    thehindu/editorial"   NEWS
-
 #https://timesofindia.indiatimes.com/rss.cms
-http://timesofindia.indiatimes.com/rssfeeds/66949542.cms "~NEWS:    indiatimes/tech"    NEWS tech
 # ========================================================================================================================
 
 
 # MISCELLANEOUS ==========================================================================================================
-https://brew.sh/atom.xml                     "~BREW:    blog"        language  rust  coding      dev
+https://brew.sh/atom.xml                     "~BREW:    brew/blog"        language  rust       coding      dev
 
-https://blog.rust-lang.org/feed.xml          "~RUST:    blog"         ruby      language   mis
-https://ubuntu.com/rss.xml                   "~LINUX:   ubuntu/news"  linux     os         mis
+https://blog.rust-lang.org/feed.xml          "~RUST:    rust/blog"        ruby      language   mis
 
-https://www.debian.org//News/news            "~LINUX:   debian/news"        linux     os    mis
+https://ubuntu.com/rss.xml                   "~LINUX:   ubuntu/news"  linux     os    mis
+https://www.debian.org//News/news            "~LINUX:   debian/news"  linux     os    mis
+https://archlinux.org/feeds/news             "~LINUX:   arch/news"    linux     os    mis
+
 https://www.debian.org//News/weekly/news     "~LINUX:   debian/weekly/news" linux     os    mis
-https://www.debian.org//security/dsa         "~LINUX:   debian/dsa"         linux     os    mis
-https://www.debian.org//security/dsa-long    "~LINUX:   debian/dsa-long"    linux     os    mis
-
-https://archlinux.org/feeds/news             "~LINUX:   arch/news"          linux     os    mis
-https://archlinux.org/feeds/packages         "~LINUX:   arch/packages"      linux     cli   mis
-
-https://hypr.land/rss.xml                    "~LINUX:   hyprland/news"      linux           mis
 # ========================================================================================================================
 
 

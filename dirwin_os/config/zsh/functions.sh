@@ -9,6 +9,26 @@
 # efficiently, with options for customization and flexibility.
 # ===========================================================================
 
+# Print bytes by decimal value
+bytes(){
+	case $1 in -h|--help|-\?|'')
+		printf >&2 'Usage: bytes [0..255]\n'; [ "$1" ]
+		return ;;
+	esac
+	printf %b "`printf \\\\%03o "$@"`"
+}
+
+# Convert a font using FontForge
+convertfont()(
+	cmd=~/.files/etc/convert-font.ff
+	ext=${1#.}
+	shift
+	while [ $# -gt 0 ]; do
+		fontforge -quiet -lang=ff -script "$cmd" "$1" "${1%.*}.$ext" || return $?
+		shift
+	done
+)
+
 # ------------ Utility Functions ------------
 function wireproxy-start() {
 	# Start wireproxy in background if not already running
@@ -404,9 +424,11 @@ function gh() {
 # ---------------------------------------------
 
 # ------------ Miscellaneous Functions ------------
-# Colorized diff output
-function diff {
-	command diff -u --color=always "$@" | less -r -
+# Generate a unified diff with highlighting
+diff(){
+	set -- diff -r -U4 "$@"
+	if [ ! -t 1 ]; then command "$@"; return $?; fi
+	command "$@" | format-diff
 }
 
 # Pretty-print media file metadata using ffprobe and jq
@@ -499,6 +521,11 @@ function edot() {
 	[[ -f $base/$file ]] && $EDITOR "$base/$file"
 }
 
+# Locate files by name
+f(){
+	find . -type f -name "*$1*";
+}
+
 # pathcp :: Copy absolute file path to clipboard
 function pc() {
 	if [[ $1 == "--help" ]]; then
@@ -531,7 +558,12 @@ function pc() {
 					;;
 			esac
 
-			out+="$match "
+			if [ "${#args[@]}" -eq 1 ]; then
+				out+="$match"
+			else
+				out+="$match "
+			fi
+
 		done
 	done
 
